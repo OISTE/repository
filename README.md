@@ -1,4 +1,4 @@
-# repository
+# OISTE-WISeKey Trust Model Docuement Repository
 
 This repository contains all the public documents of the OISTE-WISeKey Trust Model
 
