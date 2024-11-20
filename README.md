@@ -2,7 +2,15 @@
 
 This repository contains all the public documents of the OISTE-WISeKey Trust Model
 
-## Documents
+## Markdown documents
+(New and valid versions)
+
+1. OWGTM CPS
+2. OISTE/WISeKey Subscriber agreement
+
+## PDF Documents
+(PDF Versions, latest versions valid before migrating to unified CPS and markdosn formats)
+
 1. CP OISTE
    - CP for TLS Server Certificates
    - CP for Personal Certificates (includes S/MIME Certificates)
