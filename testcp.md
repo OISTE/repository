@@ -1206,7 +1206,7 @@ role="doc-endnotes">
 <li id="fn1"><p>Note: SSL Certificates can be offered in different
 versions (e.g. Wildcard or Unified Communications), but always according
 to the applicable base CP and CA/Browser Forum requirements.<a
-href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+href="#fnref1" class="footnote-back" role="doc-backlink">REF</a></p></li>
 </ol>
 </section>
 
