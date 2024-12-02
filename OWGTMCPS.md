@@ -36,20 +36,14 @@ This document is developed per the recommendations found in the document RFC3647
 
 The purpose of this document is to disclose the Practices and Policies adopted in the OGTM for the issuance of digital certificates. It is organized in the following sections:
 1. Introductions – This section. Introduces the OGTM and this document.
-2. Publication and Repositories Responsibilities – Describes the publication policies for the
-certificates affected by this document, and the publication of this document itself.
-1. Identification and Authentication – Discloses the rules for subscriber naming and required
-authentication policies.
-1. Certificate Life-Cycle Operational Requirements – This section describes the different phases in
-the Life-Cycle of certificates and their requirements.
+2. Publication and Repositories Responsibilities – Describes the publication policies for the certificates affected by this document, and the publication of this document itself.
+1. Identification and Authentication – Discloses the rules for subscriber naming and required authentication policies.
+1. Certificate Life-Cycle Operational Requirements – This section describes the different phases in the Life-Cycle of certificates and their requirements.
 1. Management, Operational and Physical Controls – Describes the controls enforced in the OGTM to provide adequate trust levels in the certificates issued under the Trust Model.
 2. Technical Security Controls – Discloses the security controls adopted in the OGTM.
-3. Certificate and CRL Profiles – Describes the technical details of the different certificate types
-issued under the OGTM.
-1. Compliance Audit and other Assessment – Discloses the audit policies followed in the OGTM to
-ensure that the participant fulfils the security and quality requirements.
-1. Other Business and Legal Matters – This section exposes the commercial, legal and contractual
-aspects involved in the usage of certificates issued in the OGTM.
+3. Certificate and CRL Profiles – Describes the technical details of the different certificate types issued under the OGTM.
+1. Compliance Audit and other Assessment – Discloses the audit policies followed in the OGTM to ensure that the participant fulfils the security and quality requirements.
+1. Other Business and Legal Matters – This section exposes the commercial, legal and contractual aspects involved in the usage of certificates issued in the OGTM.
 
 **APPLICABILITY NOTICE:** If any inconsistency exists between this document and the normative provisions of an applicable industry guideline or standard (“Applicable Requirements”), then the Applicable Requirements take precedence over this CP/CPS. 
 
@@ -386,56 +380,309 @@ The OGTM makes its Repository publicly available in a read-only manner.
 ## 8.5  Actions taken as a result of deficiency
 ## 8.6  Communication of results
 # 9.  OTHER BUSINESS AND LEGAL MATTERS
+
+This section includes the stipulations for business and legal matters and should be understood as having a contractual value by all the PKI participants.
+
 ## 9.1  Fees
+
+The fees applicable to the Certification Services covered by this CPS can be subject to variation according to specific agreement with the participants in the service. The detailed information of the fees is made available for the subscribers or other affected parties before enabling such services.
+
 ### 9.1.1  Certificate issuance or renewal fees
+
+The issuance of certificates in the OGTM is considered a commercial service and therefore subject to fees. The fees depend on the certificate and project and are agreed before making it available to subscribers.
+
 ### 9.1.2  Certificate access fees
+
+OGTM doesn’t enforce stipulations for certificate access fees. In general, any participant shouldn’t apply fees on the access to certificate information made public in the different repositories.
+
 ### 9.1.3  Revocation or status information access fees
+
+OGTM doesn’t enforce stipulations for revocation or status information access fees. In general, the Issuing CA shouldn’t apply fees on the access to certificate information made public in the different repositories.
+
 ### 9.1.4  Fees for other services
+
+The operators of Issuing CAs in the OGTM can set fees for different commercial services provided to parties willing to participate in the Trust Model. This includes, but not limited to:
+- Managed PKI Services
+- CA Signing Services
+- CA Hosting and operation services
+
 ### 9.1.5  Refund policy
+
+The refund policy applicable to commercial services provided by WISeKey is included in the “Subscriber agreement” and/or general Terms and Conditions communicated to the end-user when providing the service. Other refund policies can be established and, in such cases, must be effectively communicated to all affected parties.
+
 ## 9.2  Financial responsibility
+
+The OGTM established the adequate controls to ensure that the different levels of financial responsibility are met by the different participants, according to their impact in the trust model.
+
 ### 9.2.1  Insurance coverage
+
+For the Root CA, Issuing CAs and the certification services provided directly by WISeKey, it is maintained an Errors and Omissions insurance policy that covers the liability expressed in section 9.8.
+For affiliates and corporate customers acting as Certification or Registration Authorities, the contractual terms agreed among the parties ensure the assumed responsibilities for each party and transfer the requirement for appropriate insurance for the transferred liabilities.
+
 ### 9.2.2  Other assets
+
+No stipulation.
+
 ### 9.2.3  Insurance or warranty coverage for end-entities
+
+The maximum liability per subscriber certificate issued under the OGTM is to be established in the applicable Subscriber Agreement published by the Issuing CA.
+
 ## 9.3  Confidentiality of business information
+
+In general, an Issuing CA under the OGTM may not disclose the confidential information of a subscriber, or use that information for any purpose, except:
+- To its staff requiring the information for the purposes of this CPS or for delivery of the services.
+- With the explicit consent of the subscriber.
+- If required to do so by any law, or an applicable agreement.
+
 ### 9.3.1  Scope of confidential information
+
+Information released to subscriber(s) or relying parties by Issuing CA may be considered confidential.
+
+All Issuing CA under the OGTM shall keep the following types of information confidential and maintains reasonable controls to prevent the exposure of such records to non-trusted personnel.
+- All private keys
+- Any activation data used to access private keys or gain access to the CA system
+- Any business continuity, incident response, contingency, and disaster recovery plans
+- Any other security practices, measures, mechanisms, plans, or procedures used to protect the confidentiality, integrity or availability of information
+- Any information held by the Issuing CA in accordance with Section 9.4
+- Any transactional, audit log and archive record identified in Section 5.4 or 5.5, including certificate application records and documentation submitted in support of certificate applications whether successful or rejected.
+- Transaction records, financial audit records and external or internal audit trail records and any audit reports (with the exception of an auditor’s letter confirming the effectiveness of the controls set forth in this CPS)
+- All information classified explicitly as “PRIVATE”, “CONFIDENTIAL” or “EXTRICTLY CONFIDENTIAL” when generated or exchanged among involved parties.
+
 ### 9.3.2  Information not within the scope of confidential information
+
+The following information shall be deemed as non-confidential:
+- All information contained in the issued certificates and Certificate Revocation Lists (CRLs) including all information that can be derived from such.
+- All information classified expressly as “PUBLIC”.
+
 ### 9.3.3  Responsibility to protect confidential information
+
+The OGTM Issuing CAs are responsible of the protection of the confidential information generated or communicated during all operations. Delegated parties, as the entities managing subordinate Issuing CAs or Registration Authorities, are responsible for protecting confidential information that has been generated or stored by their own means.
+
+For end entities, the certificate subscribers are responsible to protect their own private key and all activation information (i.e. passwords or PIN) needed to access or use the private key.
+
 ## 9.4  Privacy of personal information
+
+The Issuing CAs operating in the CIDPKI must publish their own Privacy Policy and communicate it adequately to the certificate subscribers. This Policy must be compliant with the applicable requirements for international commercial services, and specifically with any applicable requirements from the CA/Browser Forum and European General Data Protection Regulation (GDPR).
+
+In general, it must be understood that the CAs act as a “Data Controller” and the RAs and other parties involved in certificate management are “Data Processors” or, in certain occasions, “Joint Controllers”.
+
 ### 9.4.1  Privacy plan
+
+WISeKey publishes the Privacy Policy and other related materials in https://www.wisekey.com/repository.
+
 ### 9.4.2  Information treated as private
+
+Personal information about an individual that is not publicly available in the contents of a certificate or CRL is considered private.
+
 ### 9.4.3  Information not deemed private
+
+For personal information the provisions of [section 9.3.2](###-9.3.2-Information-not-within-the-scope-of-confidential-information) apply respectively.
+
 ### 9.4.4  Responsibility to protect private information
+
+The OGTM ensures the compliance of the legal obligations for Certification Authorities, Registration Authorities and other entities operating under the OGTM Trust Model. Each of these participants is responsible to protect the private information that has been provided by subscribers or other participants in the issuance and maintenance of digital certificates.
+
 ### 9.4.5  Notice and consent to use private information
+
+In order to perform the certification provisioning service, the Issuing CAs and other parties interacting with certificate subscribers are required to obtain the consent to use the subscriber’s personal information.
+
+This consent is understood by the explicit acceptance of the “Terms and Conditions” and/or “End User Agreement” by the subscriber during the certificate request process. This acceptance is recognized by the subscriber’s acceptance to obtain and install the certificate.
+
 ### 9.4.6 Disclosure pursuant to judicial or administrative process
+
+The participants in the OGTM will disclose personal information of the participants if required by a judicial or administrative process, upon presentation of appropriate orders in accordance with the Applicable Laws of the country where the Certification Authority operates.
+
 ### 9.4.7  Other information disclosure circumstances
+
+No stipulation.
+
 ## 9.5  Intellectual property rights
+
+All Intellectual Property rights, including the digital certificates and CRLs issued by the OGTM Root CAs, Object Identifiers, this CPS and the different CP are owned by the OISTE Foundation.
+
+The private and public keys are the property of their respective owners.
+
+Any commercial or protected trademark included in the Distinguished Name of a certificate is under responsibility of the certificate subscriber.
+
 ## 9.6  Representations and warranties
+
+This section includes general stipulations, specific terms can be stipulated in the appropriate Certificate Policy for a given certificate type and users community. If such is the case, specific Subscriber, Relying Party and other agreements will be distributed among the parties.
+
 ### 9.6.1  CA representations and warranties
+
+OGTM Root CAs will:
+- Establish a chain of trust by issuing a certificate, which is a self-signed certificate
+- Ensure that the Root signs any subordinate CAs issued under the OGTM hierarchy
+- Properly conduct the verification process described in section 3.2
+- Ensure the accuracy and completeness of any part of the certificate information which is generated or compiled by the OGTM, according to the applicable Certification Policy
+- Ensure that all relevant information concerning a certificate is recorded (electronically or otherwise) for an appropriate period of time, and in particular, for the purpose of providing evidence for the purposes of legal proceedings
+- Utilize trustworthy systems, procedures and human resources in performing its services
+- Comply with any other relevant provisions of the relevant CP or CPS, and other approved documents.
+
+All CAs in the OWGTM will:
+- Operate according to the requirements of this CPS and any applicable SLA.
+- Ensure at the time it issues a certificate, that the certificate contains all the elements required by the CP or PDS.
+- Manage their keys in accordance with Section 6.2 Private Key Protection and Cryptographic Module Engineering Controls.
+- Ensure the availability of a Certificate Directory and CRL
+- Promptly revoke a certificate if required.
+- MITM / traffic management policy: Explicitly, the CAs will not issue a certificate that can be used for MITM or “traffic management” of domain names or IPs that the certificate holder does not legitimately own or control. Therefore, the Issuing CA will be required to diligently execute the appropriate proofs of ownership or representation in the certificate issuance process.
+- In particular and where applicable, CAs will respect the warranties and obligations set by the CA/Browser Forum Baseline and EV Requirements.
+
 ### 9.6.2  RA representations and warranties
+
+The Registration Authorities operating under the OGTM warrant that:
+- Will operate according to the requirements of this CPS.
+- Their Certificates meet all material requirements of this CPS.
+- No errors have been introduced in the Certificate information by the entities approving the Certificate Application as a result of a failure when managing the Certificate Application.
+- There are no material misrepresentations of fact in the Certificate at the entities approving the Certificate Application or issuing the Certificate.
+- Availability of revocation services (when applicable) and use of a repository conforming with theapplicable CPS in all material aspects.
+
+Registration Authority commercial contracts and agreements could include additional warranties.
+
 ### 9.6.3  Subscriber representations and warranties
+
+The Subscribers of certificates issued under the CIDPKI must warrant that:
+- All information supplied by the Subscriber and contained in the Certificate is true and valid.
+- All representations made by the Subscriber in the submitted Certificate Application are true and valid.
+- His or her private key is protected and that no unauthorized person has ever had access to the Subscriber’s private key.
+- An obligation and warranty that it will not install and use the Certificate(s) until it has reviewed and verified the accuracy of the data in each Certificate.
+- An obligation and warranty to install the Certificate only on the server accessible at the domain name listed on the Certificate, and to use the Certificate solely in compliance with all applicable laws, solely for authorized company business, and solely in accordance with the Subscriber Agreement.
+- The Certificate is being used exclusively for authorized and legal purposes, consistent with this CPS.
+- Each digital signature created using the private key corresponding to the public key listed in the Certificate is the digital signature of the Subscriber and the Certificate has been accepted and is operational (not expired or revoked) at the time the digital signature is created.
+- The Subscriber is an end-user Subscriber and not a CA, and is not using the private key corresponding to any public key listed in the Certificate for purposes of digitally signing any Certificate (or any other format of certified public key) or CRL, as a CA or otherwise.
+- An obligation and warranty to promptly cease using a Certificate and its associated Private Key, and promptly request that the Certification Authority revokes the Certificate, in the event that: (a) any information in the Certificate is or becomes incorrect or inaccurate, or (b) there is any actual or suspected misuse or compromise of the Subscriber’s Private Key associated with the Public Key listed in the Certificate.
+- An obligation and warranty to promptly cease all use of the Private Key corresponding to the Public Key listed in an Certificate upon expiration or revocation of that Certificate.
+The “Subscriber agreement” could include additional warranties.
+
 ### 9.6.4  Relying party representations and warranties
+
+Before relying on a certificate or a digital signature, relying parties must:
+- Validate the certificate and digital signature (including by checking whether or not it has been revoked, expired or suspended)
+- Ascertain and comply with the purposes for which the certificate was issued and any other limitations on reliance or use of the certificate that are specified in this CPS.
+
+If a relying party relies on a digital signature, or certificate, in circumstances where it has not been validated, it assumes all risks with regard to it (except those that would have arisen had the relying party validated the certificate), and is not entitled to any presumption that the digital signature is effective as the signature of the subscriber or that the certificate is valid.
+
+Relying parties must also comply with any other relevant obligations specified in this CPS including those imposed on the entity when it is acting as a subscriber.
+
+Additionally, the relying party should consider the certificate type. The final decision concerning whether or not to rely on a verified digital signature is exclusively that of the relying party.
+
+The “Relying party agreement” could include additional warranties.
+
 ### 9.6.5  Representations and warranties of other participants
+
+No stipulation.
+
 ## 9.7  Disclaimers of warranties
+
+Other Disclaimer of warranties (if existing) is included as part of the agreement presented to each PKI participant, or included in other documents published by the Issuing CA.
+
 ## 9.8  Limitations of liability
+
+Liability limitations are regulated in the contractual agreement between the concerned parties. If applicable such concepts are specified in the Subscriber, Relying Party or other commercial agreements made among the participants.
+
+Subject to the foregoing limitations, OGTM’s aggregate liability limit towards all End users, Relying Parties and any other entities that are not Subordinate PKI Entities for the whole of the validity period of certificates issued by the Root CA (unless revoked or suspended prior to its expiry) towards all persons with regard to such certificates is CHF 5,000,000.00 (Five Million Swiss Francs), with a maximum aggregate per year liability on such certificates of CHF 500,000.00 (Five Hundred and Thousand Swiss Francs). The OISTE Foundation delegates in WISeKey, as lead operator, this liability, according to a formal agreement executed between the parties, and that WISeKey ensures via an appropriate “Errors and Omissions” insurance.
+
 ## 9.9  Indemnities
+
+Indemnities are regulated in the contractual agreement between the concerned parties. If applicable such concepts are specified in the CPS published in the Subscriber, Relying Party or other commercial agreements made among the participants.
+
 ## 9.10  Term and termination
+
+This section refers to the times and validity periods related to this document.
+
 ### 9.10.1  Term
+
+This Document becomes effective once published in the OGTM Repository.
+
 ### 9.10.2  Termination
+
+This Document (at the current version) is valid until replaced by a new version.
+
 ### 9.10.3  Effect of termination and survival
+
+The Certificates issued during the validity period of the version of this document are bound to the clauses hereby included until the expiration of these certificates.
+
+The termination of the CP/CPS shall be without prejudice to the responsibility to protect confidential and personal information.
+
 ## 9.11  Individual notices and communications with participants
+
+Notices to subscribers must be sent to the physical, postal, facsimile or email address of the subscriber, which is included in its registration information, or to another address that the subscriber has specified to the sender. Reasonable measures to ensure the reception of the notices are taken.
+
 ## 9.12  Amendments
+
+The OGTM can unilaterally amend this document, by attaining adhering to the following procedure:
+- The modification needs to be justified under legal and technical considerations.
+- Any modification in the CPS cannot contradict the stipulations in the related CP, and vice-versa.
+- There is a modification procedure and change management for these amendments.
+- Any implications to the participants due to such amendments will be conveniently notified.
+
 ### 9.12.1  Procedure for amendment
+
+The entity with the authority to make and approve any change in the CPS and the related CP in the OGTM is the Policy Approval Authority (PAA, described in section 1.5 of this document), which reviews the change request, assesses whether the change request is required, and approves the changes.
+
+A change can only be made to the approved documents once approval has been granted by the PAA.
+
+On the assumption that the PAA decides to modify the CPS or a particular CP, a new version of the document will be generated. The version of the document (exposed in all the pages of the document) is controlled with two numbers separated by a period. The first number (major version) is incremented if the new version could affect the acceptance of the certificates by the users. The second number (minor version) is incremented if the amendment is not considered to affect the certificate acceptance criteria. These two version numbers are included as the last two numbers in the OID identifying the document.
+
+Once a new version of the document is approved, the procedures stipulated in section 9.12.2 will be executed.
+
 ### 9.12.2  Notification mechanism and period
+
+Any modification in this document will be published in the OGTM website (http://www.oiste.org/repository) and affected participants will be directly notified if necessary.
+
+In particular, it is not considered necessary to directly notify participants of “minor version” changes of the documents.
+
+In the case of a change in the “major version” of a document, the OGTM may notify the affected participants with a digitally signed electronic message.
+
 ### 9.12.3  Circumstances under which OID must be changed
+
+The OID of this CPS or a CP may be modified to reflect a change of major version of the document.
+
 ## 9.13  Dispute resolution provisions
+
+As agreed between the parties by the acceptance of Subscriber and/or Relying Party agreements. If no prior agreement was made to the dispute resolution mechanism, general rules of law shall apply.
+
 ## 9.14  Governing law
+
+he CP, the CPS and the operations of the OGTM are all governed by the laws of Geneva, Switzerland.
+
 ## 9.15  Compliance with applicable law
+
+All related parties shall comply with all applicable Swiss laws, rules, regulations, ordinances, and directives, and all provisions required thereby to be included in this CPS are hereby incorporated herein by reference.
+
+Applicable national laws can affect parties operating Certification Authorities in different jurisdictions.
+
 ## 9.16  Miscellaneous provisions
+
+This section includes miscellaneous contractual and legal clauses.
+
 ### 9.16.1  Entire agreement
+
+All provisions made in this CPs and the associated CP apply to all Certification and Registration Authorities operating under the OGTM and its subscribers.
+
+Agreements or supplementary agreements by word of mouth are not allowed.
+
 ### 9.16.2  Assignment
+
+Parties to this CPS may not assign any of their rights or obligations under this CPS or applicable agreements without the written consent of WISeKey.
+
 ### 9.16.3  Severability
+
+Should individual provisions of this CPS prove to be ineffective or incomplete, this shall be without prejudice to the effectiveness of all other provisions.
+
+The ineffective provision will be replaced by an effective provision deemed as most closely reflecting the sense and purpose of the ineffective provision. In the case of incomplete provisions, amendment will be agreed as deemed to correspond to what would have reasonably been agreed upon in line with the sense and purposes of this CPS, had the matter been considered beforehand.
+
 ### 9.16.4  Enforcement (attorneys' fees and waiver of rights)
+
+No stipulation.
+
 ### 9.16.5  Force Majeure
+
+Force Majeure clauses, if existing, are included in the “Subscriber Agreement”.
+
 ## 9.17  Other provisions
+
+No stipulation.
+
 # Appendix A: Glossary
 # Appendix B: CA Hierarchies
