@@ -686,3 +686,54 @@ No stipulation.
 
 # Appendix A: Glossary
 # Appendix B: CA Hierarchies
+
+# Appendix C: OID Inventory
+
+
+OWGTM enforces the use of the following OID Schema to identify the different Certificate Profiles issued under the whole PKI.
+
+These OID can be substituted by equivalent OID published by the CAB/Forum:
+
+PUBLIC-ARCH = 2.16.756.5.14
+
+PUBLIC-ARCH.4 – OISTE Certificate Policy Identifiers (legacy)
+- 4.1 – Root CP
+- 4.2 – Policy CA Class 1 CP (Standard)
+- 4.2.1 – Issuing CA Class 1 CP
+- 4.2.2 – Issuing CA Class 1 CP Extended
+- 4.3 – Policy CA Class 2 CP- (Advanced)
+- 4.3.1 – Issuing CA Class 2 CP
+- 4.3.2.1 – Class 2 End Entity CPs
+- 4.3.2.1.1 – CertifyID Advanced Individual Secure Mail 
+- 4.3.2.1.2 – CertifyID Advanced Individual Digital Signature 
+- 4.3.2.1.3 – CertifyID Advanced Corporate Digital Signature 
+- 4.3.2.1.4 – CertifyID Advanced SSL Certificate
+- 4.4 – Policy CA Class 3 CP (Qualified)
+- 4.4.1 – Issuing CA Class 3 CP
+- 4.4.2.1 – Class 3 End Entity CPs
+- 4.4.2.1.1 – CertifyID Qualified Individual
+- 4.4.2.1.2 – CertifyID Qualified Corporate
+- 4.4.2.1.3 – CertifyID Qualified Individual for Adobe 4.4.2.1.4 – CertifyID Qualified Corporate for Adobe
+- 4.5 – Policy CA Class 4 CP
+- 4.5.1 – Issuing CA Class 4 CP
+- 4.6 – Pilot CP
+- 4.7 – Time Stamping Service
+- 4.7.1. – Time Stamp Policy CP
+- 4.8 – OCSP Service
+- 4.8.1. --- OCSP Policy CP
+
+PUBLIC-ARCH.7 – OISTE Certificate Policy Identifiers (current)
+- 7.1 – Root CP
+- 7.2 – Policy CA CP
+- 7.3 – Issuing CA CP
+- 7.4 – End Entity CP
+- 7.4.0 – CertifyID URA Admin Certificate
+- 7.4.1 – CertifyID Personal Standard Certificate 7.4.2 – CertifyID Personal Advanced Certificate 7.4.3 – CertifyID Corporate Advanced Certificate 7.4.4 – CertifyID Personal Qualified Certificate 7.4.5 – CertifyID Corporate Qualified Certificate 7.4.6 – CertifyID Standard SSL Certificate
+- 7.4.7 – CertifyID Advanced OV SSL Certificate 7.4.8 – CertifyID Advanced EV SSL Certificate 7.4.9 – CertifyID Code Signing Certificate 7.4.10 – CertifyID EV Code Signing Certificate 7.5 – Pilot CP
+- 7.6 – Time Stamp Policy CP
+- 7.7 – OCSP Service
+
+PUBLIC-ARCH.8 – Policy qualifiers for special purposes
+- 8.1 – Vendor specific OID
+- 8.1.1 – Qualifier for Adobe PDF (AATL) 8.2 – Device certificates
+- 8.2.1 – CertifyID Device Certificate
