@@ -1,5 +1,5 @@
 ---
-title: OISTE/WISeKey Global Trust Model CPS
+title: OISTE/WISeKey Global Trust Model CP/CPS
 
 subtitle: Version 4.0
 author:
@@ -19,28 +19,178 @@ copyright: |
 
 # 1.  INTRODUCTION
 ## 1.1  Overview
+
+This document represents a combined Certificate Policy (CP) and Certification Practice Statement (CPS) describes the practices followed with regard to the management of the lifecycle the Certification Authorities adhered to the OISTE Global Trust Model.
+
+The main two legal entities involved in the control and operation of the Trust Model are:
+- OISTE Foundation. The International Organization for Secure Electronic Transactions (“IOSET” or “OISTE”), a Swiss non-profit foundation established in 1998, and recognized with an “Special Consultative Status” by the United Nations. The OISTE Foundation maintains a Policy Approval Authority (OFPAA or PAA) that drafts, approves and revises the policies to which WISeKey is bound to comply with under its operator contract. The PAA is composed of members of the community to which OISTE provides its Certification Authority Services, resulting in a virtuous cycle for trust management.
+- WISeKey. WISeKey is referenced in this document as the short name for the entities “WISeKey International Holding Ltd.”, “WISeKey SA” or other members of the WISeKey Holding that are mandated by OISTE to host and operate the Root Certification Authorities and the technical infrastructures required to maintain the PKI at the appropriate operational level. WISeKey also operates as a “Subordinate Certification Authority” under the OISTE Roots, according to practices disclosed in this document.
+
+The OISTE Global Trust Model (OGTM from now on) has been designed and are operated in accordance with the broad strategic direction of international PKI (Public Key Infrastructure) standards as well as their application to concrete identity frameworks in different domains (e.g. ID cards, passports, health cards, Internet of Things) and is intended to serve as a common Trust Model for Certification Authorities worldwide that comply with OISTE requirements.
+
+The technologies, infrastructures, practices, and procedures implemented by the OGTM have been designed with explicit standards of security in mind based on the requirements approved by OISTE.
+
+The OISTE Foundation, under Swiss law, cannot belong to any individual or company. It is subject to annual supervision by the Swiss Federal Government and audited annually by independent auditors. Such supervision and audit require the foundation to pursue the objectives that have been set out for it, which includes the promotion of security in electronic communications worldwide.
+
+This document is developed per the recommendations found in the document RFC3647, developed by the Internet Engineering Task Force (IETF), which has been adopted as a worldwide-recognized standard framework to document the Certifications Practice Statement and related Certificate Policies disclosed by a Certification Services Provider.
+
+The purpose of this document is to disclose the Practices and Policies adopted in the OGTM for the issuance of digital certificates. It is organized in the following sections:
+1. Introductions – This section. Introduces the OGTM and this document.
+2. Publication and Repositories Responsibilities – Describes the publication policies for the
+certificates affected by this document, and the publication of this document itself.
+1. Identification and Authentication – Discloses the rules for subscriber naming and required
+authentication policies.
+1. Certificate Life-Cycle Operational Requirements – This section describes the different phases in
+the Life-Cycle of certificates and their requirements.
+1. Management, Operational and Physical Controls – Describes the controls enforced in the OGTM to provide adequate trust levels in the certificates issued under the Trust Model.
+2. Technical Security Controls – Discloses the security controls adopted in the OGTM.
+3. Certificate and CRL Profiles – Describes the technical details of the different certificate types
+issued under the OGTM.
+1. Compliance Audit and other Assessment – Discloses the audit policies followed in the OGTM to
+ensure that the participant fulfils the security and quality requirements.
+1. Other Business and Legal Matters – This section exposes the commercial, legal and contractual
+aspects involved in the usage of certificates issued in the OGTM.
+
+**APPLICABILITY NOTICE:** If any inconsistency exists between this document and the normative provisions of an applicable industry guideline or standard (“Applicable Requirements”), then the Applicable Requirements take precedence over this CP/CPS. 
+
 ## 1.2  Document name and identification
+
+| Name | OISTE/WISeKey Global Trust Model Certificate Policy/Certification Practices Statement (CP/CPS) |
+| --- | --- |
+| Version | 4.0 |
+| OID | 2.16.756.5.14.7.1 |
+| Issuance date | 1/1/2025 |
+| Location | This document is published in https://oiste.org/repository and https://wisekey.com/repository |
+
 ## 1.3  PKI participants
+
 ### 1.3.1  Certification authorities
+
+OISTE and WISeKey own and operate a number of Root and Issuing Certification Authorities (CAs) hierarchies that deliver certification Services under this CP/CPS.
+
+These hierarchies are detailed in [Appendix B](#Appendix-B:-CA-Hierarchies) of this document.
+
+OISTE and WISeKey also own and operate a number of Time Stamping Authorities (TSA), which are regulated by their corresponding Time Stamping Policy (TSP) document.
+
 ### 1.3.2  Registration authorities
+The Registration Authorities are the physical or legal persons responsible for the identification of the entities requesting a certificate (referred as “applicants” when the request is in process and “subscribers” for those in possession of a certificate). The @#@CIDPKI delegates to Registration Authorities the responsibility of verifying the information provided by the applicant within a certificate request, ensuring that the requestand the process used to deliver the certificate to the subscriber meets the requirements of this CPS and the appropriate CP.
+
+The Registration Authorities in the CIDPKI are directly supervised by the CA and follow an accreditation process imposed by the CA in order to ensure that all security and operational procedures related to the certificates life-cycle are strictly enforced. Within the CIDPKI environment there exist locations named “CIDPKI Registration Point” that are the physical or virtual locations where a Registration Authority operates. These Registration Points are operated by “Registration Authority Officers”, who are authorized persons responsible for verifying the identity and veracity of a certificate request for an end entity and the delivery of the certificate once issued by the Certification Authority.
+
+Therefore, the responsibilities of Registration Authorities operating under the CIDPKI are as follows:
+- Check the identity and circumstances needed to verify that a certificate request is valid according to the type of certificate requested.
+- Inform the applicant, before the issuance of the certificate, about the terms and conditions related to the certificate and its usage.
+- Verify that the information contained in a certificate is exact and complete according to the requirements of the corresponding CP.
+- Ensure that the subscriber is in possession of the digital signature creation data (private keys) associated to the certificate to be issued.
+
+Currently is not supported the existence of Registration Authorities which are entitled to issue SSL or Code Signing certificates without the participation of WISeKey for the domain validation. WISeKey supports the concept of “Managed PKI” services for pre-authorized internet domains.
+
 ### 1.3.3  Subscribers
+
+In the CIDPKI two different end-user roles are defined. Depending on the status of the certificate request, these roles are named “Applicant” and “Subscriber”.
+- An applicant is a physical person that requests a certificate for his own behalf or on behalf of a third party. The applicant needs to accredit his identity and ability to request a certificate. In the case of an applicant acting on behalf of a third party or legal person, he will be requested to accredit the empowerment for such representation, as required by law.
+- A subscriber is the physical or legal person whose identity is linked to the electronic signature creation data, or private key, and included in a digital certificate. In general, a subscriber is considered the “owner” of a certificate. The subscriber of a certificate is responsible for the custody of his private key and not communicating this data in any way to any other person.
+
+This document details the particular community of subscribers to whom each type of certificate is aimed and what identification and other security requirements should be fulfilled.
+
 ### 1.3.4 Relying parties
+
+All natura and legal persons and other entities that trust the certificates issued by certification authorities operating under the CIDPKI Trust Model are considered to be “relying parties”. These relying parties do not necessarily need to be a subscriber of an CIDPKI certificate, but are requested to accept the “CertifyID Relying Party agreement“, available at http://oiste.org/repository.
+
+In the OGTM, a particular type of certificate could limit the right to be a relying party for that particular type of certificate, if this is the case, a specific Relying Party agreement would be published.
+
 ### 1.3.5  Other participants
+
+No stipulation.
+
 ## 1.4  Certificate usage
+
+In the CIDPKI, the limitations for certificate usage are established for each particular certificate type. This information is summarized in the following subsections.
+The type of certificate is determined by the combination of "Key Usage", "Extended Key Usage", and Policy Identifiers.
+
 ### 1.4.1  Appropriate certificate uses
+
+| Certificate type | Description | Permitted uses |
+| --- | --- | --- |
+| Issuing and Intermediate CA Certificate | Infrastructure certificate for all subordinate Certification Authorities operating in the trust model | Certificate Signing, CRL Signing |
+| OCSP Certificate | Infrastructure certificate for Online Certificate Status Responders providing information on the subordinated CAs issued by the OISTE Roots | OCSP Response Signature |
+| Standard Personal Certificate | Low Assurance Personal certificates used by Natural persons to authenticate and encrypt documents and transactions. Only the eMail address is verified and included in the certificate | Digital Signature, Encryption, Client Authentication and email Protection |
+| Advanced Personal Certificate | High Assurance Personal certificates with software keys, used by Natural person to authenticate and encrypt documents and transactions. Personal and Organizations identity attributes are validated and included in the certificate. Remote verification is allowed under certain circumstances | Digital Signature, Encryption, Client Authentication, Non- Repudiation and email Protection |
+| Qualified Personal Certificate | High Assurance Personal certificates with FIPS-protected keys, used by Natural persons authenticate and encrypt documents and transactions. Personal and Organizations identity attributes are validated and included in the certificate. All identification attributes in the certificate are verified “Face-to-Face” or similar assurance | Digital Signature, Encryption, Client Authentication, Non-Repudiation and email Protection |
+| DV SSL Certificate | Medium assurance SSL/TLS certificate. All identification attributes in the certificate are verified. The control on the Internet Domain is validated. Compliant with CA/Browser Forum Baseline Requirements | Digital Signature, Encryption, Server Authentication |
+| OV SSL Certificate | High assurance SSL/TLS certificate. All identification attributes in the certificate are verified. The Identity of the organization is validated. Compliant with CA/Browser Forum Baseline Requirements | Digital Signature, Encryption, Server Authentication |
+| OISTE Advanced EV SSL Certificate | High assurance SSL/TLS certificate | All identification attributes in the certificate are verified. The Identity of the organization is validated. Compliant with CA/Browser Requirements for Extended Validation | Digital Signature, Encryption, Server Authentication |
+| Device Certificate | High Assurance Device certificates used by devices to authenticate themselves and to protect transactions over IoT networks. Identity information as model number, serial number and manufacturer information are validated. Remote validation is allowed under certain circumstances | Digital Signature, Encryption, Client Authentication |
+
 ### 1.4.2 Prohibited certificate uses
+
+In general, any usage that is not explicitly stated in section 1.4.1 of this document or the appropriate CP, is considered to be prohibited.
+
 ## 1.5  Policy administration
 ### 1.5.1  Organization administering the document
+
+This document is administered by the OGTM Policy Approval Authority (referred from now as PAA).
+
+The PAA has a series of distinct functions but does not operate as a separate legal Entity. It is managed and organized in accordance with a process that draws on expertise within the OISTE Foundation and WISeKey. The PAA has been established to develop, review and/or approve the practices, policies and procedures for the entire Trust Model, subject to guidelines established by the members and advisors of the OISTE Foundation and WISeKey.
+
 ### 1.5.2  Contact person
+
+- **Name:** OISTE Foundation - OGTM Policy Approval Authority
+- **email address:** cps@oiste.org, cps@wisekey.com
+- **Address:** Avenue Louis-Casaï 58 - 1216 Cointrin - Switzerland
+
+This same contact can also be used for revocation requests and compliance-related notifications.
+
 ### 1.5.3  Person determining CPS suitability for the policy
+
+The competent entity which determines the compliance and suitability of all CPS and the different supported CPs on behalf of the entire Trust Model is the OGTM PAA.
+
 ### 1.5.4  CPS approval procedures
+
+The OGTM PAA defines and executes the procedures related to the approval of the CPS and CP and its subsequent amendments. Amendments will produce a new version of the document that will be published in the OGTM Policy Repository (specified in section 2.1 of this document).
+
+The approval of major changes of documents related to the PKI, and specially for the CP/CPS, require a meeting of the PAA and the issuance of an approval memo signed by at least two members of the PAA. Minor versions only require the participation of a single member of the PAA in order to approve the publication of a new version.
+
+It’s required to issue new CP/CPS versions at least once a year. In the case of versioning conflict, the latest version that prevails is always the document published in the Policy Repository.
+
+Once any document of the Trust Model is updated, the CAs must do a technical assessment to identify any possible impact and/or required configuration changes in the platforms.
+
 ## 1.6  Definitions and acronyms
+
+Definitions and Acronyms are included in [Annex A](#-Appendix-A:-Glossary)
+
 # 2. PUBLICATION AND REPOSITORY RESPONSIBILITIES
 ## 2.1  Repositories
+
+The main repositories of the CIDPKI are:
+- Policies repository for disclosure of CP/CPS and related information. This repository is a set of web pages and services available at the URLs https://oiste.org and https://wisekey.com/repository
+- Certificate and Certificate Revocation information repositories. The CA certificates and Certificate Revocation Information sources are included, when relevant, as CDP and AIA extensions in the certificates issued under the OSITE Root CAs
+- Public Certificate repositories. Publicly accessible certificate information repositories optionally maintained by the operators of the Certification Authorities operating under the OWGTM are disclosed appropriately to the relying parties of these certificates
+
 ## 2.2  Publication of certification information
+
+The OGTM is responsible for publication of information regarding practices, certificates, and the current status of certificates. Where appropriate, such responsibilities may be delegated to the Subordinate CAs operating under the OISTE Trust Model.
+
+The shared repositories containing public information in the OGTM are managed by WISeKey SA or the operator of the Issuing CAs, and are available 24 hours a day, seven days a week. In the case of interruption by cause of “force majeure”, the service will be re-established in the minimum possible time.
+
+### 2.2.1 Statement on Compliance with CA/Browser Forum requirements
+OISTE and WISeKey ensure the compliance with industry best practices and security controls. In particular, the trust model enforces regular review and compliance with the latest version of the “Baseline Requirements” and “Extended Validation Requirements” for the certificate profiles to which these regulations apply (these requirements are available respectively at https://cabforum.org/ )
+
+In the case of discrepancy of any certification practices with the stipulations of the CAB/Forum requirements, it must be understood that those requirements must prevail to this CPS.
+
 ## 2.3  Time or frequency of publication
+
+The CP/CPS documents will be published every time they are modified, with a minimum review period of one year.
+A certificate issued by any CA under the OGTM will be published immediately after its issuance.
+
+In the case of revocation of a certificate, the appropriate CA will include this revocation information in the
+Certificate Revocation Lists (CRL) according to section 4.9.7 (CRL issuance frequency).
+
 ## 2.4  Access controls on repositories
-# 3. IDENTIFICATION AND AUTHENTICATION (11)
+
+The OGTM makes its Repository publicly available in a read-only manner.
+
+# 3. IDENTIFICATION AND AUTHENTICATION
 ## 3.1  Naming
 ### 3.1.1  Types of names
 ### 3.1.2  Need for names to be meaningful
@@ -287,3 +437,5 @@ copyright: |
 ### 9.16.4  Enforcement (attorneys' fees and waiver of rights)
 ### 9.16.5  Force Majeure
 ## 9.17  Other provisions
+# Appendix A: Glossary
+# Appendix B: CA Hierarchies
