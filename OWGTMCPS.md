@@ -685,10 +685,208 @@ Force Majeure clauses, if existing, are included in the “Subscriber Agreement�
 No stipulation.
 
 # Appendix A: Glossary
+
+## Acronyms
+
+| Acronym |	Description |
+| --- | --- |
+| AATL |	Adobe Approved Trust List |
+| CA |	Certificate Authority or Certification Authority |
+| CAA |	Certification Authority Authorization |
+| CAB or CA/B |	"CA/Browser" as in "CAB Forum" |
+| CMS |	Certificate Management System |
+| CP |	Certificate Policy |
+| CPS |	Certification Practice Statement |
+| CRL |	Certificate Revocation List |
+| CSR |	Certificate Signing Request |
+| CT |	Certificate Transparency |
+| DBA |	Doing Business As (also known as "Trading As") |
+| DCPA |	DigiCert Policy Authority |
+| DNS |	Domain Name Service |
+| DV |	Domain Validated |
+| ETSI |	European Telecommunications Standards Institute EU |
+| EV |	Extended Validation |
+| FIPS |	(US Government) Federal Information Processing Standard |
+| FQDN |	Fully Qualified Domain Name |
+| FTP |	File Transfer Protocol |
+| HSM |	Hardware Security Module |
+| HTTP |	Hypertext Transfer Protocol |
+| IANA |	Internet Assigned Numbers Authority |
+| ICANN |	Internet Corporation for Assigned Names and Numbers |
+| IdM |	Identity Management System |
+| IDN |	Internationalized Domain Name |
+| IETF |	Internet Engineering Task Force |
+| IGTF |	International Grid Trust Federation |
+| ITU |	International Telecommunication Union |
+| IV |	Individual Validated |
+| MICS |	Member-Integrated Credential Service (IGTF) |
+| NIST |	National Institute of Standards and Technology |
+| OCSP |	Online Certificate Status Protocol |
+| OID |	Object Identifier |
+| OV |	Organization Validated |
+| PKI |	Public Key Infrastructure |
+| PKIX |	IETF Working Group on Public Key Infrastructure |
+| RA |	Registration Authority |
+| RFC |	Request for Comments (at IETF.org) |
+| SAN |	Subject Alternative Name |
+| SHA |	Secure Hashing Algorithm |
+| S/MIME |	Secure MIME (Multipurpose Internet Mail Extensions) |
+| SSL |	Secure Sockets Layer |
+| TLD |	Top-Level Domain |
+| TLS |	Transport Layer Security |
+| TSA |	Time Stamping Authority |
+| TST |	Time-Stamp Token |
+| TTL |	Time To Live |
+| UTC |	Coordinated Universal Time |
+| X.509 |	The ITU-T standard for Certificates and their corresponding authentication framework |
+
+## Definitions
+
+| Definition |	Description |
+| --- | --- |
+| Applicant |	An entity applying for a Certificate. |
+| Application Software Vendor |	A software developer whose software displays or uses DigiCert Certificates and distributes DigiCert’s root Certificates. |
+| Attestation Letter |	A letter attesting that Subject Information is correct written by an accountant, lawyer, government official, or other reliable third party customarily relied upon for such information. |
+| Certification Authority Authorization or CAA |	From RFC 9495: "The Certification Authority Authorization (CAA) DNS resource record (RR) provides a mechanism for domains to express the allowed set of Certification Authorities that are authorized to issue certificates for the domain." CAA Resource Records allow a public CA to implement additional controls to reduce the risk of unintended certificate mis-issue. |
+| CAB Forum |	CA/Browser Forum, https://cabforum.org | 
+| Certificate | An electronic document, conformant to X.509v3, digitally signed by a Certificate Authority, that binds a Public Key to an identity. |
+| Certificate Approver |	Defined in the EV Guidelines. |
+| Certificate Management System |	The keys, software and hardware used to verify Certificate Data, maintain a Repository, and issue and revoke Certificates. |
+| Certificate Management Process |	The policies, practices, and procedures governing the use of the Certificate Management System |
+| Certificate Requester |	Defined in the EV Guidelines. |
+| Contract Signer |	Defined in the EV Guidelines. |
+| Domain Name |	An ordered list of one or more Domain Labels assigned to a node in the Domain Name System. |
+| EV Guidelines |	As defined by the CA/B Forum at https://cabforum.org/working-groups/server/extended-validation/about/ | 
+| Hardware Crypto Module |	A tamper‐resistant device, with a cryptography processor, used for the specific purpose of protecting the lifecycle of cryptographic keys (generating, managing, processing, and storing). |
+| Internal Name |	A string of characters (not an IP address) in a Common Name or Subject |
+| Alternative Name | Field of a Certificate that cannot be verified as globally unique within the public DNS at the time of certificate issuance because it does not end with a Top Level Domain registered in IANA’s Root Zone Database. 
+| IP Address |	A 32-bit or 128-bit number assigned to a device that uses the Internet Protocol for communication. | 
+| Issuer CA |Any CA issuing Certificates under this CP/CPS |
+| Key Compromise |	A Private Key is said to be compromised if its value has been disclosed to an unauthorized person, or an unauthorized person has had access to it. |
+| Key Pair |	A Private Key and associated Public Key. |
+| Linting |	A process in which the content of digitally signed data such as a Precertificate [RFC 6962], Certificate, Certificate Revocation List, or OCSP response, or datato-be-signed object such as a tbsCertificate (as described in RFC 5280, Section 4.1.1.1) is checked for conformance with the profiles and requirements defined in these Requirements. |
+| Mailbox address |	An Email Address as specified in Section 4.1.2 of RFC 5321 and amended by Section 3.2 of RFC 6532, with no additional padding or structure. |
+| OCSP Responder |	An online software application operated under the authority of DigiCert and connected to its repository for processing certificate status requests. |
+| Onion Domain Name |	A Fully Qualified Domain Name ending with the RFC 7686 ".onion". | 
+| Private Key |	The key of a Key Pair that is kept secret by the holder of the Key Pair, and that is used to create digital signatures and/or to decrypt electronic records or files that were encrypted with the corresponding Public Key. |
+| Public Key |	The key of a Key Pair that may be publicly disclosed by the holder of the corresponding Private Key and that is used by a Relying Party to verify digital signatures created with the holder’s corresponding Private Key and/or to encrypt messages so that they can be decrypted only with the holder’s corresponding Private Key. |
+| Relying Party |	An entity that relies upon either the information contained within a Certificate or a time-stamp token. |
+| Relying Party Agreement |	An agreement which must be read and accepted by the Relying Party prior to validating, relying on or using a Certificate or accessing or using DigiCert’s Repository. The Relying Party Agreement is available for reference through a DigiCert online repository. |
+| Reserved IP Address |	An IPv4 or IPv6 address that is contained in the address block of any entry in either of the following IANA registries: https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4special-registry.xhtml , https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6special-registry.xhtml |
+| Signing Service |	An organization that generates the Key Pair and securely manages the Private Key associate with a Code Signing Certificate on behalf of a Subscriber. |
+| Subject Identity Information |	Information that identifies the Certificate Subject. Subject Identity Information does not include a Domain Name listed in the subjectAltName extension or the Subject commonName field. |
+| Subscriber |	Either the entity identified as the subject in the Certificate or the entity that is receiving DigiCert’s time-stamping services. |
+| Subscriber Agreement |	An agreement that governs the issuance and use of a Certificate that the Applicant must read and accept before receiving a Certificate. |
+| Suspect Code |	Code that contains malicious functionality or serious vulnerabilities, including spyware, malware and other code that installs without the user’s consent and/or resists its own removal, code that compromises user security and/or code that can be exploited in ways not intended by its designers to compromise the trustworthiness of the Platforms on which it executes |
+| WebTrust |	The current version of CPA Canada’s WebTrust Program for Certification Authorities. |
+| WHOIS | Information retrieved directly from the Domain Name Registrar or registry operator via the protocol, the Registry Data Access Protocol, or an HTTPS website. |
+
 # Appendix B: CA Hierarchies
 
-# Appendix C: OID Inventory
+## Legacy OISTE Root "Generation A"
 
+### Root Information
+
+| Subject Name | Fingerprint | Audit scope |
+| --- | --- | --- |
+| CN=OISTE WISeKey Global Root GA CA, OU=OISTE Foundation Endorsed, OU=Copyright (c) 2005, O=WISeKey, C=CH | `41C923866AB4CAD6B7AD578081582E020797A6CBDF4FFF78CE8396B38937D7F5` | S/MIME Certificates |
+
+### Subordinate CA Information
+
+| Subject Name | Fingerprint | Allowed usage |
+| --- | --- | --- |
+| CN=WISeKey CertifyID Advanced Services CA 4, OU=International, OU=Copyright (c) 2016 WISeKey SA, O=WISeKey, C=CH | `41144BD4174C3152E1CA526F77D9F9CE89DEBC4EBA6C778F815C21164B5101D3` | Client Authentication, Secure Email, Document Signing |
+
+## Legacy OISTE Root "Generation B"
+
+### Root Information
+
+| Subject Name | Fingerprint | Audit scope |
+| --- | --- | --- |
+| CN=OISTE WISeKey Global Root GB CA, OU=OISTE Foundation Endorsed, O=WISeKey, C=CH | `6B9C08E86EB0F767CFAD65CD98B62149E5494A67F5845E7BD1ED019F27B86BD6` | TLS Certificates, EV Certificates, S/MIME Certificates |
+
+### Subordinate CA Information
+
+| Subject Name | Fingerprint | Allowed usage |
+| --- | --- | --- |
+| CN=WISeKey CertifyID SSL GB CA 2, O=WISeKey, C=CH | `C8A610BA9417770D2C02DE22BCA8C56A428AF75E8E354EFA36C568221DDB7CFC` | TLS Certificates |
+| CN=TuringSign RSA Secure CA, O=Turing Crypto GmbH, C=DE | `12976558B68E8E1EAA79A629A8E4D17EDEF93F5AC30DE6DFB0CDEE389D56D156` | TLS Certificates |
+| CN=TuringSign ECC Secure CA, O=Turing Crypto GmbH, C=DE | `1937B9BF662FB578407B77AB87D8D662B16327CF923340D0F72D951952B19C80` | TLS Certificates |
+| CN=WISeKey CertifyID Personal GB CA 3, O=WISeKey, C=CH | `E5937790AA6915755C9A532B10C9610A07C9877C7C60E1B819A294207A3786F5` | Client Authentication, Secure Email, Document Signing |
+| CN=WISeKey CertifyID Personal GB CA 4, O=WISeKey, C=CH | `8D45BF32C041A7EE46325F06AE604FAF7142DD99373DDB1EB74C70488A56FFB8` | Client Authentication, Secure Email |
+
+## Legacy OISTE Root "Generation C"
+
+### Root Information
+
+| Subject Name | Fingerprint | Audit scope |
+| --- | --- | --- |
+| CN=OISTE WISeKey Global Root GC CA, OU=OISTE Foundation Endorsed, O=WISeKey, C=CH | `8560F91C3624DABA9570B5FEA0DBE36FF11A8323BE9486854FB3F34A5571198D` | TLS Certificates, EV Certificates |
+
+### Subordinate CA Information
+
+| Subject Name | Fingerprint | Allowed usage |
+| --- | --- | --- |
+| CN=WISeKey CertifyID Advanced GC CA 1, O=WISeKey, C=CH | `387D496B92202D4C443CD94FF42DA17DF2F1E68E244C2FBBA7E294DBDD11357B` | TLS Certificates |
+| CN=WISeKey CertifyID SSL GC CA 1, O=WISeKey, C=CH | `B05E05CFCBF81813EC30FA3F74920AA23FED367E147CC81E1121F64698449D0F` | TLS Certificates |
+
+## New OISTE Root for Client/Personal certificates (ECC) "Generation 1"
+
+### Root Information
+
+| Subject Name | Fingerprint | Audit scope |
+| --- | --- | --- |
+| CN=OISTE Client Root ECC G1, O=OISTE Foundation, C=CH | `D9A32485A8CCA85539CEF12FFFFF711378A17851D73DA2732AB4302D763BD62B` | S/MIME Certificates |
+
+### Subordinate CA Information
+
+| Subject Name | Fingerprint | Allowed usage |
+| --- | --- | --- |
+| CN=WISeKey CertifyID Client ECC CA 1, O=WISeKey, C=CH | `1F5233119B894DB95B4A3737397366457B566308CF8E30C4D2935EA7049013D0` | Client Authentication, Secure Email, Document Signing |
+
+## New OISTE Root for Client/Personal certificates (RSA) "Generation 1"
+
+### Root Information
+
+| Subject Name | Fingerprint | Audit scope |
+| --- | --- | --- |
+| CN=OISTE Client Root RSA G1, O=OISTE Foundation, C=CH | `D02A0F994A868C66395F2E7A880DF509BD0C29C96DE16015A0FD501EDA4F96A9` | S/MIME Certificates |
+
+### Subordinate CA Information
+
+| Subject Name | Fingerprint | Allowed usage |
+| --- | --- | --- |
+| CN= WISeKey CertifyID Client RSA CA 1, O=WISeKey, C=CH | `41F8755AEE782FF08D8EBB579ABC33C93E9E5613FC146F86A86E012860B54ADA` | Client Authentication, Secure Email, Document Signing |
+
+## New OISTE Root for TLS Server certificates (ECC) "Generation 1"
+
+### Root Information
+
+| Subject Name | Fingerprint | Audit scope |
+| --- | --- | --- |
+| CN=OISTE Server Root ECC G1, O=OISTE Foundation, C=CH | `EEC997C0C30F216F7E3B8B307D2BAE42412D753FC8219DAFD1520B2572850F49` | TLS Certificates, EV Certificates |
+
+### Subordinate CA Information
+
+| Subject Name | Fingerprint | Allowed usage |
+| --- | --- | --- |
+| CN=WISeKey CertifyID Server ECC CA 1, O=WISeKey, C=CH | `042FCAA086492C92FB02A82AC957489E5C61E47B6E9A6901BBB548A8AC88A380` | TLS Certificates |
+
+## New OISTE Root for TLS Server certificates (RSA) "Generation 1"
+
+### Root Information
+
+| Subject Name | Fingerprint | Audit scope |
+| --- | --- | --- |
+| CN=OISTE Server Root RSA G1, O=OISTE Foundation, C=CH | `9AE36232A5189FFDDB353DFD26520C015395D22777DAC59DB57B98C089A651E6` | TLS Certificates, EV Certificates |
+
+### Subordinate CA Information
+
+| Subject Name | Fingerprint | Allowed usage |
+| --- | --- | --- |
+| CN=WISeKey CertifyID Server RSA CA 1, O=WISeKey, C=CH | `AE70FF8A3E11C7F95C3BAB3C8FB55EF4CB06EB4559469E9B90ED6EF7FC6DDE4E` | TLS Certificates |
+
+# Appendix C: OID Inventory
 
 OWGTM enforces the use of the following OID Schema to identify the different Certificate Profiles issued under the whole PKI.
 
