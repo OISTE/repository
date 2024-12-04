@@ -721,15 +721,19 @@ No stipulation.
 
 ## 4.12  Key escrow and recovery
 
-@#@CP
+Key escrow is not permitted for SSL Certificates.
 
 ### 4.12.1 Key escrow and recovery policy and practices
 
-@#@CP
+All CA providing Key Escrow services for Personal Certificates are required to:
+- Notify Subscribers that their Private Keys are escrowed;
+- Protect escrowed keys from unauthorized disclosure;
+- Protect any authentication mechanisms that could be used to recover escrowed Private Keys; Release an escrowed key only after making or receiving (as applicable) a properly authorized request for recovery; and
+- Comply with any legal obligations to disclose or keep confidential escrowed keys, escrowed key related information, or the facts concerning any key recovery request or process.
 
 ### 4.12.2 Session key encapsulation and recovery policy and practices
 
-@#@CP
+No stipulation.
 
 # 5.  FACILITY, MANAGEMENT, AND OPERATIONAL CONTROLS
 ## 5.1  Physical controls
