@@ -736,53 +736,311 @@ All CA providing Key Escrow services for Personal Certificates are required to:
 No stipulation.
 
 # 5.  FACILITY, MANAGEMENT, AND OPERATIONAL CONTROLS
+
+This section describes the non-technical security controls used by the participants2 involved in the issuance, publishing and management of keys within the OGTM. The OGTM asserts the importance of these controls as a fundamental basis to provide trust to subscribers and all relying parties, and therefore establishes and maintains the necessary means to ensure and demonstrate that these controls are enforced.
+
+These controls are under surveillance and audited both internally and externally by accredited bodies. The public manifests of these audits are published on a regular basis in the OGTM web site (http://www.oiste.org/repository).
+
+The OGTM allows third parties to host and operate3 some of the components of its infrastructure. If such a delegation occurs, the assigned party will be requested to meet the controls stipulated in this section and an auditing process will be executed to ensure that the necessary measures to ensure these controls are effective are in place and enforced.
+
+In particular:
+- The OISTE Foundation delegates the hosting and operations of the “Root CA” and the “Policy CAs” (and related certificate publication and verification services) to WISeKey.
+- The “Issuing CAs” (and related certificate publication and verification services) are hosted and operated by WISeKey (except for the cases of technically-constrained CAs, which could be hosted by their owners). These participants are allowed to delegate the hosting and operation to WISeKey only; other delegations or outsourcing are only permitted after a security assessment and a formal authorization.
+- Registration Authorities and Registration Authority Points are appointed by WISeKey. Registration Authorities are not allowed to delegate their operations to other parties without the approval and direct supervision of WISeKey.
+
 ## 5.1  Physical controls
+
+This section describes the physical controls on facilities housing OGTM components.
+
 ### 5.1.1  Site location and construction
+
+The OGTM information systems are located in Secure Datacenters providing adequate security levels and under surveillance 24 hours a day, 7 days a week. These Datacenters are built in such a manner that relevant critical physical risks are managed.
+
 ### 5.1.2  Physical access
+
+The OGTM Secure Datacenter implements diverse nested security perimeters. The access from an outer to an inner perimeter requires different security and authorization controls. Among these controls, biometric door access, video surveillance and intrusion detection systems are implemented.
+
 ### 5.1.3  Power and air conditioning
+
+The OGTM Secure Datacenter implements power and air conditioning systems sufficiently dimensioned to accommodate the operating needs.
+
 ### 5.1.4  Water exposures
+
+The facilities are located in a place where natural flooding risks are controlled, and they are equipped with flooding sensors and alarms.
+
 ### 5.1.5  Fire prevention and protection
+
+The facilities implement fire detection, prevention and protection controls.
+
 ### 5.1.6  Media storage
+
+Sensible information media are stored securely in fireproof containers and high security safes, depending on the media type and the classification of the information they contain.
+
+These containers and safes are located in redundant placements, in order to eliminate the risks of using a single location (i.e. in the case of fire or water damage).
+
+Access to these storage locations and items is restricted to authorized persons and regulated by security procedures.
+
 ### 5.1.7  Waste disposal
+
+The disposal of optical or magnetic media and paper containing any information generated during OGTM operations is executed following procedures established for such purposes, including demagnetization and/or destruction processes, depending on the media type to be disposed.
+
 ### 5.1.8  Off-site backup
+
+OGTM executes a backup copy of all information needed to promote a secondary datacenter to operational status in the event of a disaster preventing the main datacenter from maintaining an adequate service level.
+
+A remote backup copy is periodically made and stored in a way such that dual access control is required to restore the backup copies.
+
 ## 5.2  Procedural controls
+
+The information systems and services incorporated in the OGTM are operated in a secure manner, following a set of predefined procedures that are enforced by the OGTM and verified through periodical auditing activities.
+
+For security reasons the information related to these controls are classified as “CONFIDENTIAL” and this document may only disclose a summarized version. Further detailed information is only disclosed to accredited auditors who are responsible for reviewing OGTM components and operations.
+
 ### 5.2.1  Trusted roles
+
+The OGTM establishes and enforces a strict security policy to control all operations performed at any level of the Trust Model. This includes the identification and control of the Persons performing those operations. These Persons are considered “Trusted Roles” and include, but are not limited to:
+- Certification Authority Administrator
+- Certification Authority Operator
+- Registration Authority Administrator
+- Registration Authority Operator with Vetting attributions
+- Registration Authority Operator without Vetting attributions
+- Systems Administrator
+- Security Administrator
+- Policy Approval Authority Member
+
+Persons seeking to become Trusted Persons by obtaining a Trusted Position must successfully complete the screening requirements set out in this CPS (section 5.3).
+
 ### 5.2.2  Number of persons required per task
+
+The OGTM establishes the need for the segregation of duties based on job responsibility in order to ensure that the adequate number of Trusted Persons is required to perform sensitive tasks.
+
+The roles requiring separation of duties is stipulated in section 5.2.4.
+
 ### 5.2.3  Identification and authentication for each role
+
+All the persons assuming a role in the OGTM systems4 follow an authorization process that entitles them to access the appropriate information and systems for their role.
+
+Physical access control for all the authorized persons accessing OGTM’s systems and services systems is typically enforced using two factor authentication that usually includes biometrics.
+
 ### 5.2.4  Roles requiring separation of duties
+
+Roles requiring Separation of duties include at least the following:
+- Any activity involved in the operation of a Root Certification Authority.
+- Enabling a CA into a production status (CA Ceremony procedures)
+- Issuance, or revocation of CA Certificates
+- Validation of information and issuance of high assurance subscriber certificates (i.e. EV SSL Certificates)
+
 ## 5.3  Personnel controls
+
+Personnel bearing one of the roles defined in section 5.2.1 will be required to fulfil the “OGTM Trusted Professional Policy”, summarized in the following sections.
+
 ### 5.3.1  Qualifications, experience, and clearance requirements
+
+Personnel acting directly or indirectly for the OGTM will be required to possess the required qualification and/or proved experience in certification service provision environments. All involved personnel will be required to act according to the OGTM Security Policy and to possess:
+- Knowledge and training (according to the role assigned to the person) in Public Key Infrastructures.
+- Knowledge and training (according to the role) in Information Systems Security.
+- Knowledge and training specific for the responsibilities assigned.
+
 ### 5.3.2  Background check procedures
+
+The Human Resource Department conducts verification checks on permanent staff at the time of job applications, and ensures that all personnel with access to sensitive information are trustworthy and understand their responsibilities; this includes at a minimum the following:
+- Availability and verification of satisfactory references;
+- Confirmation of claimed academic and professional qualifications;
+- Identity checks of passport or similar document.
+
 ### 5.3.3  Training requirements
+
+Personnel directly involved in OGTM, including “Issuing CAs” operated by third parties and Registration Authorities, will follow an internal training plan adapted to their assigned attributions. This training will be compliant with industry regulations, as the CA/Browser Forum Baseline and/or Extended Validation Requirements, as applicable.
+
 ### 5.3.4  Retraining frequency and requirements
+
+Retraining sessions are required for all involved personnel in the case of environmental, technology and/or operative changes. Changes in practices and/or policies are communicated to all involved personnel.
+
 ### 5.3.5  Job rotation frequency and sequence
+
+No stipulation.
+
 ### 5.3.6  Sanctions for unauthorized actions
+
+If an unauthorized action is detected the OGTM will undertake necessary disciplinary actions. Any action that (intentionally or unintentionally) contravenes the Certification Practice Statement.
+
+Upon detection of an unauthorized action the OGTM will initiate an investigation process. During this process the involved persons will be prevented from obtaining access to OGTM systems and information.
+
+Disciplinary actions will be taken after the investigation determines the severity and intent of the action.
+
 ### 5.3.7  Independent contractor requirements
+
+External contractors are required to agree with the Information Security policies of the OGTM and temporary staff not already covered by an existing confidentiality agreement shall also be required to sign the Non-Disclosure Agreement prior to being granted access to Information resources.
+
+The agreement is reviewed when there are changes to employment terms or contracts.
+
 ### 5.3.8  Documentation supplied to personnel
+
+All personnel incorporated within the OGTM are provided access, as required for their role, to the following information:
+- Certification Practices Statement
+- Certificate Policies
+- Privacy Policy
+- Security Policy
+- Organization chart and assigned functions and responsibilities
+- Operational procedures
+- Incident response procedures
+
 ## 5.4  Audit logging procedures
+
+This section describes the event logging and audit systems that have been implemented to maintain a secure environment in the OGTM.
+
 ### 5.4.1  Types of events recorded
+
+OGTM records in their servers all events related to:
+- CA key lifecycle management events, including:
+    1. Key generation, backup, storage, recovery, archival, and destruction as captured by procedure documentation; and
+    2. Cryptographic device lifecycle management events as captured by procedure documentation.
+- CA and Subscriber Certificate lifecycle management events, limited to:
+    1. Certificate requests and revocation as captured by CA logs;
+    2. Verification activities
+    3. Date, time, phone number used, persons spoken to, and end results of verification telephone calls as captured by registration officers;
+    4. Acceptance and rejection of certificate requests as captured by CA logs;
+    5. Issuance of Certificates as captured by CA logs
+    6. Generation of Certificate Revocation Lists as may be captured by CA logs (NB CRLs are not retained, only the record of its generation)
+    7. Generation of OCSP entries as may be captured by available OCSP server logs (NB OCSP entries are not retained, only the record of their generation if recorded by the OCSP server)
+- Security events, including:
+    1. Successful and unsuccessful PKI system access attempts as captured by operating system logs;
+    2. Major PKI and security system actions performed as captured by operational logs;
+    3. Security profile changes as captured by operating system logs;
+    4. System crashes, hardware failures, and other anomalies in server logs;
+    5. Entries to and exits from the CA facility as captured by access control logs.
+- Router and Firewall Activities Logs 
+    1.	Successful and unsuccessful login attempts to routers and firewalls; and 
+    2.	Logging of all administrative actions performed on routers and firewalls, including configuration changes, firmware updates, and access control modifications; and 
+    3.	Logging of all changes made to firewall rules, including additions, modifications, and deletions; and 
+    4.	Logging of all system events and errors, including hardware failures, software crashes, and system restarts. 
+
+
 ### 5.4.2  Frequency of processing log
+
+Logs are processed and audited when required.
+
+For systems that are kept offline, as the Root CA, audit logs are only reviewed when an operation is executed.
+
 ### 5.4.3  Retention period for audit log
+
+OGTM and involved parties retain all audit logs as specified in section 5.5.2.
+
 ### 5.4.4  Protection of audit log
+
+All audit records and archives are stored in fireproof cabinets only accessible for authorized persons.
+
+The destruction of an audit record can only executed after signed authorization from the OGTM auditor and the OGTM Information Security Manager. A trace of the destructed materials is kept for future references.
+
 ### 5.4.5  Audit log backup procedures
+
+The audit logs are backed up using incremental and remote procedures.
+
 ### 5.4.6  Audit collection system (internal vs. external)
+
+The collection systems for audit logs in OGTM is a combination of automatic and manual processes, and is executed by the appropriate operating systems, software applications, and personnel operating these systems.
+
 ### 5.4.7  Notification to event-causing subject
+
+No stipulations.
+
 ### 5.4.8  Vulnerability assessments
+
+OGTM executes regular vulnerability assessment by monitoring the activity logs, at least according to the minimum frequencies mandated by the CAB/Forum. In depth assessments and checks are performed on a yearly basis, including conformance to disaster recovery plans. In the event that an assessment could not be performed or was delayed, the OGTM will inform the involved parties and records of such an event and its cause will be kept for future reference.
+
+This security analysis implies the identification of necessary tasks to correct detected vulnerabilities.
+
 ## 5.5  Records archival
+
+This section includes the stipulations regarding record retention policies.
+
 ### 5.5.1  Types of records archived
+
+The information and events archived are:
+- Information generated (at CA and RA) during the life cycle of all OGTM certificates, 
+- Contracts and agreements,
+- Audit logs stipulated in section 5.4 of this CPS.
+
 ### 5.5.2  Retention period for archive
+
+Archived records and audit logs are kept Records are retained for at least the validity of the involved certificates.
+
+For the particular case of SSL and EV certificates, The CA must ensure the retention period stipulated by the CAB Forum in its guidelines.
+
 ### 5.5.3  Protection of archive
+
+Access to archived materials is restricted to authorized persons, and controls to ensure the archive integrity are enforced.
+
 ### 5.5.4  Archive backup procedures
+
+Daily backup copies are executed. The main copy is kept in the principal OGTM facility and stored inside a secured zone. Copies are periodically stored offsite.
+
 ### 5.5.5  Requirements for time-stamping of records
+
+In addition to stipulations in 5.5.3, a time stamp is included in the digitally signed records. The time stamp needs not be of cryptographic nature.
+
 ### 5.5.6  Archive collection system (internal or external)
+
+Archive collection is an internal task in the OGTM that cannot be outsourced to third parties.
+
+The only exception are authorized Registration Authority points, which are allowed to archive information collected during the certificate life-cycle. In such case, this information must be kept securely, accessible only for authorized persons, and made available to any internal or external auditing entity mandated by OGTM.
+
 ### 5.5.7  Procedures to obtain and verify archive information
+
+Only authorized personnel obtain access to the physical media containing archives, backups and other recorded information.
+
+Integrity checks are performed automatically if the archive includes a digital signature.
+
 ## 5.6  Key changeover
+
+OGTM requires the creation of new keys for a CA needing to renew its certificate. Only in exceptional cases it can be accepted to repeat a CA Creation Ceremony maintaining the same keys created in a Hardware Security Module for a previous ceremony, in order to amend any error in the process.
+
+When creating a new certificate for an entity, the validity period applied to this certificate will be constrained to the validity of the keys of the Certification Authority issuing it.
+
 ## 5.7  Compromise and disaster recovery
+
+In the event that OGTM systems and services are not available for a period greater than 12 hours, the Continuity Plan will be activated. This Continuity Plan seeks to ensure that the critical services (as stated in section 5.7.4) are available in less than 72 hours after the plan is activated.
+
+The following sections summarize specific situations and the stipulated reaction in OGTM. The detailed Continuity Plan is a confidential document.
+
 ### 5.7.1  Incident and compromise handling procedures
+
+The Certification and/or Registration Authorities operating under the OGTM are required to enforce the necessary controls to ensure and demonstrate that the Incident and Compromise Handling Procedures are effective. Involved people must be conveniently trained in their roles and responsibilities in the execution of their duties.
+
+The following subsections disclose the procedures executed in such these events.
+
 ### 5.7.2  Computing resources, software, and/or data are corrupted
+
+If the hardware or software resources are altered or suspected to have been altered, the OGTM will stop normal operations until a secure environment is established. In parallel, an audit will be conducted in order to identify the cause and stipulate the necessary actions to avoid future iterations.
+
+In the event digital certificates are issued during the uncertainty period and a risk exists that these certificates could be compromised, then those certificates will be revoked and subscribers will be notified of the need to reissue their certificates.
+
 ### 5.7.3  Entity private key compromise procedures
+
+In the case a private key is compromised in the OGTM architecture and in addition to stipulations in section 5.7.2, the subordinated entities depending on the compromised private key will be notified of this event and the necessary actions will be undertaken.
+
+All certificates issued by entities subordinated to the compromised key from the time of the key’s compromise and the certificate’s revocation will be revoked, and the involved parties notified as stipulated in this CPS. Additional steps to re-issue the necessary certificates will be taken.
+
 ### 5.7.4  Business continuity capabilities after a disaster
+
+In the event of a disaster (independently of its nature) that affects OGTM’s main facilities, and any services that are provided from these, the OGTM Service Continuity Plan will be activated, ensuring that the services identified as “Critical” are available in less than 72 hours after the Plan activation. The rest of services would be available in the reasonable terms, as judged adequate for their importance and criticality level.
+
 ## 5.8  CA or RA termination
+
+The causes that could imply the termination of a Certification or Registration Authority operating under the OGTM are:
+- Private Key Compromise
+- A political or judicial decision
+- A Contract Termination after a breach of the corresponding Terms and Conditions
+
+In the case a Certification Authority under OGTM is forced to terminate its activities, the minimum actions
+to be executed are:
+- Immediately after there’s a Termination decision, notify all certificate subscribers
+- Revoke all certificates under the CA.
+- Inform all relying parties that have a registered direct relationship with that Certification Authority about the termination of the certificate service provision. This will also terminate the accreditation granted to the Certification Authority to operate under OGTM.
+- Publish a public notice of the termination within the repository section of the affected CA’s web site, and undertake other public communications as deemed necessary to inform the wider relying party community.
+
+In the case an OGTM Root Certification Authority is terminated, this will imply the termination of the entire hierarchy dependent of that Root CA.
+
 # 6.  TECHNICAL SECURITY CONTROLS
 ## 6.1  Key pair generation and installation
 ### 6.1.1  Key pair generation
