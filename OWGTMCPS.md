@@ -1,3 +1,5 @@
+[OISTE Logo](./media/image1.png)
+
 ---
 title: OISTE/WISeKey Global Trust Model CP/CPS
 
