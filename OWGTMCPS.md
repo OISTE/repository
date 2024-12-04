@@ -1,5 +1,3 @@
-![OISTE Logo](./media/image1.png)
-
 ---
 title: OISTE/WISeKey Global Trust Model CP/CPS
 
@@ -18,6 +16,8 @@ copyright: |
 
   This work is licensed under the Creative Commons Attribution 4.0 International license.
 ---
+
+![OISTE Logo](./media/image1.png)
 
 # 1.  INTRODUCTION
 ## 1.1  Overview
