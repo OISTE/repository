@@ -20,7 +20,7 @@ copyright: |
 # 1.  INTRODUCTION
 ## 1.1  Overview
 
-This document represents a combined Certificate Policy (CP) and Certification Practice Statement (CPS) describes the practices followed with regard to the management of the lifecycle the Certification Authorities adhered to the OISTE Global Trust Model.
+This document represents a combined Certificate Policy (CP) and Certification Practice Statement (CPS), and describes the practices followed with regard to the management of the lifecycle the Certification Authorities adhered to the OISTE Global Trust Model.
 
 The main two legal entities involved in the control and operation of the Trust Model are:
 - OISTE Foundation. The International Organization for Secure Electronic Transactions (“IOSET” or “OISTE”), a Swiss non-profit foundation established in 1998, and recognized with an “Special Consultative Status” by the United Nations. The OISTE Foundation maintains a Policy Approval Authority (OFPAA or PAA) that drafts, approves and revises the policies to which WISeKey is bound to comply with under its operator contract. The PAA is composed of members of the community to which OISTE provides its Certification Authority Services, resulting in a virtuous cycle for trust management.
@@ -110,10 +110,10 @@ The type of certificate is determined by the combination of "Key Usage", "Extend
 | OCSP Certificate | Infrastructure certificate for Online Certificate Status Responders providing information on the subordinated CAs issued by the OISTE Roots | OCSP Response Signature |
 | Standard Personal Certificate | Low Assurance Personal certificates used by Natural persons to authenticate and encrypt documents and transactions. Only the eMail address is verified and included in the certificate | Digital Signature, Encryption, Client Authentication and email Protection |
 | Advanced Personal Certificate | High Assurance Personal certificates with software keys, used by Natural person to authenticate and encrypt documents and transactions. Personal and Organizations identity attributes are validated and included in the certificate. Remote verification is allowed under certain circumstances | Digital Signature, Encryption, Client Authentication, Non- Repudiation and email Protection |
-| Qualified Personal Certificate | High Assurance Personal certificates with FIPS-protected keys, used by Natural persons authenticate and encrypt documents and transactions. Personal and Organizations identity attributes are validated and included in the certificate. All identification attributes in the certificate are verified “Face-to-Face” or similar assurance | Digital Signature, Encryption, Client Authentication, Non-Repudiation and email Protection |
+| Qualified Personal Certificate<br>Qualified Corporate Certificate | High Assurance Personal certificates with FIPS-protected keys, used by Natural persons authenticate and encrypt documents and transactions. Personal and Organizations identity attributes are validated and included in the certificate. All identification attributes in the certificate are verified “Face-to-Face” or similar assurance | Digital Signature, Encryption, Client Authentication, Non-Repudiation and email Protection |
 | DV SSL Certificate | Medium assurance SSL/TLS certificate. All identification attributes in the certificate are verified. The control on the Internet Domain is validated. Compliant with CA/Browser Forum Baseline Requirements | Digital Signature, Encryption, Server Authentication |
 | OV SSL Certificate | High assurance SSL/TLS certificate. All identification attributes in the certificate are verified. The Identity of the organization is validated. Compliant with CA/Browser Forum Baseline Requirements | Digital Signature, Encryption, Server Authentication |
-| OISTE Advanced EV SSL Certificate | High assurance SSL/TLS certificate | All identification attributes in the certificate are verified. The Identity of the organization is validated. Compliant with CA/Browser Requirements for Extended Validation | Digital Signature, Encryption, Server Authentication |
+| EV SSL Certificate | High assurance SSL/TLS certificate | All identification attributes in the certificate are verified. The Identity of the organization is validated. Compliant with CA/Browser Requirements for Extended Validation | Digital Signature, Encryption, Server Authentication |
 | Device Certificate | High Assurance Device certificates used by devices to authenticate themselves and to protect transactions over IoT networks. Identity information as model number, serial number and manufacturer information are validated. Remote validation is allowed under certain circumstances | Digital Signature, Encryption, Client Authentication |
 
 ### 1.4.2 Prohibited certificate uses
@@ -185,92 +185,553 @@ Certificate Revocation Lists (CRL) according to section 4.9.7 (CRL issuance freq
 The OGTM makes its Repository publicly available in a read-only manner.
 
 # 3. IDENTIFICATION AND AUTHENTICATION
+
+The OGTM mandates the fulfilment of a set of required minimum controls that ensure the authenticity of the data included in certificates. These controls are enforced during the full lifecycle of certificates, certificate requests, and related documents
+
 ## 3.1  Naming
+
+This section describes the elements regarding naming and identifying the subscribers of OGTM certificates.
+
 ### 3.1.1  Types of names
+
+All subscribers are assigned a Distinguished Name (DN) according to the X.501 Standard. This DN is composed of a Common Name (CN), which includes a unique identification of the subscriber as described in section 3.1.4.2, and a structure of X.501 components as defined in section 3.1.4.
+
 ### 3.1.2  Need for names to be meaningful
+
+All Distinguished Names must be meaningful, and the identification the attributes associated to the subscriber should be in a human readable form.
+
 ### 3.1.3  Anonymity or pseudonymity of subscribers
+
+In general, the use of anonymity or pseudonymity is always controlled by the applicable regulations:
+- Allowed, but discouraged for Personal Certificates
+- Disallowed for TLS Server certificates
+
 ### 3.1.4  Rules for interpreting various name forms
+
+The rules used in the OGTM to interpret the distinguished names of certificates issued under its Trust Model are defined by the ISO/IEC 9595 (X.500) Distinguished Name (DN) standard.
+
 ### 3.1.5  Uniqueness of names
+
+OGTM requires uniqueness of names in the certificates issued by the Roots, except in the case of reissuances or renewals for the same entity.
+
+For subscriber certificates, uniqueness of certificates is generally not enforced.
+
 ### 3.1.6  Recognition, authentication, and role of trademarks
+
+The inclusion of a name in a certificate does not imply any right over that name, neither for the OGTM nor the applicant, nor the subscriber. The OGTM reserves the right to refuse a certificate request, or revoke an existing one, if a conflict is detected over ownership or copyright of a name.
+         
+OGTM – Root CA Certification Practices Statement (CPS) In any event, the OGTM will not attempt to intermediate nor resolve conflicts regarding ownership of names
+or trademarks.
+
 ## 3.2  Initial identity validation
+
+OGTM performs “face to face” identity validation for the certificates issued by the Roots. Stipulations related to subscriber certificates are defined in the followinfg sections.
+
+In general, any Issuing CA operating in the OGTM and issuing SSL/TLS or S/MIME certificates, must ensure compliance with the baseline requirements and extended validation guidelines mandated by the CA/Browser Forum.
+
+Sources used for S/MIME and EV validation can be found at https://wisekey.com/repository
+
 ### 3.2.1  Method to prove possession of private key
+
+If the key pair is generated by the End Entity (applicant or future subscriber), then a demonstration of the possession of the private key associated to the public key is requested. Accepted means are the generation of a Certificate Signing Request (CSR) linked to the private key, or any other method accepted by CIDPKI.
+
+If (when allowed by the applicable regulations) the key pair is generated by the CA or the RA, CIDPKI defines and enforces approved procedures to transfer securely the private key to the subscriber (i.e. sending PFX files and passwords by different channels, and deleting any signature private key once the transfer is effective).
+
 ### 3.2.2  Authentication of organization identity
+
+Before issuing a certificate for a subordinate Certification Authority OGTM requires the fulfillment of a legally binding agreement between the organization and the OISTE Foundation, which includes the appropriate validation of the organization identity and signatories of the agreement.
+
+#### 3.2.2.1 For Personal Certificates
+
+In all cases, when an organization name is included in a certificate valid for secure email, the organization validaiton will follow the CA/B Forum Baseline Requirements for the Issuance and Management of Publicly-Trusted S/MIME Certificates.
+
+| CP Identifier | Validation Policy |
+| --- | --- |
+| Standard Personal Certificate | Does not Apply: Individual or Organization information will not appear in these certificates |
+| Advanced Personal Certificate,<br>Qualified Personal Certificate | If the organization name is included in the certificate, the Registration Authority must verify that the Organization exists and that the certificate subscriber is authorized to enroll for a certificate including the Organization name, by means of the authorization of a representative of the same Organization.<br>In both cases is allowed to do a preauthorization of users according to a pre-validated database or the domain name used in the subscriber’s e-mail address |
+| Advanced Cualified Certificate,<br>Qualified Corporate Certificate | The Registration Authority must verify that the Organization exists and that the certificate applicant is authorized to enroll for a certificate in behalf of the Organization name, by means of the authorization of a representative of the same Organization. |
+
+#### 3.2.2.2 For TLS Server Certificates
+
+| CP Identifier | Validation Policy |
+| --- | --- |
+| DV @#@SSL Certificate | WISeKey will validate the Applicant’s right to use or control each domain name that will be listed in the Subject Alternative Name field of a Certificate by using at least one of the following procedures:<ul><li>Email to Domain Contact. WISeKey will retrieve the Domain Contact using the WHOIS information or the DNS and CAA records and deliver a mail including a unique code and a method to confirm the reception.</li><li>Constructed Email to Domain Contact. WISeKey will send a mail using ‘admin’, ‘administrator’, ‘webmaster’, ‘hostmaster’, or ‘postmaster’ as the local part, followed by the at-sign (“@”), followed by the Domain Name being validated including a unique code and a method to confirm the reception.</li><li>Agreed-Upon Change to Website. WISeKey will provide a text file including a unique code that must be placed in the path /.well-known/pki-validation and enabled to be retrieved using HTTP or HTTPS. This method only can be used to validate a particular FQDN and is not allowed for Wildcard certificates.</li><li>DNS Change. WISeKey will provide a unique code that must be placed as a TXT or CNAME record in the DNS server maintaining the domain being validated.</li><li>Agreed-Upon Change to Website - ACME. Confirming the Applicant’s control over a FQDN by validating domain control of the FQDN using the ACME HTTP Challenge method defined in Section 8.3 of RFC 8555</li></ul> |
+| OV SSL Certificate | WISeKey will execute the domain validation procedures as required for DV SSL certificates.<br>Additionally, WISeKey will verify:<ul><li>The identity and address of the Applicant using the procedures found in section 3.2.2.1 and/or section 3.2.3 of the Baseline Requirements.</li><li>Any DBA included in a Certificate using a third party or government source, attestation letter, or reliable form of identification in accordance with section 3.2.2 of the Baseline Requirements.</li></ul> |
+| EV SSL Certificate | WISeKey will execute the domain validation procedures as required for DV and OV SSL certificates.<br>Additionally, WISeKey will do the specific validations mandated by the EV Guidelines issued by the CAB/Forum. |
+
+The list of used validation sources is available at https://wisekey.com/repository
+
+#### 3.2.2.3 For Device Certificates
+
+| CP Identifier | Validation Policy |
+| --- | --- |
+| Device Certificate | If the organization name is included in the certificate, the Registration Authority must verify that the Organization exists and that the certificate subscriber is authorized to enroll for a certificate including the Organization name |
+
 ### 3.2.3  Authentication of individual identity
+
+#### 3.2.3.1 For SSL Certificates
+
+For the validation of individuals participating in the certificate application and management, OGTM enforces compliance with the CA/B Forum Baseline Requirements and EV Guidelines.
+
+#### 3.2.3.2 For Personal Certificates
+
+| CP Identifier | Validation Policy |
+| --- | --- |
+| Standard Personal Certificate | **ID Data Verified**:<br>The only verified data is the email address.<br>**Method of Verification**:<br><ul><li>If the Extended Key Usage for secure email is set: Bounce back email with verification code procedure proving control of the user mailbox.</li><li>Pre-Authorization of the full domain by the organization where the user belongs to, using methods acceptable for domain control verification, as defined by the CABF baseline requirements.</li></ul>**Entities authorized to verify**:<br><ul><li>The entity purchasing and managing the e-ID system under contract with WISeKey.</li><li>Authorised internal entity (e.g. human resources dept.) or external entity who is legally bound to comply with the verification procedures.</li></ul>|
+| Advanced Personal Certificate | **ID Data Verified**:<br>Personal identity data such as name, date of birth, nationality, etc. Legal entities are required to provide relevant official documentation. Verification of device or other type of entity or object is done with substantially equivalent data. There’s an obligation to verify the identity of real physical and juridical persons names included in the certificates.<br>**Method of Verification**:<br>May be done through database of identity data that is well-maintained and was created based on face to face or remote verification using official ID documents.<br>If the Extended Key Usage for secure email is set: same verification as indicated for “CertifyID Standard Personal Certificate”.<br>**Entities authorized to verify**:<br><ul><li>The entity purchasing and managing the e-ID system under contract with WISeKey.</li><li>Authorised internal entity (e.g. human resources dept.) or external entity who is legally bound to comply with the verification procedures.</li></ul>|
+| Qualified Personal Certificate | Same as for Personal Certificates |
+
+**Note**: Any certificate containing the OID for Adobe AATL may be validated according to the rules for Qualified Certificates.
+
+#### 3.2.3.3 For Device Certificates
+
+| CP Identifier | Validation Policy |
+| --- | --- |
+| Device Certificate | **ID Data Verified**:<br>Device identity data such as serial number and manufacturer name.<br>**Method of Verification**:<br>May be done through database of identity data that is well- maintained and was created based on face to face or direct verification using official ID documents.<br>If the Extended Key Usage for secure email is set: Bounce back email verification procedure proving access to the email account is accepted.<br>**Entities authorized to verify**:<br><ul><li>Authorised internal entity (e.g. human resources dept.) or external entity who is legally bound to comply with the verification procedures.</li><li>The entity purchasing and managing the e-ID system under contract with WISeKey.</li></ul>|
+
 ### 3.2.4  Non-verified subscriber information
+
+All attribibutes included in a certificate that are subject to root program or industry regulations must undergo appropriate validation.
+
 ### 3.2.5 Validation of authority
+
+OGTM requires that any person participating in any operating process related to certificate generation or status modification is explicitly authorized and the authority verified through a reliable method of communication.
+
+In particular for TLS Server certificates:
+| CP Identifier | Validation Policy |
+| --- | --- |
+| DV SSL Certificate |	The Issuing CA must verify the authority of the requester is verified by using one or more of the	procedures listed in section 3.2.2.4. of the Baseline Requirements. |
+| OV SSL Certificate |	The Issuing CA must verify the authority of the requester is verified by using one or more of the	procedures listed in section 3.2.5. of the Baseline Requirements. |
+| EV SSL Certificate |	The Issuing CA must apply the requirements of section 11.8.3 of the EV Guidelines. |
+
 ### 3.2.6  Criteria for interoperation
+
+A Certification Authority that wishes to interoperate with the OGTM is required to undergo an internal accreditation process to ensure the compliance with this CPS.
+
+If this accreditation process is successful, it will result in the creation of an “Issuing CA” under the OGTM that adheres to this CPS and authorized to issue certain Certificate Types.
+
 ## 3.3  Identification and authentication for re-key requests
+
+This section addresses the following elements for the identification and authentication procedures for re- key for each subject type (CA, RA, subscriber, and other participants). Unless otherwise specified, it can considered as equivalent the activities linked to “re-key” (new certificate for an existing subscriber, using a new key pair) and “renewal” (new certificate for an existing subscriber, using the same key pair).
+
 ### 3.3.1  Identification and authentication for routine re-key
+
+The certificate subscriber can request a routine re-key by authenticating himself with one of these methods:
+-	Username & Password
+-	A valid digital certificate linked to the user account
+
+The applicable revalidation requirements set by the CA/B Forum for the particular type of certificate will be enforced in the case of reuse of subscriber information.
+
 ### 3.3.2  Identification and authentication for re-key after revocation
+
+The OGTM does not support re-key of certificates after revocation. The subscriber must apply for a new digital certificate by using the same procedures as for its issuanc
+
 ## 3.4 Identification and authentication for revocation request
+
+The Identification Policy for revocation requests is, generally, the same as stipulated for initial registration. The preferred method to authenticate revocation requests is an authentication based in a digital certificate owned by the certificate subscriber, or authorized party. Passwords maybe accepted alternatively.
+
+A Certification Authority may define, that during the enrolment process, a subscriber can create a password that can be used in remote revocation requests, using an on-line procedure communicated to the user when issuing the certificate.
+
 # 4.  CERTIFICATE LIFE-CYCLE OPERATIONAL REQUIREMENTS
+
+The stipulations included in this section are understood as common for all the certificates issued under the OGTM Root, unless otherwise specified in this document.
+
+When applicable, CAs operating under the OGTM must respect the requirements set by the CA/Browser Forum Baseline and EV Requirements.
+
 ## 4.1  Certificate Application
+
+For CA Certificates, before issuing a new certificate for a subordinate Certification Authority OGTM requires the fulfillment of a legally binding agreement between the affiliated organization and the OISTE Foundation, which includes the appropriate validation of the organization identity and signatories of the agreement. Additionally, for each Subordinate CA, it’s required the fulfillment of a “CA Naming Request”, which must be signed by authorized representative of the affiliate.
+
+For subscriber certificates, the Registration Authorities operating under the OGTM are competent and responsible for determining if the type of the requested certificate is adequate for the applicant and future subscriber, in conformity with the Certificate Policy related to that certificate, and therefore to proceed or not with the certificate application. The Certificate Application process must include a mean to express acceptance with the Subscriber Agreement, by means of a manuscript signature or another valid mechanism, and it’s a first step to begin the certificate issuance process.
+
 ### 4.1.1  Who can submit a certificate application
+
+A certificate application can be submitted by the subject of the certificate or by an authorized representative of the subject.
+
 ### 4.1.2  Enrollment process and responsibilities
+
+WISeKey is responsible for ensuring that the identity of each Certificate Applicant is verified in accordance with this CP and the applicable CPS prior to the issuance of a Certificate. Applicants are responsible for submitting sufficient information and documentation for the Issuer CA or the RA to perform the required verification of identity prior to issuing a Certificate.
+
+This process includes the identification of suspicious or potentially dangerous requests, based in automated checks on domain blacklists and previous denied request, marked as suspicious.
+
+In particular and where applicable, CAs will respect the requirements set by the CA/Browser Forum Baseline and EV Requirements.
+
 ## 4.2 Certificate application processing
+
+This section describes the procedures for processing certificate applications in the OGTM Trust Model.
+
 ### 4.2.1 Performing identification and authentication functions
+
+Before issuing a certificate from an OISTE Root for a subordinate Certification Authority, it’s required that two representatives of the PAA identify the CA Naming Application and rightfulness to operate a subordinate CA under the OISTE Root.
+
+The identification and authentication functions are delegated to the Registration Authorities operating under the CIDPKI.
+
+An authorized Registration Authority Officer will perform these functions. This role can be assumed by:
+- An accredited person that, on behalf of a Registration Authority, personally executes the identification and authentication functions.
+- An accredited software application that performs the identification and authentication functions for automated certification procedures. If a Certificate Policy permits such automation it will be stated explicitly in section 4.1.2 of this document. Any accredited software application will execute this function according to sections 3.2.2 and 3.2.3 of this document.
+
+The steps to be executed by the Issuing CA or RA are as follows:
+-	As a first step, the Issuing CA or RA will perform the verifications stipulated in section 3.2.  
+-	As a second step, the CA must check the DNS for the existence of a CAA record for each dNSName in the subjectAltName extension of the certificate to be issued, according to the procedure in RFC 6844.
+-	As a third step, the Issuing CA must check the certificate details against a list of previously revoked Certificates and rejected certificate requests to identify suspicious certificate requests.
+
+The Issuing CA can only issue a certificate after having successfully completed the above steps.
+
+**In particular for SSL/TLS Certificates:**
+
+In compliance with the CA/Browser Forum Baseline Requirements, prior to issuing SSL Digital Certificates, WISeKey automatedly checks for CAA records for each dNSName in the subjectAltName extension of the Digital Certificate to be issued.
+When processing CAA records, WISeKey processes the issue, issuewild, and iodef property tags as specified in RFC 6844 as amended by Errata 5065. WISeKey will not issue a Digital Certificate if an unrecognized property is found with the critical flag.
+
+WISeKey documents potential issuances that were prevented by a CAA record, and will dispatch reports of such issuance requests to the contact stipulated in the CAA iodef record(s), if present. WISeKey support mailto: and https: URL schemes in the iodef record.
+
+The main identifying CAA domain for WISeKey is ‘wisekey.com’. Other accepted domains are ‘hightrusted.com’, ‘certifyid.com’ and ‘oiste.org’.
+
+**In particular for S/MIME Certificates:**
+
+In compliance with the CA/Browser Forum Baseline Requirements, prior to issuing S/MIME Digital Certificates, WISeKey automatedly checks for CAA records for each dNSName in the subjectAltName extension of the Digital Certificate to be issued. This practice remains optional until March 15, 2025.
+
+When processing CAA records, WISeKey processes the issuemail property tag as specified in RFC 9495. WISeKey will not issue a Digital Certificate if an unrecognized property is found with the critical flag.
+WISeKey documents potential issuances that were prevented by a CAA record, and will dispatch reports of such issuance requests to the contact stipulated in the CAA iodef record(s), if present. WISeKey support mailto: and https: URL schemes in the iodef record.
+
+The main identifying CAA domain for WISeKey is ‘wisekey.com’. Other accepted domains are ‘hightrusted.com’, ‘certifyid.com’ and ‘oiste.org’.
+
 ### 4.2.2 Approval or rejection of certificate applications
+
+An approval of a certificate application derives from the execution of the certificate issuance procedures, as defined in the section 4.3 of this document.
+
+A rejection of a certificate application results in a notification being sent to the applicant by appropriate means and is registered for further reference.
+
 ### 4.2.3  Time to process certificate applications
+
+There is no time limit stipulated to complete the processing of an application.
+
 ## 4.3  Certificate issuance
+
+A certificate request will be forwarded to a Certification Authority for its issuance only after the Registration Authority confirms the correctness of the information contained in the request. The CIDPKI is not responsible for monitoring, research or confirmation of the correctness of the information contained in a certificate during the intermediate period between its issuance and renewal, unless this period is longer to the current limits established by the CA/Browser Forum in its Baseline Requirements.
+
 ### 4.3.1  CA actions during certificate issuance
+
+A Certification Authority adhering to the OGTM proceeds with the issuance of a certificate only after executing the necessary measures to verify that the signing request is authorized and genuine, as per the particular controls are stipulated in this document.
+
 ### 4.3.2  Notification to subscriber by the CA of issuance of certificate
+
+For CA Certificates, OGTM notifies directly to the authorized CA responsible.
+
+WISeKey will send, in general, all notifications to the subscriber using email to the address specified in the application process. These notifications should include a digital signature.
+
 ## 4.4  Certificate acceptance
+
+Certificate acceptance is the final step in the certification issuance process. After Acceptance the certificate owner is entitled to use the certificate and issue valid digital signatures.
+
 ### 4.4.1  Conduct constituting certificate acceptance
+
+For CA Certificates the CA representative must acknowledge the reception of the certificate, verifying that the Key Fingerprint matches the request. Installing the CA Certificate in the CA server constitutes tacit acceptance.
+
+Certificate acceptance is understood after the subscriber or his representative performs one or more of the following:
+- Accepts the “Subscriber Agreement”, which includes the terms and conditions associated with the particular Certificate Policy, and which constitutes formal acceptance of those terms; or
+- Downloads and/or installs the certificate, making it technically available for usage; or
+- Doesn’t expressly refuse the certificate once the issuance notification has been sent.
+
 ### 4.4.2  Publication of the certificate by the CA
+
+The CAs operating under the OGTM publish all issued certificates as specified in section 2 of this document.
+
 ### 4.4.3  Notification of certificate issuance by the CA to other entities
+
+The CA only notifies the Registration Authority from which it received the request of the issuance of a certificate. It is the RA’s duty to notify the certificate subscriber, as stipulated in section 4.3.2 of this CPS.
+
 ## 4.5 Key pair and certificate usage
+
+The certificates issued by the OGTM are used to provide authenticity, integrity, confidentiality and/or non- repudiation in electronic transactions and other computerized functions.
+
 ### 4.5.1  Subscriber private key and certificate usage
+
+For CA Certificates the private key may only be used according to the CPS published by the subordinate CA, subject to approval by the OGTM PAA.
+
+The specific usages allowed for a private key associated to a certificate type issued in the CIDPKI are as summarized in section 2 of this document
+
 ### 4.5.2  Relying party public key and certificate usage
+
+Relying parties must access and use the public key and certificates issued under the OGTM as stipulated in this CPS and as indicated in the “Relying Party Agreement” document, made public at the web page http://www.oiste.org/repository.
+
 ## 4.6  Certificate renewal
+
+Certificate Renewal is understood as the issuance of a new certificate to a subscriber who maintains the key pair generated for the original certificate. Certificate renewal may not be supported depending on business decisions.
+
 ### 4.6.1  Circumstance for certificate renewal
+
+For CA Certificates it is allowed the certificate renewal for these purposes: 
+- Extend the validity period
+- Modify the name constraints, enhanced key usages or other non-identity extensions
+
+For Subscriber Certificates it is allowed the certificate renewal for the purpose of extending the validity period and always considering the requirements for re-verification periods stipulated in section 3.3 of this CPS.
+
 ### 4.6.2  Who may request renewal
+
+The certificate renewal can be requested by the same entities allowed to request the first issuance of the certificate.
+
 ### 4.6.3  Processing certificate renewal requests
+
+Certificate renewal requests are processed according to the same rules than the initial issuance.
+
 ### 4.6.4  Notification of new certificate issuance to subscriber
+
+The notification of the issuance of a renewed certificate it will occur as described in section 4.3.2 of this document.
+
 ### 4.6.5  Conduct constituting acceptance of a renewal certificate
+
+As stipulated in section 4.4.1 of this document.
+
 ### 4.6.6  Publication of the renewal certificate by the CA
+
+The CAs operating under the OGTM publish all issued certificates as specified in section 2 of this document.
+
 ### 4.6.7  Notification of certificate issuance by the CA to other entities
+
+The CA only notifies the Registration Authority from which it received the request of the issuance of a certificate. It is the RA’s duty to notify the certificate subscriber, as stipulated in section 4.3.2 of this document.
+
 ## 4.7  Certificate re-key
+
+Certificate Re-Key is understood as the issuance of a new certificate to a subscriber that also generates a new key pair. This process is supported for all certificate types.
+
 ### 4.7.1  Circumstance for certificate re-key
+
+Any certificate that is not revoked can be re-keyed.
+
 ### 4.7.2  Who may request certification of a new public key
+
+The certificate renewal can be requested by the same entities allowed to request the first issuance of the certificate.
+
 ### 4.7.3  Processing certificate re-keying requests
+
+Certificate re-key requests are processed according to the same rules than the initial issuance.
+
 ### 4.7.4  Notification of new certificate issuance to subscriber
+
+The notification of the issuance of a new certificate it will occur as described in section 4.3.2 of this document.
+
 ### 4.7.5  Conduct constituting acceptance of a re-keyed certificate
+
+As stipulated in section 4.4.1 of this document.
+
 ### 4.7.6  Publication of the re-keyed certificate by the CA
+
+The CAs operating under the OGTM publish all issued certificates as specified in section 2 of this document.
+
 ### 4.7.7  Notification of certificate issuance by the CA to other entities
+
+The CA only notifies the Registration Authority from which it received the request of the issuance of a certificate. It is the RA’s duty to notify the certificate subscriber, as stipulated in section 4.3.2 of this document.
+
 ## 4.8  Certificate modification
+
+The OGTM does not allow the modification of certificates during their validity period. If the information contained in a certificate cease to be valid, or the circumstances of the subscriber change in such a manner that the conditions expressed in the CPS or the CP are not met, then the only accepted procedure is the revocation and reissuance of a new certificate.
+
 ### 4.8.1  Circumstance for certificate modification
+
+No stipulation. Modification is not allowed.
+
 ### 4.8.2  Who may request certificate modification
+
+No stipulation. Modification is not allowed.
+
 ### 4.8.3  Processing certificate modification requests
+
+No stipulation. Modification is not allowed.
+
 ### 4.8.4  Notification of new certificate issuance to subscriber
+No stipulation. Modification is not allowed.
+
 ### 4.8.5  Conduct constituting acceptance of modified certificate
+
+No stipulation. Modification is not allowed.
+
 ### 4.8.6  Publication of the modified certificate by the CA
+No stipulation. Modification is not allowed.
+
 ### 4.8.7  Notification of certificate issuance by the CA to other entities
+
+No stipulation. Modification is not allowed.
+
 ## 4.9  Certificate revocation and suspension
+
+All Certification Authorities operating under the OGTM ensure, by establishing the necessary means, that a certificate that compromises the Trust Model for any reason is prevented from being used by either revoking or suspending that certificate.
+
+Suspension of certificates is not supported.
+
 ### 4.9.1  Circumstances for revocation
+
+All certificate subscribers receiving a digital certificate issued under a Root regulated by this CPS must assume the stipulations contained in this section.
+
+#### 4.9.1.1 Reasons for Revoking a Subscriber Certificate
+A Certification Authority operating in the CIDPKI must revoke within 24 hours a certificate that it has issued upon the occurrence of any of the following events:
+1. The Subscriber requests in writing that the CA revoke the Certificate;
+2. The Subscriber notifies the CA that the original certificate request was not authorized and does not retroactively grant authorization;
+3. The CA obtains evidence that the Subscriber's Private Key corresponding to the Public Key in the Certificate suffered a Key Compromise;
+4. The CA is made aware of a demonstrated or proven method that can easily compute the Subscriber’s Private Key based on the Public Key in the Certificate; or
+5. The CA obtains evidence that the validation of domain authorization or control for any Fully-Qualified Domain Name or IP address in the Certificate should not be relied upon.
+
+A Certification Authority operating in the CIDPKI must revoke within 5 days a certificate that it has issued upon the occurrence of any of the following events:
+1. The Certificate no longer complies with the requirements of Sections 6.1.5 and 6.1.6;
+2. The CA obtains evidence that the Certificate was misused;
+3. The CA is made aware that a Subscriber has violated one or more of its material obligations under the Subscriber Agreement or Terms of Use;
+4. The CA is made aware of any circumstance indicating that use of a Fully-Qualified Domain Name
+or IP address in the Certificate is no longer legally permitted (e.g. a court or arbitrator has revoked a Domain Name Registrant's right to use the Domain Name, a relevant licensing or services agreement between the Domain Name Registrant and the Applicant has terminated, or the Domain Name Registrant has failed to renew the Domain Name);
+5. The CA is made aware that a Wildcard Certificate has been used to authenticate a fraudulently misleading subordinate Fully-Qualified Domain Name;
+6. The CA is made aware of a material change in the information contained in the Certificate;
+7. The CA is made aware that the Certificate was not issued in accordance with these Requirements or the CA's Certificate Policy or Certification Practice Statement;
+8. The CA determines or is made aware that any of the information appearing in the Certificate is inaccurate;
+9. The CA's right to issue Certificates under these Requirements expires or is revoked or terminated, unless the CA has made arrangements to continue maintaining the CRL/OCSP Repository;
+10. Revocation is required by the CA's Certificate Policy and/or Certification Practice Statement; or
+11. The CA is made aware of a demonstrated or proven method that exposes the Subscriber's Private Key to compromise, methods have been developed that can easily calculate it based on the Public Key, or if there is clear evidence that the specific method used to generate the Private Key was
+flawed.
+
+**Revocation of SSL Certificates**: In particular, will be processed as defined by the requirements published by the CA/Browser Forum, as appropriate.
+
+#### 4.9.1.2 Reasons for Revoking a Subordinate CA Certificate
+An issuing Certification Authority operating in the CIDPKI will be revoked within 7 days upon the occurrence of any of the following events:
+1. The Subordinate CA requests revocation in writing;
+2. The Subordinate CA notifies the Issuing CA that the original certificate request was not authorized and does not retroactively grant authorization;
+1. The Issuing CA obtains evidence that the Subordinate CA's Private Key corresponding to the Public Key in the Certificate suffered a Key Compromise or no longer complies with the requirements of Sections 6.1.5 and 6.1.6;
+1. The Issuing CA obtains evidence that the Certificate was misused;
+2. The Issuing CA is made aware that the Certificate was not issued in accordance with or that Subordinate CA has not complied with this document or the applicable Certificate Policy or Certification Practice Statement;
+1. The Issuing CA determines that any of the information appearing in the Certificate is inaccurate or misleading;
+1. The Issuing CA or Subordinate CA ceases operations for any reason and has not made arrangements for another CA to provide revocation support for the Certificate;
+1. The Issuing CA's or Subordinate CA's right to issue Certificates under these Requirements expires or is revoked or terminated, unless the Issuing CA has made arrangements to continue maintaining the CRL/OCSP Repository;
+1. Revocation is required by the Issuing CA's Certificate Policy and/or Certification Practice Statement; or
+1.  Revocation is required by the OISTE Foundation.
+
 ### 4.9.2  Who can request revocation
+
+The certificate subscriber or its legal representative can request the revocation of an individual or organizational certificate.
+
+Third parties may request certificate revocation for problems related to fraud, misuse, or compromise. Certificate revocation requests must identify the entity requesting revocation and specify the reason for revocation.
+
 ### 4.9.3  Procedure for revocation request
+
+The procedure to be used for certificate revocation requests is detailed in the “End User Agreement”. Individual users will find the appropriate contact and procedure information in the URL http://www.wisekey.com/repository. Certificate subscribers obtaining their certificate from a self-service portal (SSL Reseller Portal, Universal Registration Authority, or WISeID Portal) can request the revocation through the same service.
+
+To report suspected Private Key Compromise, Certificate misuse, Certificate mis-issuance, or other types of fraud, compromise, misuse, inappropriate conduct, or any other matter related to Certificates, the main and preferred method is sending an e-mail message to cps@wisekey.com.
+
+For certificate subscribers that seek to obtain general support, the preferred method to communicate with WISeKey is sending an e-mail message to support@wisekey.com.
+
+The common practice for all certificates issued under the CIDPKI Trust Model is for revocation requests to be accepted automatically and produce an immediate revocation in the case of:
+- Remote requests sent by e-mail or via a web page or service, appropriately authenticated by the subscriber or its representative.
+- Face-to-face requests addressed to an official Registration Authority representative and the identity of the requestor is proved by the same means as used for certificate registration.
+- Revocation requests sent by an official Registration or Certification representative operating in the CIDPKI.
+
+In particular, processing revocation for SSL Certificates will be performer as required by the CA/Browser Forum.
+
 ### 4.9.4  Revocation request grace period
+
+There is no stipulation for grace periods for revocation requests. The revocation process will be started immediately upon the receipt of such a request by an authorized party.
+
 ### 4.9.5  Time within which CA must process the revocation request
+
+Revocation requests are processed by the CA within the shortest possible period, and always in accordance to the limits set in section 4.9.1 and respecting the deadlines and procedures for problem investigation and reporting set by the CAB/Forum Baseline Requirements and Root Programs.
+
 ### 4.9.6  Revocation checking requirement for relying parties
-### 4.9.7 CRL issuance frequency (if applicable)
-### 4.9.8 Maximum latency for CRLs (if applicable)
+
+The OGTM requires that all parties willing to rely on certificates issued under the Trust Model check the status of these Certificates on each digital signature verification and authentication request using the certificate. This requirement can be fulfilled by consulting the most recent CRL from the CA that issued the Certificate or, when available, by using the OGTM Online Certificate Status Protocol Server (OCSP).
+
+The information necessary to locate these revocation services is included in all OGTM certificates, using the standard CDP and/or AIA extensions.
+
+### 4.9.7 CRL issuance frequency
+
+The OISTE Root CAs used by the CIDPKI issue a full CRL at least every year, with a typical overlapping period of one week. This CRL will contain the revoked, if any, certificates for CIDPKI Policy CAs or Issuing CAs, as appropriate for the hierarchy. New CRLs are published immediately if a new subordinated CA is revoked.
+
+The CRL issuance frequency for Subordinate Certification Authorities is as follows:
+- The OWGTM Policy CAs issue a full CRL every month, with a typical overlapping period of 3 days. This CRL will contain the revoked, if any, certificates for OWGTM Issuing CAs. New CRL are published immediately if a new subordinated CA is revoked.
+- The OWGTM Issuing CAs issue a full CRL every up to four days, with a maximum latency of two additional days in case of service disruption. This CRL will contain the revoked, if any, certificates for OWGTM end-users / subscribers.
+For the specific case of SSL and S/MIME certificates, the CIDPKI will ensure the compliance of the Baseline (and Extended Validation, for EV certificates) Requirements of the CA/Browser Forum.
+
+### 4.9.8 Maximum latency for CRLs
+
+CRLs are posted to their distribution point within the minimum possible time after generation.
+
 ### 4.9.9  On-line revocation/status checking availability
+
+The Issuing Certificate Authorities in the OWGTM may provide an OCSP service that is typically available on a 24x7 basis. The OCSP service availability is generally not available for low assurance certificates, as some types of device or personal certificates.
+
+The URL used to access this service is included in the “AIA extension” in all issued certificates.
+
+For certain Certificates the Issuing CA could publish additional on-line services, web-based or others. Such additional services are stipulated in the appropriate End User Agreement.
+
+In particular for SSL and Code Signing certificates, OWGTM will ensure compliance with the applicable Baseline and/or Extended Validation requirements from the CA/Browser Forum.
+
 ### 4.9.10 On-line revocation checking requirements
+
+On-line revocation checking is openly provided without restriction to all Participants in the PKI, for the certificate types that include the appropriate AIA extension. This service is made available in compliance with the RFC 6960 and other applicable standards and regulations.
+
+Relying parties are requested to always check the validity of the certificate on which they rely, as stipulated in section 4.9.6.
+
 ### 4.9.11 Other forms of revocation advertisements available
+
+No stipulations.
+
 ### 4.9.12 Special requirements re key compromise
+
+Any party detecting a key compromise at any level in the CIDPKI Trust Model is requested to immediately communicate it to a Registration or Certification Authority.
+
+In particular for SSL and S/MIME certificates, but applicable for any other certificate type issued, it’s also requested to Subscribers, Relying Parties, Application Software Vendors and other third parties to report any potential issue to the Certification Authority (Certificate misuse, or other types of fraud, compromise, misuse, or inappropriate conduct related to Certificates).
+
+The appropriate methods to demonstrate key compromise are:
+- Create and sign a text file,
+- Create a custom CSR file, and/or
+- Send the private key, or a link to where it’s publicly disclosed.
+
+The main method for these communications is the stipulated in section 4.9.3.
+
 ### 4.9.13 Circumstances for suspension
+
+Suspension is not allowed for any certificate in scope of the Baseline Requirements, and therefore not allowed for any certificate chaining to an OISTE Root recognized for SSL/TLS or S/MIME certificates.
+
 ### 4.9.14 Who can request suspension
+
+No stipulation. Suspension is not available for publicly trusted certificates. 
+
 ### 4.9.15 Procedure for suspension request
+
+No stipulation. Suspension is not available for publicly trusted certificates. 
+
 ### 4.9.16 Limits on suspension period
+
+No stipulation. Suspension is not available for publicly trusted certificates. 
+
 ## 4.10  Certificate status services
+
+Any CA operating in the CIDPKI must provide a highly available and reliable service for checking the status of all certificates issued under its Trust Model.
+
 ### 4.10.1 Operational characteristics
+
+Certificate Status Services are accessible through HTTP servers owned by the OGTM Certification Authorities. The Services can be accessed by downloading revocation lists (CRL) or by sending requests to OCSP servers.
+
+The appropriate certificate revocation information service URLs are included in standard extensions within the issued certificates.
+
 ### 4.10.2 Service availability
+
+The Certificate Status Services are available on a 24x7 basis.
+
 ### 4.10.3 Optional features
+
+No stipulation.
+
 ## 4.11  End of subscription
+
+“End of Subscription” is understood to occur after the expiration or revocation of a certificate, and it is unique for that particular certificate, not affecting additional subscriptions (if any) that the end entity may hold within the OGTM.
+
 ## 4.12  Key escrow and recovery
+
+@#@CP
+
 ### 4.12.1 Key escrow and recovery policy and practices
+
+@#@CP
+
 ### 4.12.2 Session key encapsulation and recovery policy and practices
-# 5.  FACILITY, MANAGEMENT, AND OPERATIONAL CONTROLS (11)
+
+@#@CP
+
+# 5.  FACILITY, MANAGEMENT, AND OPERATIONAL CONTROLS
 ## 5.1  Physical controls
 ### 5.1.1  Site location and construction
 ### 5.1.2  Physical access
@@ -318,7 +779,7 @@ The OGTM makes its Repository publicly available in a read-only manner.
 ### 5.7.3  Entity private key compromise procedures
 ### 5.7.4  Business continuity capabilities after a disaster
 ## 5.8  CA or RA termination
-# 6.  TECHNICAL SECURITY CONTROLS (11)
+# 6.  TECHNICAL SECURITY CONTROLS
 ## 6.1  Key pair generation and installation
 ### 6.1.1  Key pair generation
 ### 6.1.2  Private key delivery to subscriber
