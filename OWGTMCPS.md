@@ -373,12 +373,48 @@ The OGTM makes its Repository publicly available in a read-only manner.
 ### 7.3.1  Version number(s)
 ### 7.3.2  OCSP extensions
 # 8.  COMPLIANCE AUDIT AND OTHER ASSESSMENTS
+
+OGTM monitors and ensures compliance to legal, security and industry requirements, in all levels of the Trust Model, through internal and external audits.
+
+Those external and internal compliance audits are executed as defined by the CA/Browser Forum in its Baseline and Extended Validation Requirements. If applicable, other Industry and/or National assessment requirements can be fulfilled.
+
 ## 8.1  Frequency or circumstances of assessment
+
+All Certification Authorities and dependent Registration Authorities must follow the adequate assessment program (as stipulated in section 8.4) on an annual frequency.
+
+In particular for SSL certificates, the OGTM mandates the Issuing CAs to perform the required quarterly self-assessment, according to the CAB/Forum guidelines.
+
 ## 8.2  Identity/qualifications of assessor
+
+The assessor will be selected when an audit or assessment is required. Any company or professional whose services are contracted as auditor or assessor will be required to fulfil these requirements:
+- Adequate and accredited capability and experience to perform the required services (PKI audit, Security assessment, etc.). In particular for external audits, suitable accreditation to perform WebTrust audits is required.
+- In the case of external audits, independent of the OGTM at an organization level. 
+
 ## 8.3  Assessor's relationship to assessed entity
+
+The OGTM audit policy does not allow any kind of legal, organizational or other relationship with the external auditor that would result in a conflict of interests.
+
 ## 8.4  Topics covered by assessment
+
+The OGTM establishes the need to audit and accreditation.
+- The Root CA, Policy CAs and Issuing CAs owned or operated by WISeKey. These services are audited against the WebTrust criteria and commonly accepted industry accreditation standards. Issuing CAs operated by third parties which don’t enforce name constraints must be included in this assessment.
+- The Issuing CAs owned and/or operated by third parties enforcing name constraints and Registration Authorities. These services must meet the practices stipulated in this CPS, and the CPs that are entitled to issue, and are audited and accredited by the OGTM by means of an internal audit executed by WISeKey or other authorized auditor.
+
 ## 8.5  Actions taken as a result of deficiency
+
+In the case a deficiency is identified, the OGTM will adopt and will be responsible for all necessary corrective measures.
+
+In the case of a severe deficiency affecting the reliable operation of a Certification or a Registration Authority, the OGTM could decide to temporarily suspend the activities of the affected systems or services until the deficiency is solved.
+
 ## 8.6  Communication of results
+
+All assessment results will be conformed as:
+- Detailed Report. This document includes all the topics covered by the executed assessment program in detail. The detailed report is deemed private and only available to the following parties:
+   - Certification Authority owner
+   - OGTM Policy Approval Authority
+   - Root Programs, in the case of need
+- Audit Statement Report. This document only includes a formal statement from the auditor and reflects the result of the assessment, listing the topics covered and a global result. The summarized report is deemed public and is only published in the OGTM and Issuing Repository.
+
 # 9.  OTHER BUSINESS AND LEGAL MATTERS
 
 This section includes the stipulations for business and legal matters and should be understood as having a contractual value by all the PKI participants.
