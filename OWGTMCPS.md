@@ -13,7 +13,7 @@ date: X-December-2024
 
 copyright: |
   Copyright 2024 OISTE Foundation
-
+  <br>
   This work is licensed under the Creative Commons Attribution 4.0 International license.
 ---
 
