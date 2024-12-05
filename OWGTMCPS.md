@@ -15,11 +15,13 @@ copyright: |
 ![OISTE Logo](./media/image1.png)
 
 # 1.  INTRODUCTION
+
+
+This document represents a combined Certificate Policy (CP) and Certification Practice Statement (CPS), and describes the practices followed with regard to the management of the lifecycle the Certification Authorities adhered to the OISTE/WISeKey Global Trust Model (OWGTM from now on).
+
 ## 1.1  Overview
 
-This document represents a combined Certificate Policy (CP) and Certification Practice Statement (CPS), and describes the practices followed with regard to the management of the lifecycle the Certification Authorities adhered to the OISTE Global Trust Model.
-
-The main two legal entities involved in the control and operation of the Trust Model are:
+The main two legal entities involved in the control and operation of the OISTE/WISeKey Global Trust Model are:
 - OISTE Foundation. The International Organization for Secure Electronic Transactions (“IOSET” or “OISTE”), a Swiss non-profit foundation established in 1998, and recognized with an “Special Consultative Status” by the United Nations. The OISTE Foundation maintains a Policy Approval Authority (OFPAA or PAA) that drafts, approves and revises the policies to which WISeKey is bound to comply with under its operator contract. The PAA is composed of members of the community to which OISTE provides its Certification Authority Services, resulting in a virtuous cycle for trust management.
 - WISeKey. WISeKey is referenced in this document as the short name for the entities “WISeKey International Holding Ltd.”, “WISeKey SA” or other members of the WISeKey Holding that are mandated by OISTE to host and operate the Root Certification Authorities and the technical infrastructures required to maintain the PKI at the appropriate operational level. WISeKey also operates as a “Subordinate Certification Authority” under the OISTE Roots, according to practices disclosed in this document.
 
@@ -55,6 +57,8 @@ The purpose of this document is to disclose the Practices and Policies adopted i
 
 ## 1.3  PKI participants
 
+The following sections describe the different participant types in the OWGTM.
+
 ### 1.3.1  Certification authorities
 
 OISTE and WISeKey own and operate a number of Root and Issuing Certification Authorities (CAs) hierarchies that deliver certification Services under this CP/CPS.
@@ -64,6 +68,7 @@ These hierarchies are detailed in [Appendix B](#Appendix-B:-CA-Hierarchies) of t
 OISTE and WISeKey also own and operate a number of Time Stamping Authorities (TSA), which are regulated by their corresponding Time Stamping Policy (TSP) document.
 
 ### 1.3.2  Registration authorities
+
 The Registration Authorities are the physical or legal persons responsible for the identification of the entities requesting a certificate (referred as “applicants” when the request is in process and “subscribers” for those in possession of a certificate). The @#@CIDPKI delegates to Registration Authorities the responsibility of verifying the information provided by the applicant within a certificate request, ensuring that the requestand the process used to deliver the certificate to the subscriber meets the requirements of this CPS and the appropriate CP.
 
 The Registration Authorities in the CIDPKI are directly supervised by the CA and follow an accreditation process imposed by the CA in order to ensure that all security and operational procedures related to the certificates life-cycle are strictly enforced. Within the CIDPKI environment there exist locations named “CIDPKI Registration Point” that are the physical or virtual locations where a Registration Authority operates. These Registration Points are operated by “Registration Authority Officers”, who are authorized persons responsible for verifying the identity and veracity of a certificate request for an end entity and the delivery of the certificate once issued by the Certification Authority.
@@ -118,6 +123,9 @@ The type of certificate is determined by the combination of "Key Usage", "Extend
 In general, any usage that is not explicitly stated in section 1.4.1 of this document or the appropriate CP, is considered to be prohibited.
 
 ## 1.5  Policy administration
+
+This section describes how this document is administered. The same practices applie to all policies adopted by the OWGTM.
+
 ### 1.5.1  Organization administering the document
 
 This document is administered by the OGTM Policy Approval Authority (referred from now as PAA).
@@ -165,6 +173,7 @@ The OGTM is responsible for publication of information regarding practices, cert
 The shared repositories containing public information in the OGTM are managed by WISeKey SA or the operator of the Issuing CAs, and are available 24 hours a day, seven days a week. In the case of interruption by cause of “force majeure”, the service will be re-established in the minimum possible time.
 
 ### 2.2.1 Statement on Compliance with CA/Browser Forum requirements
+
 OISTE and WISeKey ensure the compliance with industry best practices and security controls. In particular, the trust model enforces regular review and compliance with the latest version of the “Baseline Requirements” and “Extended Validation Requirements” for the certificate profiles to which these regulations apply (these requirements are available respectively at https://cabforum.org/ )
 
 In the case of discrepancy of any certification practices with the stipulations of the CAB/Forum requirements, it must be understood that those requirements must prevail to this CPS.
@@ -246,7 +255,7 @@ In all cases, when an organization name is included in a certificate valid for s
 | --- | --- |
 | Standard Personal Certificate | Does not Apply: Individual or Organization information will not appear in these certificates |
 | Advanced Personal Certificate,<br>Qualified Personal Certificate | If the organization name is included in the certificate, the Registration Authority must verify that the Organization exists and that the certificate subscriber is authorized to enroll for a certificate including the Organization name, by means of the authorization of a representative of the same Organization.<br>In both cases is allowed to do a preauthorization of users according to a pre-validated database or the domain name used in the subscriber’s e-mail address |
-| Advanced Cualified Certificate,<br>Qualified Corporate Certificate | The Registration Authority must verify that the Organization exists and that the certificate applicant is authorized to enroll for a certificate in behalf of the Organization name, by means of the authorization of a representative of the same Organization. |
+| Advanced Personal Certificate,<br>Qualified Corporate Certificate | The Registration Authority must verify that the Organization exists and that the certificate applicant is authorized to enroll for a certificate in behalf of the Organization name, by means of the authorization of a representative of the same Organization. |
 
 #### 3.2.2.2 For TLS Server Certificates
 
@@ -265,6 +274,8 @@ The list of used validation sources is available at https://wisekey.com/reposito
 | Device Certificate | If the organization name is included in the certificate, the Registration Authority must verify that the Organization exists and that the certificate subscriber is authorized to enroll for a certificate including the Organization name |
 
 ### 3.2.3  Authentication of individual identity
+
+The following subsections describe the required practices for each subscriber certificate type.
 
 #### 3.2.3.1 For SSL Certificates
 
@@ -1276,22 +1287,86 @@ The OGTM provides a Time-Stamping Policy (CertifyID TSP) that regulates the oper
 For other data requiring time and data information, as Certificates and CRLs, it’s not mandatory to be cryptographic-based.
 
 # 7.  CERTIFICATE, CRL, AND OCSP PROFILES
+
+All certificates issued under the OGTM are compliant to:
+- ITU-T Recommendation X.509 (1997): Information Technology - Open Systems Interconnection - The Directory: Authentication Framework, June 1997
+- RFC 5280: Internet X.509 Public Key Infrastructure Certificate and CRL Profile, April 2002 (“RFC 5280”).
+
 ## 7.1  Certificate profile
+
+This section refers to the certificate profiles of Certification Authorities operating in the OISTE Trust Model.
+
 ### 7.1.1  Version number(s)
+
+All certificates in the OGTM conform to X.509 Version 3.
+
 ### 7.1.2  Certificate extensions
+
+For subordinate CA Certificates, OGTM mandates that new CAs created after 1st January 2019 must include appropriate EKU extensions, as mandated by the CABF Baseline Requirements and the main Root Certificate programs.
+
 ### 7.1.3  Algorithm object identifiers
+
+For the Root CA and subordinate CA certificates, the used algorithms are:
+- sha-1WithRSAEncryption
+- sha256WithRSAEncryption
+- ecdsa-with-sha384/256
+
 ### 7.1.4  Name forms
+
+For CA certificates, the Subject Name, by combining adequate values for commonName, Organizational Unit, Organization and Country; conforms an identifier that uniquely identifies the CA and distinguishes it from other CAs in the Trust Model.
+
 ### 7.1.5  Name constraints
+
+OGTM mandates that Issuing Certification Authorities not operated by WISeKey, as designated main operator, able to issue certificates including the EKU serverAuthentication or emailProtection, will be constrained for the issuance of certificates under a set of predefined and agreed names (domain names, e-mail suffixes or other name components). For exceptional cases where these constraints aren’t applied, these CAs will be included in the external audit for compliance assurance against any applicable requirement (including Baseline and Extended Validation Requirements from the CA/Browser Forum).
+
+Domain name constraints can be also applied when using the MPKI RA Interface for Certificate Requests for corporations having access to a dedicated Registration Authority.
+
 ### 7.1.6  Certificate policy object identifier
+
+An object identifier (OID) is a unique number that identifies an object or policy. The OIDs are administered by the OGTM and listed in the [Annex C, “OID Inventory”](#-Appendix-C:-OID-Inventory).
+
 ### 7.1.7  Usage of Policy Constraints extension
+
+
+Issuing Certification Authorities will be appropriately constrained to be compliant with CA/Browser Forum and other requirements. Issuing CAs will be constrained to disallow the issuance of their own subordinated CAs and by controlling the key usages allowed in the end-user certificates. The correctness of this information is ensured by the audit tasks executed during the Key Creation Ceremony of the CA.
+
 ### 7.1.8  Policy qualifiers syntax and semantics
+
+@#@CP
+
 ### 7.1.9 Processing semantics for the critical Certificate Policies extension
+
+The “Certificate Policy” extension identifies the Policy that the CIDPKI assigned explicitly with a certificate policy. Software Applications requiring a specific certificate profile to process a digital signature must check this extension in order to verify the suitability of the certificate for the intended purpose.
+
 ## 7.2  CRL profile
+
+In general, CRLs generated under the OGTM Trust Model are compliant with RFC 5280 (Internet X.509 Public Key Infrastructure Certificate and CRL Profile, April 2002).
+
 ### 7.2.1  Version number(s)
+
+CRLs conforming to X.509 Version 2 are supported in the OGTM.
+
 ### 7.2.2  CRL and CRL entry extensions
+
+CRL must include the following minimum extensions, as defined by the above standard:
+- CRL Number
+- Authority Key Identifier § Revocation date
+- Reason code
+
 ## 7.3  OCSP profile
+
+In general, the status of all certificates in the OGTM, except if indicated in the appropriate Certificate Policy, may be validated by sending requests compliant with RFC 6960 and/or RFC 5019.
+
+OGTM ensures compliance with any applicable requirement from the CA/Browser Forum in terms of OCSP implementation for server authentication certificates.
+
 ### 7.3.1  Version number(s)
+
+OGTM provides OCSP responses in accordance with industry standards.
+
 ### 7.3.2  OCSP extensions
+
+No stipulation.
+
 # 8.  COMPLIANCE AUDIT AND OTHER ASSESSMENTS
 
 OGTM monitors and ensures compliance to legal, security and industry requirements, in all levels of the Trust Model, through internal and external audits.
