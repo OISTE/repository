@@ -8,8 +8,8 @@ author:
 date: X-December-2024  
 
 copyright: |
-Copyright 2024 OISTE Foundation. 
-This work is licensed under the Creative Commons Attribution 4.0 International license.
+  Copyright 2024 OISTE Foundation. 
+  This work is licensed under the Creative Commons Attribution 4.0 International license.
 ---
 
 ![OISTE Logo](./media/image1.png)
