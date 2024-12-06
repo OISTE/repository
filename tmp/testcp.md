@@ -5,7 +5,7 @@ style="width:1.67573in;height:1.67573in" />
 
 OISTE Global Trust Model
 
-Certificate Policy (CP) for SSL Certificates
+Certificate Policy (CP) for TLS Certificates
 
 <table>
 <colgroup>
@@ -28,7 +28,7 @@ Certificate Policy (CP) for SSL Certificates
 <td><strong>Classification</strong>:</td>
 </tr>
 <tr>
-<td colspan="2"><strong>File</strong>: OGTM - CP SSL
+<td colspan="2"><strong>File</strong>: OWGTM - CP TLS
 Certificates.v1.6.docx</td>
 </tr>
 <tr>
@@ -181,8 +181,8 @@ sources</td>
 
 [1.1 Overview [9](#overview)](#overview)
 
-[1.1.1 The OGTM CP/CPS Documentation Framework
-[10](#the-ogtm-cpcps-documentation-framework)](#the-ogtm-cpcps-documentation-framework)
+[1.1.1 The OWGTM CP/CPS Documentation Framework
+[10](#the-OWGTM-cpcps-documentation-framework)](#the-OWGTM-cpcps-documentation-framework)
 
 [1.2 Document Name and Identification
 [10](#document-name-and-identification)](#document-name-and-identification)
@@ -961,13 +961,13 @@ Foundation describe the stipulations to be implemented by any
 Certification Authority, adhered to the OISTE Global Trust Model, in
 order to issue and manage certificates of a particular type.
 
-**This CP document discloses the stipulations related to “SSL
+**This CP document discloses the stipulations related to “TLS
 Certificates”, intended to be issued to, and used by, Software
 Applications, such web servers, requiring a “Server Authentication”
 capability. The stipulations of this CP have been defined in compliance
-of the “Baseline Requirements for SSL Certificates” issued by the
+of the “Baseline Requirements for TLS Certificates” issued by the
 CA/Browser Forum, to which all CAs operating under the OISTE Global
-Trust Model with capability to issue SSL Certificates must commit**
+Trust Model with capability to issue TLS Certificates must commit**
 
 **About the OISTE Foundation**: The International Organization for
 Secure Electronic Transactions (“IOSET” or “OISTE”), a Swiss non-profit
@@ -979,7 +979,7 @@ with under its operator contract. The PAA is composed of members of the
 community to which OISTE provides its Certification Authority Services,
 resulting in a virtuous cycle for trust management.
 
-The OISTE Global Trust Model (**OGTM from now on**) has been designed
+The OISTE Global Trust Model (**OWGTM from now on**) has been designed
 and are operated in accordance with the broad strategic direction of
 international PKI (Public Key Infrastructure) standards as well as their
 application to concrete identity frameworks in different domains (e.g.
@@ -1001,10 +1001,10 @@ Certifications Practice Statement and related Certificate Policies
 disclosed by a Certification Services Provider.
 
 The purpose of the CP documents is to disclose the Policies to be
-adopted in the **OGTM** for the issuance of digital certificates. It is
+adopted in the **OWGTM** for the issuance of digital certificates. It is
 organized in the following sections:
 
-1.  Introductions – This section. Introduces the **OGTM** and this
+1.  Introductions – This section. Introduces the **OWGTM** and this
     document.
 
 2.  Publication and Repositories Responsibilities – Describes the
@@ -1019,36 +1019,36 @@ organized in the following sections:
     their requirements.
 
 5.  Management, Operational and Physical Controls – Describes the
-    controls enforced in the **OGTM** to provide adequate trust levels
+    controls enforced in the **OWGTM** to provide adequate trust levels
     in the certificates issued under the Trust Model.
 
 6.  Technical Security Controls – Discloses the security controls
-    adopted in the **OGTM**.
+    adopted in the **OWGTM**.
 
 7.  Certificate and CRL Profiles – Describes the technical details of
-    the different certificate types issued under the **OGTM**.
+    the different certificate types issued under the **OWGTM**.
 
 8.  Compliance Audit and other Assessment – Discloses the audit policies
-    followed in the **OGTM** to ensure that the participant fulfils the
+    followed in the **OWGTM** to ensure that the participant fulfils the
     security and quality requirements.
 
 9.  Other Business and Legal Matters – This section exposes the
     commercial, legal and contractual aspects involved in the usage of
-    certificates issued in the **OGTM**.
+    certificates issued in the **OWGTM**.
 
-### The OGTM CP/CPS Documentation Framework
+### The OWGTM CP/CPS Documentation Framework
 
-The main information disclosed by the **OGTM** in order to expose its
+The main information disclosed by the **OWGTM** in order to expose its
 practices and policies in the issuance and usages of digital
 certificates are:
 
 -   The Certification Practices Statement (CPS) –The CPS is a statement
     of the practices that every Certification Authority operating under
-    the **OGTM** Trust Model employs in issuing, managing, revoking, and
+    the **OWGTM** Trust Model employs in issuing, managing, revoking, and
     renewing or re-keying certificates. This CPS document discloses the
     stipulations related to the issuance of Subordinate CA Certificates,
     assigned to entities acting as “Issuing Certification Authorities”
-    under the **OGTM**. Those entities must publish their own CPS to
+    under the **OWGTM**. Those entities must publish their own CPS to
     disclose the stipulations related to end-entity certification
     practices. ***Any explicit mention to a CP document must be
     understood as referring to the appropriate CP document for the
@@ -1079,7 +1079,7 @@ stipulated in the CPS published by the Issuing CA”*.
 <tbody>
 <tr>
 <td><strong>Name</strong></td>
-<td>OGTM Certificate Policy for SSL Certificates</td>
+<td>OWGTM Certificate Policy for TLS Certificates</td>
 </tr>
 <tr>
 <td><strong>Version</strong></td>
@@ -1105,7 +1105,7 @@ stipulated in the CPS published by the Issuing CA”*.
 ### Certification authorities
 
 The current full list of Certification Authorities that have been
-authorized by OISTE to operate under the **OGTM** and implement this
+authorized by OISTE to operate under the **OWGTM** and implement this
 particular CP is disclosed in **http://www.oiste.org/repository**.
 
 ### Registration authorities
@@ -1139,10 +1139,10 @@ communication servers, by means of authentication and encryption.
 ### Relying parties
 
 All persons and entities that trust the certificates issued by
-certification authorities operating under the **OGTM** Trust Model are
+certification authorities operating under the **OWGTM** Trust Model are
 considered to be “relying parties” (or trusted third parties). These
 relying parties do not necessarily need to be a subscriber of an
-**OGTM** certificate but are requested to accept the “Relying Party
+**OWGTM** certificate but are requested to accept the “Relying Party
 agreement “, as disclosed by the Issuing CA in its CPS.
 
 ### Other participants
@@ -1168,10 +1168,10 @@ agreement “, as disclosed by the Issuing CA in its CPS.
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">OISTE Standard DV SSL<a href="#fn1"
+<td style="text-align: left;">OISTE Standard DV TLS<a href="#fn1"
 class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
 Certificate</td>
-<td style="text-align: left;"><p>Medium assurance SSL/TLS
+<td style="text-align: left;"><p>Medium assurance TLS/TLS
 certificate.</p>
 <p>All identification attributes in the certificate are verified. The
 control on the Internet Domain is validated. Compliant with CA/Browser
@@ -1180,8 +1180,8 @@ Forum Baseline Requirements.</p></td>
 Authentication</td>
 </tr>
 <tr>
-<td style="text-align: left;">OISTE Advanced OV SSL Certificate</td>
-<td style="text-align: left;"><p>High assurance SSL/TLS certificate.</p>
+<td style="text-align: left;">OISTE Advanced OV TLS Certificate</td>
+<td style="text-align: left;"><p>High assurance TLS/TLS certificate.</p>
 <p>All identification attributes in the certificate are verified. The
 Identity of the organization is validated. Compliant with CA/Browser
 Forum Baseline Requirements.</p></td>
@@ -1189,8 +1189,8 @@ Forum Baseline Requirements.</p></td>
 Authentication</td>
 </tr>
 <tr>
-<td style="text-align: left;">OISTE Advanced EV SSL Certificate</td>
-<td style="text-align: left;"><p>High assurance SSL/TLS certificate.</p>
+<td style="text-align: left;">OISTE Advanced EV TLS Certificate</td>
+<td style="text-align: left;"><p>High assurance TLS/TLS certificate.</p>
 <p>All identification attributes in the certificate are verified. The
 Identity of the organization is validated. Compliant with CA/Browser
 Requirements for Extended Validation.</p></td>
@@ -1203,7 +1203,7 @@ Authentication</td>
 role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Note: SSL Certificates can be offered in different
+<li id="fn1"><p>Note: TLS Certificates can be offered in different
 versions (e.g. Wildcard or Unified Communications), but always according
 to the applicable base CP and CA/Browser Forum requirements.<a
 href="#fnref1" class="footnote-back" role="doc-backlink">REF</a></p></li>
@@ -1219,7 +1219,7 @@ this document, is considered to be prohibited.
 
 ### Organization administering the document
 
-This document is administered by the **OGTM Policy Approval Authority**
+This document is administered by the **OWGTM Policy Approval Authority**
 (referred from now as **PAA**).
 
 The **PAA** has a series of distinct functions but does not operate as a
@@ -1240,7 +1240,7 @@ Foundation.
 <tbody>
 <tr>
 <td><strong>Name</strong></td>
-<td>OISTE Foundation - OGTM Policy Approval Authority</td>
+<td>OISTE Foundation - OWGTM Policy Approval Authority</td>
 </tr>
 <tr>
 <td><strong>email address</strong></td>
@@ -1258,14 +1258,14 @@ CH-1216 Cointrin - Geneva (Switzerland)</td>
 
 The competent entity which determines the compliance and suitability of
 all CPS and the different supported CPs on behalf of the entire Trust
-Model is the **OGTM PAA**.
+Model is the **OWGTM PAA**.
 
 ### CPS approval procedures
 
-The **OGTM PAA** defines and executes the procedures related to the
+The **OWGTM PAA** defines and executes the procedures related to the
 approval of the CPS and CP and its subsequent amendments. Amendments
 will produce a new version of the document that will be published in the
-**OGTM** Policy Repository (specified in section 2.1 of this document).
+**OWGTM** Policy Repository (specified in section 2.1 of this document).
 
 The approval of major changes of documents related to the PKI, and
 specially for the CPS and CP, require a meeting of the PAA and the
@@ -1285,13 +1285,13 @@ Definitions and Acronyms are included in Annex A (Glossary).
 
 This section contains the provisions regarding the publication of
 policies, certificates and other public information needed for the
-participants to interoperate with the **OGTM**, in what respects in
+participants to interoperate with the **OWGTM**, in what respects in
 particular to the certificates issued to Persons. The general
 stipulations will be published in the appropriate CPS.
 
 ## Repositories
 
-The main repositories of the **OGTM** are:
+The main repositories of the **OWGTM** are:
 
 -   Policies repository for disclosure of CP, CPS and related
     information. This repository is a set of web pages and services
@@ -1309,7 +1309,7 @@ The main repositories of the **OGTM** are:
 The CPS and CP documents will be published every time they are modified,
 with a minimum review period of one year.
 
-A certificate issued by any CA under the **OGTM** will be published
+A certificate issued by any CA under the **OWGTM** will be published
 immediately after its issuance.
 
 In the case of revocation of a certificate, the appropriate CA will
@@ -1322,7 +1322,7 @@ include this revocation information in the Certificate Revocation Lists
 
 # Identification and Authentication
 
-The **OGTM** mandates the fulfilment of a set of required minimum
+The **OWGTM** mandates the fulfilment of a set of required minimum
 controls that ensure the authenticity of the data included in
 certificates. These controls are enforced during the full lifecycle of
 certificates, certificate requests, and related documents. If
@@ -1331,7 +1331,7 @@ it will be explicitly indicated in the appropriate CP document and/or in
 the certificate itself.
 
 **This document reflects the common practices to be implemented by an
-Issuing CA authorized to issue SSL Certificates.**
+Issuing CA authorized to issue TLS Certificates.**
 
 **If this CP allows multiple practices for a particular section, it must
 be understood that this CP will stipulate all the allowed practices and
@@ -1341,7 +1341,7 @@ practices are implemented and the relevant details on the process.**
 ## Naming
 
 This section describes the elements regarding naming and identifying the
-subscribers of **OGTM** certificates.
+subscribers of **OWGTM** certificates.
 
 ### Types of names
 
@@ -1359,17 +1359,17 @@ form.
 
 ### Anonymity of subscribers and pseudonyms
 
-This CP doesn’t allow anonymity or pseudonyms in the SSL certificates.
+This CP doesn’t allow anonymity or pseudonyms in the TLS certificates.
 
 ### Rules for interpreting various name forms
 
-The rules used in the **OGTM** to interpret the distinguished names of
+The rules used in the **OWGTM** to interpret the distinguished names of
 certificates issued under its Trust Model are defined by the ISO/IEC
 9595 (X.500) Distinguished Name (DN) standard.
 
 ### Uniqueness of names
 
-The uniqueness of names for SSL Certificates must be assured by
+The uniqueness of names for TLS Certificates must be assured by
 *requiring a combination of domain names, organization name
 combined/associated with a unique serial integer.*
 
@@ -1392,7 +1392,7 @@ key, or equivalent methods implemented by the Issuing CA.
 
 ### Authentication of organization identity
 
-The authentication of organization identity for SSL certificates will
+The authentication of organization identity for TLS certificates will
 follow the following rules. **The Issuing CA must detail in its CPS
 which of the methods are used and how are implemented.**
 
@@ -1409,16 +1409,16 @@ which of the methods are used and how are implemented.**
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">OISTE Standard DV SSL Certificate</td>
+<td style="text-align: left;">OISTE Standard DV TLS Certificate</td>
 <td>The Issuing CA must validate the Applicant’s right to use or control
 each domain name that will be listed in the Subject Alternative Name
 field of a Certificate by using at least one of the procedures listed in
 section 3.2.2.4 o the Baseline Requirements.</td>
 </tr>
 <tr>
-<td style="text-align: left;">OISTE Advanced OV SSL Certificate</td>
+<td style="text-align: left;">OISTE Advanced OV TLS Certificate</td>
 <td><p>The Issuing CA must execute the domain validation procedures as
-required for DV SSL certificates.</p>
+required for DV TLS certificates.</p>
 <p>Additionally, the Issuing CA must verify:</p>
 <ul>
 <li><p>The identity and address of the Applicant using the procedures
@@ -1431,9 +1431,9 @@ Requirements.</p></li>
 </ul></td>
 </tr>
 <tr>
-<td style="text-align: left;">OISTE Advanced EV SSL Certificate</td>
+<td style="text-align: left;">OISTE Advanced EV TLS Certificate</td>
 <td><p>The Issuing CA must execute the domain validation procedures as
-required for DV and OV SSL certificates.</p>
+required for DV and OV TLS certificates.</p>
 <p>Additionally, the Issuing CA must do the specific validations
 mandated by the EV Guidelines issued by the CAB/Forum.</p></td>
 </tr>
@@ -1449,18 +1449,18 @@ The RA designated by the Issuing CA should obtain from the Applicant a
 valid Photo-ID issued by a competent government. Further identity proofs
 can be required if necessary.
 
-*In particular for EV SSL certificates, the Issuing CA must endure
+*In particular for EV TLS certificates, the Issuing CA must endure
 compliance with the EV Guidelines.*
 
 ### Non-verified subscriber information
 
-**OGTM** doesn’t allow to include non-verified identity-related
+**OWGTM** doesn’t allow to include non-verified identity-related
 information in any certificate issued by a certification authority
 operating in the trust model.
 
 ### Validation of authority
 
-The validation of authority for SSL certificates will follow the
+The validation of authority for TLS certificates will follow the
 following rules. **The Issuing CA must detail in its CPS which of the
 methods are used and how are implemented.**
 
@@ -1477,19 +1477,19 @@ methods are used and how are implemented.**
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">OISTE Standard DV SSL Certificate</td>
+<td style="text-align: left;">OISTE Standard DV TLS Certificate</td>
 <td>The Issuing CA must verify the authority of the requester is
 verified by using one or more of the procedures listed in section
 3.2.2.4. of the Baseline Requirements.</td>
 </tr>
 <tr>
-<td style="text-align: left;">OISTE Advanced OV SSL Certificate</td>
+<td style="text-align: left;">OISTE Advanced OV TLS Certificate</td>
 <td>The Issuing CA must verify the authority of the requester is
 verified by using one or more of the procedures listed in section 3.2.5.
 of the Baseline Requirements.</td>
 </tr>
 <tr>
-<td style="text-align: left;">OISTE Advanced EV SSL Certificate</td>
+<td style="text-align: left;">OISTE Advanced EV TLS Certificate</td>
 <td>The Issuing CA must apply the requirements of section 11.8.3 of the
 EV Guidelines.</td>
 </tr>
@@ -1520,12 +1520,12 @@ authenticating himself with one of these methods:
 -   A valid digital certificate linked to the user account
 
 The information of the subscriber must be revalidated periodically, in
-particular for SSL Certificates the maximum reuse period is as defined
+particular for TLS Certificates the maximum reuse period is as defined
 by the CAB/Forum (397 days).
 
 ### Identification and authentication for re-key after revocation
 
-The **OGTM** does not support re-key of certificates after revocation.
+The **OWGTM** does not support re-key of certificates after revocation.
 The subscriber must apply for a new digital certificate by using the
 same procedures as for its issuance.
 
@@ -1561,12 +1561,12 @@ a Certificate.
 ## Certificate Application Processing
 
 This section describes the procedures for processing certificate
-applications in the **OGTM** Trust Model.
+applications in the **OWGTM** Trust Model.
 
 ### Performing identification and authentication functions
 
 The identification and authentication functions can be delegated by the
-Issuing CA to the Registration Authorities operating under the **OGTM**.
+Issuing CA to the Registration Authorities operating under the **OWGTM**.
 
 The steps to be executed by the Issuing CA or RA are as follows:
 
@@ -1624,7 +1624,7 @@ responsible.
 
 ### Publication of the certificate by the CA
 
-The CAs operating under the **OGTM** publish all issued certificates as
+The CAs operating under the **OWGTM** publish all issued certificates as
 specified in section 2 of this document.
 
 ### Notification of certificate issuance by the CA to other entities
@@ -1633,7 +1633,7 @@ specified in section 2 of this document.
 
 ## Key Pair and Certificate Usage
 
-The certificates issued by the **OGTM** are used to provide
+The certificates issued by the **OWGTM** are used to provide
 authenticity, integrity, confidentiality and/or non-repudiation in
 electronic transactions and other computerized functions.
 
@@ -1661,7 +1661,7 @@ certificate.
 
 ### Circumstance for certificate renewal
 
-For SSL Certificates it is allowed the certificate renewal for the
+For TLS Certificates it is allowed the certificate renewal for the
 purpose of extending the validity period and always considering the
 requirements for re-verification periods stipulated in section 3.3 of
 this CP.
@@ -1686,7 +1686,7 @@ than the initial issuance*.*
 
 ### Publication of the renewal certificate by the CA
 
-The CAs operating under the **OGTM** publish all issued certificates as
+The CAs operating under the **OWGTM** publish all issued certificates as
 specified in section 2 of this document.
 
 ### Notification of certificate issuance by the CA to other entities
@@ -1723,7 +1723,7 @@ than the initial issuance*.*
 
 ### Publication of the re-keyed certificate by the CA
 
-The CAs operating under the **OGTM** publish all issued certificates as
+The CAs operating under the **OWGTM** publish all issued certificates as
 specified in section 2 of this document.
 
 ### Notification of certificate issuance by the CA to other entities
@@ -1732,7 +1732,7 @@ specified in section 2 of this document.
 
 ## Certificate Modification
 
-The **OGTM** does not allow the modification of certificates during
+The **OWGTM** does not allow the modification of certificates during
 their validity period. If the information contained in a certificate
 ceases to be valid, or the circumstances of the subscriber change in
 such a manner that the conditions expressed in the CPS or the CP are not
@@ -1769,16 +1769,16 @@ Does not apply.
 
 ## Certificate Revocation and Suspension
 
-All Certification Authorities operating under the **OGTM** ensure, by
+All Certification Authorities operating under the **OWGTM** ensure, by
 establishing the necessary means, that a certificate that compromises
 the Trust Model for any reason is prevented from being used by either
 revoking or suspending that certificate.
 
 Suspension of certificates is only supported for personal and device
-certificates, and explicitly disallowed for SSL certificates, according
+certificates, and explicitly disallowed for TLS certificates, according
 to the CA/Browser Forum requirements, and therefore is disallowed for
 any certificate existing under an OISTE Root which is approved to issue
-publicly trusted SSL certificates.
+publicly trusted TLS certificates.
 
 The stipulations for this section must be disclosed in the CPS, and
 therefore the reader must refer to that document for more information.
@@ -1833,7 +1833,7 @@ No stipulations.
 
 ### Circumstances for suspension
 
-*Suspension is not permitted for SSL Certificates.*
+*Suspension is not permitted for TLS Certificates.*
 
 ### Who can request suspension
 
@@ -1849,7 +1849,7 @@ No stipulations.
 
 ## Certificate Status Services
 
-**For SSL Certificates, the Issuing CA must provide certificate status
+**For TLS Certificates, the Issuing CA must provide certificate status
 validation services, by means of Certificate Revocation Lists and OCSP
 responder. The details of such services must be detailed in the CPS
 published by the Issuing CA.**
@@ -1872,7 +1872,7 @@ No stipulation.
 
 ## Key Escrow and Recovery
 
-Key escrow is not permitted for SSL Certificates.
+Key escrow is not permitted for TLS Certificates.
 
 ### Key escrow and recovery policy and practices
 
@@ -2082,17 +2082,17 @@ Key escrow is not permitted for SSL Certificates.
 
 *Most of the stipulations of this section will refer to the CPS
 published by the Issuing CA. In the following sections only particular
-policies for SSL Certificates are stipulated, when appropriate.*
+policies for TLS Certificates are stipulated, when appropriate.*
 
 ## Key Pair Generation and Installation
 
-Under the **OGTM**, Key Pairs are generated under the necessary security
+Under the **OWGTM**, Key Pairs are generated under the necessary security
 levels and always occurring in secure physical facilities and under the
 adequate personnel control.
 
 ### Key pair generation
 
-Key Pairs for SSL Certificates can be generated by software components,
+Key Pairs for TLS Certificates can be generated by software components,
 except the “OISTE Qualified Personal/Corporate Certificates”, which must
 be generated in Secure Signature Hardware Devices (FIPS 140-1 Level 2
 and equivalents, or higher).
@@ -2115,21 +2115,21 @@ module, depending on the level of assurance desired.
 
 ### Key sizes
 
-The **CIDPKI** enforces the use of minimum length 2048-bit RSA and ECC
+The **OWGTM** enforces the use of minimum length 2048-bit RSA and ECC
 NIST P-256, P-384 for key pairs at all levels of the hierarchy.
 
 Hashing algorithms supported is SHA-2, with different supported variants
 depending on the hierarchy to which the end-entity certificate belongs,
-as described in 1.3.1. In particular, no issuance of new SHA-1 SSL or CA
+as described in 1.3.1. In particular, no issuance of new SHA-1 TLS or CA
 certificates after 31-December-2015.
 
 ### Public key parameters generation and quality checking
 
-The algorithm used in the **OGTM** for key generation is RSA or ECC.
+The algorithm used in the **OWGTM** for key generation is RSA or ECC.
 
 ### Key usage purposes (as per X.509 v3 key usage field)
 
-SSL Certificates assert key usages based on the intended application of
+TLS Certificates assert key usages based on the intended application of
 the Key Pair. In particular, Certificates to be used for digital
 signatures (including authentication) set the digitalSignature and
 keyEncipherment bits.
@@ -2156,7 +2156,7 @@ the Issuing CA.*
 
 ### Private key backup
 
-*Backup for SSL Certificates is considered equivalent of escrow and not
+*Backup for TLS Certificates is considered equivalent of escrow and not
 permitted, as stipulated in section 4.12 of this CP and in the CPS
 published by the Issuing CA.*
 
@@ -2199,7 +2199,7 @@ management.
 
 ### Certificate operational periods and key pair usage periods
 
-For SSL Certificates, the Certificate operational period is equivalent
+For TLS Certificates, the Certificate operational period is equivalent
 to the key pair usage period and limited to 397 days.
 
 ## Activation Data
@@ -2256,7 +2256,7 @@ No stipulation.
 
 # Certificate and CRL Profiles
 
-All certificates issued under the **OGTM** are compliant to:
+All certificates issued under the **OWGTM** are compliant to:
 
 -   ITU-T Recommendation X.509 (1997): Information Technology - Open
     Systems Interconnection - The Directory: Authentication Framework,
@@ -2267,21 +2267,21 @@ All certificates issued under the **OGTM** are compliant to:
 
 ## Certificate Profile
 
-This section refers to the certificate profiles of SSL Certificates
+This section refers to the certificate profiles of TLS Certificates
 issued under the OISTE Trust Model.
 
 ### Version number(s)
 
-All certificates in the **OGTM** conform to X.509 Version 3.
+All certificates in the **OWGTM** conform to X.509 Version 3.
 
 ### Certificate extensions
 
-The different extension profiles for SSL Certificates are listed below.
+The different extension profiles for TLS Certificates are listed below.
 This information is included as basic reference. Issuing CAs must
 conform to the allowed certificate profiles mandated by the CAB/F
 Baseline Requirements.
 
-#### OISTE Standard DV SSL Certificate
+#### OISTE Standard DV TLS Certificate
 
 <table>
 <colgroup>
@@ -2359,7 +2359,7 @@ Authentication</td>
 </tbody>
 </table>
 
-#### OISTE Advanced OV SSL Certificate
+#### OISTE Advanced OV TLS Certificate
 
 <table>
 <colgroup>
@@ -2438,7 +2438,7 @@ Authentication</td>
 </tbody>
 </table>
 
-#### OISTE Advanced EV SSL Certificate
+#### OISTE Advanced EV TLS Certificate
 
 <table>
 <colgroup>
@@ -2535,7 +2535,7 @@ The allowed Algorithm object identifiers are:
 
 ### Name forms
 
-Certificates issued under the **OGTM** contain the “Distinguished Name”,
+Certificates issued under the **OWGTM** contain the “Distinguished Name”,
 in X.500 format, for the issuer and the subscriber, set in the fields
 “Issuer Name” and “Subject Name” respectively.
 
@@ -2546,7 +2546,7 @@ No stipulation for subscriber certificates.
 ### Certificate policy object identifier
 
 An object identifier (OID) is a unique number that identifies an object
-or policy. The OIDs are administered by the **OGTM** and listed in the
+or policy. The OIDs are administered by the **OWGTM** and listed in the
 Annex B of the CPS published by the OISTE Foundation, “OID Inventory”.
 
 In particular for this CP, the following OID can be used:
@@ -2556,26 +2556,26 @@ In particular for this CP, the following OID can be used:
 **&lt;PUBLIC-ARCH&gt;.4 – OISTE Certificate Policy Identifiers
 (legacy)**
 
-> 4.3.2.1.4 – OISTE Advanced SSL Certificate
+> 4.3.2.1.4 – OISTE Advanced TLS Certificate
 
 **&lt;PUBLIC-ARCH&gt;.7 – OISTE Certificate Policy Identifiers
 (current)**
 
-> 7.4.6 – OISTE Standard SSL Certificate
+> 7.4.6 – OISTE Standard TLS Certificate
 >
-> 7.4.7 – OISTE Advanced OV SSL Certificate
+> 7.4.7 – OISTE Advanced OV TLS Certificate
 >
-> 7.4.8 – OISTE Advanced EV SSL Certificate
+> 7.4.8 – OISTE Advanced EV TLS Certificate
 
-**CAB/Forum Policy qualifiers for SSL Certificates (can be added to or
+**CAB/Forum Policy qualifiers for TLS Certificates (can be added to or
 can substitute the OISTE OIDs when used in Publicly-Trusted
 certificates)**
 
-> 2.23.140.1.2.1 – OISTE Standard SSL Certificate
+> 2.23.140.1.2.1 – OISTE Standard TLS Certificate
 >
-> 2.23.140.1.2.2 – OISTE OV SSL Certificate
+> 2.23.140.1.2.2 – OISTE OV TLS Certificate
 >
-> 2.23.140.1.1 – OISTE EV SSL Certificate
+> 2.23.140.1.1 – OISTE EV TLS Certificate
 
 ### Usage of Policy Constraints extension
 
@@ -2590,20 +2590,20 @@ additional stipulations in its CPS for CA certificates.
 ### Processing semantics for the critical Certificate Policies extension
 
 The “Certificate Policy” extension identifies the Policy that the
-**OGTM** assigned explicitly to a certificate profile. Software
+**OWGTM** assigned explicitly to a certificate profile. Software
 Applications requiring a specific certificate profile to process a
 digital signature must check this extension in order to verify the
 suitability of the certificate for the intended purpose.
 
 ## CRL Profile
 
-In general, CRLs generated under the **OGTM** Trust Model must be
+In general, CRLs generated under the **OWGTM** Trust Model must be
 compliant with RFC 5280 (Internet X.509 Public Key Infrastructure
 Certificate and CRL Profile, April 2002).
 
 ### Version number(s)
 
-CRLs conforming to X.509 Version 2 are supported in the **OGTM**.
+CRLs conforming to X.509 Version 2 are supported in the **OWGTM**.
 
 ### CRL Profile and CRL entry extensions
 
@@ -2621,11 +2621,11 @@ above standard:
 ## OCSP Profile
 
 Issuing CAs can optionally provide OCSP services for particular types of
-SSL Certificates.
+TLS Certificates.
 
 ### Version number(s)
 
-**OGTM** provides OCSP responses in accordance with industry standards.
+**OWGTM** provides OCSP responses in accordance with industry standards.
 
 ### OCSP extensions
 
@@ -2955,7 +2955,7 @@ SAN Subject Alternative Name
 
 SHA Secure Hashing Algorithm
 
-SSL Secure Sockets Layer
+TLS Secure Sockets Layer
 
 TLD Top‐Level Domain
 
