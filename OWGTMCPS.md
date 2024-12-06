@@ -22,7 +22,7 @@ This document represents a combined Certificate Policy (CP) and Certification Pr
 ## 1.1  Overview
 
 The main two legal entities involved in the control and operation of the OISTE/WISeKey Global Trust Model are:
-- OISTE Foundation. The International Organization for Secure Electronic Transactions (“IOSET” or “OISTE”), a Swiss non-profit foundation established in 1998, and recognized with an “Special Consultative Status” by the United Nations. The OISTE Foundation maintains a Policy Approval Authority (OFPAA or PAA) that drafts, approves and revises the policies to which WISeKey is bound to comply with under its operator contract. The PAA is composed of members of the community to which OISTE provides its Certification Authority Services, resulting in a virtuous cycle for trust management.
+- OISTE Foundation. The International Organization for Secure Electronic Transactions (“IOSET” or “OISTE”), a Swiss non-profit foundation established in 1998, and recognized with an “Special Consultative Status” by the United Nations. The OISTE Foundation maintains a Policy Approval Authority (PAA) that drafts, approves and revises the policies to which WISeKey is bound to comply with under its operator contract. The PAA is composed of members of the community to which OISTE provides its Certification Authority Services, resulting in a virtuous cycle for trust management.
 - WISeKey. WISeKey is referenced in this document as the short name for the entities “WISeKey International Holding Ltd.”, “WISeKey SA” or other members of the WISeKey Holding that are mandated by OISTE to host and operate the Root Certification Authorities and the technical infrastructures required to maintain the PKI at the appropriate operational level. WISeKey also operates as a “Subordinate Certification Authority” under the OISTE Roots, according to practices disclosed in this document.
 
 The OISTE Global Trust Model (OWGTM from now on) has been designed and are operated in accordance with the broad strategic direction of international PKI (Public Key Infrastructure) standards as well as their application to concrete identity frameworks in different domains (e.g. ID cards, passports, health cards, Internet of Things) and is intended to serve as a common Trust Model for Certification Authorities worldwide that comply with OISTE requirements.
@@ -69,7 +69,7 @@ OISTE and WISeKey also own and operate a number of Time Stamping Authorities (TS
 
 ### 1.3.2  Registration authorities
 
-The Registration Authorities are the physical or legal persons responsible for the identification of the entities requesting a certificate (referred as “applicants” when the request is in process and “subscribers” for those in possession of a certificate). The OWGTM delegates to Registration Authorities the responsibility of verifying the information provided by the applicant within a certificate request, ensuring that the requestand the process used to deliver the certificate to the subscriber meets the requirements of this CPS and the appropriate CP.
+The Registration Authorities are the physical or legal persons responsible for the identification of the entities requesting a certificate (referred as “applicants” when the request is in process and “subscribers” for those in possession of a certificate). The OWGTM delegates to Registration Authorities the responsibility of verifying the information provided by the applicant within a certificate request, ensuring that the request and the process used to deliver the certificate to the subscriber meets the requirements of this CPS and the appropriate CP.
 
 The Registration Authorities in the OWGTM are directly supervised by the CA and follow an accreditation process imposed by the CA in order to ensure that all security and operational procedures related to the certificates life-cycle are strictly enforced. Within the OWGTM environment there exist locations named “OWGTM Registration Point” that are the physical or virtual locations where a Registration Authority operates. These Registration Points are operated by “Registration Authority Officers”, who are authorized persons responsible for verifying the identity and veracity of a certificate request for an end entity and the delivery of the certificate once issued by the Certification Authority.
 
@@ -91,7 +91,7 @@ This document details the particular community of subscribers to whom each type 
 
 ### 1.3.4 Relying parties
 
-All natura and legal persons and other entities that trust the certificates issued by certification authorities operating under the OWGTM Trust Model are considered to be “relying parties”. These relying parties do not necessarily need to be a subscriber of an OWGTM certificate, but are requested to accept the “CertifyID Relying Party agreement“, available at http://oiste.org/repository.
+All natural and legal persons and other entities that trust the certificates issued by certification authorities operating under the OWGTM Trust Model are considered to be “relying parties”. These relying parties do not necessarily need to be a subscriber of an OWGTM certificate, but are requested to accept the “CertifyID Relying Party agreement“, available at http://oiste.org/repository.
 
 In the OWGTM, a particular type of certificate could limit the right to be a relying party for that particular type of certificate, if this is the case, a specific Relying Party agreement would be published.
 
@@ -124,7 +124,7 @@ In general, any usage that is not explicitly stated in section 1.4.1 of this doc
 
 ## 1.5  Policy administration
 
-This section describes how this document is administered. The same practices applie to all policies adopted by the OWGTM.
+This section describes how this document is administered. The same practices apply to all policies adopted by the OWGTM.
 
 ### 1.5.1  Organization administering the document
 
@@ -163,7 +163,7 @@ Definitions and Acronyms are included in [Annex A](#-Appendix-A:-Glossary)
 
 The main repositories of the OWGTM are:
 - Policies repository for disclosure of CP/CPS and related information. This repository is a set of web pages and services available at the URLs https://oiste.org and https://wisekey.com/repository
-- Certificate and Certificate Revocation information repositories. The CA certificates and Certificate Revocation Information sources are included, when relevant, as CDP and AIA extensions in the certificates issued under the OSITE Root CAs
+- Certificate and Certificate Revocation information repositories. The CA certificates and Certificate Revocation Information sources are included, when relevant, as CDP and AIA extensions in the certificates issued under the OISTE Root CAs
 - Public Certificate repositories. Publicly accessible certificate information repositories optionally maintained by the operators of the Certification Authorities operating under the OWGTM are disclosed appropriately to the relying parties of these certificates
 
 ## 2.2  Publication of certification information
@@ -192,7 +192,7 @@ The OWGTM makes its Repository publicly available in a read-only manner.
 
 # 3. IDENTIFICATION AND AUTHENTICATION
 
-The OWGTM mandates the fulfilment of a set of required minimum controls that ensure the authenticity of the data included in certificates. These controls are enforced during the full lifecycle of certificates, certificate requests, and related documents
+The OWGTM mandates the fulfillment of a set of required minimum controls that ensure the authenticity of the data included in certificates. These controls are enforced during the full lifecycle of certificates, certificate requests, and related documents
 
 ## 3.1  Naming
 
@@ -218,7 +218,7 @@ The rules used in the OWGTM to interpret the distinguished names of certificates
 
 ### 3.1.5  Uniqueness of names
 
-OWGTM requires uniqueness of names in the certificates issued by the Roots, except in the case of reissuances or renewals for the same entity.
+OWGTM requires uniqueness of names in the certificates issued by the Roots, except in the case of re-issuances or renewals for the same entity.
 
 For subscriber certificates, uniqueness of certificates is generally not enforced.
 
@@ -231,7 +231,7 @@ or trademarks.
 
 ## 3.2  Initial identity validation
 
-OWGTM performs “face to face” identity validation for the certificates issued by the Roots. Stipulations related to subscriber certificates are defined in the followinfg sections.
+OWGTM performs “face to face” identity validation for the certificates issued by the Roots. Stipulations related to subscriber certificates are defined in the following sections.
 
 In general, any Issuing CA operating in the OWGTM and issuing TLS/TLS or S/MIME certificates, must ensure compliance with the baseline requirements and extended validation guidelines mandated by the CA/Browser Forum.
 
@@ -249,12 +249,12 @@ Before issuing a certificate for a subordinate Certification Authority OWGTM req
 
 #### 3.2.2.1 For Personal Certificates
 
-In all cases, when an organization name is included in a certificate valid for secure email, the organization validaiton will follow the CA/B Forum Baseline Requirements for the Issuance and Management of Publicly-Trusted S/MIME Certificates.
+In all cases, when an organization name is included in a certificate valid for secure email, the organization validation will follow the CA/B Forum Baseline Requirements for the Issuance and Management of Publicly-Trusted S/MIME Certificates.
 
 | CP Identifier | Validation Policy |
 | --- | --- |
 | Standard Personal Certificate | Does not Apply: Individual or Organization information will not appear in these certificates |
-| Advanced Personal Certificate,<br>Qualified Personal Certificate | If the organization name is included in the certificate, the Registration Authority must verify that the Organization exists and that the certificate subscriber is authorized to enroll for a certificate including the Organization name, by means of the authorization of a representative of the same Organization.<br>In both cases is allowed to do a preauthorization of users according to a pre-validated database or the domain name used in the subscriber’s e-mail address |
+| Advanced Personal Certificate,<br>Qualified Personal Certificate | If the organization name is included in the certificate, the Registration Authority must verify that the Organization exists and that the certificate subscriber is authorized to enroll for a certificate including the Organization name, by means of the authorization of a representative of the same Organization.<br>In both cases is allowed to do a pre-authorization of users according to a pre-validated database or the domain name used in the subscriber’s e-mail address |
 | Advanced Personal Certificate,<br>Qualified Corporate Certificate | The Registration Authority must verify that the Organization exists and that the certificate applicant is authorized to enroll for a certificate in behalf of the Organization name, by means of the authorization of a representative of the same Organization. |
 
 #### 3.2.2.2 For TLS Server Certificates
@@ -332,7 +332,7 @@ The applicable revalidation requirements set by the CA/B Forum for the particula
 
 ### 3.3.2  Identification and authentication for re-key after revocation
 
-The OWGTM does not support re-key of certificates after revocation. The subscriber must apply for a new digital certificate by using the same procedures as for its issuanc
+The OWGTM does not support re-key of certificates after revocation. The subscriber must apply for a new digital certificate by using the same procedures as for its issuance.
 
 ## 3.4 Identification and authentication for revocation request
 
@@ -387,7 +387,7 @@ The Issuing CA can only issue a certificate after having successfully completed 
 
 **In particular for TLS/TLS Certificates:**
 
-In compliance with the CA/Browser Forum Baseline Requirements, prior to issuing TLS Digital Certificates, WISeKey automatedly checks for CAA records for each dNSName in the subjectAltName extension of the Digital Certificate to be issued.
+In compliance with the CA/Browser Forum Baseline Requirements, prior to issuing TLS Digital Certificates, WISeKey performs automated checks for CAA records for each dNSName in the subjectAltName extension of the Digital Certificate to be issued.
 When processing CAA records, WISeKey processes the issue, issuewild, and iodef property tags as specified in RFC 6844 as amended by Errata 5065. WISeKey will not issue a Digital Certificate if an unrecognized property is found with the critical flag.
 
 WISeKey documents potential issuances that were prevented by a CAA record, and will dispatch reports of such issuance requests to the contact stipulated in the CAA iodef record(s), if present. WISeKey support mailto: and https: URL schemes in the iodef record.
@@ -396,7 +396,7 @@ The main identifying CAA domain for WISeKey is ‘wisekey.com’. Other accepted
 
 **In particular for S/MIME Certificates:**
 
-In compliance with the CA/Browser Forum Baseline Requirements, prior to issuing S/MIME Digital Certificates, WISeKey automatedly checks for CAA records for each dNSName in the subjectAltName extension of the Digital Certificate to be issued. This practice remains optional until March 15, 2025.
+In compliance with the CA/Browser Forum Baseline Requirements, prior to issuing S/MIME Digital Certificates, WISeKey performs automated checks for CAA records for each dNSName in the subjectAltName extension of the Digital Certificate to be issued. This practice remains optional until March 15, 2025.
 
 When processing CAA records, WISeKey processes the issuemail property tag as specified in RFC 9495. WISeKey will not issue a Digital Certificate if an unrecognized property is found with the critical flag.
 WISeKey documents potential issuances that were prevented by a CAA record, and will dispatch reports of such issuance requests to the contact stipulated in the CAA iodef record(s), if present. WISeKey support mailto: and https: URL schemes in the iodef record.
@@ -438,7 +438,7 @@ For CA Certificates the CA representative must acknowledge the reception of the 
 Certificate acceptance is understood after the subscriber or his representative performs one or more of the following:
 - Accepts the “Subscriber Agreement”, which includes the terms and conditions associated with the particular Certificate Policy, and which constitutes formal acceptance of those terms; or
 - Downloads and/or installs the certificate, making it technically available for usage; or
-- Doesn’t expreTLSy refuse the certificate once the issuance notification has been sent.
+- Doesn’t expressly refuse the certificate once the issuance notification has been sent.
 
 ### 4.4.2  Publication of the certificate by the CA
 
@@ -532,7 +532,7 @@ The CA only notifies the Registration Authority from which it received the reque
 
 ## 4.8  Certificate modification
 
-The OWGTM does not allow the modification of certificates during their validity period. If the information contained in a certificate cease to be valid, or the circumstances of the subscriber change in such a manner that the conditions expressed in the CPS or the CP are not met, then the only accepted procedure is the revocation and reissuance of a new certificate.
+The OWGTM does not allow the modification of certificates during their validity period. If the information contained in a certificate cease to be valid, or the circumstances of the subscriber change in such a manner that the conditions expressed in the CPS or the CP are not met, then the only accepted procedure is the revocation and re-issuance of a new certificate.
 
 ### 4.8.1  Circumstance for certificate modification
 
@@ -1080,7 +1080,7 @@ For Subscriber Certificates, unless otherwise noted in this CPS, Subscriber is s
 
 It is not allowed the manipulation of private keys corresponding to CA certificates.
 
-If the specific subscriber certificate type allows the generation of the private key by the Registration Authority, the usage of password-protected encrypted software files, or smartcards or other valid crypto-tokens is accepted.
+If the specific subscriber certificate type allows the generation of the private key by the Registration Authority, the usage of password-protected encrypted software files, or smart-cards or other valid crypto-tokens is accepted.
 
 ### 6.1.3  Public key delivery to certificate issuer
 
@@ -1160,7 +1160,7 @@ The activation of Subscriber’s private key is stipulated in section 6.4.
 
 The private key in Certification Authorities is deactivated by shutting-down the associated server or by terminating the PKI software or by extracting or shutting-down the HSM that contains the key. This task can be done by a System Administrator and, when planned, has to be notified and authorized to/from the CA Responsible.
 
-Deactivating RA or other end-user private keys based in hardware is performed by the extraction of the secure device (smartcard or other accepted crypto-tokens) from the workstation it is used.
+Deactivating RA or other end-user private keys based in hardware is performed by the extraction of the secure device (smart-card or other accepted crypto-tokens) from the workstation it is used.
 
 Deactivating of other end-user subscriber private keys, while not based in hardware, is accomplished by shutting down the device where the private key is stored. The subscriber must take all reasonable measures to avoid unauthorized use of the device.
 
@@ -1301,7 +1301,7 @@ The general certificate profiles are:
 - TLS Certificates: Used for Server Authentication.
 - Device Certificates: Used for Client Authentication.
 
-The different profiles are mainly differetiated by the appropriate combination of values in the "Key Usage", "Extended Key Usage" and/or the use of particular Policy Identifiers. This combination of values can imply that the certificate is mandatorily subject to requirements stipulated by the CA/B Forum and/or Root Programs, that take precedence over stipulations in this document. In particular:
+The different profiles are mainly differentiated by the appropriate combination of values in the "Key Usage", "Extended Key Usage" and/or the use of particular Policy Identifiers. This combination of values can imply that the certificate is mandatorily subject to requirements stipulated by the CA/B Forum and/or Root Programs, that take precedence over stipulations in this document. In particular:
 - Server Authentication Certificates are subject to the CABF Baseline Requirements and (if applicable) EV Guidelines regulating these types of certificates.
 - Secure Email Certificates are subject to the CABF Baseline Requirements for S/MIME Certificates.
 
@@ -1493,7 +1493,7 @@ All Issuing CA under the OWGTM shall keep the following types of information con
 - Any information held by the Issuing CA in accordance with Section 9.4
 - Any transactional, audit log and archive record identified in Section 5.4 or 5.5, including certificate application records and documentation submitted in support of certificate applications whether successful or rejected.
 - Transaction records, financial audit records and external or internal audit trail records and any audit reports (with the exception of an auditor’s letter confirming the effectiveness of the controls set forth in this CPS)
-- All information classified explicitly as “PRIVATE”, “CONFIDENTIAL” or “EXTRICTLY CONFIDENTIAL” when generated or exchanged among involved parties.
+- All information classified explicitly as “PRIVATE”, “CONFIDENTIAL” or “STRICTLY CONFIDENTIAL” when generated or exchanged among involved parties.
 
 ### 9.3.2  Information not within the scope of confidential information
 
@@ -1748,7 +1748,6 @@ No stipulation.
 | CSR |	Certificate Signing Request |
 | CT |	Certificate Transparency |
 | DBA |	Doing Business As (also known as "Trading As") |
-| DCPA |	DigiCert Policy Authority |
 | DNS |	Domain Name Service |
 | DV |	Domain Validated |
 | ETSI |	European Telecommunications Standards Institute EU |
@@ -1771,6 +1770,7 @@ No stipulation.
 | OCSP |	Online Certificate Status Protocol |
 | OID |	Object Identifier |
 | OV |	Organization Validated |
+| PAA | Policy Approval Authority |
 | PKI |	Public Key Infrastructure |
 | PKIX |	IETF Working Group on Public Key Infrastructure |
 | RA |	Registration Authority |
@@ -1792,7 +1792,6 @@ No stipulation.
 | Definition |	Description |
 | --- | --- |
 | Applicant |	An entity applying for a Certificate. |
-| Application Software Vendor |	A software developer whose software displays or uses DigiCert Certificates and distributes DigiCert’s root Certificates. |
 | Attestation Letter |	A letter attesting that Subject Information is correct written by an accountant, lawyer, government official, or other reliable third party customarily relied upon for such information. |
 | Certification Authority Authorization or CAA |	From RFC 9495: "The Certification Authority Authorization (CAA) DNS resource record (RR) provides a mechanism for domains to express the allowed set of Certification Authorities that are authorized to issue certificates for the domain." CAA Resource Records allow a public CA to implement additional controls to reduce the risk of unintended certificate mis-issue. |
 | CAB Forum |	CA/Browser Forum, https://cabforum.org | 
@@ -1811,18 +1810,18 @@ No stipulation.
 | Issuer CA |Any CA issuing Certificates under this CP/CPS |
 | Key Compromise |	A Private Key is said to be compromised if its value has been disclosed to an unauthorized person, or an unauthorized person has had access to it. |
 | Key Pair |	A Private Key and associated Public Key. |
-| Linting |	A process in which the content of digitally signed data such as a Precertificate [RFC 6962], Certificate, Certificate Revocation List, or OCSP response, or datato-be-signed object such as a tbsCertificate (as described in RFC 5280, Section 4.1.1.1) is checked for conformance with the profiles and requirements defined in these Requirements. |
+| Linting |	A process in which the content of digitally signed data such as a Pre-certificate [RFC 6962], Certificate, tbsCertificate (as described in RFC 5280, Section 4.1.1.1) is checked for conformance with the profiles and requirements defined in the applicable Requirements. |
 | Mailbox address |	An Email Address as specified in Section 4.1.2 of RFC 5321 and amended by Section 3.2 of RFC 6532, with no additional padding or structure. |
-| OCSP Responder |	An online software application operated under the authority of DigiCert and connected to its repository for processing certificate status requests. |
+| OCSP Responder |	An online software application operated under the authority of the OWGTM for processing certificate status requests. |
 | Onion Domain Name |	A Fully Qualified Domain Name ending with the RFC 7686 ".onion". | 
 | Private Key |	The key of a Key Pair that is kept secret by the holder of the Key Pair, and that is used to create digital signatures and/or to decrypt electronic records or files that were encrypted with the corresponding Public Key. |
 | Public Key |	The key of a Key Pair that may be publicly disclosed by the holder of the corresponding Private Key and that is used by a Relying Party to verify digital signatures created with the holder’s corresponding Private Key and/or to encrypt messages so that they can be decrypted only with the holder’s corresponding Private Key. |
 | Relying Party |	An entity that relies upon either the information contained within a Certificate or a time-stamp token. |
-| Relying Party Agreement |	An agreement which must be read and accepted by the Relying Party prior to validating, relying on or using a Certificate or accessing or using DigiCert’s Repository. The Relying Party Agreement is available for reference through a DigiCert online repository. |
-| Reserved IP Address |	An IPv4 or IPv6 address that is contained in the address block of any entry in either of the following IANA registries: https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4special-registry.xhtml , https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6special-registry.xhtml |
+| Relying Party Agreement |	An agreement which must be read and accepted by the Relying Party prior to validating, relying on or using a Certificate. |
+| Reserved IP Address |	An IPv4 or IPv6 address that is contained in the address block of any entry in either of the appropriate IANA registries. |
 | Signing Service |	An organization that generates the Key Pair and securely manages the Private Key associate with a Code Signing Certificate on behalf of a Subscriber. |
 | Subject Identity Information |	Information that identifies the Certificate Subject. Subject Identity Information does not include a Domain Name listed in the subjectAltName extension or the Subject commonName field. |
-| Subscriber |	Either the entity identified as the subject in the Certificate or the entity that is receiving DigiCert’s time-stamping services. |
+| Subscriber |	Either the entity identified as the subject in the Certificate. |
 | Subscriber Agreement |	An agreement that governs the issuance and use of a Certificate that the Applicant must read and accept before receiving a Certificate. |
 | Suspect Code |	Code that contains malicious functionality or serious vulnerabilities, including spyware, malware and other code that installs without the user’s consent and/or resists its own removal, code that compromises user security and/or code that can be exploited in ways not intended by its designers to compromise the trustworthiness of the Platforms on which it executes |
 | WebTrust |	The current version of CPA Canada’s WebTrust Program for Certification Authorities. |
