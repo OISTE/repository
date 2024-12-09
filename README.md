@@ -8,8 +8,8 @@ This repository contains all the public documents of the OISTE-WISeKey Trust Mod
 1. OWGTM CPS
 2. OISTE/WISeKey Subscriber agreement
 
-## PDF Documents
-(PDF Versions, latest versions valid before migrating to unified CPS and markdosn formats)
+## Previous Documents
+(PDF Versions, latest versions valid before migrating to unified CPS and markdown formats)
 
 1. CP OISTE
    - CP for TLS Server Certificates
