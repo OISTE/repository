@@ -31,6 +31,6 @@ This repository contains all the public documents of the OISTE-WISeKey Trust Mod
 **Note:**
     Converted with command:
 
-    pandoc -s -f markdown-implicit_figures -o OWGTMCPS.pdf OWGTMCPS.md
+    pandoc -s -f markdown-implicit_figures -o ./pdf/OWGTMCPS.pdf OWGTMCPS.md
 
 <END>
