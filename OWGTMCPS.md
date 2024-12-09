@@ -20,7 +20,7 @@ output: pdf_document
 header-includes: |
     \usepackage{fancyhdr}
     \pagestyle{fancy}
-    \fancyfoot[LE,CO]{OWGTM CP/CPS - OISTE Foundation}
+    \fancyfoot[CE,CO]{OWGTM CP/CPS - OISTE Foundation}
     \fancyfoot[LE,RO]{\thepage}
 toc: true
 include-before: |
@@ -81,7 +81,7 @@ The following sections describe the different participant types in the OWGTM.
 
 OISTE and WISeKey own and operate a number of Root and Issuing Certification Authorities (CAs) hierarchies that deliver certification Services under this CP/CPS.
 
-These hierarchies are detailed in [Appendix B](#Appendix-B:-CA-Hierarchies) of this document.
+These hierarchies are detailed in [Appendix B](#appendix-b-ca-hierarchies) of this document.
 
 OISTE and WISeKey also own and operate a number of Time Stamping Authorities (TSA), which are regulated by their corresponding Time Stamping Policy (TSP) document.
 
@@ -174,7 +174,7 @@ Once any document of the Trust Model is updated, the CAs must do a technical ass
 
 ## 1.6  Definitions and acronyms
 
-Definitions and Acronyms are included in [Annex A](#-Appendix-A:-Glossary)
+Definitions and Acronyms are included in [Annex A](#appendix-a-glossary)
 
 # 2. PUBLICATION AND REPOSITORY RESPONSIBILITIES
 ## 2.1  Repositories
@@ -1354,7 +1354,7 @@ Domain name constraints can be also applied when using the MPKI RA Interface for
 
 ### 7.1.6  Certificate policy object identifier
 
-An object identifier (OID) is a unique number that identifies an object or policy. The OIDs are administered by the OWGTM and listed in the [Annex C, “OID Inventory”](#-Appendix-C:-OID-Inventory).
+An object identifier (OID) is a unique number that identifies an object or policy. The OIDs are administered by the OWGTM and listed in the [Annex C, “OID Inventory”](#appendix-c-oid-inventory).
 
 ### 7.1.7  Usage of Policy Constraints extension
 
@@ -1517,7 +1517,7 @@ All Issuing CA under the OWGTM shall keep the following types of information con
 
 The following information shall be deemed as non-confidential:
 - All information contained in the issued certificates and Certificate Revocation Lists (CRLs) including all information that can be derived from such.
-- All information classified expreTLSy as “PUBLIC”.
+- All information classified expressly as “PUBLIC”.
 
 ### 9.3.3  Responsibility to protect confidential information
 
@@ -1541,7 +1541,7 @@ Personal information about an individual that is not publicly available in the c
 
 ### 9.4.3  Information not deemed private
 
-For personal information the provisions of [section 9.3.2](###-9.3.2-Information-not-within-the-scope-of-confidential-information) apply respectively.
+For personal information the provisions of [section 9.3.2](#932-information-not-within-the-scope-of-confidential-information) apply respectively.
 
 ### 9.4.4  Responsibility to protect private information
 
@@ -1600,7 +1600,7 @@ The Registration Authorities operating under the OWGTM warrant that:
 - Their Certificates meet all material requirements of this CPS.
 - No errors have been introduced in the Certificate information by the entities approving the Certificate Application as a result of a failure when managing the Certificate Application.
 - There are no material misrepresentations of fact in the Certificate at the entities approving the Certificate Application or issuing the Certificate.
-- Availability of revocation services (when applicable) and use of a repository conforming with theapplicable CPS in all material aspects.
+- Availability of revocation services (when applicable) and use of a repository conforming with the applicable CPS in all material aspects.
 
 Registration Authority commercial contracts and agreements could include additional warranties.
 
