@@ -1537,7 +1537,7 @@ WISeKey publishes the Privacy Policy and other related materials in https://www.
 
 ### 9.4.2  Information treated as private
 
-Personal information about an individual that is not publicly available in the contents of a certificate or CRL is considered private.
+Personal information about an individual that is not [publicly](#142-prohibited-certificate-uses) available in the contents of a certificate or CRL is considered private.
 
 ### 9.4.3  Information not deemed private
 
