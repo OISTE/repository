@@ -1,21 +1,39 @@
 ---
-title: OISTE/WISeKey Global Trust Model CP/CPS
+title: |
+  ![](./media/image1.png)
 
-subtitle: Version 4.0
+
+
+
+
+  
+  OISTE/WISeKey Global Trust Model CP/CPS
 author:
   - OISTE Policy Approval Authority
-
-date: X-December-2024  
-
+subtitle: Version 4.0
+date: December 9, 2024
 copyright: |
   Copyright 2024 OISTE Foundation. 
   This work is licensed under the Creative Commons Attribution 4.0 International license.
+geometry: "left=3cm,right=2cm,top=2cm,bottom=2cm"
+output: pdf_document
+header-includes: |
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyfoot[LE,CO]{OWGTM CP/CPS - OISTE Foundation}
+    \fancyfoot[LE,RO]{\thepage}
+toc: true
+include-before: |
+    \newpage
+    | **VERSION** | **DATE** | **MODIFICATION** | **AUTHOR** |
+    | --- | --- | --- | --- |
+    | 4.0 | 9/12/2024 | First consolidated CP/CPS | Pedro Fuentes | 
+    \newpage
 ---
 
-![OISTE Logo](./media/image1.png)
+\newpage
 
 # 1.  INTRODUCTION
-
 
 This document represents a combined Certificate Policy (CP) and Certification Practice Statement (CPS), and describes the practices followed with regard to the management of the lifecycle the Certification Authorities adhered to the OISTE/WISeKey Global Trust Model (OWGTM from now on).
 
