@@ -1975,7 +1975,8 @@ PUBLIC-ARCH.4 – OISTE Certificate Policy Identifiers (legacy)
 - 4.4.2.1 – Class 3 End Entity CPs
 - 4.4.2.1.1 – CertifyID Qualified Individual
 - 4.4.2.1.2 – CertifyID Qualified Corporate
-- 4.4.2.1.3 – CertifyID Qualified Individual for Adobe 4.4.2.1.4 – CertifyID Qualified Corporate for Adobe
+- 4.4.2.1.3 – CertifyID Qualified Individual for Adobe 
+- 4.4.2.1.4 – CertifyID Qualified Corporate for Adobe
 - 4.5 – Policy CA Class 4 CP
 - 4.5.1 – Issuing CA Class 4 CP
 - 4.6 – Pilot CP
@@ -1990,12 +1991,22 @@ PUBLIC-ARCH.7 – OISTE Certificate Policy Identifiers (current)
 - 7.3 – Issuing CA CP
 - 7.4 – End Entity CP
 - 7.4.0 – CertifyID URA Admin Certificate
-- 7.4.1 – CertifyID Personal Standard Certificate 7.4.2 – CertifyID Personal Advanced Certificate 7.4.3 – CertifyID Corporate Advanced Certificate 7.4.4 – CertifyID Personal Qualified Certificate 7.4.5 – CertifyID Corporate Qualified Certificate 7.4.6 – CertifyID Standard TLS Certificate
-- 7.4.7 – CertifyID Advanced OV TLS Certificate 7.4.8 – CertifyID Advanced EV TLS Certificate 7.4.9 – CertifyID Code Signing Certificate 7.4.10 – CertifyID EV Code Signing Certificate 7.5 – Pilot CP
+- 7.4.1 – CertifyID Personal Standard Certificate
+- 7.4.2 – CertifyID Personal Advanced Certificate
+- 7.4.3 – CertifyID Corporate Advanced Certificate 
+- 7.4.4 – CertifyID Personal Qualified Certificate 
+- 7.4.5 – CertifyID Corporate Qualified Certificate 
+- 7.4.6 – CertifyID Standard TLS Certificate
+- 7.4.7 – CertifyID Advanced OV TLS Certificate 
+- 7.4.8 – CertifyID Advanced EV TLS Certificate 
+- 7.4.9 – CertifyID Code Signing Certificate 
+- 7.4.10 – CertifyID EV Code Signing Certificate 
+- 7.5 – Pilot CP
 - 7.6 – Time Stamp Policy CP
 - 7.7 – OCSP Service
 
 PUBLIC-ARCH.8 – Policy qualifiers for special purposes
 - 8.1 – Vendor specific OID
-- 8.1.1 – Qualifier for Adobe PDF (AATL) 8.2 – Device certificates
+- 8.1.1 – Qualifier for Adobe PDF (AATL) 
+- 8.2 – Device certificates
 - 8.2.1 – CertifyID Device Certificate
