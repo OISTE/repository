@@ -70,7 +70,7 @@ The purpose of this document is to disclose the Practices and Policies adopted i
 | --- | --- |
 | Version | 4.0 |
 | OID | 2.16.756.5.14.7.1 |
-| Issuance date | 1/1/2025 |
+| Issuance date | 9/12/2024 |
 | Location | This document is published in https://oiste.org/repository and https://wisekey.com/repository |
 
 ## 1.3 PKI participants
