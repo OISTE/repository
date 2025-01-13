@@ -10,10 +10,10 @@ title: |
  OISTE/WISeKey Global Trust Model CP/CPS
 author:
  - OISTE Policy Approval Authority
-subtitle: Version 4.0
-date: December 9, 2024
+subtitle: Version 4.0.1
+date: January 13, 2025
 copyright: |
- Copyright 2024 OISTE Foundation. 
+ Copyright 2025 OISTE Foundation. 
  This work is licensed under the Creative Commons Attribution 4.0 International license.
 geometry: "left=3cm,right=2cm,top=2cm,bottom=2cm"
 output: pdf_document
@@ -28,6 +28,7 @@ include-before: |
   | **VERSION** | **DATE** | **MODIFICATION** | **AUTHOR** |
   | --- | --- | --- | --- |
   | 4.0 | 9/12/2024 | First consolidated CP/CPS | Pedro Fuentes | 
+  | 4.0.1 | 13/1/2025 | Minor changes | Pedro Fuentes | 
   \newpage
 ---
 
@@ -130,7 +131,7 @@ The type of certificate is determined by the combination of "Key Usage", "Extend
 | OCSP Certificate | Infrastructure certificate for Online Certificate Status Responders providing information on the subordinated CAs issued by the OISTE Roots | OCSP Response Signature |
 | Standard Personal Certificate | Low Assurance Personal certificates used by Natural persons to authenticate and encrypt documents and transactions. Only the eMail address is verified and included in the certificate | Digital Signature, Encryption, Client Authentication and email Protection |
 | Advanced Personal Certificate | High Assurance Personal certificates with software keys, used by Natural person to authenticate and encrypt documents and transactions. Personal and Organizations identity attributes are validated and included in the certificate. Remote verification is allowed under certain circumstances | Digital Signature, Encryption, Client Authentication, Non- Repudiation and email Protection |
-| Qualified Personal Certificate<br>Qualified Corporate Certificate | High Assurance Personal certificates with FIPS-protected keys, used by Natural persons authenticate and encrypt documents and transactions. Personal and Organizations identity attributes are validated and included in the certificate. All identification attributes in the certificate are verified “Face-to-Face” or similar assurance | Digital Signature, Encryption, Client Authentication, Non-Repudiation and email Protection |
+| Qualified Personal Certificate<br>Qualified Corporate Certificate | High Assurance Personal certificates with (optionally) hardware keys, used by Natural persons authenticate and encrypt documents and transactions. Personal and Organizations identity attributes are validated and included in the certificate. All identification attributes in the certificate are verified “Face-to-Face” or similar assurance | Digital Signature, Encryption, Client Authentication, Non-Repudiation and email Protection |
 | DV TLS Certificate | Medium assurance TLS/TLS certificate. All identification attributes in the certificate are verified. The control on the Internet Domain is validated. Compliant with CA/Browser Forum Baseline Requirements | Digital Signature, Encryption, Server Authentication |
 | OV TLS Certificate | High assurance TLS/TLS certificate. All identification attributes in the certificate are verified. The Identity of the organization is validated. Compliant with CA/Browser Forum Baseline Requirements | Digital Signature, Encryption, Server Authentication |
 | EV TLS Certificate | High assurance TLS/TLS certificate | All identification attributes in the certificate are verified. The Identity of the organization is validated. Compliant with CA/Browser Requirements for Extended Validation | Digital Signature, Encryption, Server Authentication |
