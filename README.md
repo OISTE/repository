@@ -7,7 +7,8 @@ This repository contains all the public documents of the OISTE-WISeKey Trust Mod
 
 1. [OWGTM CPS](https://github.com/OISTE/repository/blob/main/OWGTMCPS.md)
 2. [OISTE/WISeKey Subscriber agreement](https://github.com/OISTE/repository/blob/main/SUBSCRIBERAGREEMENT.md)
-
+3. [OISTE/WISeKey Registration Agent agreement](https://github.com/OISTE/repository/blob/main/RAAGREEMENT.md)
+   
 ## Previous Documents
 (PDF Versions, latest versions valid before migrating to unified CPS and markdown formats)
 
