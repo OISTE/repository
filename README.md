@@ -9,6 +9,7 @@ This repository contains all the public documents of the OISTE-WISeKey Trust Mod
 2. [OISTE/WISeKey Subscriber agreement](https://github.com/OISTE/repository/blob/main/SUBSCRIBERAGREEMENT.md)
 3. [OISTE/WISeKey Registration Agent agreement](https://github.com/OISTE/repository/blob/main/RAAGREEMENT.md)
 4. [OISTE/WISeKey Relying Party agreement](https://github.com/OISTE/repository/blob/main/RELYINGPARTYAGREEMENT.md)
+5. [WISeKey Provacy Notice](https://github.com/OISTE/repository/blob/main/PRIVACYNOTICE.md)
    
 ## Previous Documents
 (PDF Versions, latest versions valid before migrating to unified CPS and markdown formats)
