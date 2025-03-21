@@ -10,8 +10,8 @@ title: |
  OISTE/WISeKey Global Trust Model CP/CPS
 author:
  - OISTE Policy Approval Authority
-subtitle: Version 4.0.1
-date: January 13, 2025
+subtitle: Version 4.0.2
+date: March 21, 2025
 copyright: |
  Copyright 2025 OISTE Foundation. 
  This work is licensed under the Creative Commons Attribution 4.0 International license.
