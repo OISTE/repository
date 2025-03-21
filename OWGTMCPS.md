@@ -273,8 +273,8 @@ In all cases, when an organization name is included in a certificate valid for s
 | CP Identifier | Validation Policy |
 | --- | --- |
 | Standard Personal Certificate | Does not Apply: Individual or Organization information will not appear in these certificates |
-| Advanced Personal Certificate,<br>Qualified Personal Certificate | If the organization name is included in the certificate, the Registration Authority must verify that the Organization exists and that the certificate subscriber is authorized to enroll for a certificate including the Organization name, by means of the authorization of a representative of the same Organization.<br>In both cases is allowed to do a pre-authorization of users according to a pre-validated database or the domain name used in the subscriber’s e-mail address |
-| Advanced Personal Certificate,<br>Qualified Corporate Certificate | The Registration Authority must verify that the Organization exists and that the certificate applicant is authorized to enroll for a certificate in behalf of the Organization name, by means of the authorization of a representative of the same Organization. |
+| Advanced Professional Certificate,<br>Qualified Personal Certificate | If the organization name is included in the certificate, the Registration Authority must verify that the Organization exists and that the certificate subscriber is authorized to enroll for a certificate including the Organization name, by means of the authorization of a representative of the same Organization.<br>In both cases is allowed to do a pre-authorization of users according to a pre-validated database or the domain name used in the subscriber’s e-mail address |
+| Advanced Professional Certificate,<br>Qualified Corporate Certificate | The Registration Authority must verify that the Organization exists and that the certificate applicant is authorized to enroll for a certificate in behalf of the Organization name, by means of the authorization of a representative of the same Organization. |
 
 #### 3.2.2.2 For TLS Server Certificates
 
@@ -305,7 +305,7 @@ For the validation of individuals participating in the certificate application a
 | CP Identifier | Validation Policy |
 | --- | --- |
 | Standard Personal Certificate | **ID Data Verified**:<br>The only verified data is the email address.<br>**Method of Verification**:<br><ul><li>If the Extended Key Usage for secure email is set: Bounce back email with verification code procedure proving control of the user mailbox.</li><li>Pre-Authorization of the full domain by the organization where the user belongs to, using methods acceptable for domain control verification, as defined by the CABF baseline requirements.</li></ul>**Entities authorized to verify**:<br><ul><li>The entity purchasing and managing the e-ID system under contract with WISeKey.</li><li>Authorised internal entity (e.g. human resources dept.) or external entity who is legally bound to comply with the verification procedures.</li></ul>|
-| Advanced Personal Certificate | **ID Data Verified**:<br>Personal identity data such as name, date of birth, nationality, etc. Legal entities are required to provide relevant official documentation. Verification of device or other type of entity or object is done with substantially equivalent data. There’s an obligation to verify the identity of real physical and juridical persons names included in the certificates.<br>**Method of Verification**:<br>May be done through database of identity data that is well-maintained and was created based on face to face or remote verification using official ID documents.<br>If the Extended Key Usage for secure email is set: same verification as indicated for “CertifyID Standard Personal Certificate”.<br>**Entities authorized to verify**:<br><ul><li>The entity purchasing and managing the e-ID system under contract with WISeKey.</li><li>Authorised internal entity (e.g. human resources dept.) or external entity who is legally bound to comply with the verification procedures.</li></ul>|
+| Advanced Personal Certificate | **ID Data Verified**:<br>Personal identity data such as name, date of birth, nationality, phone number, etc. Legal entities are required to provide relevant official documentation. Verification of device or other type of entity or object is done with substantially equivalent data. If the physical and juridical persons names are included in the certificates, this information must be verified.<br>**Method of Verification**:<br>May be done through database of identity data that is well-maintained and was created based on face to face or remote verification using official ID documents.<br>If the Extended Key Usage for secure email is set: same verification as indicated for “CertifyID Standard Personal Certificate”.<br>**Entities authorized to verify**:<br><ul><li>The entity purchasing and managing the e-ID system under contract with WISeKey.</li><li>Authorised internal entity (e.g. human resources dept.) or external entity who is legally bound to comply with the verification procedures.</li></ul>|
 | Qualified Personal Certificate | Same as for Personal Certificates |
 
 **Note**: Any certificate containing the OID for Adobe AATL may be validated according to the rules for Qualified Certificates.
@@ -1155,7 +1155,7 @@ Private key backup for end-user subscribers, if supported for a certain certific
 
 ### 6.2.5 Private key archival
 
-The CA shall not provide key archival services.
+The CA shall not provide key archival services to subscribers. Private keys of expired or revoked CAs may be archived by being left in HSM or their backup. 
 
 ### 6.2.6 Private key transfer into or from a cryptographic module
 
@@ -1238,7 +1238,7 @@ Activation data for Certification Authorities are generated and stored in crypto
 Activations requiring a multi-person control will be enforced by splitting the activation data in several tokens.
 
 End entity activation data, is only stipulated for hardware-based private-keys. In particular:
-- Private Keys for RA and Qualified Certificates will be require the usage of a password or PIN code of eight or more characters in order to activate the hardware device where the key is stored.
+- Private Keys for RA and Qualified Certificates, if protected in a hardware device, will require the usage of a password or PIN code of eight or more characters in order to activate the hardware device where the key is stored.
 - Private Keys for “Standard Personal Certificates” can be generated and installed without using a
 password, although this is discouraged.
 
@@ -1953,7 +1953,7 @@ No stipulation.
 
 # Appendix C: OID Inventory
 
-OWGTM enforces the use of the following OID Schema to identify the different Certificate Profiles issued under the whole PKI.
+OWGTM defines the following OID Schema to identify the different Certificate Profiles issued under the whole PKI.
 
 These OID can be substituted by equivalent OID published by the CAB/Forum:
 
