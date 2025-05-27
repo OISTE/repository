@@ -28,7 +28,8 @@ include-before: |
   | **VERSION** | **DATE** | **MODIFICATION** | **AUTHOR** |
   | --- | --- | --- | --- |
   | 4.0 | 9/12/2024 | First consolidated CP/CPS | Pedro Fuentes | 
-  | 4.0.1 | 13/1/2025 | Minor changes | Pedro Fuentes | 
+  | 4.0.1 | 13/1/2025 | Minor changes | Pedro Fuentes |
+  | 4.0.2 | 21/3/2025 | Minor changes | Pedro Fuentes | 
   \newpage
 ---
 
@@ -69,9 +70,9 @@ The purpose of this document is to disclose the Practices and Policies adopted i
 
 | Name | OISTE/WISeKey Global Trust Model Certificate Policy/Certification Practices Statement (CP/CPS) |
 | --- | --- |
-| Version | 4.0 |
+| Version | 4.0.3 |
 | OID | 2.16.756.5.14.7.1 |
-| Issuance date | 9/12/2024 |
+| Issuance date | 21/3/2025 |
 | Location | This document is published in https://oiste.org/repository and https://wisekey.com/repository |
 
 ## 1.3 PKI participants
