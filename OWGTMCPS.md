@@ -10,8 +10,8 @@ title: |
  OISTE/WISeKey Global Trust Model CP/CPS
 author:
  - OISTE Policy Approval Authority
-subtitle: Version 4.0.2
-date: March 21, 2025
+subtitle: Version 4.0.3
+date: June 27, 2025
 copyright: |
  Copyright 2025 OISTE Foundation. 
  This work is licensed under the Creative Commons Attribution 4.0 International license.
@@ -72,7 +72,7 @@ The purpose of this document is to disclose the Practices and Policies adopted i
 | --- | --- |
 | Version | 4.0.3 |
 | OID | 2.16.756.5.14.7.1 |
-| Issuance date | 21/3/2025 |
+| Issuance date | 27/6/2025 |
 | Location | This document is published in https://oiste.org/repository and https://wisekey.com/repository |
 
 ## 1.3 PKI participants
@@ -281,7 +281,7 @@ In all cases, when an organization name is included in a certificate valid for s
 
 | CP Identifier | Validation Policy |
 | --- | --- |
-| DV TLS Certificate | WISeKey will validate the Applicant’s right to use or control each domain name that will be listed in the Subject Alternative Name field of a Certificate by using at least one of the following procedures:<ul><li>Email to Domain Contact. WISeKey will retrieve the Domain Contact using the WHOIS information or the DNS and CAA records and deliver a mail including a unique code and a method to confirm the reception.</li><li>Constructed Email to Domain Contact. WISeKey will send a mail using ‘admin’, ‘administrator’, ‘webmaster’, ‘hostmaster’, or ‘postmaster’ as the local part, followed by the at-sign (“@”), followed by the Domain Name being validated including a unique code and a method to confirm the reception.</li><li>Agreed-Upon Change to Website. WISeKey will provide a text file including a unique code that must be placed in the path /.well-known/pki-validation and enabled to be retrieved using HTTP or HTTPS. This method only can be used to validate a particular FQDN and is not allowed for Wildcard certificates.</li><li>DNS Change. WISeKey will provide a unique code that must be placed as a TXT or CNAME record in the DNS server maintaining the domain being validated.</li><li>Agreed-Upon Change to Website - ACME. Confirming the Applicant’s control over a FQDN by validating domain control of the FQDN using the ACME HTTP Challenge method defined in Section 8.3 of RFC 8555</li></ul> |
+| DV TLS Certificate | WISeKey will validate the Applicant’s right to use or control each domain name that will be listed in the Subject Alternative Name field of a Certificate by using at least one of the following procedures:<ul><li>Email to Domain Contact. WISeKey will retrieve the Domain Contact using the WHOIS information or the DNS and CAA records and deliver a mail including a unique code and a method to confirm the reception. This method will stop using WHOIS before July, 15th 2025.</li><li>Constructed Email to Domain Contact. WISeKey will send a mail using ‘admin’, ‘administrator’, ‘webmaster’, ‘hostmaster’, or ‘postmaster’ as the local part, followed by the at-sign (“@”), followed by the Domain Name being validated including a unique code and a method to confirm the reception.</li><li>Agreed-Upon Change to Website. WISeKey will provide a text file including a unique code that must be placed in the path /.well-known/pki-validation and enabled to be retrieved using HTTP or HTTPS. This method only can be used to validate a particular FQDN and is not allowed for Wildcard certificates.</li><li>DNS Change. WISeKey will provide a unique code that must be placed as a TXT or CNAME record in the DNS server maintaining the domain being validated.</li><li>Agreed-Upon Change to Website - ACME. Confirming the Applicant’s control over a FQDN by validating domain control of the FQDN using the ACME HTTP Challenge method defined in Section 8.3 of RFC 8555</li></ul> |
 | OV TLS Certificate | WISeKey will execute the domain validation procedures as required for DV TLS certificates.<br>Additionally, WISeKey will verify:<ul><li>The identity and address of the Applicant using the procedures found in section 3.2.2.1 and/or section 3.2.3 of the Baseline Requirements.</li><li>Any DBA included in a Certificate using a third party or government source, attestation letter, or reliable form of identification in accordance with section 3.2.2 of the Baseline Requirements.</li></ul> |
 | EV TLS Certificate | WISeKey will execute the domain validation procedures as required for DV and OV TLS certificates.<br>Additionally, WISeKey will do the specific validations mandated by the EV Guidelines issued by the CAB/Forum. |
 
