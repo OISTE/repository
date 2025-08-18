@@ -10,8 +10,8 @@ title: |
  OISTE/WISeKey Global Trust Model CP/CPS
 author:
  - OISTE Policy Approval Authority
-subtitle: Version 4.0.3
-date: June 27, 2025
+subtitle: Version 4.0.4 - DRAFT
+date: June 27, 2025 (Release 4.0.3)
 copyright: |
  Copyright 2025 OISTE Foundation. 
  This work is licensed under the Creative Commons Attribution 4.0 International license.
@@ -30,6 +30,8 @@ include-before: |
   | 4.0 | 9/12/2024 | First consolidated CP/CPS | Pedro Fuentes | 
   | 4.0.1 | 13/1/2025 | Minor changes | Pedro Fuentes |
   | 4.0.2 | 21/3/2025 | Minor changes | Pedro Fuentes | 
+  | 4.0.3 | 27/6/2025 | Minor changes | Pedro Fuentes | 
+  | 4.0.4 | DRAFT | Statement for Mass Revocation | Pedro Fuentes |
   \newpage
 ---
 
@@ -582,7 +584,9 @@ No stipulation. Modification is not allowed.
 
 ## 4.9 Certificate revocation and suspension
 
-All Certification Authorities operating under the OWGTM ensure, by establishing the necessary means, that a certificate that compromises the Trust Model for any reason is prevented from being used by either revoking or suspending that certificate.
+All Certification Authorities operating under the OWGTM ensure, by establishing the necessary means, that a certificate that compromises the Trust Model for any reason is prevented from being used by revoking that certificate.
+
+The OWGTM maintains a comprehensive and actionable plan for mass revocation events, performs annual testing of its procedures, and incorporates lessons learned to improve preparedness over time.
 
 Suspension of certificates is not supported.
 
