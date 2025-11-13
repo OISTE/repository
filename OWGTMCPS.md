@@ -294,7 +294,7 @@ In all cases, when an organization name is included in a certificate valid for s
 
 | CP Identifier | Validation Policy |
 | --- | --- |
-| DV TLS Certificate | OWGTM confirms the validation of each FQDN in accordance with the CA/Browser Forum Baseline Requirements 3.2.2.4 using at least one of the methods enumerated in that Section. Currently OWGTM doesn't issue certificates for Onion domains.<br>For each validated FQDN the "TLS Certificate Manager" software used by the OWGTM creates and retains a validation record that includes: (a) the FQDN(s) validated; (b) the specific domain validation method used, related to the version of the Baseline Requirements in force at the moment of validation; (c) date/time of validation; (d) identity of the operator or automated system that performed validation; (e) artifacts evidencing validation (e.g., e-mail headers, DNS TXT contents, HTTP file retrieval response headers and body hash, ACME challenge logs); and (f) any corroboration results from Multi-Perspective Issuance Corroboration (Section 3.2.2.9). Validation records SHALL be retained for at least 7 years after certificate expiry or revocation.<br>   <br>In particular, OWGTM will validate the Applicant’s right to use or control each domain name that will be listed in the Subject Alternative Name field of a Certificate by using at least one of the following procedures:<ul><li>Email to Domain Contact. WISeKey will retrieve the Domain Contact using the WHOIS information or the DNS and CAA records and deliver a mail including a unique code and a method to confirm the reception. This method stopped using WHOIS contacts since July, 15th 2025.</li><li>Constructed Email to Domain Contact. WISeKey will send a mail using ‘admin’, ‘administrator’, ‘webmaster’, ‘hostmaster’, or ‘postmaster’ as the local part, followed by the at-sign (“@”), followed by the Domain Name being validated including a random unique code and a method to confirm the reception. The Random Value is unique per request and remains valid for no more than 30 days from creation. Confirmation logs are saved in the validation record.</li><li>Agreed-Upon Change to Website. WISeKey will provide a text file containing a unique Random Value that must be placed by the Applicant at path /.well-known/pki-validation/<filename> and retrievable via HTTP or HTTPS. The platform confirms retrieval by performing an HTTP(s) GET which returns a 2xx HTTP status code and verifying that the Random Value appears in the retrieved file content. The entire Random Value doesn't appear in the HTTP request used to retrieve the file. This method only can be used to validate a particular FQDN and is not allowed for Wildcard certificates.</li><li>DNS Change. WISeKey will provide a unique code that must be placed as a TXT or CNAME record in the DNS server maintaining the domain being validated.</li><li>Agreed-Upon Change to Website - ACME. Confirming the Applicant’s control over a FQDN by validating domain control of the FQDN using the ACME HTTP Challenge method defined in Section 8.3 of RFC 8555</li></ul>Whenever used, all random validation codes have a maximum validity of 30 days.|
+| DV TLS Certificate | OWGTM confirms the validation of each FQDN in accordance with the CA/Browser Forum Baseline Requirements 3.2.2.4 using at least one of the methods enumerated in that Section. Currently OWGTM doesn't issue certificates for Onion domains.<br>For each validated FQDN the "TLS Certificate Manager" software used by the OWGTM creates and retains a validation record that includes: (a) the FQDN(s) validated; (b) the specific domain validation method used, related to the version of the Baseline Requirements in force at the moment of validation; (c) date/time of validation; (d) identity of the operator or automated system that performed validation; (e) artifacts evidencing validation (e.g., e-mail headers, DNS TXT contents, HTTP file retrieval response headers and body hash, ACME challenge logs); and (f) any corroboration results from Multi-Perspective Issuance Corroboration (Section 3.2.2.4). Validation records SHALL be retained for at least 7 years after certificate expiry or revocation.<br>   <br>In particular, OWGTM will validate the Applicant’s right to use or control each domain name that will be listed in the Subject Alternative Name field of a Certificate by using at least one of the following procedures:<ul><li>Email to Domain Contact (BR 3.2.2.4.13 and 3.2.2.4.14). WISeKey will retrieve the Domain Contact using the WHOIS information or the DNS and CAA records and deliver a mail including a unique code and a method to confirm the reception. This method stopped using WHOIS contacts since July, 15th 2025.</li><li>Constructed Email to Domain Contact (BR 3.2.2.4.4). WISeKey will send a mail using ‘admin’, ‘administrator’, ‘webmaster’, ‘hostmaster’, or ‘postmaster’ as the local part, followed by the at-sign (“@”), followed by the Domain Name being validated including a random unique code and a method to confirm the reception. The Random Value is unique per request and remains valid for no more than 30 days from creation. Confirmation logs are saved in the validation record.</li><li>Agreed-Upon Change to Website v2 (BR 3.2.2.4.18). WISeKey will provide a text file containing a unique Random Value that must be placed by the Applicant at path /.well-known/pki-validation/<filename> and retrievable via HTTP or HTTPS. The platform confirms retrieval by performing an HTTP(s) GET which returns a 2xx HTTP status code and verifying that the Random Value appears in the retrieved file content. The entire Random Value doesn't appear in the HTTP request used to retrieve the file. This method only can be used to validate a particular FQDN and is not allowed for Wildcard certificates.</li><li>DNS Change (BR 3.2.2.4.7). WISeKey will provide a unique code that must be placed as a TXT or CNAME record in the DNS server maintaining the domain being validated.</li><li>Agreed-Upon Change to Website - ACME (BR 3.2.2.4.19). Confirming the Applicant’s control over a FQDN by validating domain control of the FQDN using the ACME HTTP Challenge method defined in Section 8.3 of RFC 8555</li></ul>Note 1: Whenever used, all random validation codes have a maximum validity of 30 days.<br>Note 2: Whenever required by the CABF Requirements, we perform multi-perspective validation (see section 3.2.2.4).<br>Note 3: OWGTM does not issue currently TLS certificates for IP addresses, or onion domains.|
 | OV TLS Certificate | WISeKey will execute the domain validation procedures as required for DV TLS certificates.<br>Additionally, WISeKey will verify:<ul><li>The identity and address of the Applicant using the procedures found in section 3.2.2.1 and/or section 3.2.3 of the Baseline Requirements.</li><li>Any DBA included in a Certificate using a third party or government source, attestation letter, or reliable form of identification in accordance with section 3.2.2 of the Baseline Requirements.</li></ul>|
 | EV TLS Certificate | WISeKey will execute the domain validation procedures as required for DV and OV TLS certificates.<br>Additionally, WISeKey will do the specific validations mandated by the EV Guidelines issued by the CAB/Forum, requiring the intervention of a second validation agent to corroborate all the validations. |
 
@@ -306,13 +306,18 @@ The list of used validation sources is available at https://wisekey.com/reposito
 | --- | --- |
 | Device Certificate | If the organization name is included in the certificate, the Registration Authority must verify that the Organization exists and that the certificate subscriber is authorized to enroll for a certificate including the Organization name |
 
-#### 3.2.2.9 Multi-Perspective Issuance Corroboration (MPIC)
+#### 3.2.2.4 Multi-Perspective Issuance Corroboration (MPIC)
 
 CAs in the OWGTM mandatorily implement Multi-Perspective Issuance Corroboration (MPIC) in accordance with CA/Browser Forum Baseline Requirements.
 
-For domain validation and CAA checks that require remote network corroboration, the Primary Network Perspective performs the initial validation and the CA obtains corroborating observations from at least two (2) geographically and topologically distinct remote Network Perspectives (remote vantage points) as required by the Baseline Requirements effective dates.
+For domain validation and CAA checks that require remote network corroboration, the Primary Network Perspective performs the initial validation and the CA obtains corroborating observations from at least two (2) geographically and topologically distinct remote Network Perspectives (remote vantage points) as required by the Baseline Requirements effective dates. The number of minimim remote persepctives will be increased as per the schedule mandated by the Baseline Requirements.
 
 The CA uses the Quorum Requirements Table in the Baseline Requirements to determine whether the set of observations constitutes corroboration. If the quorum is not achieved per the Baseline Requirements, the CA will not proceed with issuance. The CA retains MPIC logs (primary observation, remote corroboration observations, timestamps, vantage point IDs, and final decision) as part of the validation record. MPIC implementation details (vantage point providers, monitoring frequency, DNSSEC and resolver behavior) are maintained in the CA’s operational MPIC procedures (internal document), according to the information published in this document.
+
+### 3.2.2.5 Email Challenge Response Procedure
+Unless the domain component of an email address has been already verified for a susbcriber, OWGTM verifies the requester’s control over the email address by sending a random value via email and then confirming the user entered the random value in our mailbox validation service.
+
+The random value can only be used within a 24-hour timeframe after its generation.
 
 ### 3.2.3 Authentication of individual identity
 
@@ -328,7 +333,7 @@ For the validation of individuals participating in the certificate application a
 
 | CP Identifier | Validation Policy |
 | --- | --- |
-| Standard Personal Certificate | **ID Data Verified**:<br>The only verified data is the email address.<br>**Method of Verification**:<br><ul><li>If the Extended Key Usage for secure email is set: Bounce back email with verification code procedure proving control of the user mailbox.</li><li>Pre-Authorization of the full domain by the organization where the user belongs to, using methods acceptable for domain control verification, as defined by the CABF baseline requirements.</li></ul>**Entities authorized to verify**:<br><ul><li>The entity purchasing and managing the e-ID system under contract with WISeKey.</li><li>Authorised internal entity (e.g. human resources dept.) or external entity who is legally bound to comply with the verification procedures.</li></ul>|
+| Standard Personal Certificate | **ID Data Verified**:<br>The only verified data is the email address.<br>**Method of Verification**:<br><ul><li>If the Extended Key Usage for secure email is set: Bounce back email with verification code procedure proving control of the user mailbox (See section 3.2.2.5).</li><li>Pre-Authorization of the full domain by the organization where the user belongs to, using methods acceptable for domain control verification, as defined by the CABF baseline requirements (same methods used for TLS certificates, see section 3.2.2.2).</li></ul>**Entities authorized to verify**:<br><ul><li>The entity purchasing and managing the e-ID system under contract with WISeKey.</li><li>Authorised internal entity (e.g. human resources dept.) or external entity who is legally bound to comply with the verification procedures.</li></ul>|
 | Advanced Personal Certificate | **ID Data Verified**:<br>Personal identity data such as name, date of birth, nationality, phone number, etc. Legal entities are required to provide relevant official documentation. Verification of device or other type of entity or object is done with substantially equivalent data. If the physical and juridical persons names are included in the certificates, this information must be verified.<br>**Method of Verification**:<br>May be done through database of identity data that is well-maintained and was created based on face to face or remote verification using official ID documents.<br>If the Extended Key Usage for secure email is set: same verification as indicated for “CertifyID Standard Personal Certificate”.<br>**Entities authorized to verify**:<br><ul><li>The entity purchasing and managing the e-ID system under contract with WISeKey.</li><li>Authorised internal entity (e.g. human resources dept.) or external entity who is legally bound to comply with the verification procedures.</li></ul>|
 | Qualified Personal Certificate | Same as for Personal Certificates |
 
@@ -423,7 +428,7 @@ An authorized Registration Authority Officer will perform these functions. This 
 
 The steps to be executed by the Issuing CA or RA are as follows:
 -	As a first step, the Issuing CA or RA will perform the verifications stipulated in section 3.2. 
--	As a second step, the CA must check the DNS for the existence of a CAA record for each dNSName in the subjectAltName extension of the certificate to be issued, according to the procedure in RFC 6844.
+-	As a second step, the CA must check the DNS for the existence of a CAA record for each dNSName in the subjectAltName extension of the certificate to be issued, according to the procedure described im section below "CAA processing".
 -	As a third step, the Issuing CA must check the certificate details against a list of previously revoked Certificates and rejected certificate requests to identify suspicious certificate requests.
 
 The Issuing CA can only issue a certificate after having successfully completed the above steps.
@@ -432,7 +437,7 @@ The Issuing CA can only issue a certificate after having successfully completed 
 
 Prior to issuing a TLS or S/MIME certificate including a domain name in the subjectAltName extension, OWGTM checks for and process Certificate Authority Authorization (CAA) records for each DNSName in accordance with RFC 8659. When processing CAA records, OWGTM processes the issue, issuewild, and iodef property tags as specified in RFC 8659; whenever possible, OWGTM will support additional property tags but preventing them to conflict with or supersede the mandatory tags issue, issuewild, and iodef. OWGTM respects the CAA critical flag and will not issue a certificate if an unrecognized property tag is present with the critical flag set. OWGTM platforms log CAA lookup outcomes and document issuance decisions related to CAA records.
 
-If the CA issues a certificate after evaluating CAA records, the issuance occurs within the CAA record’s TTL, or 8 hours, whichever is greater. The OWGTM platfoms log the CAA TTL observed and the issuance timestamp in the validation record and include evidence of compliance with this timing requirement.
+If the CA issues a certificate after evaluating CAA records, the issuance occurs within the CAA record’s TTL, or 8 hours, whichever is greater. If issuance cannot be completed within that timeframe, OWGTM SHALL re-evaluate the CAA record prior to issuance. The OWGTM platfoms log the CAA TTL observed and the issuance timestamp in the validation record and include evidence of compliance with this timing requirement.
 
 WISeKey documents potential issuances that were prevented by a CAA record, and will dispatch reports of such issuance requests to the contact stipulated in the CAA iodef record(s), if present. WISeKey support mailto: and https: URL schemes in the iodef record.
 
@@ -1071,6 +1076,12 @@ The Certification and/or Registration Authorities operating under the OWGTM are 
 
 The following subsections disclose the procedures executed in such these events.
 
+#### 5.7.1.1. Mass Revocation Plans
+
+As required by Root Programs and the CABF Baseline Requirements, OWGTM maintains a mass revocation plan to ensure a rapid, consistent, and reliable response to large-scale certificate revocation events. The Mass Revocation Plan is tested, reviewed, and updated at least annually.
+
+The external audit Mass Revocation Plan is included in the annual Webtrust audit for ServerAuth Baseline Requirements.
+
 ### 5.7.2 Computing resources, software, and/or data are corrupted
 
 If the hardware or software resources are altered or suspected to have been altered, the OWGTM will stop normal operations until a secure environment is established. In parallel, an audit will be conducted in order to identify the cause and stipulate the necessary actions to avoid future iterations.
@@ -1350,11 +1361,6 @@ All certificates issued under the OWGTM are compliant to:
 
 The OWGTM defines different certificate profiles corresponding to the allowed certificate types issued under the different hierarchies.
 
-The general certificate profiles are:
-- Personal Certificates: Used for Client Authentication, Document Signature and/or Secure Email.
-- TLS Certificates: Used for Server Authentication.
-- Device Certificates: Used for Client Authentication.
-
 The different profiles are mainly differentiated by the appropriate combination of values in the "Key Usage", "Extended Key Usage" and/or the use of particular Policy Identifiers. This combination of values can imply that the certificate is mandatorily subject to requirements stipulated by the CA/B Forum and/or Root Programs, that take precedence over stipulations in this document. In particular:
 - Server Authentication Certificates are subject to the CABF Baseline Requirements and (if applicable) EV Guidelines regulating these types of certificates.
 - Secure Email Certificates are subject to the CABF Baseline Requirements for S/MIME Certificates.
@@ -1384,10 +1390,10 @@ In particular for TLS certificates:
 
 For the Root CA and subordinate CA certificates, the used algorithms are:
 - sha-1WithRSAEncryption (deprecated, not allowed for new issuances)
-- sha256WithRSAEncryption
+- sha256WithRSAEncryption, sha384WithRSAEncryption, sha512WithRSAEncryption
 - ecdsa-with-sha384/256
 
-For subscriber certificates, only the algorithms permitted by the applicable requirements are allowed.
+For subscriber certificates, only the above algorithms permitted by the applicable requirements are allowed.
 
 ### 7.1.4 Name forms
 
@@ -1786,7 +1792,7 @@ Should individual provisions of this CPS prove to be ineffective or incomplete, 
 
 The ineffective provision will be replaced by an effective provision deemed as most closely reflecting the sense and purpose of the ineffective provision. In the case of incomplete provisions, amendment will be agreed as deemed to correspond to what would have reasonably been agreed upon in line with the sense and purposes of this CPS, had the matter been considered beforehand.
 
-If a Law in any jurisdiction where OWGTM operates or issues certificates conflicts with a Baseline Requirement, we may modify our internal processes only to the minimum extent necessary to comply with that Law. Prior to issuing any certificate under such a modified process the we will publish in this Section 9.16.3: 
+If a Law in any jurisdiction where OWGTM operates or issues certificates conflicts with a Baseline Requirement, we may modify our internal processes only to the minimum extent necessary to comply with that Law. Prior to issuing any certificate under such a modified process, we will publish in this Section 9.16.3: 
 - a detailed reference to the Law (statute/regulation/order, jurisdiction and date); 
 - a description of the specific Baseline Requirement(s) affected; and 
 - the precise modification(s) implemented by the CA. 
@@ -2075,6 +2081,9 @@ This section describes the certificate profiles issued by our CA, including all 
 
 OWGTM could adapt these profiles to the latest version of the applicable requirements, in force at the moment of issuance, without necessarily having to publish a new version of this document before issuance.
 
+In all cases, serial numbers in new certificates contain at least 64 bits
+of output from a CSPRNG.
+
 ## Validity Period Schedule
 
 ### TLS Certificates
@@ -2099,153 +2108,153 @@ OWGTM could adapt these profiles to the latest version of the applicable require
 
 ### DV TLS Certificate Profile
 
-| Attribute | RSA DV | ECC DV | Example Value | Notes |
-| --- | --- | --- | --- | --- |
+| Attribute | Content | Example Value | Notes |
+| --- | --- | --- | --- |
 | Version | v3 | v3 | 3 | **Mandatory** |
-| Serial Number | Unique value | Unique value | 01:A3:4F… | **Mandatory** |
-| Signature Algorithm | sha256WithRSAEncryption | ecdsa-with-SHA256 | sha256WithRSAEncryption | **Mandatory** |
-| Issuer | /<Issuer Subject Name> | same | C=CH, O=WISeKey, CN=GB DV CA | **Mandatory** |
-| Validity Period | \<See Schedule above> | same | 2025-11-01 → 2025-11-22 | **Mandatory**; capped per BR schedule |
-| Subject | CN=\<domain> | same | CN=gbdvvalidssl.hightrusted.com | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096 | EC P‑256/P-384 | RSA 2048 | **Mandatory** |
-| Basic Constraints (critical) | CA:FALSE | CA:FALSE | CA:FALSE | **Mandatory** |
-| Key Usage (critical) | Digital Signature, Key Encipherment | Digital Signature | Digital Signature, Key Encipherment | **Mandatory** |
-| Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | same | TLS Web Server Auth | **Mandatory** |
-| SAN | DNS:<domain> | same | DNS:gbdvvalidssl.hightrusted.com | **Mandatory** |
-| Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | same | 2.23.140.1.2.1, CPS: http://gbdvvalidssl.hightrusted.com/cps | **Mandatory** |
-| Authority Key Identifier (AKI) | keyid:… | keyid:… | keyid:AB:CD:EF:12:34:56 | **Optional** |
-| Subject Key Identifier (SKI) | keyid:… | keyid:… | keyid:12:34:56:78:9A:BC | **Optional** |
-| Authority Info Access (AIA) | CA Issuers URI, OCSP URI | same | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Optional** |
-| CRL Distribution Points (CRL DP) | URI:… | URI:… | http://gbdvvalidssl.hightrusted.com/crl.pem | **Optional** |
-| SCT list | present | present | Embedded SCTs | **Optional (but included)** |
+| Serial Number | Unique value |  01:A3:4F… | **Mandatory** |
+| Signature Algorithm | sha256WithRSAEncryption<br>ecdsa-with-SHA256 | sha256WithRSAEncryption | **Mandatory** |
+| Issuer | \<Issuer Subject Name> | C=CH, O=WISeKey, CN=GB DV CA | **Mandatory** |
+| Validity Period | \<See Schedule above> | 2025-11-01 → 2025-11-22 | **Mandatory**; capped per BR schedule |
+| Subject | CN=\<domain> | CN=gbdvvalidssl.hightrusted.com | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>EC P‑256/P-384 | RSA 2048 | **Mandatory** |
+| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Mandatory** |
+| Key Usage (critical) | Digital Signature, Key Encipherment (as allowed for ECC certificates) | Digital Signature, Key Encipherment | **Mandatory** |
+| Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | TLS Web Server Auth | **Mandatory** |
+| SAN | DNS:<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory** |
+| Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.2.1, CPS: http://gbdvvalidssl.hightrusted.com/cps | **Mandatory** |
+| Authority Key Identifier (AKI) | keyid:… | keyid:AB:CD:EF:12:34:56 | **Optional** |
+| Subject Key Identifier (SKI) | keyid:… | keyid:12:34:56:78:9A:BC | **Optional** |
+| Authority Info Access (AIA) | CA Issuers URI, OCSP URI | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Optional** |
+| CRL Distribution Points (CRL DP) | URI:… | http://gbdvvalidssl.hightrusted.com/crl.pem | **Optional** |
+| SCT list | present | Embedded SCTs | **Optional (but included)** |
 
 ### OV TLS Certificate Profile
 
-| Attribute | RSA OV | ECC OV | Example Value | Notes |
-| --- | --- | --- | --- | --- |
-| Version | v3 | v3 | 3 | **Mandatory** |
-| Serial Number | Unique value | Unique value | 01:A3:4F… | **Mandatory** |
-| Signature Algorithm | sha256WithRSAEncryption | ecdsa-with-SHA256 | sha256WithRSAEncryption | **Mandatory** |
-| Issuer | /<Issuer Subject Name> | same | C=CH, O=WISeKey, CN=GB DV CA | **Mandatory** |
-| Validity Period | \<See Schedule above> | same | 2025-11-01 → 2025-11-22 | **Mandatory**; capped per BR schedule |
-| Subject | C, ST, O, CN=\<domain> (or other combinations and fields allowed by the BR) | same | C=CH, ST=Zurich, O=Company, CN=gbovvalidssl.hightrusted.com | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096 | EC P‑256/P-384 | RSA 2048 | **Mandatory** |
-| Basic Constraints (critical) | CA:FALSE | CA:FALSE | CA:FALSE | **Mandatory** |
-| Key Usage (critical) | Digital Signature, Key Encipherment | Digital Signature | Digital Signature, Key Encipherment | **Mandatory** |
-| Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | same | TLS Web Server Auth | **Mandatory** |
-| SAN | DNS:<domain> | same | DNS:gbdvvalidssl.hightrusted.com | **Mandatory** |
-| Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | same | 2.23.140.1.2.2, CPS: http://gbdvvalidssl.hightrusted.com/cps | **Mandatory** |
-| Authority Key Identifier (AKI) | keyid:… | keyid:… | keyid:AB:CD:EF:12:34:56 | **Optional** |
+| Attribute | Content | Example Value | Notes |
+| --- | --- | --- | --- |
+| Version | v3 | 3 | **Mandatory** |
+| Serial Number | Unique value | 01:A3:4F… | **Mandatory** |
+| Signature Algorithm | sha256WithRSAEncryption<br>ecdsa-with-SHA256 | sha256WithRSAEncryption | **Mandatory** |
+| Issuer | \<Issuer Subject Name> | C=CH, O=WISeKey, CN=GB DV CA | **Mandatory** |
+| Validity Period | \<See Schedule above> | 2025-11-01 → 2025-11-22 | **Mandatory**; capped per BR schedule |
+| Subject | C, ST, O, CN=\<domain> (or other combinations and fields allowed by the BR) | C=CH, ST=Zurich, O=Company, CN=gbovvalidssl.hightrusted.com | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>EC P‑256/P-384 | RSA 2048 | **Mandatory** |
+| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Mandatory** |
+| Key Usage (critical) | Digital Signature, Key Encipherment (as allowed for ECC certificates) | Digital Signature, Key Encipherment | **Mandatory** |
+| Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | TLS Web Server Auth | **Mandatory** |
+| SAN | DNS:<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory** |
+| Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.2.2, CPS: http://gbdvvalidssl.hightrusted.com/cps | **Mandatory** |
+| Authority Key Identifier (AKI) | keyid:… | keyid:AB:CD:EF:12:34:56 | **Optional** |
 | Subject Key Identifier (SKI) | keyid:… | keyid:… | keyid:12:34:56:78:9A:BC | **Optional** |
-| Authority Info Access (AIA) | CA Issuers URI, OCSP URI | same | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Optional** |
-| CRL Distribution Points (CRL DP) | URI:… | URI:… | http://gbdvvalidssl.hightrusted.com/crl.pem | **Optional** |
-| SCT list | present | present | Embedded SCTs | **Optional (but included)** |
+| Authority Info Access (AIA) | CA Issuers URI, OCSP URI | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Optional** |
+| CRL Distribution Points (CRL DP) | URI:… | http://gbdvvalidssl.hightrusted.com/crl.pem | **Optional** |
+| SCT list | present | Embedded SCTs | **Optional (but included)** |
 
 ### EV TLS Certificate Profile
 
-| Attribute | RSA EV | ECC EV | Example Value | Notes |
-| --- | --- | --- | --- | --- |
-| Version | v3 | v3 | 3 | **Mandatory** |
-| Serial Number | Unique value | Unique value | 01:A3:4F… | **Mandatory** |
-| Signature Algorithm | sha256WithRSAEncryption | ecdsa-with-SHA256 | sha256WithRSAEncryption | **Mandatory** |
-| Issuer | /<Issuer Subject Name> | same | C=CH, O=WISeKey, CN=GB DV CA | **Mandatory** |
-| Validity Period | \<See Schedule above> | same | 2025-11-01 → 2025-11-22 | **Mandatory**; capped per BR schedule |
-| Subject | C, ST, O, serialNumber, CN, businessCategory, jurisdictionStateOrProvinceName, jurisdictionCountryName (or other combinations and fields allowed by the BR and EVGL) | same | C=CH, ST=Zurich, O=Company, serialNumber=123456789, CN=gbevvalidssl.hightrusted.com, businessCategory=Private Organization, jurisdictionStateOrProvinceName=Zurich, jurisdictionCountryName=CH | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096 | EC P‑256/P-384 | RSA 2048 | **Mandatory** |
-| Basic Constraints (critical) | CA:FALSE | CA:FALSE | CA:FALSE | **Mandatory** |
-| Key Usage (critical) | Digital Signature, Key Encipherment | Digital Signature | Digital Signature, Key Encipherment | **Mandatory** |
-| Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | same | TLS Web Server Auth | **Mandatory** |
-| SAN | DNS:<domain> | same | DNS:gbdvvalidssl.hightrusted.com | **Mandatory** |
-| Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | same | 2.23.140.1.1, CPS: http://gbdvvalidssl.hightrusted.com/cps | **Mandatory** |
-| Authority Key Identifier (AKI) | keyid:… | keyid:… | keyid:AB:CD:EF:12:34:56 | **Optional** |
-| Subject Key Identifier (SKI) | keyid:… | keyid:… | keyid:12:34:56:78:9A:BC | **Optional** |
-| Authority Info Access (AIA) | CA Issuers URI, OCSP URI | same | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Optional** |
-| CRL Distribution Points (CRL DP) | URI:… | URI:… | http://gbdvvalidssl.hightrusted.com/crl.pem | **Optional** |
-| SCT list | present | present | Embedded SCTs | **Optional (but included)** |
+| Attribute | Content | Example Value | Notes |
+| --- | --- | --- | --- |
+| Version | v3 | 3 | **Mandatory** |
+| Serial Number | Unique value | 01:A3:4F… | **Mandatory** |
+| Signature Algorithm | sha256WithRSAEncryption<br>ecdsa-with-SHA256 | sha256WithRSAEncryption | **Mandatory** |
+| Issuer | \<Issuer Subject Name> | C=CH, O=WISeKey, CN=GB DV CA | **Mandatory** |
+| Validity Period | \<See Schedule above> | 2025-11-01 → 2025-11-22 | **Mandatory**; capped per BR schedule |
+| Subject | C, ST, O, serialNumber, CN, businessCategory, jurisdictionStateOrProvinceName, jurisdictionCountryName (or other combinations and fields allowed by the BR and EVGL) | C=CH, ST=Zurich, O=Company, serialNumber=123456789, CN=gbevvalidssl.hightrusted.com, businessCategory=Private Organization, jurisdictionStateOrProvinceName=Zurich, jurisdictionCountryName=CH | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>EC P‑256/P-384 | RSA 2048 | **Mandatory** |
+| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Mandatory** |
+| Key Usage (critical) | Digital Signature, Key Encipherment (as allowed for ECC certificates) | Digital Signature, Key Encipherment | **Mandatory** |
+| Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | TLS Web Server Auth | **Mandatory** |
+| SAN | DNS:<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory** |
+| Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.1, CPS: http://gbdvvalidssl.hightrusted.com/cps | **Mandatory** |
+| Authority Key Identifier (AKI) | keyid:… | keyid:AB:CD:EF:12:34:56 | **Optional** |
+| Subject Key Identifier (SKI) | keyid:… | keyid:12:34:56:78:9A:BC | **Optional** |
+| Authority Info Access (AIA) | CA Issuers URI, OCSP URI | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Optional** |
+| CRL Distribution Points (CRL DP) | URI:… | http://gbdvvalidssl.hightrusted.com/crl.pem | **Optional** |
+| SCT list | present | Embedded SCTs | **Optional (but included)** |
 
 
 ## S/MIME Certificate Profiles
 
 ### Mailbox-Validated Certificate Profile
 
-| Attribute | Example Values | Notes |
-| --- | --- | --- |
+| Attribute | Content | Example Value | Notes |
+| --- | --- | --- | --- |
 | Version | 3 | **Mandatory** |
-| Serial Number | 14:b4:... | **Mandatory** |
-| Signature Algorithm | sha256WithRSAEncryption / ecdsa-with-SHA256 | **Mandatory** |
-| Issuer | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
-| Validity Period | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
-| Subject | CN=john.smith@example.com, emailAddress=john.smith@example.com (or other combinations and fields allowed by the SMIME BR) | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096, P-256/P-384 | **Mandatory** |
-| Basic Constraints (critical) | CA:FALSE | **Mandatory** |
-| Key Usage (critical) | Digital Signature, Key Encipherment / Key Agreement (Optional) | **Mandatory** |
-| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | **Mandatory** |
-| Subject Alternative Name (SAN) | email:john.smith@example.com | **Mandatory** (at least one) |
-| Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | **Mandatory** |
-| Authority Key Identifier (AKI) | keyid:DB:68:... | **Optional** |
-| Subject Key Identifier (SKI) |0C:D1... | **Optional** |
-| Authority Information Access (AIA) | CA Issuers: http://public.wisekey.com/crt/caname.cer <br>OCSP: http://ocsp.hightrusted.com (Optional) | **Optional**                                              |
-| CRL Distribution Points (CRL DP)   | URI: http://public.wisekey.com/crl/caname.crl | **Optional** |
+| Serial Number | Unique value | 14:b4:... | **Mandatory** |
+| Signature Algorithm | sha256WithRSAEncryption<br>ecdsa-with-SHA256  | sha256WithRSAEncryption| **Mandatory** |
+| Issuer | \<Issuer Subject Name>  | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
+| Validity Period | \<See Schedule above> | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
+| Subject | CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | CN=john.smith@example.com, emailAddress=john.smith@example.com | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384 | RSA 2048 | **Mandatory** |
+| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Mandatory** |
+| Key Usage (critical) | Digital Signature, Key Encipherment / Key Agreement (Optional) | Digital Signature | **Mandatory** |
+| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | E-mail Protection| **Mandatory** |
+| Subject Alternative Name (SAN) | email: | email:john.smith@example.com | **Mandatory** (at least one) |
+| Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | CABF OID | **Mandatory** |
+| Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Optional** |
+| Subject Key Identifier (SKI) | keyID:... | 0C:D1... | **Optional** |
+| Authority Information Access (AIA) | CA Issuers URI, OCSP URI (Optional) | CA Issuers: http://public.wisekey.com/crt/caname.cer <br>OCSP: http://ocsp.hightrusted.com | **Optional**                                              |
+| CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/crl/caname.crl | **Optional** |
 
 ### Individual-Validated Certificate Profile
 
-| Attribute | Example Values | Notes |
-| --- | --- | --- |
+| Attribute | Content | Example Value | Notes |
+| --- | --- | --- | --- |
 | Version | 3 | **Mandatory** |
-| Serial Number | 14:b4:... | **Mandatory** |
-| Signature Algorithm | sha256WithRSAEncryption / ecdsa-with-SHA256 | **Mandatory** |
-| Issuer | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
-| Validity Period | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
-| Subject | C=CH, L=Geneve, SN=Smith, GN=John, CN=john.smith@example.com, emailAddress=john.smith@example.com (or other combinations and fields allowed by the SMIME BR) | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096, P-256/P-384 | **Mandatory** |
-| Basic Constraints (critical) | CA:FALSE | **Mandatory** |
-| Key Usage (critical) | Digital Signature, Key Encipherment / Key Agreement (Optional) | **Mandatory** |
-| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | **Mandatory** |
-| Subject Alternative Name (SAN) | email:john.smith@example.com | **Mandatory** (at least one) |
-| Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | **Mandatory** |
-| Authority Key Identifier (AKI) | keyid:DB:68:... | **Optional** |
-| Subject Key Identifier (SKI) |0C:D1... | **Optional** |
-| Authority Information Access (AIA) | CA Issuers: http://public.wisekey.com/crt/caname.cer <br> OCSP: http://ocsp.hightrusted.com (Optional) | **Optional**                                              |
-| CRL Distribution Points (CRL DP)   | URI: http://public.wisekey.com/crl/caname.crl | **Optional** |
+| Serial Number | Unique value | 14:b4:... | **Mandatory** |
+| Signature Algorithm | sha256WithRSAEncryption<br>ecdsa-with-SHA256  | sha256WithRSAEncryption| **Mandatory** |
+| Issuer | \<Issuer Subject Name>  | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
+| Validity Period | \<See Schedule above> | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
+| Subject | C, ST, L, SN, GN, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, L=Geneve, SN=Smith, GN=John, CN=john.smith@example.com, emailAddress=john.smith@example.com | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384 | RSA 2048 | **Mandatory** |
+| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Mandatory** |
+| Key Usage (critical) | Digital Signature, nonRepudiation (Optional), Key Encipherment / Key Agreement (Optional) | Digital Signature | **Mandatory** |
+| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | E-mail Protection| **Mandatory** |
+| Subject Alternative Name (SAN) | email: | email:john.smith@example.com | **Mandatory** (at least one) |
+| Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | CABF OID | **Mandatory** |
+| Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Optional** |
+| Subject Key Identifier (SKI) | keyID:... | 0C:D1... | **Optional** |
+| Authority Information Access (AIA) | CA Issuers URI, OCSP URI (Optional) | CA Issuers: http://public.wisekey.com/crt/caname.cer <br>OCSP: http://ocsp.hightrusted.com | **Optional**                                              |
+| CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/crl/caname.crl | **Optional** |
 
 ### Sponsor-Validated Certificate Profile
 
-| Attribute | Example Values | Notes |
-| --- | --- | --- |
+| Attribute | Content | Example Value | Notes |
+| --- | --- | --- | --- |
 | Version | 3 | **Mandatory** |
-| Serial Number | 14:b4:... | **Mandatory** |
-| Signature Algorithm | sha256WithRSAEncryption / ecdsa-with-SHA256 | **Mandatory** |
-| Issuer | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
-| Validity Period | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
-| Subject | C=CH, L=Geneve, O=WISeKey SA, 2.5.4.97=NTRCH-CHE-101.022.134, SN=Smith, GN=John, CN=john.smith@example.com, emailAddress=john.smith@example.com (or other combinations and fields allowed by the SMIME BR) | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096, P-256/P-384 | **Mandatory** |
-| Basic Constraints (critical) | CA:FALSE | **Mandatory** |
-| Key Usage (critical) | Digital Signature, Key Encipherment / Key Agreement (Optional) | **Mandatory** |
-| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | **Mandatory** |
-| Subject Alternative Name (SAN) | email:john.smith@example.com | **Mandatory** (at least one) |
-| Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | **Mandatory** |
-| Authority Key Identifier (AKI) | keyid:DB:68:... | **Optional** |
-| Subject Key Identifier (SKI) |0C:D1... | **Optional** |
-| Authority Information Access (AIA) | CA Issuers: http://public.wisekey.com/crt/caname.cer <br> OCSP: http://ocsp.hightrusted.com (Optional) | **Optional**                                              |
-| CRL Distribution Points (CRL DP)   | URI: http://public.wisekey.com/crl/caname.crl | **Optional** |
+| Serial Number | Unique value | 14:b4:... | **Mandatory** |
+| Signature Algorithm | sha256WithRSAEncryption<br>ecdsa-with-SHA256  | sha256WithRSAEncryption| **Mandatory** |
+| Issuer | \<Issuer Subject Name>  | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
+| Validity Period | \<See Schedule above> | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
+| Subject | C, ST, L, OU, O, organizationIdentifier, SN, GN, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, L=Geneve, O=WISeKey SA, organizationIdentifier=NTRCH-CHE-101.022.134, SN=Smith, GN=John, CN=john.smith@example.com, emailAddress=john.smith@example.com | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384 | RSA 2048 | **Mandatory** |
+| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Mandatory** |
+| Key Usage (critical) | Digital Signature, nonRepudiation (Optional), Key Encipherment / Key Agreement (Optional) | Digital Signature | **Mandatory** |
+| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | E-mail Protection| **Mandatory** |
+| Subject Alternative Name (SAN) | email: | email:john.smith@example.com | **Mandatory** (at least one) |
+| Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | CABF OID | **Mandatory** |
+| Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Optional** |
+| Subject Key Identifier (SKI) | keyID:... | 0C:D1... | **Optional** |
+| Authority Information Access (AIA) | CA Issuers URI, OCSP URI (Optional) | CA Issuers: http://public.wisekey.com/crt/caname.cer <br>OCSP: http://ocsp.hightrusted.com | **Optional**                                              |
+| CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/crl/caname.crl | **Optional** |
 
 ### Organization-Validated Certificate Profile
 
-| Attribute | Example Values | Notes |
-| --- | --- | --- |
+| Attribute | Content | Example Value | Notes |
+| --- | --- | --- | --- |
 | Version | 3 | **Mandatory** |
-| Serial Number | 14:b4:... | **Mandatory** |
-| Signature Algorithm | sha256WithRSAEncryption / ecdsa-with-SHA256 | **Mandatory** |
-| Issuer | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
-| Validity Period | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
-| Subject                            | C=CH, L=Geneve, O=Acme Corp, 2.5.4.97=CH-ACME-123.456.789, CN=[john.doe@acme.com](mailto:john.doe@acme.com), emailAddress=[john.doe@acme.com](mailto:john.doe@acme.com) | **Mandatory**; includes organizationIdentifier (OID 2.5.4.97) |
-| Public Key Algorithm / Size | RSA 2048/3072/4096, P-256/P-384 | **Mandatory** |
-| Basic Constraints (critical) | CA:FALSE | **Mandatory** |
-| Key Usage (critical) | Digital Signature, Key Encipherment / Key Agreement (Optional) | **Mandatory** |
-| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | **Mandatory** |
-| Subject Alternative Name (SAN) | email:john.smith@example.com | **Mandatory** (at least one) |
-| Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | **Mandatory** |
-| Authority Key Identifier (AKI) | keyid:DB:68:... | **Optional** |
-| Subject Key Identifier (SKI) |0C:D1... | **Optional** |
-| Authority Information Access (AIA) | CA Issuers: http://public.wisekey.com/crt/caname.cer <br> OCSP: http://ocsp.hightrusted.com (Optional) | **Optional**                                              |
-| CRL Distribution Points (CRL DP)   | URI: http://public.wisekey.com/crl/caname.crl | **Optional** |
+| Serial Number | Unique value | 14:b4:... | **Mandatory** |
+| Signature Algorithm | sha256WithRSAEncryption<br>ecdsa-with-SHA256  | sha256WithRSAEncryption| **Mandatory** |
+| Issuer | \<Issuer Subject Name>  | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
+| Validity Period | \<See Schedule above> | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
+| Subject | C, ST, L, OU, O, organizationIdentifier, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, L=Geneve, O=WISeKey SA, organizationIdentifier=NTRCH-CHE-101.022.134, emailAddress=john.smith@example.com | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384 | RSA 2048 | **Mandatory** |
+| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Mandatory** |
+| Key Usage (critical) | Digital Signature, nonRepudiation (Optional), Key Encipherment / Key Agreement (Optional) | Digital Signature | **Mandatory** |
+| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | E-mail Protection| **Mandatory** |
+| Subject Alternative Name (SAN) | email: | email:john.smith@example.com | **Mandatory** (at least one) |
+| Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | CABF OID | **Mandatory** |
+| Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Optional** |
+| Subject Key Identifier (SKI) | keyID:... | 0C:D1... | **Optional** |
+| Authority Information Access (AIA) | CA Issuers URI, OCSP URI (Optional) | CA Issuers: http://public.wisekey.com/crt/caname.cer <br>OCSP: http://ocsp.hightrusted.com | **Optional**                                              |
+| CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/crl/caname.crl | **Optional** |
