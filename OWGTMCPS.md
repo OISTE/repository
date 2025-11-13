@@ -471,6 +471,10 @@ A certificate request will be forwarded to a Certification Authority for its iss
 
 A Certification Authority adhering to the OWGTM proceeds with the issuance of a certificate only after executing the necessary measures to verify that the signing request is authorized and genuine, as per the particular controls are stipulated in this document.
 
+#### 4.3.1.1. Linting practices
+TLS and S/MIME Certificates follow a Linting process to test the technical conformity of each to-be-signed certificate prior to signing it. If the linting results in error, this generates an alert and prevents certificate issuance. Linting warnings also generate alerts and are review to assess the possible impact, but do not necessarily prevent issuance.
+OWGTM may use a Linting process to test each issued Certificate (e.g. during self-audits).
+
 ### 4.3.2 Notification to subscriber by the CA of issuance of certificate
 
 For CA Certificates, OWGTM notifies directly to the authorized CA responsible.
@@ -1331,6 +1335,8 @@ Systems are developed using the WISeKey KeySteps Methodology, which ensures the 
 
 Authenticity and integrity of critical software components must be checked before they are enabled in a production environment, by using code signing or other acceptable methods.
 
+In particular, regarding Linting softwre, we monitor for updated versions of any third party Linting software utilized in the CA service, and plan for updates no later than three (3) months from the release of the update. When appropriate, we perform Linting on the corpus of its unexpired, un-revoked Subscriber Certificates whenever after an update the Linting software.
+
 ### 6.6.2 Security management controls
 
 The OWGTM recommends following the ISO27000 security management approach. In particular WISeKey, as main operator of the Trust Model follows an informal adoption of such security standards.
@@ -1498,6 +1504,14 @@ All assessment results will be conformed as:
   - OWGTM Policy Approval Authority
   - Root Programs, in the case of need
 - Audit Statement Report. This document only includes a formal statement from the auditor and reflects the result of the assessment, listing the topics covered and a global result. The summarized report is deemed public and is only published in the OWGTM and Issuing Repository.
+
+## 8.7 Self-Audits
+
+In compliance with the CABF Requirements, OWGTM performs a quarterly internal audit of at least a random 3% of certificates issued during the period. This audit includes linting of the selected certificates.
+
+Additionally, OWGTM performs self-assessments as required by the root programs and publishes the results in the CCADB platform.
+
+Results are saved and provided to auditors upon request.
 
 # 9. OTHER BUSINESS AND LEGAL MATTERS
 
