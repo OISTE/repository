@@ -133,9 +133,13 @@ The type of certificate is determined by the combination of "Key Usage", "Extend
 | --- | --- | --- |
 | Issuing and Intermediate CA Certificate | Infrastructure certificate for all subordinate Certification Authorities operating in the trust model | Certificate Signing, CRL Signing |
 | OCSP Certificate | Infrastructure certificate for Online Certificate Status Responders providing information on the subordinated CAs issued by the OISTE Roots | OCSP Response Signature |
-| Standard Personal Certificate | Low Assurance Personal certificates used by Natural persons to authenticate and encrypt documents and transactions. Only the eMail address is verified and included in the certificate | Digital Signature, Encryption, Client Authentication and email Protection |
-| Advanced Personal Certificate | High Assurance Personal certificates with software keys, used by Natural person to authenticate and encrypt documents and transactions. Personal and Organizations identity attributes are validated and included in the certificate. Remote verification is allowed under certain circumstances | Digital Signature, Encryption, Client Authentication, Non- Repudiation and email Protection |
-| Qualified Personal Certificate<br>Qualified Corporate Certificate | High Assurance Personal certificates with (optionally) hardware keys, used by Natural persons authenticate and encrypt documents and transactions. Personal and Organizations identity attributes are validated and included in the certificate. All identification attributes in the certificate are verified “Face-to-Face” or similar assurance | Digital Signature, Encryption, Client Authentication, Non-Repudiation and email Protection |
+| Standard (Basic) Personal Certificate | Low Assurance Personal certificates used by Natural persons to authenticate and encrypt documents and transactions. Only the eMail address is verified and included in the certificate.<br>**When used for email Protection, this is equivalent to the "mailbox-validated" profile defined by the CAB/Forum Baseline Requirements for S/MIME Certificates** | Digital Signature, Encryption, Client Authentication and email Protection |
+| Advanced Personal Certificate | High Assurance Personal certificates with software keys, used by Natural person to authenticate and encrypt documents and transactions. Personal identity attributes are validated and included in the certificate. Remote verification is allowed under certain circumstances.<br>**When used for email Protection, this is equivalent to the "individual-validated" profile defined by the CAB/Forum Baseline Requirements for S/MIME Certificates** | Digital Signature, Encryption, Client Authentication and email Protection |
+| Qualified Personal Certificate | High Assurance Personal certificates with software or hardware keys, used by Natural person to authenticate and encrypt documents and transactions. Valid for Advanced Signatures of PDF documents. Personal identity attributes are validated and included in the certificate. Remote verification is allowed under certain circumstances.<br>**When used for email Protection, this is equivalent to the "individual-validated" profile defined by the CAB/Forum Baseline Requirements for S/MIME Certificates** | Digital Signature, Encryption, Non-Repudiation, Client Authentication, Document Signing and email Protection |
+| Advanced Professional Certificate | High Assurance Personal certificates with software keys, used by Natural person to authenticate and encrypt documents and transactions. Personal identity and Organization attributes are validated and included in the certificate. Remote verification is allowed under certain circumstances.<br>**When used for email Protection, this is equivalent to the "sponsor-validated" profile defined by the CAB/Forum Baseline Requirements for S/MIME Certificates** | Digital Signature, Encryption, Client Authentication and email Protection |
+| Qualified Professional Certificate | High Assurance Personal certificates with software or hardware keys, used by Natural person to authenticate and encrypt documents and transactions. Valid for Advanced Signatures of PDF documents. Personal identity and Organization attributes are validated and included in the certificate. Remote verification is allowed under certain circumstances.<br>**When used for email Protection, this is equivalent to the "sponsor-validated" profile defined by the CAB/Forum Baseline Requirements for S/MIME Certificates** | Digital Signature, Encryption, Non-Repudiation, Client Authentication, Document Signing and email Protection |
+| Advanced Corporate Certificate | High Assurance Corporate certificates with software keys, used by Legal person to authenticate and encrypt documents and transactions. Organization attributes are validated and included in the certificate. Remote verification is allowed under certain circumstances.<br>**When used for email Protection, this is equivalent to the "organization-validated" profile defined by the CAB/Forum Baseline Requirements for S/MIME Certificates** | Digital Signature, Encryption, Client Authentication and email Protection |
+| Qualified Corporate Certificate | High Assurance Corporate certificates with software or hardware keys, used by Legal person to authenticate and encrypt documents and transactions. Valid for Advanced Signatures of PDF documents. Organization attributes are validated and included in the certificate. Remote verification is allowed under certain circumstances.<br>**When used for email Protection, this is equivalent to the "organization-validated" profile defined by the CAB/Forum Baseline Requirements for S/MIME Certificates** | Digital Signature, Encryption, Non-Repudiation, Client Authentication, Document Signing and email Protection |
 | DV TLS Certificate | Medium assurance TLS/TLS certificate. All identification attributes in the certificate are verified. The control on the Internet Domain is validated. Compliant with CA/Browser Forum Baseline Requirements | Digital Signature, Encryption, Server Authentication |
 | OV TLS Certificate | High assurance TLS/TLS certificate. All identification attributes in the certificate are verified. The Identity of the organization is validated. Compliant with CA/Browser Forum Baseline Requirements | Digital Signature, Encryption, Server Authentication |
 | EV TLS Certificate | High assurance TLS/TLS certificate | All identification attributes in the certificate are verified. The Identity of the organization is validated. Compliant with CA/Browser Requirements for Extended Validation | Digital Signature, Encryption, Server Authentication |
@@ -280,22 +284,38 @@ In all cases, OWGTM validation practices include the inspection of any documenta
 
 Deviations or suspected falsifications SHALL be escalated and handled per the incident handling procedures in Section 8.5.
 
-#### 3.2.2.1 For Personal Certificates
+#### 3.2.2.1 For Personal (S/MIME) Certificates
+
+**Validation of mailbox authorization or control**
+
+General Principles:
+- OWGTM SHALL verify that Applicant controls the email accounts associated with all Mailbox Fields referenced in the Certificate or has been authorized by the email account holder to act on the account holder’s behalf.
+- OWGTM does not delegate the verification of mailbox authorization or control.
+- OWGTM maintains a record of which validation method was used to validate every domain, as indicated in the TLS Certificates CPS or email address in issued Certificates.
+
+**Validating authority over mailbox via domain**
+
+OWGTM MAY confirm the Applicant has been authorized by the email account holder to act on the account holder’s behalf by verifying the entity’s control over the domain portion of the Mailbox Address to be used in the Certificate. This method will be used to entitle an Enterprise Registration Authority to issue certificates for the authorized domains.
+
+OWGTM uses only the approved methods in Section 3.2.2.4 of the TLS Baseline Requirements and indicated in the TLS Certificates CPS to perform this verification.
+
+**Validating control over mailbox via email**
+
+OWGTM validates the right for the Applicant to use the submitted email address. This is achieved through the delivery via a challenge and response made to the email address submitted during the Certificate application, as defined in section 3.2.2.5.
 
 In all cases, when an organization name is included in a certificate valid for secure email, the organization validation will follow the CA/B Forum Baseline Requirements for the Issuance and Management of Publicly-Trusted S/MIME Certificates.
 
 | CP Identifier | Validation Policy |
 | --- | --- |
-| Standard Personal Certificate | Does not Apply: Individual or Organization information will not appear in these certificates |
-| Advanced Professional Certificate,<br>Qualified Personal Certificate | If the organization name is included in the certificate, the Registration Authority must verify that the Organization exists and that the certificate subscriber is authorized to enroll for a certificate including the Organization name, by means of the authorization of a representative of the same Organization.<br>In both cases is allowed to do a pre-authorization of users according to a pre-validated database or the domain name used in the subscriber’s e-mail address |
-| Advanced Professional Certificate,<br>Qualified Corporate Certificate | The Registration Authority must verify that the Organization exists and that the certificate applicant is authorized to enroll for a certificate in behalf of the Organization name, by means of the authorization of a representative of the same Organization. |
+| Standard Personal Certificate<br>Advanced Personal Certificate,<br>Qualified Personal Certificate | Does not Apply: Individual or Organization information will not appear in these certificates |
+| Advanced Professional Certificate,<br>Qualified Professional Certificate<br>Advanced Corporate Certificate<br>Qualified Corporate Certificate | The Registration Authority must verify that the Organization exists and that the certificate applicant is authorized to enroll for a certificate in behalf of the Organization name, by means of the authorization of a representative of the same Organization.<br>Any DBA included in a Certificate will be validated using an information source, attestation letter, or reliable form of identification in accordance with section 3.2.2 of the Baseline Requirements.|
 
 #### 3.2.2.2 For TLS Server Certificates
 
 | CP Identifier | Validation Policy |
 | --- | --- |
 | DV TLS Certificate | OWGTM confirms the validation of each FQDN in accordance with the CA/Browser Forum Baseline Requirements 3.2.2.4 using at least one of the methods enumerated in that Section. Currently OWGTM doesn't issue certificates for Onion domains.<br>For each validated FQDN the "TLS Certificate Manager" software used by the OWGTM creates and retains a validation record that includes: (a) the FQDN(s) validated; (b) the specific domain validation method used, related to the version of the Baseline Requirements in force at the moment of validation; (c) date/time of validation; (d) identity of the operator or automated system that performed validation; (e) artifacts evidencing validation (e.g., e-mail headers, DNS TXT contents, HTTP file retrieval response headers and body hash, ACME challenge logs); and (f) any corroboration results from Multi-Perspective Issuance Corroboration (Section 3.2.2.4). Validation records SHALL be retained for at least 7 years after certificate expiry or revocation.<br>   <br>In particular, OWGTM will validate the Applicant’s right to use or control each domain name that will be listed in the Subject Alternative Name field of a Certificate by using at least one of the following procedures:<ul><li>Email to Domain Contact (BR 3.2.2.4.13 and 3.2.2.4.14). WISeKey will retrieve the Domain Contact using the WHOIS information or the DNS and CAA records and deliver a mail including a unique code and a method to confirm the reception. This method stopped using WHOIS contacts since July, 15th 2025.</li><li>Constructed Email to Domain Contact (BR 3.2.2.4.4). WISeKey will send a mail using ‘admin’, ‘administrator’, ‘webmaster’, ‘hostmaster’, or ‘postmaster’ as the local part, followed by the at-sign (“@”), followed by the Domain Name being validated including a random unique code and a method to confirm the reception. The Random Value is unique per request and remains valid for no more than 30 days from creation. Confirmation logs are saved in the validation record.</li><li>Agreed-Upon Change to Website v2 (BR 3.2.2.4.18). WISeKey will provide a text file containing a unique Random Value that must be placed by the Applicant at path /.well-known/pki-validation/<filename> and retrievable via HTTP or HTTPS. The platform confirms retrieval by performing an HTTP(s) GET which returns a 2xx HTTP status code and verifying that the Random Value appears in the retrieved file content. The entire Random Value doesn't appear in the HTTP request used to retrieve the file. This method only can be used to validate a particular FQDN and is not allowed for Wildcard certificates.</li><li>DNS Change (BR 3.2.2.4.7). WISeKey will provide a unique code that must be placed as a TXT or CNAME record in the DNS server maintaining the domain being validated.</li><li>Agreed-Upon Change to Website - ACME (BR 3.2.2.4.19). Confirming the Applicant’s control over a FQDN by validating domain control of the FQDN using the ACME HTTP Challenge method defined in Section 8.3 of RFC 8555</li></ul>Note 1: Whenever used, all random validation codes have a maximum validity of 30 days.<br>Note 2: Whenever required by the CABF Requirements, we perform multi-perspective validation (see section 3.2.2.4).<br>Note 3: OWGTM does not issue currently TLS certificates for IP addresses, or onion domains.|
-| OV TLS Certificate | WISeKey will execute the domain validation procedures as required for DV TLS certificates.<br>Additionally, WISeKey will verify:<ul><li>The identity and address of the Applicant using the procedures found in section 3.2.2.1 and/or section 3.2.3 of the Baseline Requirements.</li><li>Any DBA included in a Certificate using a third party or government source, attestation letter, or reliable form of identification in accordance with section 3.2.2 of the Baseline Requirements.</li></ul>|
+| OV TLS Certificate | WISeKey will execute the domain validation procedures as required for DV TLS certificates.<br>Additionally, WISeKey will verify:<ul><li>The identity and address of the Applicant using the procedures found in section 3.2.2.1 and/or section 3.2.3 of the Baseline Requirements.</li><li>Any DBA included in a Certificate will be validated using a verified information source, attestation letter, or reliable form of identification in accordance with section 3.2.2 of the Baseline Requirements.</li></ul>|
 | EV TLS Certificate | WISeKey will execute the domain validation procedures as required for DV and OV TLS certificates.<br>Additionally, WISeKey will do the specific validations mandated by the EV Guidelines issued by the CAB/Forum, requiring the intervention of a second validation agent to corroborate all the validations. |
 
 The list of used validation sources is available at https://wisekey.com/repository. This list is conformed as indicated in the introduction of section 3.2.
@@ -327,17 +347,19 @@ The same validation practices stated in section 3.2.2 will be applied to the aut
 
 #### 3.2.3.1 For TLS Certificates
 
-For the validation of individuals participating in the certificate application and management, OWGTM enforces compliance with the CA/B Forum Baseline Requirements and EV Guidelines.
+Currently OWGTM doesn't issue TLS "individual-validated" certificates.
 
-#### 3.2.3.2 For Personal Certificates
+For the validation of other individuals participating in the certificate application and management, OWGTM enforces compliance with the CA/B Forum Baseline Requirements and EV Guidelines.
+
+#### 3.2.3.2 For Personal (S/MIME) Certificates
 
 | CP Identifier | Validation Policy |
 | --- | --- |
-| Standard Personal Certificate | **ID Data Verified**:<br>The only verified data is the email address.<br>**Method of Verification**:<br><ul><li>If the Extended Key Usage for secure email is set: Bounce back email with verification code procedure proving control of the user mailbox (See section 3.2.2.5).</li><li>Pre-Authorization of the full domain by the organization where the user belongs to, using methods acceptable for domain control verification, as defined by the CABF baseline requirements (same methods used for TLS certificates, see section 3.2.2.2).</li></ul>**Entities authorized to verify**:<br><ul><li>The entity purchasing and managing the e-ID system under contract with WISeKey.</li><li>Authorised internal entity (e.g. human resources dept.) or external entity who is legally bound to comply with the verification procedures.</li></ul>|
-| Advanced Personal Certificate | **ID Data Verified**:<br>Personal identity data such as name, date of birth, nationality, phone number, etc. Legal entities are required to provide relevant official documentation. Verification of device or other type of entity or object is done with substantially equivalent data. If the physical and juridical persons names are included in the certificates, this information must be verified.<br>**Method of Verification**:<br>May be done through database of identity data that is well-maintained and was created based on face to face or remote verification using official ID documents.<br>If the Extended Key Usage for secure email is set: same verification as indicated for “CertifyID Standard Personal Certificate”.<br>**Entities authorized to verify**:<br><ul><li>The entity purchasing and managing the e-ID system under contract with WISeKey.</li><li>Authorized internal entity (e.g. human resources dept.) or external entity who is legally bound to comply with the verification procedures.</li></ul>|
-| Qualified Personal Certificate | Same as for Personal Certificates |
+| Standard Personal Certificate | **ID Data Verified**:<br>The only verified data is the email address.<br>**Method of Verification**:<br><ul><li>If the Extended Key Usage for secure email is set: Bounce back email with verification code procedure proving control of the user mailbox (See section 3.2.2.5).</li><li>Pre-Authorization of the full domain by the organization where the user belongs to, using methods acceptable for domain control verification, as defined by the CABF baseline requirements (same methods used for TLS certificates, see section 3.2.2.2).</li></ul>**Entities authorized to verify**:<br><ul><li>Validation Agent appointed by OWGTM.</li><li>Authorized Enterprise Registration Authority entitled to issue certificates for pre-authorized Organizations and a validated set of domains.</li></ul>|
+| Advanced Personal Certificate<br>Qualified Personal Certificate<br>Advanced Professional Certificate<br>Qualified Professional Certificate | **ID Data Verified**:<br>Personal identity data such as name, date of birth, nationality, phone number, etc. Legal entities are required to provide relevant official documentation. Verification of device or other type of entity or object is done with substantially equivalent data. Any names or identity attributes included in the certificate must be verified.<br>**Method of Verification**:<br>May be done through database of identity data that is well-maintained and was created based on face to face or remote verification using official ID documents.<br>**Entities authorized to verify**: <br><ul><li>Validation Agent appointed by OWGTM.</li><li>Authorized Enterprise Registration Authority entitled to issue certificates for pre-authorized Organizations and a validated set of domains.</li></ul> |
+| Advanced Corporate Certificate<br>Qualified Corporate Certificate | Does not apply, individual identity not included in these certificates |
 
-**Note**: Any certificate containing the OID for Adobe AATL may be validated according to the rules for Qualified Certificates.
+**Note**: Certificate containing the OID for Adobe AATL will be validated according to the rules for Qualified Certificates.
 
 #### 3.2.3.3 For Device Certificates
 
@@ -351,6 +373,8 @@ All attributes included in a certificate that are subject to root program or ind
 
 ### 3.2.5 Validation of authority
 
+Validation of authority is dependent on the type of Certificate requested and is performed in accordance with the CAB/Forum Requirements. This process involves a determination of whether a person has specific rights, entitlements, or permissions, including the permission to act on behalf of an organization to obtain a Certificate. 
+
 OWGTM requires that any person participating in any operating process related to certificate generation or status modification is explicitly authorized and the authority verified through a reliable method of communication.
 
 In particular for TLS Server certificates:
@@ -359,6 +383,8 @@ In particular for TLS Server certificates:
 | DV TLS Certificate |	The Issuing CA must verify the authority of the requester is verified by using one or more of the	procedures listed in section 3.2.2.4. of the Baseline Requirements. |
 | OV TLS Certificate |	The Issuing CA must verify the authority of the requester is verified by using one or more of the	procedures listed in section 3.2.5. of the Baseline Requirements. |
 | EV TLS Certificate |	The Issuing CA must apply the requirements of section 11.8.3 of the EV Guidelines. |
+
+For S/MIME Certificates, OWGTM Validation Agents follow equivalent procedures.
 
 ### 3.2.6 Criteria for interoperation
 
@@ -2335,6 +2361,17 @@ of output from a CSPRNG.
 
 
 ## S/MIME Certificate Profiles
+
+When including the usage for email protection, the commercial names of Personal Certificates will match the different classes defined by the CAB/Forum for S/MIME Certificates as indicated in this table:
+
+| Comercial names | CAB/F Designation |
+| --- | --- |
+| Standard Certificate<br>Basic Certificate | mailbox-validated |
+| Advanced Personal Certificate<br>Advanced Qualified Certificate | individual-validated |
+| Advanced Professional Certificate<br>Qualified Professional Certificate | sponsor-validated |
+| Advanced Corporate Certificate<br>Qualified Corporate Certificate | organization-validated |
+
+Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose" profiles defined by the CAB/Forum.
 
 ### Mailbox-Validated Certificate Profile
 
