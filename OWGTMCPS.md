@@ -149,7 +149,7 @@ The type of certificate is determined by the combination of "Key Usage", "Extend
 
 ### 1.4.2 Prohibited certificate uses
 
-In general, any usage that is not explicitly stated in section 1.4.1 of this document or the appropriate CP, is considered to be prohibited.
+In general, any usage that is not explicitly stated in [section 1.4.1](#141-appropriate-certificate-uses) of this document or the appropriate CP, is considered to be prohibited.
 
 ## 1.5 Policy administration
 
@@ -193,13 +193,13 @@ Definitions and Acronyms are included in [Appendix A](#appendix-a-glossary)
 The main repositories of the OWGTM are:
 - Policies repository for disclosure of CP/CPS and related information. This repository is a set of web pages and services available at the URLs https://oiste.org and https://wisekey.com/repository
 - Certificate and Certificate Revocation information repositories. The CA certificates and Certificate Revocation Information sources are included, when relevant, as CDP and AIA extensions in the certificates issued under the OISTE Root CAs
-- Public Certificate repositories. Publicly accessible certificate information repositories optionally maintained by the operators of the Certification Authorities operating under the OWGTM are disclosed appropriately to the relying parties of these certificates
+- Public Certificate repositories, as described in the following section.
 
 ## 2.2 Publication of certification information
 
-The OWGTM is responsible for publication of information regarding practices, certificates, and the current status of certificates. Where appropriate, such responsibilities may be delegated to the Subordinate CAs operating under the OISTE Trust Model.
+The OWGTM is responsible for publication of information regarding practices, certificates, and the current status of certificates. Publicly accessible certificate information repositories is maintained through the certificate management platforms operating under the OWGTM are disclosed appropriately to the relying parties of these certificates.
 
-The shared repositories containing public information in the OWGTM are managed by WISeKey SA or the operator of the Issuing CAs, and are available 24 hours a day, seven days a week. In the case of interruption by cause of “force majeure”, the service will be re-established in the minimum possible time.
+The shared repositories containing public information in the OWGTM are managed by the operator of the Issuing CAs, and are available 24 hours a day, seven days a week. In the case of interruption by cause of “force majeure”, the service will be re-established in the minimum possible time.
 
 ### 2.2.1 Statement on Compliance with CA/Browser Forum requirements
 
@@ -213,7 +213,7 @@ The CP/CPS documents will be published every time they are modified, with a mini
 A certificate issued by any CA under the OWGTM will be published immediately after its issuance.
 
 In the case of revocation of a certificate, the appropriate CA will include this revocation information in the
-Certificate Revocation Lists (CRL) according to section 4.9.7 (CRL issuance frequency).
+Certificate Revocation Lists (CRL) according to [section 4.9.7](#497-crl-issuance-frequency) (CRL issuance frequency).
 
 ## 2.4 Access controls on repositories
 
@@ -229,7 +229,7 @@ This section describes the elements regarding naming and identifying the subscri
 
 ### 3.1.1 Types of names
 
-All subscribers are assigned a Distinguished Name (DN) according to the X.501 Standard. This DN is composed of a Common Name (CN), which includes a unique identification of the subscriber as described in section 3.1.4.2, and a structure of X.501 components as defined in section 3.1.4.
+All subscribers are assigned a Distinguished Name (DN) conforming to ITU X.500. This DN is composed of a Common Name (CN), which includes a unique identification of the subscriber, and a structure of X.501 components as defined in [section 3.1.4](#314-rules-for-interpreting-various-name-forms).
 
 ### 3.1.2 Need for names to be meaningful
 
@@ -243,7 +243,7 @@ In general, the use of anonymity or pseudonymity is always controlled by the app
 
 ### 3.1.4 Rules for interpreting various name forms
 
-The rules used in the OWGTM to interpret the distinguished names of certificates issued under its Trust Model are defined by the ISO/IEC 9595 (X.500) Distinguished Name (DN) standard.
+The rules used in the OWGTM to interpret the distinguished names of certificates issued under its Trust Model are defined by the RFC 2253 and ITU-T X.520 standards.
 
 ### 3.1.5 Uniqueness of names
 
@@ -284,7 +284,7 @@ If the Certificate’s SubjectDN is to include the name or address of an organiz
 
 OWGTM's appointed RA shall verify the identity and address of the Applicant using documentation provided by, or through communication with, at least one of the following:
 - A government agency in the jurisdiction of the Applicant’s legal creation, existence, or recognition;
-- A third-party database that is periodically updated and considered a Reliable Data Source as defined in the introduction of this section 3.2;
+- A third-party database that is periodically updated and considered a Reliable Data Source as defined in the [introduction of this section 3.2](#32-initial-identity-validation);
 - A site visit by OWGTM or a third party who is acting as an agent for OWGTM; or
 - An Attestation Letter.
 
@@ -297,7 +297,7 @@ The RA should perform **out-of-band verification**, where necessary, such as pho
 
 OWGTM may verify the address of the Applicant (but not the identity of the Applicant) using a utility bill, bank statement, credit card statement, government-issued tax document, or other reliable form of identification.
 
-For the issuance of EV Certificates, OWGTM SHALL verify (using reliable sources disclosed as per section 3.2) the following:
+For the issuance of EV Certificates, OWGTM SHALL verify (using reliable sources disclosed as per the [introduction of this section 3.2](#32-initial-identity-validation)) the following:
 - The Applicant’s legal existence and identity, 
 - The Applicant’s physical existence (business presence at a physical address),
 - The Applicant’s operational existence (business activity), and
@@ -311,7 +311,7 @@ In all cases, OWGTM validation practices include the inspection of any documenta
 3. visual and electronic checks for signs of alteration (e.g., inconsistent fonts, metadata anomalies, checksum/hash verification for electronic documents); and
 4. recording the inspection outcome in the validation record.
 
-Deviations or suspected falsifications SHALL be escalated and handled per the incident handling procedures in Section 8.5.
+Deviations or suspected falsifications SHALL be escalated and handled per the incident handling procedures in [Section 8.5](#85-actions-taken-as-a-result-of-deficiency).
 
 #### 3.2.2.2 For Personal (S/MIME) Certificates
 
@@ -326,28 +326,28 @@ General Principles:
 
 OWGTM MAY confirm the Applicant has been authorized by the email account holder to act on the account holder’s behalf by verifying the entity’s control over the domain portion of the Mailbox Address to be used in the Certificate. This method will be used to entitle an Enterprise Registration Authority to issue certificates for the authorized domains.
 
-To perform this verification, OWGTM uses only the approved methods in Section 3.2.2.4 of the TLS Baseline Requirements, as particularized in the section 3.2.2.3 of this CPS.
+To perform this verification, OWGTM uses only the approved methods in Section 3.2.2.4 of the TLS Baseline Requirements, as particularized in the [section 3.2.2.3](#3223-for-tls-server-certificates) of this CPS.
 
 **Validating control over mailbox via email**
 
-OWGTM validates the right for the Applicant to use the submitted email address. This is achieved through the delivery via a challenge and response made to the email address submitted during the Certificate application, as defined in section 3.2.2.6.
+OWGTM validates the right for the Applicant to use the submitted email address. This is achieved through the delivery via a challenge and response made to the email address submitted during the Certificate application, as defined in [section 3.2.2.6](#3226-email-challenge-response-procedure).
 
-In all cases, when an organization name is included in a certificate valid for secure email, the organization validation will follow the steps indicated in section 3.2.2.1 of this document.
+In all cases, when an organization name is included in a certificate valid for secure email, the organization validation will follow the steps indicated in [section 3.2.2.1](#3221-organization-identity-validation) of this document.
 
 | CP Identifier | Validation Policy |
 | --- | --- |
 | Standard Personal Certificate<br>Advanced Personal Certificate,<br>Qualified Personal Certificate | Does not Apply: Individual or Organization information will not appear in these certificates |
-| Advanced Professional Certificate,<br>Qualified Professional Certificate<br>Advanced Corporate Certificate<br>Qualified Corporate Certificate | The Registration Authority must verify that the Organization exists and that the certificate applicant is authorized to enroll for a certificate in behalf of the Organization name, by means of the authorization of a representative of the same Organization.<br>Any DBA included in a Certificate will be validated using an information source, attestation letter, or reliable form of identification in accordance with section 3.2.2.1 of this document.|
+| Advanced Professional Certificate,<br>Qualified Professional Certificate<br>Advanced Corporate Certificate<br>Qualified Corporate Certificate | The Registration Authority must verify that the Organization exists and that the certificate applicant is authorized to enroll for a certificate in behalf of the Organization name, by means of the authorization of a representative of the same Organization.<br>Any DBA included in a Certificate will be validated using an information source, attestation letter, or reliable form of identification in accordance with [section 3.2.2.1](#3221-organization-identity-validation) of this document.|
 
 #### 3.2.2.3 For TLS Server Certificates
 
 | CP Identifier | Validation Policy |
 | --- | --- |
-| DV TLS Certificate | OWGTM confirms the validation of each FQDN in accordance with the CA/Browser Forum Baseline Requirements 3.2.2.4, and in particular using at least one of the methods enumerated below.<br>Currently OWGTM doesn't issue certificates for Onion domains.<br>For each validated FQDN the "TLS Certificate Manager" software used by the OWGTM creates and retains a validation record that includes: (a) the FQDN(s) validated; (b) the specific domain validation method used, related to the version of the Baseline Requirements in force at the moment of validation; (c) date/time of validation; (d) identity of the operator or automated system that performed validation; (e) artifacts evidencing validation (e.g., e-mail headers, DNS TXT contents, HTTP file retrieval response headers and body hash, ACME challenge logs); and (f) any corroboration results from Multi-Perspective Issuance Corroboration (Section 3.2.2.5). Validation records SHALL be retained for at least 2 years after certificate expiry or revocation.<br>   <br>In particular, OWGTM will validate the Applicant’s right to use or control each domain name that will be listed in the Subject Alternative Name field of a Certificate by using at least one of the following procedures:<ul><li>Email to Domain Contact (BR 3.2.2.4.13 and 3.2.2.4.14). WISeKey will retrieve the Domain Contact using the WHOIS information or the DNS and CAA records and deliver a mail including a unique code and a method to confirm the reception. This method stopped using WHOIS contacts since July, 15th 2025.</li><li>Constructed Email to Domain Contact (BR 3.2.2.4.4). WISeKey will send a mail using ‘admin’, ‘administrator’, ‘webmaster’, ‘hostmaster’, or ‘postmaster’ as the local part, followed by the at-sign (“@”), followed by the Domain Name being validated including a random unique code and a method to confirm the reception. The Random Value is unique per request and remains valid for no more than 30 days from creation. Confirmation logs are saved in the validation record.</li><li>Agreed-Upon Change to Website v2 (BR 3.2.2.4.18). WISeKey will provide a text file containing a unique Random Value that must be placed by the Applicant at path /.well-known/pki-validation/<filename> and retrievable via HTTP or HTTPS. The platform confirms retrieval by performing an HTTP(s) GET which returns a 2xx HTTP status code and verifying that the Random Value appears in the retrieved file content. The entire Random Value doesn't appear in the HTTP request used to retrieve the file. This method only can be used to validate a particular FQDN and is not allowed for Wildcard certificates.</li><li>DNS Change (BR 3.2.2.4.7). WISeKey will provide a unique code that must be placed as a TXT, CNAME or CAA record in the DNS server maintaining the domain being validated.</li><li>Agreed-Upon Change to Website - ACME (BR 3.2.2.4.19). Confirming the Applicant’s control over a FQDN by validating domain control of the FQDN using the ACME HTTP Challenge method defined in Section 8.3 of RFC 8555</li></ul>Note 1: Whenever used, all random validation codes have a maximum validity of 30 days.<br>Note 2: Whenever required by the CABF Requirements, we perform multi-perspective validation (see section 3.2.2.5).<br>Note 3: OWGTM does not issue currently TLS certificates for IP addresses, or onion domains.|
+| DV TLS Certificate | OWGTM confirms the validation of each FQDN in accordance with the CA/Browser Forum Baseline Requirements 3.2.2.4, and in particular using at least one of the methods enumerated below.<br>Currently OWGTM doesn't issue certificates for Onion domains.<br>For each validated FQDN the "TLS Certificate Manager" software used by the OWGTM creates and retains a validation record that includes: (a) the FQDN(s) validated; (b) the specific domain validation method used, related to the version of the Baseline Requirements in force at the moment of validation; (c) date/time of validation; (d) identity of the operator or automated system that performed validation; (e) artifacts evidencing validation (e.g., e-mail headers, DNS TXT contents, HTTP file retrieval response headers and body hash, ACME challenge logs); and (f) any corroboration results from Multi-Perspective Issuance Corroboration ([Section 3.2.2.5](#3225-multi-perspective-issuance-corroboration-mpic)). Validation records SHALL be retained for at least 2 years after certificate expiry or revocation.<br>   <br>In particular, OWGTM will validate the Applicant’s right to use or control each domain name that will be listed in the Subject Alternative Name field of a Certificate by using at least one of the following procedures:<ul><li>Email to Domain Contact (BR 3.2.2.4.13 and 3.2.2.4.14). WISeKey will retrieve the Domain Contact using the WHOIS information or the DNS and CAA records and deliver a mail including a unique code and a method to confirm the reception. This method stopped using WHOIS contacts since July, 15th 2025.</li><li>Constructed Email to Domain Contact (BR 3.2.2.4.4). WISeKey will send a mail using ‘admin’, ‘administrator’, ‘webmaster’, ‘hostmaster’, or ‘postmaster’ as the local part, followed by the at-sign (“@”), followed by the Domain Name being validated including a random unique code and a method to confirm the reception. The Random Value is unique per request and remains valid for no more than 30 days from creation. Confirmation logs are saved in the validation record.</li><li>Agreed-Upon Change to Website v2 (BR 3.2.2.4.18). WISeKey will provide a text file containing a unique Random Value that must be placed by the Applicant at path /.well-known/pki-validation/<filename> and retrievable via HTTP or HTTPS. The platform confirms retrieval by performing an HTTP(s) GET which returns a 2xx HTTP status code and verifying that the Random Value appears in the retrieved file content. The entire Random Value doesn't appear in the HTTP request used to retrieve the file. This method only can be used to validate a particular FQDN and is not allowed for Wildcard certificates.</li><li>DNS Change (BR 3.2.2.4.7). WISeKey will provide a unique code that must be placed as a TXT, CNAME or CAA record in the DNS server maintaining the domain being validated.</li><li>Agreed-Upon Change to Website - ACME (BR 3.2.2.4.19). Confirming the Applicant’s control over a FQDN by validating domain control of the FQDN using the ACME HTTP Challenge method defined in Section 8.3 of RFC 8555</li></ul>Note 1: Whenever used, all random validation codes have a maximum validity of 30 days.<br>Note 2: Whenever required by the CABF Requirements, we perform multi-perspective validation (see [Section 3.2.2.5](#3225-multi-perspective-issuance-corroboration-mpic)).<br>Note 3: OWGTM does not issue currently TLS certificates for IP addresses, or onion domains.|
 | OV TLS Certificate | WISeKey will execute the domain validation procedures as required for DV TLS certificates.<br>Additionally, WISeKey will verify:<ul><li>The identity and address of the Applicant using the procedures found in section 3.2.2.1 of this document.</li><li>Any DBA included in a Certificate will be validated using a verified information source, attestation letter, or reliable form of identification in accordance with section 3.2.2.1 of this document.</li></ul>|
-| EV TLS Certificate | WISeKey will execute the domain validation procedures as required for DV and OV TLS certificates.<br>Additionally, WISeKey will do the specific validations mandated by the EV Guidelines issued by the CAB/Forum, as indicated in section 3.2.2.1 of this document. |
+| EV TLS Certificate | WISeKey will execute the domain validation procedures as required for DV and OV TLS certificates.<br>Additionally, WISeKey will do the specific validations mandated by the EV Guidelines issued by the CAB/Forum, as indicated in [section 3.2.2.1](#3221-organization-identity-validation) of this document. |
 
-The list of used validation sources is available at https://wisekey.com/repository. This list is conformed as indicated in the introduction of section 3.2.
+The list of used validation sources is available at https://wisekey.com/repository. This list is conformed as indicated in [the introduction of this section 3.2](#32-initial-identity-validation).
 
 #### 3.2.2.4 For Device Certificates
 
@@ -372,12 +372,12 @@ The random value can only be used within a 24-hour timeframe after its generatio
 
 ### 3.2.3 Authentication of individual identity
 
-The same validation practices stated in section 3.2.2.1 will be applied to the authentication of individual identity, considering the following:
-- Acceptable identity documents:
+The same validation practices stated in [section 3.2.2.1](#3221-organization-identity-validation) will be applied to the authentication of individual identity, considering the following acceptable identity documents:
   - Government-issued passport  
   - National identity card / driving license  
   - Other government ID with photograph  
-- The RA may require additional proof (at its discretion), such as:
+
+The RA may require additional proof (at its discretion), such as:
   - Video-based proofing  
   - Notarized document  
   - External eID verification (if available)  
@@ -388,13 +388,13 @@ The following subsections describe the specific practices for each subscriber ce
 
 Currently OWGTM doesn't issue TLS "individual-validated" certificates.
 
-For the validation of other individuals participating in the certificate application and management, OWGTM enforces compliance with the CA/B Forum Baseline Requirements and EV Guidelines (see section 3.2.5 of this document).
+For the validation of other individuals participating in the certificate application and management, OWGTM enforces compliance with the CA/B Forum Baseline Requirements and EV Guidelines (see [section 3.2.5](#325-validation-of-authority) of this document).
 
 #### 3.2.3.2 For Personal (S/MIME) Certificates
 
 | CP Identifier | Validation Policy |
 | --- | --- |
-| Standard Personal Certificate | **ID Data Verified**:<br>The only verified data is the email address.<br>**Method of Verification**:<br><ul><li>If the Extended Key Usage for secure email is set: Bounce back email with verification code procedure proving control of the user mailbox (See section 3.2.2.6).</li><li>Pre-Authorization of the full domain by the organization where the user belongs to, using methods acceptable for domain control verification (same methods used for TLS certificates, see section 3.2.2.2).</li></ul>**Entities authorized to verify**:<br><ul><li>Validation Agent appointed by OWGTM.</li><li>Authorized Enterprise Registration Authority entitled to issue certificates for pre-authorized Organizations and a validated set of domains.</li></ul>|
+| Standard Personal Certificate | **ID Data Verified**:<br>The only verified data is the email address.<br>**Method of Verification**:<br><ul><li>If the Extended Key Usage for secure email is set: Bounce back email with verification code procedure proving control of the user mailbox (See [section 3.2.2.6](#3226-email-challenge-response-procedure)).</li><li>Pre-Authorization of the full domain by the organization where the user belongs to, using methods acceptable for domain control verification (same methods used for TLS certificates, see [section 3.2.2.3](#3223-for-tls-server-certificates)).</li></ul>**Entities authorized to verify**:<br><ul><li>Validation Agent appointed by OWGTM.</li><li>Authorized Enterprise Registration Authority entitled to issue certificates for pre-authorized Organizations and a validated set of domains.</li></ul>|
 | Advanced Personal Certificate<br>Qualified Personal Certificate<br>Advanced Professional Certificate<br>Qualified Professional Certificate | **ID Data Verified**:<br>Email verification is performed as for the "Standard Personal Certificates".<br>Personal identity data such as name, date of birth, nationality, phone number, etc. Legal entities are required to provide relevant official documentation. Verification of device or other type of entity or object is done with substantially equivalent data. Any names or identity attributes included in the certificate must be verified.<br>**Method of Verification**:<br>May be done through database of identity data that is well-maintained and was created based on face to face or remote verification using official ID documents.<br>**Entities authorized to verify**: <br><ul><li>Validation Agent appointed by OWGTM.</li><li>Authorized Enterprise Registration Authority entitled to issue certificates for pre-authorized Organizations and a validated set of domains.</li></ul> |
 | Advanced Corporate Certificate<br>Qualified Corporate Certificate | Email verification is performed as for the "Standard Personal Certificates".<br>Individual identity not included in these certificates |
 
@@ -436,7 +436,7 @@ The certificate subscriber can request a routine re-key by authenticating himsel
 -	Username & Password
 -	A valid digital certificate linked to the user account
 
-The applicable revalidation requirements set by the CA/B Forum for the particular type of certificate will be enforced in the case of reuse of subscriber information (see section 4.2.1).
+The applicable revalidation requirements set by the CA/B Forum for the particular type of certificate will be enforced in the case of reuse of subscriber information (see [section 4.2.1](#421-performing-identification-and-authentication-functions)).
 
 ### 3.3.2 Identification and authentication for re-key after revocation
 
@@ -473,7 +473,7 @@ All Certificate Applicants must complete the enrolment process, which may includ
 - Mandatory for TLS Certificates and optional for S/MIME certificates, a valid Certificate Signing Request (CSR) that demonstrates ownership of the private key corresponding to the public key to be included in the certificate.
 - Make all reasonable efforts to protect the integrity and confidentiality of the Private Key.
 
-For all received requests, the authorized Validation Agent will perform the identity validation tasks as defined in section 3.2. These validation, when referred to validation of domain names or mailboxes, is automated through the Certificate Management portals, and never delegated. 
+For all received requests, the authorized Validation Agent will perform the identity validation tasks as defined in [section 3.2](#32-initial-identity-validation). These validation, when referred to validation of domain names or mailboxes, is automated through the Certificate Management portals, and never delegated. The validation of organization information can be automated using official APIs supplied by reliable verification sources.
 
 This process includes the identification of suspicious or potentially dangerous requests, based in automated checks on domain blacklists and previous denied request, marked as suspicious.
 
@@ -489,10 +489,10 @@ The identification and authentication functions are delegated to the Registratio
 
 An authorized Registration Authority Officer will perform these functions. This role can be assumed by:
 - An accredited person that, on behalf of a Registration Authority, personally executes the identification and authentication functions.
-- An accredited software application that performs the identification and authentication functions for automated certification procedures. If a Certificate Policy permits such automation it will be stated explicitly in section 4.1.2 of this document. Any accredited software application will execute this function according to sections 3.2.2 and 3.2.3 of this document.
+- An accredited software application that performs the identification and authentication functions for automated certification procedures. If a Certificate Policy permits such automation it will be stated explicitly in [section 4.1.2](#412-enrollment-process-and-responsibilities) of this document. Any accredited software application will execute this function according to [sections 3.2.2](#322-authentication-of-organization-identity) and [3.2.3](#323-authentication-of-individual-identity) of this document.
 
 The steps to be executed by the Issuing CA or RA are as follows:
--	As a first step, the Issuing CA or RA will perform the verifications stipulated in section 3.2. 
+-	As a first step, the Issuing CA or RA will perform the verifications stipulated in [section 3.2](#32-initial-identity-validation). 
 -	As a second step, the CA must check the DNS for the existence of a CAA record for each dNSName in the subjectAltName extension of the certificate to be issued, according to the procedure described im section below "CAA processing".
 -	As a third step, the Issuing CA must check the certificate details against a list of previously revoked Certificates and rejected certificate requests to identify suspicious certificate requests.
 
@@ -520,7 +520,7 @@ When processing CAA records, WISeKey processes the issuemail property tag as spe
 
 **Information reuse policy and applicable deadlines**
 
-When performing validations according to section 3.2 of this document, OWGTM may reuse the retained validation records during the following allowed timeframes:
+When performing validations according to [section 3.2](#32-initial-identity-validation) of this document, OWGTM may reuse the retained validation records during the following allowed timeframes:
 
 Subject Identity Information shall be:
 - For S/MIME Certificates: 825 days
@@ -543,7 +543,7 @@ Domain Name reuse period of S/MIME Certificates shall be 398 days.
 
 ### 4.2.2 Approval or rejection of certificate applications
 
-An approval of a certificate application derives from the execution of the certificate issuance procedures, as defined in the section 4.3 of this document.
+An approval of a certificate application derives from the execution of the certificate issuance procedures, as defined in the [section 4.3](#43-certificate-issuance) of this document.
 
 A rejection of a certificate application results in a notification being sent to the applicant by appropriate means and is registered for further reference.
 
@@ -640,11 +640,11 @@ As stipulated in section 4.4.1 of this document.
 
 ### 4.6.6 Publication of the renewal certificate by the CA
 
-The CAs operating under the OWGTM publish all issued certificates as specified in section 2 of this document.
+The CAs operating under the OWGTM publish all issued certificates as specified in [section 2](#22-publication-of-certification-information) of this document.
 
 ### 4.6.7 Notification of certificate issuance by the CA to other entities
 
-The CA only notifies the Registration Authority from which it received the request of the issuance of a certificate. It is the RA’s duty to notify the certificate subscriber, as stipulated in section 4.3.2 of this document.
+The CA only notifies the Registration Authority from which it received the request of the issuance of a certificate. It is the RA’s duty to notify the certificate subscriber, as stipulated in [section 4.3.2](#432-notification-to-subscriber-by-the-ca-of-issuance-of-certificate) of this document.
 
 ## 4.7 Certificate re-key
 
@@ -664,19 +664,19 @@ Certificate re-key requests are processed according to the same rules than the i
 
 ### 4.7.4 Notification of new certificate issuance to subscriber
 
-The notification of the issuance of a new certificate it will occur as described in section 4.3.2 of this document.
+The notification of the issuance of a new certificate it will occur as described in [section 4.3.2](#432-notification-to-subscriber-by-the-ca-of-issuance-of-certificate) of this document.
 
 ### 4.7.5 Conduct constituting acceptance of a re-keyed certificate
 
-As stipulated in section 4.4.1 of this document.
+As stipulated in [section 4.4.1](#441-conduct-constituting-certificate-acceptance) of this document.
 
 ### 4.7.6 Publication of the re-keyed certificate by the CA
 
-The CAs operating under the OWGTM publish all issued certificates as specified in section 2 of this document.
+The CAs operating under the OWGTM publish all issued certificates as specified in [section 2.2](#22-publication-of-certification-information) of this document.
 
 ### 4.7.7 Notification of certificate issuance by the CA to other entities
 
-The CA only notifies the Registration Authority from which it received the request of the issuance of a certificate. It is the RA’s duty to notify the certificate subscriber, as stipulated in section 4.3.2 of this document.
+The CA only notifies the Registration Authority from which it received the request of the issuance of a certificate. It is the RA’s duty to notify the certificate subscriber, as stipulated in [section 4.3.2](#432-notification-to-subscriber-by-the-ca-of-issuance-of-certificate) of this document.
 
 ## 4.8 Certificate modification
 
@@ -729,7 +729,7 @@ A Certification Authority operating in the OWGTM must revoke within 24 hours a c
 5. The CA obtains evidence that the validation of domain authorization or control for any Fully-Qualified Domain Name or IP address in the Certificate should not be relied upon.
 
 A Certification Authority operating in the OWGTM must revoke within 5 days a certificate that it has issued upon the occurrence of any of the following events:
-1. The Certificate no longer complies with the requirements of Sections 6.1.5 and 6.1.6;
+1. The Certificate no longer complies with the requirements of [Sections 6.1.5](#615-key-sizes) and [6.1.6](#616-public-key-parameters-generation-and-quality-checking);
 2. The CA obtains evidence that the Certificate was misused;
 3. The CA is made aware that a Subscriber has violated one or more of its material obligations under the Subscriber Agreement or Terms of Use;
 4. The CA is made aware of any circumstance indicating that use of a Fully-Qualified Domain Name
@@ -749,7 +749,7 @@ flawed.
 An issuing Certification Authority operating in the OWGTM will be revoked within 7 days upon the occurrence of any of the following events:
 1. The Subordinate CA requests revocation in writing;
 2. The Subordinate CA notifies the Issuing CA that the original certificate request was not authorized and does not retroactively grant authorization;
-1. The Issuing CA obtains evidence that the Subordinate CA's Private Key corresponding to the Public Key in the Certificate suffered a Key Compromise or no longer complies with the requirements of Sections 6.1.5 and 6.1.6;
+1. The Issuing CA obtains evidence that the Subordinate CA's Private Key corresponding to the Public Key in the Certificate suffered a Key Compromise or no longer complies with the requirements of [Sections 6.1.5](#615-key-sizes) and [6.1.6](#616-public-key-parameters-generation-and-quality-checking);
 1. The Issuing CA obtains evidence that the Certificate was misused;
 2. The Issuing CA is made aware that the Certificate was not issued in accordance with or that Subordinate CA has not complied with this document or the applicable Certificate Policy or Certification Practice Statement;
 1. The Issuing CA determines that any of the information appearing in the Certificate is inaccurate or misleading;
@@ -785,7 +785,7 @@ There is no stipulation for grace periods for revocation requests. The revocatio
 
 ### 4.9.5 Time within which CA must process the revocation request
 
-Revocation requests are processed by the CA within the shortest possible period, and always in accordance to the limits set in section 4.9.1 and respecting the deadlines and procedures for problem investigation and reporting set by the CAB/Forum Baseline Requirements and Root Programs.
+Revocation requests are processed by the CA within the shortest possible period, and always in accordance to the limits set in [section 4.9.1](#491-circumstances-for-revocation) and respecting the deadlines and procedures for problem investigation and reporting set by the CAB/Forum Baseline Requirements and Root Programs.
 
 ### 4.9.6 Revocation checking requirement for relying parties
 
@@ -821,7 +821,7 @@ In particular for TLS and Code Signing certificates, OWGTM will ensure complianc
 
 On-line revocation checking is openly provided without restriction to all Participants in the PKI, for the certificate types that include the appropriate AIA extension. This service is made available in compliance with the RFC 6960 and other applicable standards and regulations.
 
-Relying parties are requested to always check the validity of the certificate on which they rely, as stipulated in section 4.9.6.
+Relying parties are requested to always check the validity of the certificate on which they rely, as stipulated in [section 4.9.6](#496-revocation-checking-requirement-for-relying-parties).
 
 ### 4.9.11 Other forms of revocation advertisements available
 
@@ -838,7 +838,7 @@ The appropriate methods to demonstrate key compromise are:
 - Create a custom CSR file, and/or
 - Send the private key, or a link to where it’s publicly disclosed.
 
-The main method for these communications is the stipulated in section 4.9.3.
+The main method for these communications is the stipulated in [section 4.9.3](#493-procedure-for-revocation-request).
 
 ### 4.9.13 Circumstances for suspension
 
@@ -995,13 +995,13 @@ Physical access control for all the authorized persons accessing OWGTM’s syste
 
 ### 5.2.4 Roles requiring separation of duties
 
-Individuals are specifically designated to one or more of the roles defined in Section 5.2.1. 
+Individuals are specifically designated to one or more of the roles defined in [Section 5.2.1](#521-trusted-roles). 
 
 OWGTM enforces the separation of roles whenever required to avoid conflict of interests or undermining of security levels.
 
 ## 5.3 Personnel controls
 
-Personnel bearing one of the roles defined in section 5.2.1 will be required to fulfil the “OWGTM Trusted Professional Policy”, summarized in the following sections.
+Personnel bearing one of the roles defined in [Section 5.2.1](#521-trusted-roles) will be required to fulfil the “OWGTM Trusted Professional Policy”, summarized in the following sections.
 
 ### 5.3.1 Qualifications, experience, and clearance requirements
 
@@ -1078,7 +1078,7 @@ OWGTM PKI systems record at least the following events:
    1. Approval and rejection of certificate requests;
    1. Cryptographic device lifecycle management events;
    1. Generation of Certificate Revocation Lists;
-   1. Signing of OCSP Responses (as described in Section 4.9 and Section 4.10); and
+   1. Signing of OCSP Responses (as described in [Section 4.9](#49-certificate-revocation-and-suspension) and [Section 4.10](#410-certificate-status-services)); and
    1. Introduction of new Certificate Profiles and retirement of existing Certificate Profiles.
 - Subscriber Certificate lifecycle management events, including:
    1. Certificate requests, renewal, and re-key requests, and revocation;
@@ -1086,7 +1086,7 @@ OWGTM PKI systems record at least the following events:
    1. Approval and rejection of certificate requests;
    1. Issuance of Certificates;
    1. Generation of Certificate Revocation Lists; and
-   1. Signing of OCSP Responses (as described in Section 4.9 and Section 4.10).
+   1. Signing of OCSP Responses (as described in [Section 4.9](#49-certificate-revocation-and-suspension) and [Section 4.10](#410-certificate-status-services)).
    1. Multi-Perspective Issuance Corroboration attempts from each Network Perspective, minimally recording the following information:
       - an identifier that uniquely identifies the Network Perspective used;
       - the attempted domain name and/or IP address; and
@@ -1098,7 +1098,7 @@ OWGTM PKI systems record at least the following events:
    1. Security profile changes;
    1. Installation, update and removal of software on a Certificate System;
    1. System crashes, hardware failures, and other anomalies;
-   1. Relevant router and firewall activities (as described in Section 5.4.1.1); and
+   1. Relevant router and firewall activities (as described in [Section 5.4.1.1](#5411-router-and-firewall-activities-logs)); and
    1. Entries to and exits from the CA facility.
 
 Log records MUST include at least the following elements:
@@ -1123,11 +1123,11 @@ For systems that are kept offline, as the Root CA, audit logs are only reviewed 
 ### 5.4.3 Retention period for audit log
 
 OWGTM and each Delegated Third Party SHALL retain, for at least two (2) years:
-1. CA certificate and key lifecycle management event records (as set forth in Section 5.4.1) after the later occurrence of:
+1. CA certificate and key lifecycle management event records (as set forth in [Section 5.4.1](#541-types-of-events-recorded)) after the later occurrence of:
    - the destruction of the CA Private Key; or
    - the revocation or expiration of the final CA Certificate in that set of Certificates that have an X.509v3 basicConstraints extension with the cA field set to true and which share a common Public Key corresponding to the CA Private Key;
-2. Subscriber Certificate lifecycle management event records (as set forth in Section 5.4.1) after the expiration of the Subscriber Certificate;
-3. Any security event records (as set forth in Section 5.4.1 (3)) after the event occurred.
+2. Subscriber Certificate lifecycle management event records (as set forth in [Section 5.4.1](#541-types-of-events-recorded)) after the expiration of the Subscriber Certificate;
+3. Any security event records (as set forth in [Section 5.4.1](#541-types-of-events-recorded) (3)) after the event occurred.
 
 ### 5.4.4 Protection of audit log
 
@@ -1171,7 +1171,7 @@ This section includes the stipulations regarding record archival and retention p
 The information and events archived are:
 - Information generated (at CA and RA) during the life cycle of all OWGTM certificates, 
 - Contracts and agreements,
-- Audit logs stipulated in section 5.4 of this CPS.
+- Audit logs stipulated in [section 5.4](#54-audit-logging-procedures) of this CPS.
 
 ### 5.5.2 Retention period for archive
 
@@ -1189,7 +1189,7 @@ Daily backup copies are executed. The main copy is kept in the principal OWGTM f
 
 ### 5.5.5 Requirements for time-stamping of records
 
-In addition to stipulations in 5.5.3, a time stamp is included in the digitally signed records. The time stamp needs not be of cryptographic nature.
+In addition to stipulations in [5.5.3](#553-protection-of-archive), a time stamp is included in the digitally signed records. The time stamp needs not be of cryptographic nature.
 
 ### 5.5.6 Archive collection system (internal or external)
 
@@ -1211,7 +1211,7 @@ When creating a new certificate for an entity, the validity period applied to th
 
 ## 5.7 Compromise and disaster recovery
 
-In the event that OWGTM systems and services are not available for a period greater than 12 hours, the Continuity Plan will be activated. This Continuity Plan seeks to ensure that the critical services (as stated in section 5.7.4) are available in less than 72 hours after the plan is activated.
+In the event that OWGTM systems and services are not available for a period greater than 12 hours, the Continuity Plan will be activated. This Continuity Plan seeks to ensure that the critical services (as stated in [section 5.7.4](#574-business-continuity-capabilities-after-a-disaster)) are available in less than 72 hours after the plan is activated.
 
 The following sections summarize specific situations and the stipulated reaction in OWGTM. The detailed Continuity Plan is a confidential document.
 
@@ -1281,7 +1281,7 @@ In the event digital certificates are issued during the uncertainty period and a
 
 ### 5.7.3 Entity private key compromise procedures
 
-In the case a private key is compromised in the OWGTM architecture and in addition to stipulations in section 5.7.2, the subordinated entities depending on the compromised private key will be notified of this event and the necessary actions will be undertaken.
+In the case a private key is compromised in the OWGTM architecture and in addition to stipulations in [section 5.7.2](#572-computing-resources-software-andor-data-are-corrupted), the subordinated entities depending on the compromised private key will be notified of this event and the necessary actions will be undertaken.
 
 All certificates issued by entities subordinated to the compromised key from the time of the key’s compromise and the certificate’s revocation will be revoked, and the involved parties notified as stipulated in this CPS. Additional steps to re-issue the necessary certificates will be taken.
 
@@ -1326,11 +1326,11 @@ from WISeKey.
 - During the Ceremony, enough audit track is recorded in order to proof that the Ceremony was
 executed as planned and without any security risk.
 - After the Ceremony, a Ceremony Report is generated and properly archived for future reference.
-Key pairs for the Root Certification Authorities in the OWGTM are generated in hardware security modules (HSM) accredited under the standards specified in section 6.2.1.
+Key pairs for the Root Certification Authorities in the OWGTM are generated in hardware security modules (HSM) accredited under the standards specified in [section 6.2.1](#621-cryptographic-module-standards-and-controls).
 
 All CA private keys are generated and protected within validated HSMs (FIPS 140-2 Level 3 or equivalent). CA HSM administrative access requires split knowledge and multi-person authentication.
 
-Key pairs for the Policy and Issuing Certification Authorities in the OWGTM may be generated in escrowable form and protected as required under WebTrust requirements, and imported and operated within hardware security modules (HSM) under the standards specified in section 6.2.1.
+Key pairs for the Policy and Issuing Certification Authorities in the OWGTM may be generated in escrowable form and protected as required under WebTrust requirements, and imported and operated within hardware security modules (HSM) under the standards specified in [section 6.2.1](#621-cryptographic-module-standards-and-controls).
 
 For Subscriber Certificates, unless otherwise noted in this CPS, Subscriber is solely responsible for the generation of the Key Pair appropriate to the Certificate type being applied for. The OWGTM explicitly disallows server-side generation and storage of keys for TLS Certificates.
 
@@ -1341,12 +1341,12 @@ No stipulation.
 #### 6.1.1.3 Subscriber Key Pair Generation 
 
 OWGTM will reject a certificate request if one or more of the following conditions are met:
-1. The Key Pair does not meet the requirements set forth in Section 6.1.5 and/or Section 6.1.6;
+1. The Key Pair does not meet the requirements set forth in [Section 6.1.5](#615-key-sizes) and/or [Section 6.1.6](#616-public-key-parameters-generation-and-quality-checking);
 1. There is clear evidence that the specific method used to generate the Private Key was flawed;
 1. The CA is aware of a demonstrated or proven method that exposes the Applicant’s Private Key to compromise;
-1. The CA has previously been notified that the Applicant’s Private Key has suffered a Key Compromise using the CA’s procedure for revocation request as described in Section 4.9.3 and Section 4.9.12;
+1. The CA has previously been notified that the Applicant’s Private Key has suffered a Key Compromise using the CA’s procedure for revocation request as described in [Section 4.9.3](#493-procedure-for-revocation-request) and [Section 4.9.12](#4912-reasons-for-revoking-a-subordinate-ca-certificate);
 1. The Public Key corresponds to an industry-demonstrated weak Private Key. For requests submitted on or after November 15, 2024, at least the following precautions SHALL be implemented:
-   1. In the case of Debian weak keys vulnerability (https://wiki.debian.org/SSLkeys), the CA SHALL reject all keys found at https://github.com/cabforum/Debian-weak-keys/ for each key type (e.g. RSA, ECDSA) and size listed in the repository. For all other keys meeting the requirements of Section 6.1.5, with the exception of RSA key sizes greater than 8192 bits, the CA SHALL reject Debian weak keys.
+   1. In the case of Debian weak keys vulnerability (https://wiki.debian.org/SSLkeys), the CA SHALL reject all keys found at https://github.com/cabforum/Debian-weak-keys/ for each key type (e.g. RSA, ECDSA) and size listed in the repository. For all other keys meeting the requirements of [Section 6.1.5](#615-key-sizes), with the exception of RSA key sizes greater than 8192 bits, the CA SHALL reject Debian weak keys.
    1. In the case of ROCA vulnerability, the CA SHALL reject keys identified by the tools available at https://github.com/crocs-muni/roca or equivalent.
    1. In the case of Close Primes vulnerability (https://fermatattack.secvuln.info/), the CA SHALL reject weak keys which can be factored within 100 rounds using Fermat’s factorization method.
 
@@ -1375,7 +1375,7 @@ Trusted Root Certificates may be obtained directly from the appropriate reposito
 
 The OWGTM enforces the use of minimum length 2048-bit RSA (key length must divisible by 8) and ECC NIST P-256, P-384 or P-521 for key pairs at all levels of the hierarchy.
 
-Hashing algorithms supported are SHA-1 and SHA-2, depending on the hierarchy to which the end-entity certificate belongs, as described in 1.3.1. In particular, no issuance of new SHA-1 TLS or CA certificates after 31-December-2015.
+CAs that generate Certificates and CRLs under this policy SHOULD use the SHA-256, or SHA-384 hash algorithm when generating digital signatures. ECDSA signatures on Certificates and CRLs SHOULD be generated using SHA-256 or SHA-384, as appropriate for the key length.
 
 ### 6.1.6 Public key parameters generation and quality checking
 
@@ -1421,7 +1421,7 @@ Private key escrow is only provided for end-user personal certificates, as descr
 
 Backup copies of CA private keys for all Certification Authorities under the OWGTM Trust Model are kept for routine recovery and disaster recovery purposes. Such keys are always stored in encrypted form within hardware cryptographic modules and associated key storage devices. Cryptographic modules used for CA private key storage meet the requirements of this CPS.
 
-Private key backup for end-user subscribers, if supported for a certain certificate type, it would be implemented as described in section 4.12. In particular, backup of private keys for TLS Certificates is nor allowed.
+Private key backup for end-user subscribers, if supported for a certain certificate type, it would be implemented as described in [section 4.1.2](#412-key-escrow-and-recovery). In particular, backup of private keys for TLS Certificates is nor allowed.
 
 ### 6.2.5 Private key archival
 
@@ -1429,7 +1429,7 @@ The CA shall not provide key archival services to subscribers. Private keys of e
 
 ### 6.2.6 Private key transfer into or from a cryptographic module
 
-For Certification Authorities operating under the OWGTM Trust Model it is mandatory that key pairs are operated in Hardware Security Modules as defined in section 6.2.1. Private Keys can be transferred to adequate hardware security modules for back-up and recovery operations.
+For Certification Authorities operating under the OWGTM Trust Model it is mandatory that key pairs are operated in Hardware Security Modules as defined in [section 6.2.1](#621-cryptographic-module-standards-and-controls). Private Keys can be transferred to adequate hardware security modules for back-up and recovery operations.
 
 There’s no stipulation for Keys belonging to other PKI participants.
 
@@ -1441,7 +1441,7 @@ All CA Private Keys are stored on a cryptographic module which has been evaluate
 
 The private key in Certification Authorities in the OWGTM is activated by initiating the PKI Software and activating the HSM where the key is stored. This process requires at least a dual-person control, except for Issuing CAs where automatic key activation in case of system failure or restart is allowed.
 
-The activation of Subscriber’s private key is stipulated in section 6.4.
+The activation of Subscriber’s private key is stipulated in [section 6.4](#64-activation-data).
 
 ### 6.2.9 Method of deactivating private key
 
@@ -1462,7 +1462,7 @@ A private key can be destroyed by the key owner or a legal representative. In su
 
 ### 6.2.11 Cryptographic Module Rating
 
-No stipulation additional to section 6.2.1.
+No stipulation additional to [section 6.2.1](#621-cryptographic-module-standards-and-controls).
 
 ## 6.3 Other aspects of key pair management
 
@@ -1713,7 +1713,7 @@ In particular, the use of the reason "keyCompromise", when the revocation is don
 
 In general, the status of all certificates in the OWGTM, except if indicated in the appropriate Certificate Policy, may be validated by sending requests compliant with RFC 6960 and/or RFC 5019.
 
-OWGTM ensures compliance with any applicable requirement from the CA/Browser Forum in terms of OCSP implementation for server authentication certificates. In particular, the CRLReason indicated MUST contain a value permitted for CRLs, as specified in Section 7.2.2.
+OWGTM ensures compliance with any applicable requirement from the CA/Browser Forum in terms of OCSP implementation for server authentication certificates. In particular, the CRLReason indicated MUST contain a value permitted for CRLs, as specified in [Section 7.2.2](#722-crl-and-crl-entry-extensions).
 
 ### 7.3.1 Version number(s)
 
@@ -1842,8 +1842,8 @@ All Issuing CA under the OWGTM shall keep the following types of information con
 - Any activation data used to access private keys or gain access to the CA system
 - Any business continuity, incident response, contingency, and disaster recovery plans
 - Any other security practices, measures, mechanisms, plans, or procedures used to protect the confidentiality, integrity or availability of information
-- Any information held by the Issuing CA in accordance with Section 9.4
-- Any transactional, audit log and archive record identified in Section 5.4 or 5.5, including certificate application records and documentation submitted in support of certificate applications whether successful or rejected.
+- Any information held by the Issuing CA in accordance with [Section 9.4](#94-privacy-of-personal-information)
+- Any transactional, audit log and archive record identified in [Section 5.4](#54-audit-logging-procedures) or [5.5](#55-records-archival), including certificate application records and documentation submitted in support of certificate applications whether successful or rejected.
 - Transaction records, financial audit records and external or internal audit trail records and any audit reports (with the exception of an auditor’s letter confirming the effectiveness of the controls set forth in this CPS)
 - All information classified explicitly as “PRIVATE”, “CONFIDENTIAL” or “STRICTLY CONFIDENTIAL” when generated or exchanged among involved parties.
 
@@ -1912,7 +1912,7 @@ This section includes general stipulations, specific terms can be stipulated in 
 OWGTM Root CAs will:
 - Establish a chain of trust by issuing a certificate, which is a self-signed certificate
 - Ensure that the Root signs any subordinate CAs issued under the OWGTM hierarchy
-- Properly conduct the verification process described in section 3.2
+- Properly conduct the verification process described in [section 3.2](#32-initial-identity-validation)
 - Ensure the accuracy and completeness of any part of the certificate information which is generated or compiled by the OWGTM, according to the applicable Certification Policy
 - Ensure that all relevant information concerning a certificate is recorded (electronically or otherwise) for an appropriate period of time, and in particular, for the purpose of providing evidence for the purposes of legal proceedings
 - Utilize trustworthy systems, procedures and human resources in performing its services
@@ -1921,7 +1921,7 @@ OWGTM Root CAs will:
 All CAs in the OWGTM will:
 - Operate according to the requirements of this CPS and any applicable SLA.
 - Ensure at the time it issues a certificate, that the certificate contains all the elements required by the CP or PDS.
-- Manage their keys in accordance with Section 6.2 Private Key Protection and Cryptographic Module Engineering Controls.
+- Manage their keys in accordance with [Section 6.2](#62-private-key-protection-and-cryptographic-module-engineering-controls) (Private Key Protection and Cryptographic Module Engineering Controls).
 - Ensure the availability of a Certificate Directory and CRL
 - Promptly revoke a certificate if required.
 - MITM / traffic management policy: Explicitly, the CAs will not issue a certificate that can be used for MITM or “traffic management” of domain names or IPs that the certificate holder does not legitimately own or control. Therefore, the Issuing CA will be required to diligently execute the appropriate proofs of ownership or representation in the certificate issuance process.
@@ -2020,13 +2020,13 @@ The OWGTM can unilaterally amend this document, by attaining adhering to the fol
 
 ### 9.12.1 Procedure for amendment
 
-The entity with the authority to make and approve any change in the CPS and the related CP in the OWGTM is the Policy Approval Authority (PAA, described in section 1.5 of this document), which reviews the change request, assesses whether the change request is required, and approves the changes.
+The entity with the authority to make and approve any change in the CPS and the related CP in the OWGTM is the Policy Approval Authority (PAA, described in [section 1.5](#15-policy-administration) of this document), which reviews the change request, assesses whether the change request is required, and approves the changes.
 
 A change can only be made to the approved documents once approval has been granted by the PAA.
 
 On the assumption that the PAA decides to modify the CPS or a particular CP, a new version of the document will be generated. The version of the document (exposed in all the pages of the document) is controlled with two numbers separated by a period. The first number (major version) is incremented if the new version could affect the acceptance of the certificates by the users. The second number (minor version) is incremented if the amendment is not considered to affect the certificate acceptance criteria. These two version numbers are included as the last two numbers in the OID identifying the document.
 
-Once a new version of the document is approved, the procedures stipulated in section 9.12.2 will be executed.
+Once a new version of the document is approved, the procedures stipulated in [section 9.12.2](#9122-notification-mechanism-and-period) will be executed.
 
 ### 9.12.2 Notification mechanism and period
 
@@ -2302,7 +2302,7 @@ No stipulation.
 
 OWGTM defines the following OID Schema to identify the different Certificate Profiles issued under the whole PKI.
 
-These OID can be substituted by equivalent OID published by the CAB/Forum:
+These OID can be substituted or complemented by equivalent OID published by the CAB/Forum:
 
 PUBLIC-ARCH = 2.16.756.5.14
 
@@ -2363,7 +2363,7 @@ PUBLIC-ARCH.8 – Policy qualifiers for special purposes
 
 This section describes the certificate profiles issued by our CA, including all mandatory and optional extensions, based on the CAB Forum Baseline Requirements for TLS and S/MIME certificates and the EV Guidelines.
 
-These following certificate profiles are illustrative of our certification practices. OWGTM ensures that the effective profiles are always aligned to the latest version of what stipulated in section 7 of this document and the applicable baseline requirements, in force at the moment of issuance.
+These following certificate profiles are illustrative of our certification practices. OWGTM ensures that the effective profiles are always aligned to the latest version of what stipulated in [section 7](#7-certificate-crl-and-ocsp-profiles) of this document and the applicable baseline requirements, in force at the moment of issuance.
 
 Note: In all cases, serial numbers in new certificates contain at least 64 bits of output from a CSPRNG.
 
@@ -2602,6 +2602,8 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 OWGTM allows the issuance of "Personal" or "Device" certificates that don't include the EKUs for TLS Server Authentication or Email Protection (S/MIME). These certificates will be typically intended for:
 - **Client Authentication**: Certificates issued by "Non-TLS" Certification Authorities that are mainly used for TLS Client Authentication.
 - **Document Signature**: Certificates issued by "Non-TLS" Certification Authorities that are used for digital signature of documents (i.e. Adobe PDF documents).
+
+These certificates will use generally profiles consistent with the examples above for S/MIME certificates, without including the EKU for email protection.
 
 When issued by publicly-trusted Issuing CAs covered by this CPS, these certificates will be subject to the rules derived of the compliance requirements for the particular Root under which are issued.
 
