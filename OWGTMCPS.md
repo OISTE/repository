@@ -142,9 +142,9 @@ The type of certificate is determined by the combination of "Key Usage", "Extend
 | Qualified Professional Certificate | High Assurance Personal certificates with software or hardware keys, used by Natural person to authenticate and encrypt documents and transactions. Valid for Advanced Signatures of PDF documents. Personal identity and Organization attributes are validated and included in the certificate. Remote verification is allowed under certain circumstances.<br>**When used for email Protection, this is equivalent to the "sponsor-validated" profile defined by the CAB/Forum Baseline Requirements for S/MIME Certificates** | Digital Signature, Encryption, Non-Repudiation, Client Authentication, Document Signing and email Protection |
 | Advanced Corporate Certificate | High Assurance Corporate certificates with software keys, used by Legal person to authenticate and encrypt documents and transactions. Organization attributes are validated and included in the certificate. Remote verification is allowed under certain circumstances.<br>**When used for email Protection, this is equivalent to the "organization-validated" profile defined by the CAB/Forum Baseline Requirements for S/MIME Certificates** | Digital Signature, Encryption, Client Authentication and email Protection |
 | Qualified Corporate Certificate | High Assurance Corporate certificates with software or hardware keys, used by Legal person to authenticate and encrypt documents and transactions. Valid for Advanced Signatures of PDF documents. Organization attributes are validated and included in the certificate. Remote verification is allowed under certain circumstances.<br>**When used for email Protection, this is equivalent to the "organization-validated" profile defined by the CAB/Forum Baseline Requirements for S/MIME Certificates** | Digital Signature, Encryption, Non-Repudiation, Client Authentication, Document Signing and email Protection |
-| DV TLS Certificate | Medium assurance TLS/TLS certificate. All identification attributes in the certificate are verified. The control on the Internet Domain is validated. Compliant with CA/Browser Forum Baseline Requirements | Digital Signature, Encryption, Server Authentication |
-| OV TLS Certificate | High assurance TLS/TLS certificate. All identification attributes in the certificate are verified. The Identity of the organization is validated. Compliant with CA/Browser Forum Baseline Requirements | Digital Signature, Encryption, Server Authentication |
-| EV TLS Certificate | High assurance TLS/TLS certificate | All identification attributes in the certificate are verified. The Identity of the organization is validated. Compliant with CA/Browser Requirements for Extended Validation | Digital Signature, Encryption, Server Authentication |
+| DV TLS Certificate | Medium assurance TLS certificate. All identification attributes in the certificate are verified. The control on the Internet Domain is validated. Compliant with CA/Browser Forum Baseline Requirements | Digital Signature, Encryption, Server Authentication |
+| OV TLS Certificate | High assurance TLS certificate. All identification attributes in the certificate are verified. The Identity of the organization is validated. Compliant with CA/Browser Forum Baseline Requirements | Digital Signature, Encryption, Server Authentication |
+| EV TLS Certificate | High assurance TLS certificate compliant. All identification attributes in the certificate are verified. The Identity of the organization is validated. Compliant with CA/Browser Requirements for Extended Validation | Digital Signature, Encryption, Server Authentication |
 | Device Certificate | High Assurance Device certificates used by devices to authenticate themselves and to protect transactions over IoT networks. Identity information as model number, serial number and manufacturer information are validated. Remote validation is allowed under certain circumstances | Digital Signature, Encryption, Client Authentication |
 
 ### 1.4.2 Prohibited certificate uses
@@ -1375,7 +1375,7 @@ Trusted Root Certificates may be obtained directly from the appropriate reposito
 
 The OWGTM enforces the use of minimum length 2048-bit RSA (key length must divisible by 8) and ECC NIST P-256, P-384 or P-521 for key pairs at all levels of the hierarchy.
 
-CAs that generate Certificates and CRLs under this policy SHOULD use the SHA-256, or SHA-384 hash algorithm when generating digital signatures. ECDSA signatures on Certificates and CRLs SHOULD be generated using SHA-256 or SHA-384, as appropriate for the key length.
+CAs that generate Certificates and CRLs under this policy SHOULD use the SHA-256, or SHA-384 hash algorithm when generating RSA digital signatures. ECDSA signatures on Certificates and CRLs SHOULD be generated using SHA-256, SHA-384 or SHA-512, as appropriate for the key length.
 
 ### 6.1.6 Public key parameters generation and quality checking
 
@@ -1650,7 +1650,7 @@ For the Root CA and subordinate CA certificates, the used algorithms are:
 - sha256WithRSAEncryption, sha384WithRSAEncryption, sha512WithRSAEncryption
 - ecdsa-with-sha512/384/256
 
-For subscriber certificates, only the above algorithms permitted by the applicable requirements are allowed.
+For subscriber certificates, only the above algorithms permitted by the applicable requirements are allowed (see [Appendix D, Certificate Profiles](#appendix-d-certificate-profiles)).
 
 ### 7.1.4 Name forms
 
@@ -2371,19 +2371,21 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 
 ### Issuing CA Certificates
 
+Note: Currently, OWGTM is only maintaining active unconstrained subordinate CA Certificates. This section would be updated before issuing new constrained or cross-signed CA Certificates.
+
 | Attribute | Content | Example Value | Notes |
 | --- | --- | --- | --- |
-| **Version** | v3 | 3 | **Mandatory** |
+| **Version** | v3 | v3 | **Mandatory** |
 | **Serial Number** | Unique value assigned by Root CA | 33:00:00:... | **Mandatory** |
-| **Signature Algorithm** | sha256WithRSAEncryption<br>ecdsa-with-SHA256 | sha256WithRSAEncryption | **Mandatory** |
+| **Signature Algorithm** | sha256/384/512WithRSAEncryption<br>ecdsa-with-SHA256/384/512 | sha256WithRSAEncryption | **Mandatory** |
 | **Issuer** | Root CA Subject Name | C=CH, O=WISeKey, OU=OISTE Foundation Endorsed, CN=OISTE WISeKey Global Root GB CA | **Mandatory** |
 | **Validity Period**  | Determined by Root CA; typically 10–25 years | 2020-07-04 → 2035-07-04 | **Mandatory** |
 | **Subject** | Issuing CA identity | C=CH, O=WISeKey, CN=WISeKey CertifyID SSL GB CA 2 | **Mandatory** |
-| **Public Key Algorithm / Size** | RSA 2048/3072/4096 or EC P-256/P-384 | RSA 2048 | **Mandatory** |
+| **Public Key Algorithm / Size** | RSA 2048/3072/4096 or EC P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
 | **Basic Constraints (critical)** | CA:TRUE, pathlen:0 | CA:TRUE, pathlen:0 | **Mandatory**; ensures this is a subordinated CA capable of issuing end-entity certificates |
 | **Key Usage (critical)** | Certificate Sign, CRL Sign, Digital Signature (Optional) | Certificate Sign, CRL Sign | **Mandatory**; issuing CAs must not have Digital Signature or Key Encipherment |
-| **Extended Key Usage (EKU)** | TLS Server Auth, TLS Client Auth (Optional) | TLS Web Server Authentication, TLS Web Client Authentication | **Mandatory** (per CABF BR) |
-| **Subject Key Identifier (SKI)** | keyid:… | 5F:1B:C5:... | **Mandatory** |
+| **Extended Key Usage (EKU)** | For TLS CAs: TLS Server Auth, TLS Client Auth (Optional)<br>For S/MIME CAs: email Protection, TLS Client Auth (Optional) | TLS Web Server Authentication, TLS Web Client Authentication | **Mandatory** (per CABF BR) |
+| **Subject Key Identifier (SKI)** | keyid:… | keyid:5F:1B:C5:... | **Mandatory** |
 | **Authority Key Identifier (AKI)** | keyid:… | keyid:35:0F:C8:... | **Mandatory** |
 | **CRL Distribution Points (CRL DP)** | URI:… | http://public.wisekey.com/crl/owgrgbca.crl | **Mandatory** |
 | **Authority Info Access (AIA)** | CA Issuers URI, OCSP URI (Optional) | CA Issuers:http://public.wisekey.com/crt/owgrgbca.crt<br>OCSP:http://ocsp.wisekey.com/ | **Mandatory** |
@@ -2395,18 +2397,18 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 
 | Attribute | Content | Example Value | Notes |
 | --- | --- | --- | --- |
-| **Version** | v3 | 3 | **Mandatory** |
+| **Version** | v3 | v3 | **Mandatory** |
 | **Serial Number** | Unique value assigned by issuing CA | 35:16:6B:... | **Mandatory** |
-| **Signature Algorithm** | sha256WithRSAEncryption<br>ecdsa-with-SHA256 | sha256WithRSAEncryption | **Mandatory** |
+| **Signature Algorithm** | sha256/384WithRSAEncryption<br>ecdsa-with-SHA256/384/512 | sha256WithRSAEncryption | **Mandatory** |
 | **Issuer** | Issuing CA Subject Name | C=CH, O=WISeKey, CN=WISeKey CertifyID SSL GB CA 2 | **Mandatory**|
 | **Validity Period** | Determined by CA; may be up to 1 year | 2025-05-29 → 2026-05-29 | **Mandatory**; OCSP responder certs typically short-lived |
 | **Subject** | OCSP responder identity | C=CH, O=WISeKey, CN=WISeKey CertifyID SSL GB CA 2 OCSP | **Mandatory** |
-| **Public Key Algorithm / Size** | RSA 2048/3072/4096 or EC P-256/P-384 | RSA 2048 | **Mandatory** |
-| **Basic Constraints (critical)**   | CA:FALSE | CA:FALSE | **Mandatory** |
+| **Public Key Algorithm / Size** | RSA 2048/3072/4096 or EC P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| **Basic Constraints (critical)**   | CA:FALSE | CA:FALSE | **Optional** |
 | **Key Usage (critical)** | Digital Signature | Digital Signature | **Mandatory**; OCSP responder certificates **must not** allow key encipherment |
 | **Extended Key Usage (EKU)** | OCSP Signing (id-kp-OCSPSigning) | OCSP Signing | **Mandatory**; must contain only id-kp-OCSPSigning |
 | **OCSP No Check** | Present (non-critical) | OCSP No Check| **Optional** but recommended for responder certs |
-| **Subject Key Identifier (SKI)**   | keyid:… | 5F:DE:F0:... | **Optional** |
+| **Subject Key Identifier (SKI)**   | keyid:… | keyID:5F:DE:F0:... | **Optional** |
 | **Authority Key Identifier (AKI)** | keyid:…. | keyid:5F:... | **Mandatory** |
 | **Authority Info Access (AIA)**    | OCSP & CA Issuers (optional for OCSP responder certs) | *Not present* | **Optional** |
 | **CRL Distribution Points** | URI:… | *Not present* | **Optional** |
@@ -2430,15 +2432,15 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 | --- | --- | --- | --- |
 | Version | v3 | v3 | **Mandatory** |
 | Serial Number | Unique value |  01:A3:4F… | **Mandatory** |
-| Signature Algorithm | sha256WithRSAEncryption<br>ecdsa-with-SHA256 | sha256WithRSAEncryption | **Mandatory** |
+| Signature Algorithm | sha256/384WithRSAEncryption<br>ecdsa-with-SHA256/384/512 | sha256WithRSAEncryption | **Mandatory** |
 | Issuer | \<Issuer Subject Name> | C=CH, O=WISeKey, CN=GB DV CA | **Mandatory** |
 | Validity Period | \<See Schedule above> | 2025-11-01 → 2025-11-22 | **Mandatory**; capped per BR schedule |
-| Subject | CN=\<domain> | CN=gbdvvalidssl.hightrusted.com | **Mandatory** |
+| Subject | CN=\<domain> | CN=gbdvvalidssl.hightrusted.com | **Optional**; SAN must be critical if not included |
 | Public Key Algorithm / Size | RSA 2048/3072/4096<br>EC P‑256/P-384 | RSA 2048 | **Mandatory** |
-| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Mandatory** |
+| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
 | Key Usage (critical) | Digital Signature, Key Encipherment (as allowed for ECC certificates) | Digital Signature, Key Encipherment | **Mandatory** |
 | Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | TLS Web Server Auth | **Mandatory** |
-| SAN | DNS:<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory** |
+| SAN | DNS:\<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory**; at least one |
 | Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.2.1, CPS: http://gbdvvalidssl.hightrusted.com/cps | **Mandatory** |
 | Authority Key Identifier (AKI) | keyid:… | keyid:AB:CD:EF:12:34:56 | **Mandatory** |
 | Subject Key Identifier (SKI) | keyid:… | keyid:12:34:56:78:9A:BC | **Optional** |
@@ -2450,17 +2452,17 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 
 | Attribute | Content | Example Value | Notes |
 | --- | --- | --- | --- |
-| Version | v3 | 3 | **Mandatory** |
+| Version | v3 | v3 | **Mandatory** |
 | Serial Number | Unique value | 01:A3:4F… | **Mandatory** |
-| Signature Algorithm | sha256WithRSAEncryption<br>ecdsa-with-SHA256 | sha256WithRSAEncryption | **Mandatory** |
+| Signature Algorithm | sha256/384WithRSAEncryption<br>ecdsa-with-SHA256/384/512 | sha256WithRSAEncryption | **Mandatory** |
 | Issuer | \<Issuer Subject Name> | C=CH, O=WISeKey, CN=GB DV CA | **Mandatory** |
 | Validity Period | \<See Schedule above> | 2025-11-01 → 2025-11-22 | **Mandatory**; capped per BR schedule |
 | Subject | C, ST, O, CN=\<domain> (or other combinations and fields allowed by the BR) | C=CH, ST=Zurich, O=Company, CN=gbovvalidssl.hightrusted.com | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096<br>EC P‑256/P-384 | RSA 2048 | **Mandatory** |
-| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>EC P‑256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
 | Key Usage (critical) | Digital Signature, Key Encipherment (as allowed for ECC certificates) | Digital Signature, Key Encipherment | **Mandatory** |
 | Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | TLS Web Server Auth | **Mandatory** |
-| SAN | DNS:<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory** |
+| SAN | DNS:\<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory**; at least one |
 | Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.2.2, CPS: http://gbdvvalidssl.hightrusted.com/cps | **Mandatory** |
 | Authority Key Identifier (AKI) | keyid:… | keyid:AB:CD:EF:12:34:56 | **Mandatory** |
 | Subject Key Identifier (SKI) | keyid:… | keyid:12:34:56:78:9A:BC | **Optional** |
@@ -2472,17 +2474,17 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 
 | Attribute | Content | Example Value | Notes |
 | --- | --- | --- | --- |
-| Version | v3 | 3 | **Mandatory** |
+| Version | v3 | v3 | **Mandatory** |
 | Serial Number | Unique value | 01:A3:4F… | **Mandatory** |
-| Signature Algorithm | sha256WithRSAEncryption<br>ecdsa-with-SHA256 | sha256WithRSAEncryption | **Mandatory** |
+| Signature Algorithm | sha256/384WithRSAEncryption<br>ecdsa-with-SHA256/384/512 | sha256WithRSAEncryption | **Mandatory** |
 | Issuer | \<Issuer Subject Name> | C=CH, O=WISeKey, CN=GB DV CA | **Mandatory** |
 | Validity Period | \<See Schedule above> | 2025-11-01 → 2025-11-22 | **Mandatory**; capped per BR schedule |
 | Subject | C, ST, L, O, serialNumber, CN, businessCategory, jurisdictionStateOrProvinceName, jurisdictionCountryName (or other combinations and fields allowed by the BR and EVGL) | C=CH, ST=Zurich, O=Company, serialNumber=123456789, CN=gbevvalidssl.hightrusted.com, businessCategory=Private Organization, jurisdictionStateOrProvinceName=Zurich, jurisdictionCountryName=CH | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096<br>EC P‑256/P-384 | RSA 2048 | **Mandatory** |
-| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>EC P‑256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
 | Key Usage (critical) | Digital Signature, Key Encipherment (as allowed for ECC certificates) | Digital Signature, Key Encipherment | **Mandatory** |
 | Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | TLS Web Server Auth | **Mandatory** |
-| SAN | DNS:<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory** |
+| SAN | DNS:\<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory**; at least one |
 | Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.1, CPS: http://gbdvvalidssl.hightrusted.com/cps | **Mandatory** |
 | Authority Key Identifier (AKI) | keyid:… | keyid:AB:CD:EF:12:34:56 | **Mandatory** |
 | Subject Key Identifier (SKI) | keyid:… | keyid:12:34:56:78:9A:BC | **Optional** |
@@ -2495,7 +2497,7 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 
 When including the usage for email protection, the commercial names of Personal Certificates will match the different classes defined by the CAB/Forum for S/MIME Certificates as indicated in this table:
 
-| Comercial names | CAB/F Designation |
+| Commercial names | CAB/F Designation |
 | --- | --- |
 | Standard Certificate<br>Basic Certificate | mailbox-validated |
 | Advanced Personal Certificate<br>Advanced Qualified Certificate | individual-validated |
@@ -2517,20 +2519,20 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 
 | Attribute | Content | Example Value | Notes |
 | --- | --- | --- | --- |
-| Version | 3 | **Mandatory** |
+| Version | v3 | v3 | **Mandatory** |
 | Serial Number | Unique value | 14:b4:... | **Mandatory** |
-| Signature Algorithm | sha256WithRSAEncryption<br>ecdsa-with-SHA256  | sha256WithRSAEncryption| **Mandatory** |
+| Signature Algorithm | sha256/384WithRSAEncryption<br>ecdsa-with-SHA256/384/512  | sha256WithRSAEncryption| **Mandatory** |
 | Issuer | \<Issuer Subject Name>  | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
 | Validity Period | \<See Schedule above> | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
 | Subject | CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | CN=john.smith@example.com, emailAddress=john.smith@example.com | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384 | RSA 2048 | **Mandatory** |
-| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Mandatory** |
-| Key Usage (critical) | Digital Signature, Key Encipherment / Key Agreement (Optional) | Digital Signature | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
+| Key Usage (critical) | A valid combination of Digital Signature, nonRepudiation, Data Encipherment, Key Encipherment and/or Key Agreement | Digital Signature | **Mandatory** |
 | Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | E-mail Protection| **Mandatory** |
 | Subject Alternative Name (SAN) | email: | email:john.smith@example.com | **Mandatory** (at least one) |
 | Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | CABF OID | **Mandatory** |
 | Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Mandatory** |
-| Subject Key Identifier (SKI) | keyID:... | 0C:D1... | **Optional** |
+| Subject Key Identifier (SKI) | keyID:... | keyID:0C:D1... | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
 | CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/crl/caname.crl | **Mandatory** |
 
@@ -2538,20 +2540,20 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 
 | Attribute | Content | Example Value | Notes |
 | --- | --- | --- | --- |
-| Version | 3 | **Mandatory** |
+| Version | v3 | v3 | **Mandatory** |
 | Serial Number | Unique value | 14:b4:... | **Mandatory** |
-| Signature Algorithm | sha256WithRSAEncryption<br>ecdsa-with-SHA256  | sha256WithRSAEncryption| **Mandatory** |
+| Signature Algorithm | sha256/384WithRSAEncryption<br>ecdsa-with-SHA256/384/512  | sha256WithRSAEncryption| **Mandatory** |
 | Issuer | \<Issuer Subject Name>  | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
 | Validity Period | \<See Schedule above> | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
 | Subject | C, ST, L, SN, GN, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, L=Geneve, SN=Smith, GN=John, CN=john.smith@example.com, emailAddress=john.smith@example.com | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384 | RSA 2048 | **Mandatory** |
-| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Mandatory** |
-| Key Usage (critical) | Digital Signature, nonRepudiation (Optional), Key Encipherment / Key Agreement (Optional) | Digital Signature | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
+| Key Usage (critical) | A valid combination of Digital Signature, nonRepudiation, Data Encipherment, Key Encipherment and/or Key Agreement | Digital Signature | **Mandatory** |
 | Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | E-mail Protection| **Mandatory** |
 | Subject Alternative Name (SAN) | email: | email:john.smith@example.com | **Mandatory** (at least one) |
 | Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | CABF OID | **Mandatory** |
 | Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Mandatory** |
-| Subject Key Identifier (SKI) | keyID:... | 0C:D1... | **Optional** |
+| Subject Key Identifier (SKI) | keyID:... | keyID:0C:D1... | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
 | CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/crl/caname.crl | **Mandatory** |
 
@@ -2559,20 +2561,20 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 
 | Attribute | Content | Example Value | Notes |
 | --- | --- | --- | --- |
-| Version | 3 | **Mandatory** |
+| Version | v3 | v3 | **Mandatory** |
 | Serial Number | Unique value | 14:b4:... | **Mandatory** |
-| Signature Algorithm | sha256WithRSAEncryption<br>ecdsa-with-SHA256  | sha256WithRSAEncryption| **Mandatory** |
+| Signature Algorithm | sha256/384WithRSAEncryption<br>ecdsa-with-SHA256/384/512  | sha256WithRSAEncryption| **Mandatory** |
 | Issuer | \<Issuer Subject Name>  | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
 | Validity Period | \<See Schedule above> | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
-| Subject | C, ST, L, OU, O, organizationIdentifier, SN, GN, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, L=Geneve, O=WISeKey SA, organizationIdentifier=NTRCH-CHE-101.022.134, SN=Smith, GN=John, CN=john.smith@example.com, emailAddress=john.smith@example.com | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384 | RSA 2048 | **Mandatory** |
-| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Mandatory** |
-| Key Usage (critical) | Digital Signature, nonRepudiation (Optional), Key Encipherment / Key Agreement (Optional) | Digital Signature | **Mandatory** |
+| Subject | C, ST, L, OU, O, organizationIdentifier, SN, GN, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, ST=Geneve, O=WISeKey SA, organizationIdentifier=NTRCH-CHE-101.022.134, SN=Smith, GN=John, CN=john.smith@example.com, emailAddress=john.smith@example.com | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
+| Key Usage (critical) | A valid combination of Digital Signature, nonRepudiation, Data Encipherment, Key Encipherment and/or Key Agreement | Digital Signature | **Mandatory** |
 | Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | E-mail Protection| **Mandatory** |
 | Subject Alternative Name (SAN) | email: | email:john.smith@example.com | **Mandatory** (at least one) |
 | Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | CABF OID | **Mandatory** |
 | Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Mandatory** |
-| Subject Key Identifier (SKI) | keyID:... | 0C:D1... | **Optional** |
+| Subject Key Identifier (SKI) | keyID:... | keyID:0C:D1... | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
 | CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/crl/caname.crl | **Mandatory** |
 
@@ -2580,20 +2582,20 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 
 | Attribute | Content | Example Value | Notes |
 | --- | --- | --- | --- |
-| Version | 3 | **Mandatory** |
+| Version | v3 | v3 | **Mandatory** |
 | Serial Number | Unique value | 14:b4:... | **Mandatory** |
-| Signature Algorithm | sha256WithRSAEncryption<br>ecdsa-with-SHA256  | sha256WithRSAEncryption| **Mandatory** |
+| Signature Algorithm | sha256/384WithRSAEncryption<br>ecdsa-with-SHA256/384/512  | sha256WithRSAEncryption| **Mandatory** |
 | Issuer | \<Issuer Subject Name>  | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
 | Validity Period | \<See Schedule above> | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
-| Subject | C, ST, L, OU, O, organizationIdentifier, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, L=Geneve, O=WISeKey SA, organizationIdentifier=NTRCH-CHE-101.022.134, emailAddress=john.smith@example.com | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384 | RSA 2048 | **Mandatory** |
-| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Mandatory** |
-| Key Usage (critical) | Digital Signature, nonRepudiation (Optional), Key Encipherment / Key Agreement (Optional) | Digital Signature | **Mandatory** |
+| Subject | C, ST, L, OU, O, organizationIdentifier, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, ST=Geneve, O=WISeKey SA, organizationIdentifier=NTRCH-CHE-101.022.134, CN=WISeKey SA, emailAddress=john.smith@example.com | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
+| Key Usage (critical) | A valid combination of Digital Signature, nonRepudiation, Data Encipherment, Key Encipherment and/or Key Agreement | Digital Signature | **Mandatory** |
 | Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | E-mail Protection| **Mandatory** |
 | Subject Alternative Name (SAN) | email: | email:john.smith@example.com | **Mandatory** (at least one) |
 | Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | CABF OID | **Mandatory** |
 | Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Optional** |
-| Subject Key Identifier (SKI) | keyID:... | 0C:D1... | **Optional** |
+| Subject Key Identifier (SKI) | keyID:... | keyID:0C:D1... | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
 | CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/crl/caname.crl | **Mandatory** |
 
@@ -2606,6 +2608,3 @@ OWGTM allows the issuance of "Personal" or "Device" certificates that don't incl
 These certificates will use generally profiles consistent with the examples above for S/MIME certificates, without including the EKU for email protection.
 
 When issued by publicly-trusted Issuing CAs covered by this CPS, these certificates will be subject to the rules derived of the compliance requirements for the particular Root under which are issued.
-
-
-
