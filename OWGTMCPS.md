@@ -10,8 +10,8 @@ title: |
  OISTE/WISeKey Global Trust Model CP/CPS
 author:
  - OISTE Policy Approval Authority
-subtitle: Version 4.1 - DRAFT
-date: MONTH DAY, 2025 (Release 4.1)
+subtitle: Version 4.1
+date: November 26, 2025 (Release 4.1)
 copyright: |
  Copyright 2025 OISTE Foundation. 
  This work is licensed under the Creative Commons Attribution 4.0 International license.
@@ -32,7 +32,7 @@ include-before: |
   | 4.0.2 | 21/3/2025 | Minor changes | Pedro Fuentes | 
   | 4.0.3 | 27/6/2025 | Minor changes | Pedro Fuentes | 
   | 4.0.4 | DRAFT | Statement for Mass Revocation | Pedro Fuentes |
-  | 4.1 | DRAFT | Wording improvements to address root program feedback | Pedro Fuentes |
+  | 4.1 | 26/11/2025 | Wording improvements to address root program feedback | Pedro Fuentes |
   \newpage
 ---
 
@@ -48,7 +48,7 @@ The main two legal entities involved in the control and operation of the OISTE/W
 - OISTE Foundation. The International Organization for Secure Electronic Transactions (“IOSET” or “OISTE”), a Swiss non-profit foundation established in 1998, and recognized with an “Special Consultative Status” by the United Nations. The OISTE Foundation maintains a Policy Approval Authority (PAA) that drafts, approves and revises the policies to which WISeKey is bound to comply with under its operator contract. The PAA is composed of members of the community to which OISTE provides its Certification Authority Services, resulting in a virtuous cycle for trust management.
 - WISeKey. WISeKey is referenced in this document as the short name for the entities “WISeKey International Holding Ltd.”, “WISeKey SA” or other members of the WISeKey Holding that are mandated by OISTE to host and operate the Root Certification Authorities and the technical infrastructures required to maintain the PKI at the appropriate operational level. WISeKey also operates as a “Subordinate Certification Authority” under the OISTE Roots, according to practices disclosed in this document.
 
-The OISTE Global Trust Model (OWGTM) has been designed and are operated in accordance with the broad strategic direction of international PKI (Public Key Infrastructure) standards as well as their application to concrete identity frameworks in different domains (e.g. ID cards, passports, health cards, Internet of Things) and is intended to serve as a common Trust Model for Certification Authorities worldwide that comply with OISTE requirements.
+The OISTE/WISeKey Global Trust Model (OWGTM) has been designed and are operated in accordance with the broad strategic direction of international PKI (Public Key Infrastructure) standards as well as their application to concrete identity frameworks in different domains (e.g. ID cards, passports, health cards, Internet of Things) and is intended to serve as a common Trust Model for Certification Authorities worldwide that comply with OISTE requirements.
 
 The technologies, infrastructures, practices, and procedures implemented by the OWGTM have been designed with explicit standards of security in mind based on the requirements approved by OISTE.
 
@@ -75,7 +75,7 @@ The purpose of this document is to disclose the Practices and Policies adopted i
 | --- | --- |
 | Version | 4.1 |
 | OID | 2.16.756.5.14.7.1 |
-| Issuance date | DAY/MONTH/2025 |
+| Issuance date | 26/11/2025 |
 | Location | This document is linked in https://oiste.org/repository and https://wisekey.com/repository |
 
 ## 1.3 PKI participants
@@ -182,6 +182,8 @@ The approval of major changes of documents related to the PKI, and specially for
 It’s required to issue new CP/CPS versions at least once a year. In the case of versioning conflict, the latest version that prevails is always the document published in the Policy Repository.
 
 Once any document of the Trust Model is updated, the CAs must do a technical assessment to identify any possible impact and/or required configuration changes in the platforms.
+
+The version history for this combined CP/CPS document is included in [Appendix E. Version history](#appendix-e-version-history).
 
 ## 1.6 Definitions and acronyms
 
@@ -466,7 +468,7 @@ A certificate application can be submitted by the subject of the certificate or 
 
 ### 4.1.2 Enrollment process and responsibilities
 
-WISeKey is responsible for ensuring that the identity of each Certificate Applicant is verified in accordance with this CP and the applicable CPS prior to the issuance of a Certificate. Applicants are responsible for submitting sufficient information and documentation for the Issuer CA or the RA to perform the required verification of identity prior to issuing a Certificate.
+WISeKey is responsible for ensuring that the identity of each Certificate Applicant is verified in accordance with this CPS prior to the issuance of a Certificate. Applicants are responsible for submitting sufficient information and documentation for the Issuer CA or the RA to perform the required verification of identity prior to issuing a Certificate.
 
 All Certificate Applicants must complete the enrolment process, which may include:
 - Submit a Certificate application (via our Certificate Management portals), including identity information and agree to the terms of the relevant Subscriber Agreement, presented to the user while sending the request.
@@ -483,7 +485,7 @@ This section describes the procedures for processing certificate applications in
 
 ### 4.2.1 Performing identification and authentication functions
 
-Before issuing a certificate from an OISTE Root for a subordinate Certification Authority, it’s required that two representatives of the PAA identify the CA Naming Application and rightfulness to operate a subordinate CA under the OISTE Root.
+Before issuing a certificate from an OISTE Root for a subordinate Certification Authority, it’s required that two authorized representatives of the PAA identify the CA Naming Application and rightfulness to operate a subordinate CA under the OISTE Root.
 
 The identification and authentication functions are delegated to the Registration Authorities operating under the OWGTM.
 
@@ -2387,9 +2389,9 @@ Note: Currently, OWGTM is only maintaining active unconstrained subordinate CA C
 | **Extended Key Usage (EKU)** | For TLS CAs: TLS Server Auth, TLS Client Auth (Optional)<br>For S/MIME CAs: email Protection, TLS Client Auth (Optional) | TLS Web Server Authentication, TLS Web Client Authentication | **Mandatory** (per CABF BR) |
 | **Subject Key Identifier (SKI)** | keyid:… | keyid:5F:1B:C5:... | **Mandatory** |
 | **Authority Key Identifier (AKI)** | keyid:… | keyid:35:0F:C8:... | **Mandatory** |
-| **CRL Distribution Points (CRL DP)** | URI:… | http://public.wisekey.com/crl/owgrgbca.crl | **Mandatory** |
-| **Authority Info Access (AIA)** | CA Issuers URI, OCSP URI (Optional) | CA Issuers:http://public.wisekey.com/crt/owgrgbca.crt<br>OCSP:http://ocsp.wisekey.com/ | **Mandatory** |
-| **Certificate Policies** | Policy OID + CPS URI (Optional) | Policy: anyPolicy<br>CPS:http://www.wisekey.com/repository | **Mandatory**; Policy OIDs as mandated by the CABF BR |
+| **CRL Distribution Points (CRL DP)** | URI:… | http://public.wisekey.com/ca.crl | **Mandatory** |
+| **Authority Info Access (AIA)** | CA Issuers URI, OCSP URI (Optional) | CA Issuers: http://public.wisekey.com/rca.crt<br>OCSP:http://ocsp.wisekey.com/ | **Mandatory** |
+| **Certificate Policies** | Policy OID + CPS URI (Optional) | Policy: anyPolicy<br>CPS: http://www.wisekey.com/repo | **Mandatory**; Policy OIDs as mandated by the CABF BR |
 | **SAN** | Not required for CA certificates | *Not present* | **Optional** |
 | **SCT List** | Embedded SCTs | *Not present* | Not required for SubCAs |
 
@@ -2441,7 +2443,7 @@ Note: Currently, OWGTM is only maintaining active unconstrained subordinate CA C
 | Key Usage (critical) | Digital Signature, Key Encipherment (as allowed for ECC certificates) | Digital Signature, Key Encipherment | **Mandatory** |
 | Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | TLS Web Server Auth | **Mandatory** |
 | SAN | DNS:\<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory**; at least one |
-| Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.2.1, CPS: http://gbdvvalidssl.hightrusted.com/cps | **Mandatory** |
+| Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.2.1, CPS: http://hightrusted.com/cps | **Mandatory** |
 | Authority Key Identifier (AKI) | keyid:… | keyid:AB:CD:EF:12:34:56 | **Mandatory** |
 | Subject Key Identifier (SKI) | keyid:… | keyid:12:34:56:78:9A:BC | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
@@ -2463,7 +2465,7 @@ Note: Currently, OWGTM is only maintaining active unconstrained subordinate CA C
 | Key Usage (critical) | Digital Signature, Key Encipherment (as allowed for ECC certificates) | Digital Signature, Key Encipherment | **Mandatory** |
 | Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | TLS Web Server Auth | **Mandatory** |
 | SAN | DNS:\<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory**; at least one |
-| Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.2.2, CPS: http://gbdvvalidssl.hightrusted.com/cps | **Mandatory** |
+| Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.2.2, CPS: http://hightrusted.com/cps | **Mandatory** |
 | Authority Key Identifier (AKI) | keyid:… | keyid:AB:CD:EF:12:34:56 | **Mandatory** |
 | Subject Key Identifier (SKI) | keyid:… | keyid:12:34:56:78:9A:BC | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
@@ -2485,7 +2487,7 @@ Note: Currently, OWGTM is only maintaining active unconstrained subordinate CA C
 | Key Usage (critical) | Digital Signature, Key Encipherment (as allowed for ECC certificates) | Digital Signature, Key Encipherment | **Mandatory** |
 | Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | TLS Web Server Auth | **Mandatory** |
 | SAN | DNS:\<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory**; at least one |
-| Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.1, CPS: http://gbdvvalidssl.hightrusted.com/cps | **Mandatory** |
+| Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.1, CPS: http://hightrusted.com/cps | **Mandatory** |
 | Authority Key Identifier (AKI) | keyid:… | keyid:AB:CD:EF:12:34:56 | **Mandatory** |
 | Subject Key Identifier (SKI) | keyid:… | keyid:12:34:56:78:9A:BC | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
@@ -2534,7 +2536,7 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 | Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Mandatory** |
 | Subject Key Identifier (SKI) | keyID:... | keyID:0C:D1... | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
-| CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/crl/caname.crl | **Mandatory** |
+| CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/ca.crl | **Mandatory** |
 
 ### Individual-Validated Certificate Profile
 
@@ -2555,7 +2557,7 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 | Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Mandatory** |
 | Subject Key Identifier (SKI) | keyID:... | keyID:0C:D1... | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
-| CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/crl/caname.crl | **Mandatory** |
+| CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/ca.crl | **Mandatory** |
 
 ### Sponsor-Validated Certificate Profile
 
@@ -2576,7 +2578,7 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 | Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Mandatory** |
 | Subject Key Identifier (SKI) | keyID:... | keyID:0C:D1... | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
-| CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/crl/caname.crl | **Mandatory** |
+| CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/ca.crl | **Mandatory** |
 
 ### Organization-Validated Certificate Profile
 
@@ -2597,7 +2599,7 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 | Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Optional** |
 | Subject Key Identifier (SKI) | keyID:... | keyID:0C:D1... | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
-| CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/crl/caname.crl | **Mandatory** |
+| CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/ca.crl | **Mandatory** |
 
 ## Non-S/MIME Personal/Device Certificate Profiles
 
@@ -2608,3 +2610,21 @@ OWGTM allows the issuance of "Personal" or "Device" certificates that don't incl
 These certificates will use generally profiles consistent with the examples above for S/MIME certificates, without including the EKU for email protection.
 
 When issued by publicly-trusted Issuing CAs covered by this CPS, these certificates will be subject to the rules derived of the compliance requirements for the particular Root under which are issued.
+
+
+# Appendix E: Version history
+
+## Combined CP/CPS document (this document)
+
+| **VERSION** | **DATE** | **MODIFICATION** | **AUTHOR** |
+| --- | --- | --- | --- |
+| 4.0 | 9/12/2024 | First consolidated CP/CPS | Pedro Fuentes | 
+| 4.0.1 | 13/1/2025 | Minor changes | Pedro Fuentes |
+| 4.0.2 | 21/3/2025 | Minor changes | Pedro Fuentes | 
+| 4.0.3 | 27/6/2025 | Minor changes | Pedro Fuentes | 
+| 4.0.4 | DRAFT | Statement for Mass Revocation | Pedro Fuentes |
+| 4.1 | 26/11/2025 | Wording improvements to address root program feedback | Pedro Fuentes |
+
+## Previous versions
+
+Previously to combining the CP and CPS in a single document (this document), the OISTE/WISeKey Trust Model published separate CP documents for each type of certificate and separate CPS documents for OISTE (covering the Root CAs) and WISeKey (covering the subordinate CAs). The previous documents and their version history are available at https://oiste.org/repository and https://wisekey.com/repository, respectively. 
