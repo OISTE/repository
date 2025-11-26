@@ -92,7 +92,7 @@ OISTE and WISeKey also own and operate a number of Time Stamping Authorities (TS
 
 ### 1.3.2 Registration authorities
 
-The Registration Authorities are the physical or legal persons responsible for the identification of the entities requesting a certificate (referred as “applicants” when the request is in process and “subscribers” for those in possession of a certificate). The OWGTM delegates to Registration Authorities the responsibility of verifying the information provided by the applicant within a certificate request, ensuring that the request and the process used to deliver the certificate to the subscriber meets the requirements of this CPS and the appropriate CP.
+The Registration Authorities (RA) are the physical or legal persons responsible for the identification of the entities requesting a certificate (referred as “applicants” when the request is in process and “subscribers” for those in possession of a certificate). The OWGTM delegates to Registration Authorities the responsibility of verifying the information provided by the applicant within a certificate request, ensuring that the request and the process used to deliver the certificate to the subscriber meets the requirements of this CPS and the appropriate CP.
 
 The Registration Authorities in the OWGTM are directly supervised by the CA and follow an accreditation process imposed by the CA in order to ensure that all security and operational procedures related to the certificates life-cycle are strictly enforced. Within the OWGTM environment there exist locations named “OWGTM Registration Point” that are the physical or virtual locations where a Registration Authority operates. These Registration Points are operated by “Registration Authority Officers”, who are authorized persons responsible for verifying the identity and veracity of a certificate request for an end entity and the delivery of the certificate once issued by the Certification Authority.
 
@@ -102,7 +102,9 @@ Therefore, the responsibilities of Registration Authorities operating under the 
 - Verify that the information contained in a certificate is exact and complete according to the requirements of the corresponding CP.
 - Ensure that the subscriber is in possession of the digital signature creation data (private keys) associated to the certificate to be issued.
 
-Currently is not supported the existence of Registration Authorities which are entitled to issue TLS or Code Signing certificates without the participation of WISeKey for the domain validation. WISeKey supports the concept of “Managed PKI” services for pre-authorized internet domains.
+OWGTM may delegate identity vetting and application intake to accredited RAs under written contracts requiring adherence to this CPS, audit rights and security controls. OWGTM will maintain oversight and perform periodic audits of each RA.
+
+Currently is not supported the existence of Registration Authorities which are entitled to issue TLS, S/MIME or Code Signing certificates without the participation of WISeKey for the domain or mailbox validation. WISeKey supports the concept of “Managed PKI” services for pre-authorized organizations and their validated internet domains.
 
 ### 1.3.3 Subscribers
 
@@ -278,11 +280,20 @@ Before issuing a certificate for a subordinate Certification Authority OWGTM req
 
 #### 3.2.2.1 Organization Identity validation
 
-If the Certificate’s SubjectDN is to include the name or address of an organization, the RA shall verify the identity and address of the organization and that the address is the Applicant’s address of existence or operation. OWGTM shall verify the identity and address of the Applicant using documentation provided by, or through communication with, at least one of the following:
+If the Certificate’s SubjectDN is to include the name or address of an organization, the RA shall verify the identity and address of the organization and that the address is the Applicant’s address of existence or operation. 
+
+OWGTM's appointed RA shall verify the identity and address of the Applicant using documentation provided by, or through communication with, at least one of the following:
 - A government agency in the jurisdiction of the Applicant’s legal creation, existence, or recognition;
-- A third-party database that is periodically updated and considered a Reliable Data Source as defined in section 3.2;
+- A third-party database that is periodically updated and considered a Reliable Data Source as defined in the introduction of this section 3.2;
 - A site visit by OWGTM or a third party who is acting as an agent for OWGTM; or
 - An Attestation Letter.
+
+Acceptable documentation may include:
+  - Articles of incorporation  
+  - Government-issued business registration certificate  
+  - Recent financial / statutory document (if required by policy)  
+
+The RA should perform **out-of-band verification**, where necessary, such as phone verification or email verification to a known domain address.
 
 OWGTM may verify the address of the Applicant (but not the identity of the Applicant) using a utility bill, bank statement, credit card statement, government-issued tax document, or other reliable form of identification.
 
@@ -352,6 +363,8 @@ For domain validation and CAA checks that require remote network corroboration, 
 
 The CA uses the Quorum Requirements Table in the Baseline Requirements to determine whether the set of observations constitutes corroboration. If the quorum is not achieved per the Baseline Requirements, the CA will not proceed with issuance. The CA retains MPIC logs (primary observation, remote corroboration observations, timestamps, vantage point IDs, and final decision) as part of the validation record. MPIC implementation details (vantage point providers, monitoring frequency, DNSSEC and resolver behavior) are maintained in the CA’s operational MPIC procedures (internal document), according to the information published in this document.
 
+The infrastructures supporting the MPIC systems, use Network Hardening mechanisms to mitigate BGP routing incidents in the global Internet routing system for providing internet connectivity to the Network Perspective, and are hosted from an ISO/IEC 27001 certified facility or equivalent security framework independently audited and certified or reported. The MPIC systems are included in the Vulnerability Assessment and Patch Management applied to the rest of the PKI systems.
+
 ### 3.2.2.6 Email Challenge Response Procedure
 Unless the domain component of an email address has been already verified for a subscriber, OWGTM verifies the requester’s control over the email address by sending a random value via email and then confirming the user entered the random value in our mailbox validation service.
 
@@ -359,9 +372,17 @@ The random value can only be used within a 24-hour timeframe after its generatio
 
 ### 3.2.3 Authentication of individual identity
 
-The following subsections describe the required practices for each subscriber certificate type.
+The same validation practices stated in section 3.2.2.1 will be applied to the authentication of individual identity, considering the following:
+- Acceptable identity documents:
+  - Government-issued passport  
+  - National identity card / driving license  
+  - Other government ID with photograph  
+- The RA may require additional proof (at its discretion), such as:
+  - Video-based proofing  
+  - Notarized document  
+  - External eID verification (if available)  
 
-The same validation practices stated in section 3.2.2.1 will be applied to the authentication of individual identity.
+The following subsections describe the specific practices for each subscriber certificate type.
 
 #### 3.2.3.1 For TLS Certificates
 
@@ -538,9 +559,15 @@ A certificate request will be forwarded to a Certification Authority for its iss
 
 A Certification Authority adhering to the OWGTM proceeds with the issuance of a certificate only after executing the necessary measures to verify that the signing request is authorized and genuine, as per the particular controls are stipulated in this document.
 
-#### 4.3.1.1. Linting practices
+#### 4.3.1.1 Linting practices
 TLS and S/MIME Certificates follow a Linting process to test the technical conformity of each to-be-signed certificate prior to signing it. If the linting results in error, this generates an alert and prevents certificate issuance. Linting warnings also generate alerts and are review to assess the possible impact, but do not necessarily prevent issuance.
 OWGTM may use a Linting process to test each issued Certificate (e.g. during self-audits).
+
+#### 4.3.1.2 Certificate Transparency
+
+For SSL/TLS Certificates that need to be trusted by Application Software Suppliers, OWGTM will be submitted to public Certificate Transparency logs. SCTs returned by logs will be embedded in the certificate or provided via OCSP/stapling as appropriate.
+
+These CT log servers must be qualified and trusted by such Application Software Suppliers.
 
 ### 4.3.2 Notification to subscriber by the CA of issuance of certificate
 
@@ -739,7 +766,7 @@ Third parties may request certificate revocation for problems related to fraud, 
 
 ### 4.9.3 Procedure for revocation request
 
-The procedure to be used for certificate revocation requests is detailed in the “End User Agreement”. Individual users will find the appropriate contact and procedure information in the URL http://www.wisekey.com/repository. Certificate subscribers obtaining their certificate from a self-service portal (TLS Reseller Portal, Universal Registration Authority, or WISeID Portal) can request the revocation through the same service.
+The procedure to be used for certificate revocation requests is detailed in the “End User Agreement”. Individual users will find the appropriate contact and procedure information in the URL http://www.wisekey.com/repository. Certificate subscribers obtaining their certificate from a self-service portal (TLS Manager Portal, Universal Registration Authority, or WISeID Portal) can request the revocation through the same service.
 
 To report suspected Private Key Compromise, Certificate misuse, Certificate mis-issuance, or other types of fraud, compromise, misuse, inappropriate conduct, or any other matter related to Certificates, the main and preferred method is sending an e-mail message to cps@wisekey.com.
 
@@ -768,11 +795,11 @@ The information necessary to locate these revocation services is included in all
 
 ### 4.9.7 CRL issuance frequency
 
-The OISTE Root CAs used by the OWGTM issue a full CRL at least every year, with a typical overlapping period of one week. This CRL will contain the revoked, if any, certificates for OWGTM Policy CAs or Issuing CAs, as appropriate for the hierarchy. New CRLs are published immediately if a new subordinated CA is revoked.
+The OISTE Root CAs used by the OWGTM issue a full CRL at least every year, with a typical overlapping period of one week. This CRL will contain the revoked, if any, certificates for OWGTM Policy CAs or Issuing CAs, as appropriate for the hierarchy.  A new CRL within twenty-four (24) hours is updated and published after recording a CA Certificate as revoked.
 
 The CRL issuance frequency for Subordinate Certification Authorities is as follows:
 - The OWGTM Policy CAs issue a full CRL every month, with a typical overlapping period of 3 days. This CRL will contain the revoked, if any, certificates for OWGTM Issuing CAs. New CRL are published immediately if a new subordinated CA is revoked.
-- The OWGTM Issuing CAs issue a full CRL every up to four days, with a maximum latency of two additional days in case of service disruption. This CRL will contain the revoked, if any, certificates for OWGTM end-users / subscribers.
+- The OWGTM Issuing CAs issue a full CRL at least every seven (7) days if all Certificates include an Authority Information Access extension with an id-ad-ocsp accessMethod (“AIA OCSP pointer”); or - four (4) days in all other cases; and will update and publish a new CRL within twenty-four (24) hours after recording a Certificate as revoked.
 
 For the specific case of TLS and S/MIME certificates, the OWGTM will ensure the compliance of the Baseline (and Extended Validation, for EV certificates) Requirements of the CA/Browser Forum.
 
@@ -1122,7 +1149,9 @@ No stipulations.
 
 ### 5.4.8 Vulnerability assessments
 
-OWGTM executes regular vulnerability assessment by monitoring the activity logs, at least according to the minimum frequencies mandated by the CAB/Forum. In depth assessments and checks are performed on a yearly basis, including conformance to disaster recovery plans. In the event that an assessment could not be performed or was delayed, the OWGTM will inform the involved parties and records of such an event and its cause will be kept for future reference.
+OWGTM maintains a documented vulnerability management program: critical vulnerabilities should be remediated within 3 days (or mitigated), with monthly patch/scan cycles and annual third-party penetration tests.
+
+OWGTM executes regular vulnerability assessment by monitoring the activity logs, at least with a quarterly frequency. In depth assessments and checks are performed on a yearly basis, including conformance to disaster recovery plans. In the event that an assessment could not be performed or was delayed, the OWGTM will inform the involved parties and records of such an event and its cause will be kept for future reference.
 
 In particular, OWGTM performs an annual Risk Assessment that:
 1. identifies foreseeable internal and external threats that could result in unauthorized access, disclosure, misuse, alteration, or destruction of any Certificate Data or Certificate Management processes;
@@ -1217,6 +1246,16 @@ The business continuity plan includes:
 1. The distance of recovery facilities to the CA’s main site; and
 1. Procedures for securing its facility to the extent possible during the period of time following a disaster and prior to restoring a secure environment either at the original or a remote site.
 
+**Compromise Notification**  
+In the event of key compromise (CA root, subordinate, or certificate-subscriber key), the CA **must**:
+   1. Immediately revoke affected certificates.  
+   2. Notify relevant stakeholders (subscribers, RAs, responding authorities) per defined procedures.  
+   3. Report to browser or trust-store maintainers, if relevant, according to their programs / requirements.  
+   4. Retain forensic evidence (logs, access records) for investigation.
+
+**Post-Incident Review**  
+After any incident, the CA must conduct a **post-incident review**, document lessons learned, update the IR plan, and remediate root causes.
+
 #### 5.7.1.2. Mass Revocation Plans
 
 As required by Root Programs and the CABF Baseline Requirements, OWGTM maintains a mass revocation plan to ensure a rapid, consistent, and reliable response to large-scale certificate revocation events. The Mass Revocation Plan is tested, reviewed, and updated at least annually.
@@ -1289,7 +1328,7 @@ executed as planned and without any security risk.
 - After the Ceremony, a Ceremony Report is generated and properly archived for future reference.
 Key pairs for the Root Certification Authorities in the OWGTM are generated in hardware security modules (HSM) accredited under the standards specified in section 6.2.1.
 
-Key pairs for the Policy and Issuing Certification Authorities in the OWGTM may be generated in hardware security modules (HSM) accredited under the standards specified in section 6.2.1.
+All CA private keys are generated and protected within validated HSMs (FIPS 140-2 Level 3 or equivalent). CA HSM administrative access requires split knowledge and multi-person authentication.
 
 Key pairs for the Policy and Issuing Certification Authorities in the OWGTM may be generated in escrowable form and protected as required under WebTrust requirements, and imported and operated within hardware security modules (HSM) under the standards specified in section 6.2.1.
 
@@ -1904,7 +1943,7 @@ Registration Authority commercial contracts and agreements could include additio
 The Subscribers of certificates issued under the OWGTM must warrant that:
 - All information supplied by the Subscriber and contained in the Certificate is true and valid.
 - All representations made by the Subscriber in the submitted Certificate Application are true and valid.
-- His or her private key is protected and that no unauthorized person has ever had access to the Subscriber’s private key.
+- His or her private key is protected and that no unauthorized person has ever had access to the Subscriber’s private key. In the case of key compromise, the Subscriber is bound to communicate the situation as stipulated in this CPS and the Subscriber Agreement.
 - An obligation and warranty that it will not install and use the Certificate(s) until it has reviewed and verified the accuracy of the data in each Certificate.
 - An obligation and warranty to install the Certificate only on the server accessible at the domain name listed on the Certificate, and to use the Certificate solely in compliance with all applicable laws, solely for authorized company business, and solely in accordance with the Subscriber Agreement.
 - The Certificate is being used exclusively for authorized and legal purposes, consistent with this CPS.
@@ -2090,6 +2129,7 @@ No stipulation.
 | IV |	Individual Validated |
 | NCSSR | CA/Browser Forum’s“Network and Certificate System Security Requirements |
 | MICS |	Member-Integrated Credential Service (IGTF) |
+| MPIC | Multi-Perspective Issuance Corroboration |
 | NIST |	National Institute of Standards and Technology |
 | OCSP |	Online Certificate Status Protocol |
 | OID |	Object Identifier |
