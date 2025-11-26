@@ -10,8 +10,8 @@ title: |
  OISTE/WISeKey Global Trust Model CP/CPS
 author:
  - OISTE Policy Approval Authority
-subtitle: Version 4.1 - DRAFT
-date: MONTH DAY, 2025 (Release 4.1)
+subtitle: Version 4.1
+date: November 26, 2025 (Release 4.1)
 copyright: |
  Copyright 2025 OISTE Foundation. 
  This work is licensed under the Creative Commons Attribution 4.0 International license.
@@ -182,6 +182,8 @@ The approval of major changes of documents related to the PKI, and specially for
 It’s required to issue new CP/CPS versions at least once a year. In the case of versioning conflict, the latest version that prevails is always the document published in the Policy Repository.
 
 Once any document of the Trust Model is updated, the CAs must do a technical assessment to identify any possible impact and/or required configuration changes in the platforms.
+
+The version history for this combined CP/CPS document is included in [Appendix E. Version history](#appendix-e-version-history).
 
 ## 1.6 Definitions and acronyms
 
@@ -2608,3 +2610,21 @@ OWGTM allows the issuance of "Personal" or "Device" certificates that don't incl
 These certificates will use generally profiles consistent with the examples above for S/MIME certificates, without including the EKU for email protection.
 
 When issued by publicly-trusted Issuing CAs covered by this CPS, these certificates will be subject to the rules derived of the compliance requirements for the particular Root under which are issued.
+
+
+# Appendix E: Version history
+
+## Combined CP/CPS document (this document)
+
+| **VERSION** | **DATE** | **MODIFICATION** | **AUTHOR** |
+| --- | --- | --- | --- |
+| 4.0 | 9/12/2024 | First consolidated CP/CPS | Pedro Fuentes | 
+| 4.0.1 | 13/1/2025 | Minor changes | Pedro Fuentes |
+| 4.0.2 | 21/3/2025 | Minor changes | Pedro Fuentes | 
+| 4.0.3 | 27/6/2025 | Minor changes | Pedro Fuentes | 
+| 4.0.4 | DRAFT | Statement for Mass Revocation | Pedro Fuentes |
+| 4.1 | 26/11/2025 | Wording improvements to address root program feedback | Pedro Fuentes |
+
+## Previous versions
+
+Previously to combining the CP and CPS in a single document (this document), the OISTE/WISeKey Trust Model published separate CP documents for each type of certificate and separate CPS documents for OISTE (covering the Root CAs) and WISeKey (covering the subordinate CAs). The previous documents and their version history are available at https://oiste.org/repository and https://wisekey.com/repository, respectively. 
