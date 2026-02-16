@@ -2371,9 +2371,29 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 
 ## Infrastructure Certificates
 
-### Issuing CA Certificates
+### Cross-Certified Subordinate CA
 
-Note: Currently, OWGTM is only maintaining active unconstrained subordinate CA Certificates. This section would be updated before issuing new constrained or cross-signed CA Certificates.
+| Attribute | Content | Example Value | Notes |
+| --- | --- | --- | --- |
+| **Version** | v3 | v3 | **Mandatory** |
+| **Serial Number** | Unique value assigned by Root CA | 33:00:00:... | **Mandatory** |
+| **Signature Algorithm** | sha256/384/512WithRSAEncryption<br>ecdsa-with-SHA256/384/512 | sha256WithRSAEncryption | **Mandatory** |
+| **Issuer** | Root CA Subject Name | C=CH, O=WISeKey, OU=OISTE Foundation Endorsed, CN=OISTE WISeKey Global Root GB CA | **Mandatory** |
+| **Validity Period**  | Determined by Root CA; typically 10–25 years | 2020-07-04 → 2035-07-04 | **Mandatory** |
+| **Subject** | Issuing CA identity | C=CH, O=OISTE Foundation, CN=OISTE Server Root ECC G1 | **Mandatory** |
+| **Public Key Algorithm / Size** | RSA 2048/3072/4096 or EC P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| **Basic Constraints (critical)** | CA:TRUE, pathlen:0 | CA:TRUE, pathlen:0 | **Mandatory**; ensures this is a subordinated CA capable of issuing end-entity certificates |
+| **Key Usage (critical)** | Certificate Sign, CRL Sign, Digital Signature (Optional) | Certificate Sign, CRL Sign | **Mandatory**; issuing CAs must not have Digital Signature or Key Encipherment |
+| **Extended Key Usage (EKU)** | For TLS CAs: TLS Server Auth, TLS Client Auth (Optional)<br>For S/MIME CAs: email Protection, TLS Client Auth (Optional) | TLS Web Server Authentication, TLS Web Client Authentication | **Optional** (per CABF BR) |
+| **Subject Key Identifier (SKI)** | keyid:… | keyid:5F:1B:C5:... | **Mandatory** |
+| **Authority Key Identifier (AKI)** | keyid:… | keyid:35:0F:C8:... | **Mandatory** |
+| **CRL Distribution Points (CRL DP)** | URI:… | http://public.wisekey.com/ca.crl | **Mandatory** |
+| **Authority Info Access (AIA)** | CA Issuers URI, OCSP URI (Optional) | CA Issuers: http://public.wisekey.com/rca.crt<br>OCSP:http://ocsp.wisekey.com/ | **Mandatory** |
+| **Certificate Policies** | Policy OID | Policy: anyPolicy<br>CPS: http://www.wisekey.com/repo | **Mandatory**; Policy OIDs as mandated by the CABF BR |
+| **SAN** | Not required for CA certificates | *Not present* | **Optional** |
+| **SCT List** | Embedded SCTs | *Not present* | Not required for SubCAs |
+
+### Issuing CA Certificates
 
 | Attribute | Content | Example Value | Notes |
 | --- | --- | --- | --- |

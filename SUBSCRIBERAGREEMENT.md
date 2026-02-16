@@ -50,7 +50,7 @@ Upon acknowledgement of this certificate request, you (“certificate subscriber
     - Upon your first use of the certificate for purposes other than verifying the content of the certificate and testing its functionality.
   
     (As part of the assessment done by the Certificate Subscriber in order to decide whether to accept it or not). 
-8. Certificate Validity Period and Fees: The initial validity period of the certificate issued to you shall be for 1 year subject to payment of fees in accordance with the schedule provided in the applicable price list. 
+8. Certificate Subscription Validity Period and Fees: You may engage for a certificate service subscription valid for up to five (5) years, subject to payment of fees in accordance with the schedule provided in the applicable price list. The initial validity period of the certificate issued to you shall be limited to the maximum allowed by the relevant regulations or Root Program. You will be entitled to obtain successive certificates until completion of the subscription period.
 9. Liability: The disclaimers and liability clauses contained in the Practices and Policies referred to in Clause 2 of this agreement operate with regards to all claims arising in relation to certificates and certification services provided by WISeKey. If WISeKey breaches the warranty, and if you meet the requirements specified in this agreement and are in compliance with this agreement, then the reimbursement cap according to the class of the certificate and the product line is specified in the table below in Swiss Francs:
 
     | Class	| Product Line | Maximum Aggregate Liability per Certificate | Total Aggregate Liability per Certificate |

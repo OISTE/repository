@@ -1752,7 +1752,7 @@ No stipulation.
 
 # Appendix B: CA Hierarchies
 
-## Legacy OISTE Root "Generation A"
+## ECHONET ROOT
 
 ### Root Information
 
