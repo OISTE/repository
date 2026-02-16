@@ -10,10 +10,10 @@ title: |
  OISTE/WISeKey Global Trust Model CP/CPS
 author:
  - OISTE Policy Approval Authority
-subtitle: Version 4.1
-date: November 26, 2025 (Release 4.1)
+subtitle: Version 4.1.1
+date: February 17, 2026 (Release 4.1.1)
 copyright: |
- Copyright 2025 OISTE Foundation. 
+ Copyright 2026 OISTE Foundation. 
  This work is licensed under the Creative Commons Attribution 4.0 International license.
 geometry: "left=3cm,right=2cm,top=2cm,bottom=2cm"
 output: pdf_document
@@ -33,6 +33,7 @@ include-before: |
   | 4.0.3 | 27/6/2025 | Minor changes | Pedro Fuentes | 
   | 4.0.4 | DRAFT | Statement for Mass Revocation | Pedro Fuentes |
   | 4.1 | 26/11/2025 | Wording improvements to address root program feedback | Pedro Fuentes |
+  | 4.1.1 | 17/2/2026 | Inclusion of new profile to allow cross-signing of CAs | Pedro Fuentes |
   \newpage
 ---
 
@@ -73,9 +74,9 @@ The purpose of this document is to disclose the Practices and Policies adopted i
 
 | Name | OISTE/WISeKey Global Trust Model Certificate Policy/Certification Practices Statement (CP/CPS) |
 | --- | --- |
-| Version | 4.1 |
+| Version | 4.1.1 |
 | OID | 2.16.756.5.14.7.1 |
-| Issuance date | 26/11/2025 |
+| Issuance date | 17/02/2026 |
 | Location | This document is linked in https://oiste.org/repository and https://wisekey.com/repository |
 
 ## 1.3 PKI participants
