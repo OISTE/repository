@@ -68,6 +68,15 @@ The purpose of this document is to disclose the Practices and Policies adopted i
 1. Compliance Audit and other Assessment – Discloses the audit policies followed in the OWGTM to ensure that the participant fulfils the security and quality requirements.
 1. Other Business and Legal Matters – This section exposes the commercial, legal and contractual aspects involved in the usage of certificates issued in the OWGTM.
 
+**ADHERENCE TO ROOT PROGRAMS AND OTHER INDUSTRY POLICIES:**
+
+This combined CP/CPS explicitly adheres to the latest published version of, at least, the following policies:
+- Common CA Database (CCADB)
+- Chrome Root Progam
+- Mozilla Root Program
+- Apple Root Program
+- Microsoft Root Program
+
 **APPLICABILITY NOTICE:** If any inconsistency exists between this document and the normative provisions of an applicable industry guideline or standard (“Applicable Requirements”), then the Applicable Requirements take precedence over this CP/CPS. 
 
 ## 1.2 Document name and identification
