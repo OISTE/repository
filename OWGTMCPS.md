@@ -73,7 +73,7 @@ The purpose of this document is to disclose the Practices and Policies adopted i
 This combined CP/CPS explicitly adheres to the latest published version of, at least, the following policies:
 - Common CA Database (CCADB)
 - Chrome Root Progam
-- Mozilla Root Program
+- Mozilla Root Store
 - Apple Root Program
 - Microsoft Root Program
 
