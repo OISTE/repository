@@ -10,10 +10,10 @@ title: |
  OISTE/WISeKey Global Trust Model CP/CPS
 author:
  - OISTE Policy Approval Authority
-subtitle: Version 4.1
-date: November 26, 2025 (Release 4.1)
+subtitle: Version 4.1.1
+date: February 17, 2026 (Release 4.1.1)
 copyright: |
- Copyright 2025 OISTE Foundation. 
+ Copyright 2026 OISTE Foundation. 
  This work is licensed under the Creative Commons Attribution 4.0 International license.
 geometry: "left=3cm,right=2cm,top=2cm,bottom=2cm"
 output: pdf_document
@@ -33,6 +33,7 @@ include-before: |
   | 4.0.3 | 27/6/2025 | Minor changes | Pedro Fuentes | 
   | 4.0.4 | DRAFT | Statement for Mass Revocation | Pedro Fuentes |
   | 4.1 | 26/11/2025 | Wording improvements to address root program feedback | Pedro Fuentes |
+  | 4.1.1 | 17/2/2026 | Inclusion of new profile to allow cross-signing of CAs | Pedro Fuentes |
   \newpage
 ---
 
@@ -67,15 +68,24 @@ The purpose of this document is to disclose the Practices and Policies adopted i
 1. Compliance Audit and other Assessment – Discloses the audit policies followed in the OWGTM to ensure that the participant fulfils the security and quality requirements.
 1. Other Business and Legal Matters – This section exposes the commercial, legal and contractual aspects involved in the usage of certificates issued in the OWGTM.
 
+**ADHERENCE TO ROOT PROGRAMS AND OTHER INDUSTRY POLICIES:**
+
+This combined CP/CPS explicitly adheres to the latest published version of, at least, the following policies:
+- Common CA Database (CCADB)
+- Chrome Root Progam
+- Mozilla Root Store
+- Apple Root Program
+- Microsoft Root Program
+
 **APPLICABILITY NOTICE:** If any inconsistency exists between this document and the normative provisions of an applicable industry guideline or standard (“Applicable Requirements”), then the Applicable Requirements take precedence over this CP/CPS. 
 
 ## 1.2 Document name and identification
 
 | Name | OISTE/WISeKey Global Trust Model Certificate Policy/Certification Practices Statement (CP/CPS) |
 | --- | --- |
-| Version | 4.1 |
+| Version | 4.1.1 |
 | OID | 2.16.756.5.14.7.1 |
-| Issuance date | 26/11/2025 |
+| Issuance date | 17/02/2026 |
 | Location | This document is linked in https://oiste.org/repository and https://wisekey.com/repository |
 
 ## 1.3 PKI participants
@@ -2371,9 +2381,29 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 
 ## Infrastructure Certificates
 
-### Issuing CA Certificates
+### Cross-Certified Subordinate CA
 
-Note: Currently, OWGTM is only maintaining active unconstrained subordinate CA Certificates. This section would be updated before issuing new constrained or cross-signed CA Certificates.
+| Attribute | Content | Example Value | Notes |
+| --- | --- | --- | --- |
+| **Version** | v3 | v3 | **Mandatory** |
+| **Serial Number** | Unique value assigned by Root CA | 33:00:00:... | **Mandatory** |
+| **Signature Algorithm** | sha256/384/512WithRSAEncryption<br>ecdsa-with-SHA256/384/512 | sha256WithRSAEncryption | **Mandatory** |
+| **Issuer** | Root CA Subject Name | C=CH, O=WISeKey, OU=OISTE Foundation Endorsed, CN=OISTE WISeKey Global Root GB CA | **Mandatory** |
+| **Validity Period**  | Determined by Root CA; typically 10–25 years | 2020-07-04 → 2035-07-04 | **Mandatory** |
+| **Subject** | Issuing CA identity | C=CH, O=OISTE Foundation, CN=OISTE Server Root ECC G1 | **Mandatory** |
+| **Public Key Algorithm / Size** | RSA 2048/3072/4096 or EC P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| **Basic Constraints (critical)** | CA:TRUE | CA:TRUE | **Mandatory**; ensures this is a CA capable of issuing CA certificates |
+| **Key Usage (critical)** | Certificate Sign, CRL Sign, Digital Signature (Optional) | Certificate Sign, CRL Sign | **Mandatory**; issuing CAs must not have Digital Signature or Key Encipherment |
+| **Extended Key Usage (EKU)** | For TLS CAs: TLS Server Auth, TLS Client Auth (Optional)<br>For S/MIME CAs: email Protection, TLS Client Auth (Optional) | TLS Web Server Authentication, TLS Web Client Authentication | **Optional** (per CABF BR) |
+| **Subject Key Identifier (SKI)** | keyid:… | keyid:5F:1B:C5:... | **Mandatory** |
+| **Authority Key Identifier (AKI)** | keyid:… | keyid:35:0F:C8:... | **Mandatory** |
+| **CRL Distribution Points (CRL DP)** | URI:… | http://public.wisekey.com/ca.crl | **Mandatory** |
+| **Authority Info Access (AIA)** | CA Issuers URI, OCSP URI (Optional) | CA Issuers: http://public.wisekey.com/rca.crt<br>OCSP:http://ocsp.wisekey.com/ | **Mandatory** |
+| **Certificate Policies** | Policy OID | Policy: anyPolicy<br>CPS: http://www.wisekey.com/repo | **Mandatory**; Policy OIDs as mandated by the CABF BR |
+| **SAN** | Not required for CA certificates | *Not present* | **Optional** |
+| **SCT List** | Embedded SCTs | *Not present* | Not required for SubCAs |
+
+### Issuing CA Certificates
 
 | Attribute | Content | Example Value | Notes |
 | --- | --- | --- | --- |
