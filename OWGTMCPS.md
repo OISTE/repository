@@ -2655,6 +2655,9 @@ When issued by publicly-trusted Issuing CAs covered by this CPS, these certifica
 | 4.0.3 | 27/6/2025 | Minor changes | Pedro Fuentes | 
 | 4.0.4 | DRAFT | Statement for Mass Revocation | Pedro Fuentes |
 | 4.1 | 26/11/2025 | Wording improvements to address root program feedback | Pedro Fuentes |
+| 4.1.1 | 17/2/2026 | Inclusion of new profile to allow cross-signing of CAs | Pedro Fuentes |
+| 4.1.2 | 19/2/2026 | Typo in efective date | Pedro Fuentes |
+
 
 ## Previous versions
 
