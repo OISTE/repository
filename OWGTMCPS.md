@@ -2184,7 +2184,7 @@ No stipulation.
 | Internal Name |	A string of characters (not an IP address) in a Common Name or Subject |
 | Alternative Name | Field of a Certificate that cannot be verified as globally unique within the public DNS at the time of certificate issuance because it does not end with a Top Level Domain registered in IANA’s Root Zone Database. 
 | IP Address |	A 32-bit or 128-bit number assigned to a device that uses the Internet Protocol for communication. | 
-| Issuer CA |Any CA issuing Certificates under this CP/CPS |
+| Issuer CA |Any CA issuing subscriber Certificates under this CP/CPS |
 | Key Compromise |	A Private Key is said to be compromised if its value has been disclosed to an unauthorized person, or an unauthorized person has had access to it. |
 | Key Pair |	A Private Key and associated Public Key. |
 | Linting |	A process in which the content of digitally signed data such as a Pre-certificate [RFC 6962], Certificate, tbsCertificate (as described in RFC 5280, Section 4.1.1.1) is checked for conformance with the profiles and requirements defined in the applicable Requirements. |
