@@ -2394,7 +2394,7 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 | **Subject** | Issuing CA identity | C=CH, O=OISTE Foundation, CN=OISTE Server Root ECC G1 | **Mandatory** |
 | **Public Key Algorithm / Size** | RSA 2048/3072/4096 or EC P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
 | **Basic Constraints (critical)** | CA:TRUE | CA:TRUE | **Mandatory**; ensures this is a CA capable of issuing CA certificates |
-| **Key Usage (critical)** | Certificate Sign, CRL Sign, Digital Signature (Optional) | Certificate Sign, CRL Sign | **Mandatory**; issuing CAs must not have Digital Signature or Key Encipherment |
+| **Key Usage (critical)** | Certificate Sign, CRL Sign, Digital Signature (Optional) | Certificate Sign, CRL Sign | **Mandatory** |
 | **Extended Key Usage (EKU)** | For TLS CAs: TLS Server Auth, TLS Client Auth (Optional)<br>For S/MIME CAs: email Protection, TLS Client Auth (Optional) | TLS Web Server Authentication, TLS Web Client Authentication | **Optional** (per CABF BR) |
 | **Subject Key Identifier (SKI)** | keyid:… | keyid:5F:1B:C5:... | **Mandatory** |
 | **Authority Key Identifier (AKI)** | keyid:… | keyid:35:0F:C8:... | **Mandatory** |
@@ -2416,7 +2416,7 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 | **Subject** | Issuing CA identity | C=CH, O=WISeKey, CN=WISeKey CertifyID SSL GB CA 2 | **Mandatory** |
 | **Public Key Algorithm / Size** | RSA 2048/3072/4096 or EC P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
 | **Basic Constraints (critical)** | CA:TRUE, pathlen:0 | CA:TRUE, pathlen:0 | **Mandatory**; ensures this is a subordinated CA capable of issuing end-entity certificates |
-| **Key Usage (critical)** | Certificate Sign, CRL Sign, Digital Signature (Optional) | Certificate Sign, CRL Sign | **Mandatory**; issuing CAs must not have Digital Signature or Key Encipherment |
+| **Key Usage (critical)** | Certificate Sign, CRL Sign, Digital Signature (Optional) | Certificate Sign, CRL Sign | **Mandatory** |
 | **Extended Key Usage (EKU)** | For TLS CAs: TLS Server Auth, TLS Client Auth (Optional)<br>For S/MIME CAs: email Protection, TLS Client Auth (Optional) | TLS Web Server Authentication, TLS Web Client Authentication | **Mandatory** (per CABF BR) |
 | **Subject Key Identifier (SKI)** | keyid:… | keyid:5F:1B:C5:... | **Mandatory** |
 | **Authority Key Identifier (AKI)** | keyid:… | keyid:35:0F:C8:... | **Mandatory** |
