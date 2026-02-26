@@ -10,8 +10,8 @@ title: |
  OISTE/WISeKey Global Trust Model CP/CPS
 author:
  - OISTE Policy Approval Authority
-subtitle: Version 4.1.2
-date: February 19, 2026 (Release 4.1.2)
+subtitle: Version 4.1.3
+date: February 26, 2026 (Release 4.1.3)
 copyright: |
  Copyright 2026 OISTE Foundation. 
  This work is licensed under the Creative Commons Attribution 4.0 International license.
@@ -35,6 +35,7 @@ include-before: |
   | 4.1 | 26/11/2025 | Wording improvements to address root program feedback | Pedro Fuentes |
   | 4.1.1 | 17/2/2026 | Inclusion of new profile to allow cross-signing of CAs | Pedro Fuentes |
   | 4.1.2 | 19/2/2026 | Typo in efective date | Pedro Fuentes |
+  | 4.1.3 | 26/2/2026 | Updated CA Hierarchies | Pedro Fuentes |
   \newpage
 ---
 
@@ -84,9 +85,9 @@ This combined CP/CPS explicitly adheres to the latest published version of, at l
 
 | Name | OISTE/WISeKey Global Trust Model Certificate Policy/Certification Practices Statement (CP/CPS) |
 | --- | --- |
-| Version | 4.1.2 |
+| Version | 4.1.3 |
 | OID | 2.16.756.5.14.7.1 |
-| Issuance date | 19/02/2026 |
+| Issuance date | 26/02/2026 |
 | Location | This document is linked in https://oiste.org/repository and https://wisekey.com/repository |
 
 ## 1.3 PKI participants
@@ -2665,6 +2666,7 @@ When issued by publicly-trusted Issuing CAs covered by this CPS, these certifica
 | 4.1 | 26/11/2025 | Wording improvements to address root program feedback | Pedro Fuentes |
 | 4.1.1 | 17/2/2026 | Inclusion of new profile to allow cross-signing of CAs | Pedro Fuentes |
 | 4.1.2 | 19/2/2026 | Typo in efective date | Pedro Fuentes |
+| 4.1.3 | 26/2/2026 | Updated CA Hierarchies | Pedro Fuentes |
 
 
 ## Previous versions
