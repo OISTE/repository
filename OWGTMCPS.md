@@ -2003,6 +2003,10 @@ Subject to the foregoing limitations, OWGTM’s aggregate liability limit toward
 
 Indemnities are regulated in the contractual agreement between the concerned parties. If applicable such concepts are specified in the CPS published in the Subscriber, Relying Party or other commercial agreements made among the participants.
 
+In accordance with Section 9.9 of the CA/Browser Forum TLS Baseline Requirements and Section 9.9 of the S/MIME Baseline Requirements, and notwithstanding any limitations on its liability to Subscribers and Relying Parties, OWGTM understands and acknowledges that the Application Software Suppliers that have agreed to distribute the OISTE Root CA Certificates do not assume any obligation or potential liability of the CA under those Requirements, or that otherwise might exist because of the issuance or maintenance of Certificates or reliance thereon by Relying Parties or others.
+
+As OWGTM is not operated by a government entity, OWGTM SHALL defend, indemnify, and hold harmless each Application Software Supplier for any and all claims, damages, and losses suffered by such Application Software Supplier related to a Certificate issued by a CA operating under this CPS, regardless of the cause of action or legal theory involved. This does not apply, however, to any claim, damage, or loss suffered by such Application Software Supplier related to a Certificate issued by the CA where such claim, damage, or loss was directly caused by such Application Software Supplier's software displaying as not trustworthy a Certificate that is still valid, or displaying as trustworthy: (1) a Certificate that has expired, or (2) a Certificate that has been revoked (but only in cases where the revocation status is currently available from the CA online, and the software either failed to check such status or ignored an indication of revoked status).
+
 ## 9.10 Term and termination
 
 This section refers to the times and validity periods related to this document.
