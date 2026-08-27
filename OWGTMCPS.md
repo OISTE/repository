@@ -818,6 +818,8 @@ The CRL issuance frequency for Subordinate Certification Authorities is as follo
 
 For the specific case of TLS and S/MIME certificates, the OWGTM will ensure the compliance of the Baseline (and Extended Validation, for EV certificates) Requirements of the CA/Browser Forum.
 
+In accordance with Section 4.9.7 of the CA/Browser Forum TLS Baseline Requirements, each CA operating under this CPS will continue issuing CRLs until at least one of the following is true: (i) all Subordinate CA Certificates containing the same Subject Public Key are expired or revoked; or (ii) the corresponding Subordinate CA Private Key is destroyed.
+
 ### 4.9.8 Maximum latency for CRLs
 
 CRLs are posted to their distribution point within the minimum possible time after generation.
