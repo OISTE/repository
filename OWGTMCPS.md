@@ -883,6 +883,8 @@ Certificate Status Services are accessible through HTTP servers owned by the OWG
 
 The appropriate certificate revocation information service URLs are included in standard extensions within the issued certificates.
 
+In accordance with Section 4.10.1 of the CA/Browser Forum TLS Baseline Requirements, revocation entries on a CRL or OCSP response are not removed until after the Expiry Date of the revoked Certificate.
+
 ### 4.10.2 Service availability
 
 The Certificate Status Services are available on a 24x7 basis.
