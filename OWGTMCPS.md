@@ -1772,6 +1772,8 @@ The OWGTM establishes the need to audit and accreditation.
 - The Root CA, Policy CAs and Issuing CAs owned or operated by WISeKey. These services are audited against the different WebTrust criteria and commonly accepted industry accreditation standards.
 - The Issuing CAs owned and/or operated by third parties enforcing name constraints and Registration Authorities. These services must meet the practices stipulated in this CPS, and the CPs that are entitled to issue, and are audited and accredited by the OWGTM by means of an internal audit executed by WISeKey or other authorized auditor.
 
+For Delegated Third Parties which are not Enterprise RAs, the assessment consists of the audit report described in Section 8.7, issued under the auditing standards that underlie the accepted audit schemes stipulated by the Baseline Requirements and/or the Root Programs. The audit period for a Delegated Third Party SHALL NOT exceed one year. Enterprise RAs are subject to the contractual obligations, monitoring and annual internal audit described in Section 8.7.
+
 ## 8.5 Actions taken as a result of deficiency
 
 In the case a deficiency is identified, the OWGTM will adopt and will be responsible for all necessary corrective measures.
@@ -1791,11 +1793,17 @@ All assessment results will be conformed as:
 
 ## 8.7 Self-Audits
 
-In compliance with the CABF Requirements, OWGTM performs a quarterly internal audit of at least a random 3% of certificates issued during the period. This audit includes linting of the selected certificates.
+In compliance with the CABF Requirements, OWGTM performs a quarterly internal audit against a randomly selected sample of at least the greater of one certificate or 3% of the certificates issued during the period commencing immediately after the previous self-audit sample was taken. For S/MIME certificates, the sample includes at least the greater of thirty (30) certificates or 3% of the S/MIME certificates issued during the period. This audit includes linting of the selected certificates.
 
 Additionally, OWGTM performs self-assessments as required by the root programs and publishes the results in the CCADB platform.
 
 Results are saved and provided to auditors upon request.
+
+In the case a Delegated Third Party is allowed to perform validation functions, OWGTM SHALL obtain an audit report, issued under the auditing standards that underlie the accepted audit schemes stipulated by the Baseline Requirements and/or the Root Programs, that provides an opinion whether the Delegated Third Party’s performance complies with either the Delegated Third Party’s practice statement or the CA’s Certificate Policy and/or Certification Practice Statement. If the opinion is that the Delegated Third Party does not comply, then the CA SHALL not allow the Delegated Third Party to continue performing delegated functions. OWGTM additionally SHALL internally audit each Delegated Third Party’s compliance with the applicable Requirements on an annual basis.
+
+In particular, OWGTM engages an independent auditor to do the mandatory quarterly audits.
+
+OWGTM contractually obligates each Enterprise RA to comply with the applicable requirements of this CPS, and monitors and internally audits each Enterprise RA’s compliance on an annual basis, in accordance with the TLS Baseline Requirements and with Section 8.8 of the S/MIME Baseline Requirements.
 
 # 9. OTHER BUSINESS AND LEGAL MATTERS
 
