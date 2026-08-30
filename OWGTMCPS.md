@@ -2110,6 +2110,10 @@ If a Law in any jurisdiction where OWGTM operates or issues certificates conflic
 - a description of the specific Baseline Requirement(s) affected; and 
 - the precise modification(s) implemented by the CA. 
 
+Prior to issuing any certificate under the modified requirement, OWGTM will also notify the CA/Browser Forum of the relevant information newly added to this CPS by sending a message to questions@cabforum.org and receiving confirmation that it has been posted to the Public Mailing List and is indexed in the Public Mail Archives available at <https://cabforum.org/pipermail/public/> (or such other email addresses and links as the Forum may designate), so that the CA/Browser Forum may consider possible revisions to the applicable Requirements accordingly.
+
+Any modification to OWGTM practice enabled under this section will be discontinued if and when the Law no longer applies, or the applicable Requirements are modified to make it possible to comply with both them and the Law simultaneously. An appropriate change in practice, modification to this CPS and a notice to the CA/Browser Forum, as outlined above, will be made within 90 days.
+
 When required, OWGTM retains documentation supporting the legal determination and will notify the applicable Root Programs and auditors as required by those programs.
 
 ### 9.16.4 Enforcement (attorneys' fees and waiver of rights)
