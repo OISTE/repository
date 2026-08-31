@@ -843,6 +843,13 @@ When provided, OCSP responses conform to RFC 6960 and/or RFC 5019, and are eithe
 
 On-line revocation checking is openly provided without restriction to all Participants in the PKI, for the certificate types that include the appropriate AIA extension. This service is made available in compliance with the RFC 6960 and other applicable standards and regulations.
 
+For the status of Subscriber Certificates, and in accordance with Section 4.9.10 of the CA/Browser Forum TLS and S/MIME Baseline Requirements:
+
+1. OCSP responses have a validity interval greater than or equal to eight (8) hours;
+2. OCSP responses have a validity interval less than or equal to ten (10) days;
+3. for OCSP responses with validity intervals less than sixteen (16) hours, OWGTM updates the information provided via the Online Certificate Status Protocol prior to one-half of the validity period before the nextUpdate; and
+4. for OCSP responses with validity intervals greater than or equal to sixteen (16) hours, OWGTM updates the information provided via the Online Certificate Status Protocol at least eight (8) hours prior to the nextUpdate, and no later than four (4) days after the thisUpdate.
+
 Relying parties are requested to always check the validity of the certificate on which they rely, as stipulated in [section 4.9.6](#496-revocation-checking-requirement-for-relying-parties).
 
 ### 4.9.11 Other forms of revocation advertisements available
