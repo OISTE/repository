@@ -337,7 +337,7 @@ Deviations or suspected falsifications SHALL be escalated and handled per the in
 General Principles:
 - OWGTM SHALL verify that Applicant controls the email accounts associated with all Mailbox Fields referenced in the Certificate or has been authorized by the email account holder to act on the account holder’s behalf.
 - OWGTM does not delegate the verification of mailbox authorization or control.
-- OWGTM maintains a record of which validation method was used to validate every domain, as indicated in the TLS Certificates CPS or email address in issued Certificates.
+- OWGTM maintains a record of which validation method, including the relevant version number of the TLS Baseline Requirements or S/MIME Baseline Requirements, was used to validate every domain and every email address in issued Certificates.
 
 **Validating authority over mailbox via domain**
 
