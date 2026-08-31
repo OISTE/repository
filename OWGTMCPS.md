@@ -1039,7 +1039,9 @@ Validation of EV certificates require the participation of at least two differen
 
 All the persons assuming a role in the OWGTM systems4 follow an authorization process that entitles them to access the appropriate information and systems for their role.
 
-Physical access control for all the authorized persons accessing OWGTM’s systems and services systems is typically enforced using two factor authentication that usually includes biometrics.
+Physical access control for all the authorized persons accessing OWGTM’s systems and services is enforced using two-factor authentication that includes biometrics. Logical access to the CA Infrastructure and Network Boundary Controls requires Multi-Factor Authentication, as stipulated in [section 6.5.1](#651-specific-computer-security-technical-requirements).
+
+Access to CA Infrastructure and Network Boundary Controls is disabled within twenty-four (24) hours of the termination of an individual’s employment or contracting relationship, and authentication credentials are changed or revoked whenever the associated authorizations are changed or revoked.
 
 ### 5.2.4 Roles requiring separation of duties
 
@@ -1164,9 +1166,9 @@ Logging of router and firewall activities necessary to meet the CAB/Forum Baseli
 
 ### 5.4.2 Frequency of processing log
 
-Logs are processed and audited when required.
+Audit logs of the CA Infrastructure and Network Boundary Controls are processed continuously through automated mechanisms under the control of personnel in Trusted Roles, capable of identifying possible Critical Security Events and unauthorized modifications of the infrastructure. Alerts are delivered to Trusted Role personnel through multiple mechanisms and/or communication channels, and an initial response to any alert commences within twenty-four (24) hours of its generation; alerts identified as legitimate Critical Security Events are handled under the Incident Response Plan (see [section 5.7.1](#571-incident-and-compromise-handling-procedures)). The integrity of the logging processes is monitored through continuous automated monitoring or, at a minimum, through a review performed at least once every thirty-one (31) days.
 
-For systems that are kept offline, as the Root CA, audit logs are only reviewed when an operation is executed.
+For systems that are kept offline, as the Root CA, system audit logs are reviewed at each activation of the system; the physical access records and surveillance of the Root CA environment remain subject to the ordinary monitoring cadence described above.
 
 ### 5.4.3 Retention period for audit log
 
@@ -1197,7 +1199,7 @@ No stipulations.
 
 ### 5.4.8 Vulnerability assessments
 
-OWGTM maintains a documented vulnerability management program: critical vulnerabilities should be remediated within 3 days (or mitigated), with monthly patch/scan cycles and annual third-party penetration tests.
+OWGTM maintains a documented vulnerability management program covering all Certificate Systems, Security Support Systems and Network Boundary Controls. Detected vulnerabilities are reviewed, responded to and remediated within the timeframes authoritatively stated in [section 6.7](#67-network-security-controls) of this document, or alternatively closed through a documented determination that they do not impact the security posture of the CA, with exceptions risk-assessed and recorded. Patch cycles are executed at least monthly, and annual third-party penetration tests complement the internal assessment activities.
 
 OWGTM executes regular vulnerability assessment by monitoring the activity logs, at least with a quarterly frequency. In depth assessments and checks are performed on a yearly basis, including conformance to disaster recovery plans. In the event that an assessment could not be performed or was delayed, the OWGTM will inform the involved parties and records of such an event and its cause will be kept for future reference.
 
@@ -1581,8 +1583,8 @@ In particular, OWGTM SHALL implement access controls, monitoring, logging, alert
 ### 6.5.1 Specific computer security technical requirements
 
 OWGTM enforces the use of the appropriate procedures and technical measures and systems in order to effectively control security risks. These include, but not limited to:
-- Maintaining Root CA Systems in a high security zone and in an offline state or Air‐Gapped from other networks
-- Strong password policies, enforcing multi-factor authentication for all accounts capable of directly causing certificate issuance
+- Maintaining Root CA Systems Air‐Gapped — physically and logically separated, disconnected and isolated from all other systems — within a Physically Secure Environment and on physically separate networks from all other CA Infrastructure
+- Strong password policies, with each authorized individual authenticating through unique, individually attributable credentials, technical measures minimizing the susceptibility to repeated authentication attempts (e.g. account lockout and rate limiting), and Multi-Factor Authentication enforced for all accounts capable of authenticating to or accessing the CA Infrastructure and Network Boundary Controls; a possession-based cryptographic key is relied upon as an authentication factor only when stored in a device resistant to key extraction
 - Granting administration access to Certificate Systems only to persons acting in Trusted Roles and requiring their accountability for the Certificate System’s security
 - Removing or disabling all accounts, applications, services, protocols, and ports that are not used in operations
 - Constant improvement of administration and operating procedures 
@@ -1610,7 +1612,7 @@ In particular, regarding Linting software, we monitor for updated versions of an
 
 ### 6.6.2 Security management controls
 
-The OWGTM recommends following the ISO27000 security management approach. In particular WISeKey, as main operator of the Trust Model follows an informal adoption of such security standards.
+OWGTM maintains a documented information security management framework aligned with the ISO/IEC 27001 principles and with the CA/Browser Forum Network and Certificate System Security Requirements. Security policies and procedures are approved by management, reviewed at least annually, and enforced for all personnel acting in Trusted Roles.
 
 ### 6.6.3 Life cycle security controls
 
@@ -1644,16 +1646,16 @@ These protections include:
 - Monitoring the configuration of access permissions
 - Regular training of personnel in trusted roles
 
-Vulnerability scans of networks are performed at least quarterly. Independent penetration tests are performed by external auditors at least annually. Remediation measures are implemented based on severity, as follows: 
+Vulnerability scans covering the Certificate Systems, Security Support Systems and Network Boundary Controls are performed at least quarterly. Independent penetration tests are performed by external auditors at least annually. The following timeframes, established in accordance with the Risk Assessment described in [section 5.4.8](#548-vulnerability-assessments), constitute the authoritative disclosure required by Section 4.3 of the NCSSR. Vulnerabilities are reviewed, responded to and remediated within these timeframes, or alternatively closed by documenting the rationale why they do not impact the security posture of the CA: 
 - Critical severity vulnerabilities are addressed within 96 hours 
 - High severity vulnerabilities are addressed within 10 days 
-- Medium or lower severity vulnerabilities are addressed within 60 days, where feasible.
+- Medium or lower severity vulnerabilities are addressed within 60 days.
 
 Exceptions are documented, assessed for risk, and recorded.
 
 In particular, the server used for the OWGTM Root CA are off-line systems, physically disconnected from any computer network, and all communication of sensitive information is protected using encryption and digital signature techniques.
 
-When allowed, remote connections are enabled in accordance with the CABF NCSSR.
+When allowed, remote connections enabling Privileged Access to the CA Infrastructure comply with Section 2.2.6 of the CABF NCSSR: they (i) originate from a Workstation owned and controlled by the CA; (ii) use a temporary, non-persistent encrypted channel; (iii) require Multi-Factor Authentication; and (iv) are mediated by an asset acting as a Network Boundary Control located within the CA’s network.
 
 The detailed information about these controls is classified and only made available for external auditors after the appropriate authorization process.
 
