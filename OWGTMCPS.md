@@ -432,6 +432,16 @@ For the validation of other individuals participating in the certificate applica
 
 All attributes included in a certificate that are subject to root program or industry regulations must undergo appropriate validation.
 
+In accordance with Section 3.2.4.1 of the S/MIME Baseline Requirements, OWGTM documents and publishes in this CPS the methods it uses to collect Individual identity attributes. Individual identity attributes are collected through one or more of the following methods:
+
+- submission by the Applicant during the certificate enrollment process, subject to the verification practices described in [section 3.2.3.2](#3232-for-personal-smime-certificates);
+- collection by a Validation Agent appointed by OWGTM, or by an authorized Enterprise RA, from government-issued identity documents presented in a face-to-face or remote (e.g. video-based) verification session;
+- retrieval from a well-maintained database of identity data created on the basis of face-to-face or remote verification using official identity documents, as described in [section 3.2.3.2](#3232-for-personal-smime-certificates);
+- collection from records maintained by an authorized Enterprise RA for Subjects within its own Organization; or
+- external eID verification means, when available.
+
+Any Individual identity attribute collected through these methods and included in a certificate is verified as described in [section 3.2.3](#323-authentication-of-individual-identity).
+
 ### 3.2.5 Validation of authority
 
 Validation of authority is dependent on the type of Certificate requested and is performed in accordance with the CAB/Forum Requirements and as described below. This process involves a determination of whether a person has specific rights, entitlements, or permissions, including the permission to act on behalf of an organization to obtain a Certificate. 
