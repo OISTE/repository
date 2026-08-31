@@ -1704,6 +1704,11 @@ For subscriber certificates, only the above algorithms permitted by the applicab
 
 For CA certificates, the Subject Name, by combining adequate values for commonName, Organizational Unit, Organization and Country; conforms an identifier that uniquely identifies the CA and distinguishes it from other CAs in the Trust Model.
 
+In accordance with Section 7.1.4.1 of the S/MIME Baseline Requirements and the equivalent provisions of the TLS Baseline Requirements, for every valid Certification Path (as defined by RFC 5280, Section 6):
+
+- for each Certificate in the Certification Path, the encoded content of the Issuer Distinguished Name field of a Certificate is byte-for-byte identical with the encoded form of the Subject Distinguished Name field of the Issuing CA Certificate; and
+- for each CA Certificate in the Certification Path, the encoded content of the Subject Distinguished Name field of a Certificate is byte-for-byte identical among all Certificates whose Subject Distinguished Names can be compared as equal according to RFC 5280, Section 7.1, including expired and revoked Certificates.
+
 ### 7.1.5 Name constraints
 
 OWGTM mandates that Issuing Certification Authorities not operated by WISeKey, as designated main operator, able to issue certificates including the EKU serverAuthentication or emailProtection, will be constrained for the issuance of certificates under a set of predefined and agreed names (domain names, e-mail suffixes or other name components). For exceptional cases where these constraints aren’t applied, these CAs will be included in the external audit for compliance assurance against any applicable requirement (including Baseline and Extended Validation Requirements from the CA/Browser Forum).
