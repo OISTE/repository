@@ -834,6 +834,11 @@ For certain Certificates the Issuing CA could publish additional on-line service
 
 In particular for TLS and Code Signing certificates, OWGTM will ensure compliance with the applicable Baseline and/or Extended Validation requirements from the CA/Browser Forum, meaning that CRLs and OCSP are available 24/7 to anyone.
 
+When provided, OCSP responses conform to RFC 6960 and/or RFC 5019, and are either:
+
+1. signed by the CA that issued the Certificates whose revocation status is being checked; or
+2. signed by an OCSP Responder whose Certificate is signed by the CA that issued the Certificate whose revocation status is being checked. In this case, the OCSP signing Certificate contains an Extended Key Usage of id-kp-OCSPSigning (1.3.6.1.5.5.7.3.9) and an extension of type id-pkix-ocsp-nocheck, as defined by RFC 6960.
+
 ### 4.9.10 On-line revocation checking requirements
 
 On-line revocation checking is openly provided without restriction to all Participants in the PKI, for the certificate types that include the appropriate AIA extension. This service is made available in compliance with the RFC 6960 and other applicable standards and regulations.
@@ -2472,7 +2477,7 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 | **Basic Constraints (critical)**   | CA:FALSE | CA:FALSE | **Optional** |
 | **Key Usage (critical)** | Digital Signature | Digital Signature | **Mandatory**; OCSP responder certificates **must not** allow key encipherment |
 | **Extended Key Usage (EKU)** | OCSP Signing (id-kp-OCSPSigning) | OCSP Signing | **Mandatory**; must contain only id-kp-OCSPSigning |
-| **OCSP No Check** | Present (non-critical) | OCSP No Check| **Optional** but recommended for responder certs |
+| **OCSP No Check** | Present (non-critical) | OCSP No Check| **Mandatory** for delegated OCSP responder certificates, per BR Section 4.9.9 |
 | **Subject Key Identifier (SKI)**   | keyid:… | keyID:5F:DE:F0:... | **Optional** |
 | **Authority Key Identifier (AKI)** | keyid:…. | keyid:5F:... | **Mandatory** |
 | **Authority Info Access (AIA)**    | OCSP & CA Issuers (optional for OCSP responder certs) | *Not present* | **Optional** |
