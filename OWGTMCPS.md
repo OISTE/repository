@@ -360,7 +360,7 @@ In all cases, when an organization name is included in a certificate valid for s
 
 | CP Identifier | Validation Policy |
 | --- | --- |
-| DV TLS Certificate | OWGTM confirms the validation of each FQDN in accordance with the CA/Browser Forum Baseline Requirements 3.2.2.4, and in particular using at least one of the methods enumerated below.<br>Currently OWGTM doesn't issue certificates for Onion domains.<br>For each validated FQDN the "TLS Certificate Manager" software used by the OWGTM creates and retains a validation record that includes: (a) the FQDN(s) validated; (b) the specific domain validation method used, related to the version of the Baseline Requirements in force at the moment of validation; (c) date/time of validation; (d) identity of the operator or automated system that performed validation; (e) artifacts evidencing validation (e.g., e-mail headers, DNS TXT contents, HTTP file retrieval response headers and body hash, ACME challenge logs); and (f) any corroboration results from Multi-Perspective Issuance Corroboration ([Section 3.2.2.5](#3225-multi-perspective-issuance-corroboration-mpic)). Validation records SHALL be retained for at least 2 years after certificate expiry or revocation.<br>   <br>In particular, OWGTM will validate the Applicant’s right to use or control each domain name that will be listed in the Subject Alternative Name field of a Certificate by using at least one of the following procedures:<ul><li>Email to Domain Contact (BR 3.2.2.4.13 and 3.2.2.4.14). WISeKey will retrieve the Domain Contact using the WHOIS information or the DNS and CAA records and deliver a mail including a unique code and a method to confirm the reception. This method stopped using WHOIS contacts since July, 15th 2025.</li><li>Constructed Email to Domain Contact (BR 3.2.2.4.4). WISeKey will send a mail using ‘admin’, ‘administrator’, ‘webmaster’, ‘hostmaster’, or ‘postmaster’ as the local part, followed by the at-sign (“@”), followed by the Domain Name being validated including a random unique code and a method to confirm the reception. The Random Value is unique per request and remains valid for no more than 30 days from creation. Confirmation logs are saved in the validation record.</li><li>Agreed-Upon Change to Website v2 (BR 3.2.2.4.18). WISeKey will provide a text file containing a unique Random Value that must be placed by the Applicant at path /.well-known/pki-validation/<filename> and retrievable via HTTP or HTTPS. The platform confirms retrieval by performing an HTTP(s) GET which returns a 2xx HTTP status code and verifying that the Random Value appears in the retrieved file content. The entire Random Value doesn't appear in the HTTP request used to retrieve the file. This method only can be used to validate a particular FQDN and is not allowed for Wildcard certificates.</li><li>DNS Change (BR 3.2.2.4.7). WISeKey will provide a unique code that must be placed as a TXT, CNAME or CAA record in the DNS server maintaining the domain being validated.</li><li>Agreed-Upon Change to Website - ACME (BR 3.2.2.4.19). Confirming the Applicant’s control over a FQDN by validating domain control of the FQDN using the ACME HTTP Challenge method defined in Section 8.3 of RFC 8555</li></ul>Note 1: Whenever used, all random validation codes have a maximum validity of 30 days.<br>Note 2: Whenever required by the CABF Requirements, we perform multi-perspective validation (see [Section 3.2.2.5](#3225-multi-perspective-issuance-corroboration-mpic)).<br>Note 3: OWGTM does not issue currently TLS certificates for IP addresses, or onion domains.|
+| DV TLS Certificate | OWGTM confirms the validation of each FQDN in accordance with the CA/Browser Forum Baseline Requirements 3.2.2.4, and in particular using at least one of the methods enumerated below.<br>Currently OWGTM doesn't issue certificates for Onion domains.<br>For each validated FQDN the "TLS Certificate Manager" software used by the OWGTM creates and retains a validation record that includes: (a) the FQDN(s) validated and, where different from the applied-for FQDN, the Authorization Domain Name used; (b) the specific domain validation method used, related to the version of the Baseline Requirements in force at the moment of validation; (c) date/time of validation; (d) identity of the operator or automated system that performed validation; (e) artifacts evidencing validation (e.g., e-mail headers, DNS TXT contents, HTTP file retrieval response headers and body hash, ACME challenge logs); and (f) any corroboration results from Multi-Perspective Issuance Corroboration ([Section 3.2.2.5](#3225-multi-perspective-issuance-corroboration-mpic)). Validation records SHALL be retained for at least 2 years after certificate expiry or revocation.<br>   <br>In particular, OWGTM will validate the Applicant’s right to use or control each domain name that will be listed in the Subject Alternative Name field of a Certificate by using at least one of the following procedures:<ul><li>Email to DNS CAA Contact and Email to DNS TXT Contact (BR 3.2.2.4.13 and 3.2.2.4.14). WISeKey will retrieve the Domain Contact from the relevant DNS CAA or DNS TXT records and deliver a mail including a unique code and a method to confirm the reception. Effective March 15, 2026, these methods SHOULD NOT be used; effective March 15, 2028, WISeKey will neither use these methods nor rely upon validations previously performed with them.</li><li>Constructed Email to Domain Contact (BR 3.2.2.4.4). WISeKey will send a mail using ‘admin’, ‘administrator’, ‘webmaster’, ‘hostmaster’, or ‘postmaster’ as the local part, followed by the at-sign (“@”), followed by the Domain Name being validated including a random unique code and a method to confirm the reception. The Random Value is unique per request and remains valid for no more than 30 days from creation. Confirmation logs are saved in the validation record. Effective March 15, 2026, this method SHOULD NOT be used; effective March 15, 2028, WISeKey will neither use this method nor rely upon validations previously performed with it.</li><li>Agreed-Upon Change to Website v2 (BR 3.2.2.4.18). WISeKey will provide a text file containing a unique Random Value that must be placed by the Applicant at path /.well-known/pki-validation/<filename> and retrievable via HTTP or HTTPS. The platform confirms retrieval by performing an HTTP(s) GET which returns a 2xx HTTP status code and verifying that the Random Value appears in the retrieved file content. The entire Random Value doesn't appear in the HTTP request used to retrieve the file. This method only can be used to validate a particular FQDN and is not allowed for Wildcard certificates.</li><li>DNS Change (BR 3.2.2.4.7). WISeKey will provide a unique code that must be placed as a TXT, CNAME or CAA record in the DNS server maintaining the domain being validated.</li><li>Agreed-Upon Change to Website - ACME (BR 3.2.2.4.19). Confirming the Applicant’s control over a FQDN by validating domain control of the FQDN using the ACME HTTP Challenge method defined in Section 8.3 of RFC 8555</li></ul>Note 1: Whenever used, all random validation codes have a maximum validity of 30 days.<br>Note 2: Whenever required by the CABF Requirements, we perform multi-perspective validation (see [Section 3.2.2.5](#3225-multi-perspective-issuance-corroboration-mpic)).<br>Note 3: OWGTM does not issue currently TLS certificates for IP addresses, or onion domains.|
 | OV TLS Certificate | WISeKey will execute the domain validation procedures as required for DV TLS certificates.<br>Additionally, WISeKey will verify:<ul><li>The identity and address of the Applicant using the procedures found in section 3.2.2.1 of this document.</li><li>Any DBA included in a Certificate will be validated using a verified information source, attestation letter, or reliable form of identification in accordance with section 3.2.2.1 of this document.</li></ul>|
 | EV TLS Certificate | WISeKey will execute the domain validation procedures as required for DV and OV TLS certificates.<br>Additionally, WISeKey will do the specific validations mandated by the EV Guidelines issued by the CAB/Forum, as indicated in [section 3.2.2.1](#3221-organization-identity-validation) of this document. |
 
@@ -376,9 +376,9 @@ The list of used validation sources is available at https://wisekey.com/reposito
 
 CAs in the OWGTM mandatorily implement Multi-Perspective Issuance Corroboration (MPIC) in accordance with CA/Browser Forum Baseline Requirements.
 
-For domain validation and CAA checks that require remote network corroboration, the Primary Network Perspective performs the initial validation and the CA obtains corroborating observations from at least two (2) geographically and topologically distinct remote Network Perspectives (remote vantage points) as required by the Baseline Requirements effective dates. The number of minimum remote perspectives will be increased as per the schedule mandated by the Baseline Requirements.
+For domain validation and CAA checks that require remote network corroboration, the Primary Network Perspective performs the initial validation and the CA obtains corroborating observations from geographically and topologically distinct remote Network Perspectives (remote vantage points), in at least the minimum number mandated by the phased schedule of the Baseline Requirements: four (4) remote Network Perspectives since June 15, 2026, and five (5) effective December 15, 2026. The corroborating remote Network Perspectives fall within the service regions of at least two (2) distinct Regional Internet Registries.
 
-The CA uses the Quorum Requirements Table in the Baseline Requirements to determine whether the set of observations constitutes corroboration. If the quorum is not achieved per the Baseline Requirements, the CA will not proceed with issuance. The CA retains MPIC logs (primary observation, remote corroboration observations, timestamps, vantage point IDs, and final decision) as part of the validation record. MPIC implementation details (vantage point providers, monitoring frequency, DNSSEC and resolver behavior) are maintained in the CA’s operational MPIC procedures (internal document), according to the information published in this document.
+The CA uses the Quorum Requirements Table in the Baseline Requirements to determine whether the set of observations constitutes corroboration: when two (2) to five (5) remote Network Perspectives are used, at most one (1) non-corroborating perspective is tolerated; when six (6) or more are used, at most two (2). If the quorum is not achieved per the Baseline Requirements, the CA will not proceed with issuance. The CA retains MPIC logs (primary observation, remote corroboration observations, timestamps, vantage point IDs, and final decision) as part of the validation record. MPIC implementation details (vantage point providers, monitoring frequency, DNSSEC and resolver behavior) are maintained in the CA’s operational MPIC procedures (internal document), according to the information published in this document.
 
 The infrastructures supporting the MPIC systems, use Network Hardening mechanisms to mitigate BGP routing incidents in the global Internet routing system for providing internet connectivity to the Network Perspective, and are hosted from an ISO/IEC 27001 certified facility or equivalent security framework independently audited and certified or reported. The MPIC systems are included in the Vulnerability Assessment and Patch Management applied to the rest of the PKI systems.
 
@@ -536,9 +536,13 @@ Prior to issuing a TLS or S/MIME certificate including a domain name in the subj
 
 If the CA issues a certificate after evaluating CAA records, the issuance occurs within the CAA record’s TTL, or 8 hours, whichever is greater. If issuance cannot be completed within that timeframe, OWGTM SHALL re-evaluate the CAA record prior to issuance. The OWGTM platforms log the CAA TTL observed and the issuance timestamp in the validation record and include evidence of compliance with this timing requirement.
 
+**DNSSEC validation:** In accordance with the TLS Baseline Requirements (Sections 3.2.2.4 and 4.2.2.1.3) and with Section 4.2.2.1.1 of the S/MIME Baseline Requirements, OWGTM performs DNSSEC validation back to the IANA DNSSEC root trust anchor on all DNS queries associated with domain control validation and with CAA record lookups performed by the Primary Network Perspective. The validating resolvers conform to RFC 4035 (Section 5) and support NSEC3 (RFC 5155) and the SHA-2 algorithm suites (RFC 4509, RFC 5702). DNSSEC validation is not disabled by local policy, and DNSSEC validation errors (e.g. SERVFAIL) are never treated as permission to issue. A CAA lookup failure is treated as permission to issue only if the failure occurs outside the CA’s infrastructure, the lookup has been retried at least once, and the domain’s zone is confirmed not to have a DNSSEC validation chain to the ICANN root, as stipulated in RFC 4035 Section 4.3 (“Insecure”).
+
 WISeKey documents potential issuances that were prevented by a CAA record, and will dispatch reports of such issuance requests to the contact stipulated in the CAA iodef record(s), if present. WISeKey support mailto: and https: URL schemes in the iodef record.
 
 The main identifying CAA domain for WISeKey is ‘wisekey.com’. Other accepted domains are ‘hightrusted.com’, ‘certifyid.com’ and ‘oiste.org’.
+
+**CAA parameters (RFC 8657):** OWGTM processes the accounturi and validationmethods parameters of CAA issue and issuewild property tags in accordance with RFC 8657, no later than the effective date mandated by the TLS Baseline Requirements (March 15, 2027). The accounturi parameter is matched against the ACME Account URLs assigned by OWGTM’s ACME services, including the ACME interface provided by the “TLS Certificate Manager” platform; a certificate is not issued when a CAA record restricts issuance to an accounturi that does not correspond to an ACME Account of the Applicant. The validationmethods parameter is matched case-insensitively against the labels of the validation methods described in [section 3.2.2.3](#3223-for-tls-server-certificates) of this CPS, and issuance does not proceed using a validation method excluded by that parameter.
 
 **In particular for TLS/TLS Certificates:**
 
@@ -802,6 +806,8 @@ The procedure to be used for certificate revocation requests is detailed in the 
 
 To report suspected Private Key Compromise, Certificate misuse, Certificate mis-issuance, or other types of fraud, compromise, misuse, inappropriate conduct, or any other matter related to Certificates, the main and preferred method is sending an e-mail message to cps@wisekey.com.
 
+This reporting channel is available on a 24x7 basis, and OWGTM maintains a continuous (24x7) ability to respond internally to high-priority Certificate Problem Reports. Within twenty-four (24) hours of receiving a Certificate Problem Report, OWGTM investigates the facts and circumstances and provides a preliminary report on its findings to both the Subscriber and the entity that filed the report.
+
 For certificate subscribers that seek to obtain general support, the preferred method to communicate with WISeKey is sending an e-mail message to support@wisekey.com.
 
 The common practice for all certificates issued under the OWGTM Trust Model is for revocation requests to be accepted automatically and produce an immediate revocation in the case of:
@@ -849,7 +855,7 @@ The URL used to access this service is included in the “AIA extension” in al
 
 For certain Certificates the Issuing CA could publish additional on-line services, web-based or others. Such additional services are stipulated in the appropriate End User Agreement.
 
-In particular for TLS and Code Signing certificates, OWGTM will ensure compliance with the applicable Baseline and/or Extended Validation requirements from the CA/Browser Forum, meaning that CRLs and OCSP are available 24/7 to anyone.
+In particular for TLS and S/MIME certificates, OWGTM will ensure compliance with the applicable Baseline and/or Extended Validation requirements from the CA/Browser Forum, meaning that CRLs (and OCSP, where provided) are available 24/7 to anyone. For TLS Subscriber Certificates, when OCSP is provided, an authoritative OCSP response is available no more than fifteen (15) minutes after the Certificate or its corresponding Precertificate is first published or otherwise made available.
 
 When provided, OCSP responses conform to RFC 6960 and/or RFC 5019, and are either:
 
@@ -1130,7 +1136,7 @@ OWGTM PKI systems record at least the following events:
    1. Introduction of new Certificate Profiles and retirement of existing Certificate Profiles.
 - Subscriber Certificate lifecycle management events, including:
    1. Certificate requests, renewal, and re-key requests, and revocation;
-   1. All verification activities stipulated in these Requirements and the CA’s Certification Practice Statement;
+   1. All verification activities stipulated in these Requirements and the CA’s Certification Practice Statement, recording at a minimum: the information that was validated (e.g. the applied-for FQDN or organization name); the Authorization Domain Name used, where different from the applied-for FQDN; and the validation method used, denoted by the applicable Baseline Requirements section number or registered ACME validation method label;
    1. Approval and rejection of certificate requests;
    1. Issuance of Certificates;
    1. Generation of Certificate Revocation Lists; and
@@ -1421,9 +1427,9 @@ Trusted Root Certificates may be obtained directly from the appropriate reposito
 
 ### 6.1.5 Key sizes
 
-The OWGTM enforces the use of minimum length 2048-bit RSA (key length must divisible by 8) and ECC NIST P-256, P-384 or P-521 for key pairs at all levels of the hierarchy.
+The OWGTM enforces the use of minimum length 2048-bit RSA (key length must be divisible by 8) and ECC NIST P-256 or P-384 for key pairs at all levels of the publicly-trusted hierarchies. NIST P-521 keys may only be used in hierarchies that do not chain to a root certificate included in a browser Root Program.
 
-CAs that generate Certificates and CRLs under this policy SHOULD use the SHA-256, or SHA-384 hash algorithm when generating RSA digital signatures. ECDSA signatures on Certificates and CRLs SHOULD be generated using SHA-256, SHA-384 or SHA-512, as appropriate for the key length.
+CAs that generate Certificates and CRLs under this policy SHALL use the SHA-256, SHA-384 or SHA-512 hash algorithm when generating RSA digital signatures. ECDSA signatures on Certificates and CRLs SHALL be generated using SHA-256, SHA-384 or SHA-512, as appropriate for the key length. Effective September 15, 2026, no Certificate or CRL within the scope of the TLS or S/MIME Baseline Requirements is signed using a signature algorithm that incorporates SHA-1, and any unexpired Subordinate CA Certificate within the scope of those Requirements whose signature incorporates SHA-1 is revoked before that date. Subordinate CA Certificates outside the scope of those Requirements — in particular, CAs that are not trusted for TLS server authentication and that fall outside the scope of the S/MIME Baseline Requirements and of the corresponding audits — are not subject to this revocation provision.
 
 ### 6.1.6 Public key parameters generation and quality checking
 
@@ -1694,7 +1700,7 @@ For Subscriber TLS and S/MIME certificates the CA SHALL ensure compliance with t
 ### 7.1.3 Algorithm object identifiers
 
 For the Root CA and subordinate CA certificates, the used algorithms are:
-- sha-1WithRSAEncryption (deprecated, not allowed for new issuances)
+- sha-1WithRSAEncryption (deprecated; not allowed for new issuances and, effective September 15, 2026, not used to sign any certificate or CRL within the scope of the TLS or S/MIME Baseline Requirements)
 - sha256WithRSAEncryption, sha384WithRSAEncryption, sha512WithRSAEncryption
 - ecdsa-with-sha512/384/256
 
@@ -2458,7 +2464,7 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 | **Issuer** | Name of the CA performing the Cross-Certification | C=CH, O=WISeKey, OU=OISTE Foundation Endorsed, CN=OISTE WISeKey Global Root GB CA | **Mandatory** |
 | **Validity Period**  | Determined by Root CA; typically 10–25 years | 2020-07-04 → 2035-07-04 | **Mandatory** |
 | **Subject** | Name of the CA being Cross-Certified | C=CH, O=OISTE Foundation, CN=OISTE Server Root ECC G1 | **Mandatory** |
-| **Public Key Algorithm / Size** | RSA 2048/3072/4096 or EC P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| **Public Key Algorithm / Size** | RSA 2048/3072/4096 or EC P-256/P-384 | RSA 2048 | **Mandatory** |
 | **Basic Constraints (critical)** | CA:TRUE | CA:TRUE | **Mandatory**; ensures this is a CA capable of issuing CA certificates |
 | **Key Usage (critical)** | Certificate Sign, CRL Sign, Digital Signature (Optional) | Certificate Sign, CRL Sign | **Mandatory** |
 | **Extended Key Usage (EKU)** | For TLS CAs: TLS Server Auth, TLS Client Auth (Optional)<br>For S/MIME CAs: email Protection, TLS Client Auth (Optional) | TLS Web Server Authentication, TLS Web Client Authentication | **Optional** (per CABF BR) |
@@ -2480,7 +2486,7 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 | **Issuer** | Root CA Subject Name | C=CH, O=WISeKey, OU=OISTE Foundation Endorsed, CN=OISTE WISeKey Global Root GB CA | **Mandatory** |
 | **Validity Period**  | Determined by Root CA; typically 10–25 years | 2020-07-04 → 2035-07-04 | **Mandatory** |
 | **Subject** | Issuing CA identity | C=CH, O=WISeKey, CN=WISeKey CertifyID SSL GB CA 2 | **Mandatory** |
-| **Public Key Algorithm / Size** | RSA 2048/3072/4096 or EC P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| **Public Key Algorithm / Size** | RSA 2048/3072/4096 or EC P-256/P-384 | RSA 2048 | **Mandatory** |
 | **Basic Constraints (critical)** | CA:TRUE, pathlen:0 | CA:TRUE, pathlen:0 | **Mandatory**; ensures this is a subordinated CA capable of issuing end-entity certificates |
 | **Key Usage (critical)** | Certificate Sign, CRL Sign, Digital Signature (Optional) | Certificate Sign, CRL Sign | **Mandatory** |
 | **Extended Key Usage (EKU)** | For TLS CAs: TLS Server Auth, TLS Client Auth (Optional)<br>For S/MIME CAs: email Protection, TLS Client Auth (Optional) | TLS Web Server Authentication, TLS Web Client Authentication | **Mandatory** (per CABF BR) |
@@ -2502,7 +2508,7 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 | **Issuer** | Issuing CA Subject Name | C=CH, O=WISeKey, CN=WISeKey CertifyID SSL GB CA 2 | **Mandatory**|
 | **Validity Period** | Determined by CA; may be up to 1 year | 2025-05-29 → 2026-05-29 | **Mandatory**; OCSP responder certs typically short-lived |
 | **Subject** | OCSP responder identity | C=CH, O=WISeKey, CN=WISeKey CertifyID SSL GB CA 2 OCSP | **Mandatory** |
-| **Public Key Algorithm / Size** | RSA 2048/3072/4096 or EC P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| **Public Key Algorithm / Size** | RSA 2048/3072/4096 or EC P-256/P-384 | RSA 2048 | **Mandatory** |
 | **Basic Constraints (critical)**   | CA:FALSE | CA:FALSE | **Optional** |
 | **Key Usage (critical)** | Digital Signature | Digital Signature | **Mandatory**; OCSP responder certificates **must not** allow key encipherment |
 | **Extended Key Usage (EKU)** | OCSP Signing (id-kp-OCSPSigning) | OCSP Signing | **Mandatory**; must contain only id-kp-OCSPSigning |
@@ -2537,7 +2543,7 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 | Subject | CN=\<domain> | CN=gbdvvalidssl.hightrusted.com | **Optional**; SAN must be critical if not included |
 | Public Key Algorithm / Size | RSA 2048/3072/4096<br>EC P‑256/P-384 | RSA 2048 | **Mandatory** |
 | Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
-| Key Usage (critical) | Digital Signature, Key Encipherment (as allowed for ECC certificates) | Digital Signature, Key Encipherment | **Mandatory** |
+| Key Usage (critical) | RSA: Digital Signature and/or Key Encipherment.<br>ECDSA: Digital Signature (optionally Key Agreement); Key Encipherment is not permitted | Digital Signature, Key Encipherment | **Mandatory** |
 | Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | TLS Web Server Auth | **Mandatory** |
 | SAN | DNS:\<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory**; at least one |
 | Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.2.1, CPS: http://hightrusted.com/cps | **Mandatory** |
@@ -2557,9 +2563,9 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 | Issuer | \<Issuer Subject Name> | C=CH, O=WISeKey, CN=GB DV CA | **Mandatory** |
 | Validity Period | \<See Schedule above> | 2025-11-01 → 2025-11-22 | **Mandatory**; capped per BR schedule |
 | Subject | C, ST, O, CN=\<domain> (or other combinations and fields allowed by the BR) | C=CH, ST=Zurich, O=Company, CN=gbovvalidssl.hightrusted.com | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096<br>EC P‑256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>EC P‑256/P-384 | RSA 2048 | **Mandatory** |
 | Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
-| Key Usage (critical) | Digital Signature, Key Encipherment (as allowed for ECC certificates) | Digital Signature, Key Encipherment | **Mandatory** |
+| Key Usage (critical) | RSA: Digital Signature and/or Key Encipherment.<br>ECDSA: Digital Signature (optionally Key Agreement); Key Encipherment is not permitted | Digital Signature, Key Encipherment | **Mandatory** |
 | Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | TLS Web Server Auth | **Mandatory** |
 | SAN | DNS:\<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory**; at least one |
 | Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.2.2, CPS: http://hightrusted.com/cps | **Mandatory** |
@@ -2579,9 +2585,9 @@ Note: In all cases, serial numbers in new certificates contain at least 64 bits 
 | Issuer | \<Issuer Subject Name> | C=CH, O=WISeKey, CN=GB DV CA | **Mandatory** |
 | Validity Period | \<See Schedule above> | 2025-11-01 → 2025-11-22 | **Mandatory**; capped per BR schedule |
 | Subject | C, ST, L, O, serialNumber, CN, businessCategory, jurisdictionStateOrProvinceName, jurisdictionCountryName (or other combinations and fields allowed by the BR and EVGL) | C=CH, ST=Zurich, O=Company, serialNumber=123456789, CN=gbevvalidssl.hightrusted.com, businessCategory=Private Organization, jurisdictionStateOrProvinceName=Zurich, jurisdictionCountryName=CH | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096<br>EC P‑256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>EC P‑256/P-384 | RSA 2048 | **Mandatory** |
 | Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
-| Key Usage (critical) | Digital Signature, Key Encipherment (as allowed for ECC certificates) | Digital Signature, Key Encipherment | **Mandatory** |
+| Key Usage (critical) | RSA: Digital Signature and/or Key Encipherment.<br>ECDSA: Digital Signature (optionally Key Agreement); Key Encipherment is not permitted | Digital Signature, Key Encipherment | **Mandatory** |
 | Extended Key Usage | TLS Web Server Auth, TLS Web Client Auth (optional) | TLS Web Server Auth | **Mandatory** |
 | SAN | DNS:\<domain> | DNS:gbdvvalidssl.hightrusted.com | **Mandatory**; at least one |
 | Certificate Policies | CABF OID + CPS URL (Optional) + Custom OID (Optional) | 2.23.140.1.1, CPS: http://hightrusted.com/cps | **Mandatory** |
