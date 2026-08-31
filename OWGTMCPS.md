@@ -399,6 +399,11 @@ The RA may require additional proof (at its discretion), such as:
   - Notarized document  
   - External eID verification (if available)  
 
+When the Applicant is a Legal Entity, and in accordance with Section 3.2.3.2.1 of the S/MIME Baseline Requirements, the verification of its full legal name and address includes the following additional checks:
+
+- When verification relies on documentation provided by, or communication with, a government agency in the jurisdiction of the Legal Entity's creation, existence, or recognition, or on an Attestation, OWGTM verifies that the status of the Applicant is not designated by labels such as "ceased", "inactive", "invalid", "not current", or the equivalent.
+- When a Legal Entity Identifier (LEI) data reference is used, OWGTM verifies that the RegistrationStatus is ISSUED and the EntityStatus is ACTIVE, and only allows the use of an LEI if the ValidationSources entry is FULLY_CORROBORATED. An LEI is not used if the ValidationSources entry is PARTIALLY_CORROBORATED, PENDING, or ENTITY_SUPPLIED_ONLY.
+
 The following subsections describe the specific practices for each subscriber certificate type.
 
 #### 3.2.3.1 For TLS Certificates
