@@ -252,9 +252,11 @@ All Distinguished Names must be meaningful, and the identification the attribute
 
 ### 3.1.3 Anonymity or pseudonymity of subscribers
 
-In general, the use of anonymity or pseudonymity is always controlled by the applicable regulations:
-- Allowed, but discouraged for Personal Certificates
-- Disallowed for TLS Server certificates
+The use of anonymity or pseudonymity is always controlled by the applicable regulations. Anonymity and pseudonymity are disallowed for TLS Server certificates.
+
+For S/MIME certificates, OWGTM permits the use of Pseudonyms only in `Sponsor-validated` certificates issued through an authorized Enterprise RA, where the associated Subject has been verified in accordance with [section 3.2](#32-initial-identity-validation) of this CPS. In such cases, if present, the `subject:pseudonym` attribute contains an identifier selected by the Enterprise RA which uniquely identifies the Subject of the certificate within the Organization included in the `subject:organizationName` attribute, and its use and validity are restricted to the context of that Enterprise. Pseudonyms are not used in `Individual-validated` certificates.
+
+Pseudonym certificates are not anonymous. OWGTM and its Enterprise RAs treat Individual identity information relating to a Pseudonym as private information, in accordance with [section 9.4.2](#942-information-treated-as-private) of this CPS.
 
 ### 3.1.4 Rules for interpreting various name forms
 
