@@ -218,7 +218,7 @@ The shared repositories containing public information in the OWGTM are managed b
 
 ### 2.2.1 Statement on Compliance with CA/Browser Forum requirements
 
-OISTE and WISeKey ensure the compliance with industry best practices and security controls. In particular, the trust model enforces regular review and compliance with the latest version of the “Baseline Requirements” and “Extended Validation Requirements” for the certificate profiles to which these regulations apply (these requirements are available respectively at https://cabforum.org/ )
+OISTE and WISeKey ensure the compliance with industry best practices and security controls. In particular, the trust model enforces regular review and compliance with the latest published versions of the CA/Browser Forum requirements applicable to the certificate profiles issued under this CPS: the “Baseline Requirements for the Issuance and Management of Publicly-Trusted TLS Server Certificates”, the “Guidelines for the Issuance and Management of Extended Validation Certificates”, the “Baseline Requirements for the Issuance and Management of Publicly-Trusted S/MIME Certificates”, and the “Network and Certificate System Security Requirements” (all available at https://cabforum.org/ )
 
 In the case of discrepancy of any certification practices with the stipulations of the CAB/Forum requirements, it must be understood that those requirements must prevail to this CPS.
 
@@ -525,14 +525,14 @@ An authorized Registration Authority Officer will perform these functions. This 
 
 The steps to be executed by the Issuing CA or RA are as follows:
 -	As a first step, the Issuing CA or RA will perform the verifications stipulated in [section 3.2](#32-initial-identity-validation). 
--	As a second step, the CA must check the DNS for the existence of a CAA record for each dNSName in the subjectAltName extension of the certificate to be issued, according to the procedure described im section below "CAA processing".
+-	As a second step, the CA must check the DNS for the existence of a CAA record for each dNSName in the subjectAltName extension of TLS certificates to be issued, and for the domain portion of each Mailbox Address included in S/MIME certificates to be issued, according to the procedure described in section below "CAA processing".
 -	As a third step, the Issuing CA must check the certificate details against a list of previously revoked Certificates and rejected certificate requests to identify suspicious certificate requests.
 
 The Issuing CA can only issue a certificate after having successfully completed the above steps.
 
 **CAA processing:**
 
-Prior to issuing a TLS or S/MIME certificate including a domain name in the subjectAltName extension, OWGTM checks for and process Certificate Authority Authorization (CAA) records for each DNSName in accordance with RFC 8659. When processing CAA records, OWGTM processes the issue, issuewild, and iodef property tags as specified in RFC 8659; whenever possible, OWGTM will support additional property tags but preventing them to conflict with or supersede the mandatory tags issue, issuewild, and iodef. OWGTM respects the CAA critical flag and will not issue a certificate if an unrecognized property tag is present with the critical flag set. OWGTM platforms log CAA lookup outcomes and document issuance decisions related to CAA records.
+Prior to issuing a TLS certificate, OWGTM checks for and processes Certificate Authority Authorization (CAA) records for each dNSName in the subjectAltName extension in accordance with RFC 8659. Prior to issuing an S/MIME certificate, OWGTM checks for and processes CAA records for the domain portion (Mailbox Domain) of each Mailbox Address included in the certificate, in accordance with RFC 9495. When processing CAA records, OWGTM processes the issue, issuewild, and iodef property tags as specified in RFC 8659; whenever possible, OWGTM will support additional property tags but preventing them to conflict with or supersede the mandatory tags issue, issuewild, and iodef. OWGTM respects the CAA critical flag and will not issue a certificate if an unrecognized property tag is present with the critical flag set. OWGTM platforms log CAA lookup outcomes and document issuance decisions related to CAA records.
 
 If the CA issues a certificate after evaluating CAA records, the issuance occurs within the CAA record’s TTL, or 8 hours, whichever is greater. If issuance cannot be completed within that timeframe, OWGTM SHALL re-evaluate the CAA record prior to issuance. The OWGTM platforms log the CAA TTL observed and the issuance timestamp in the validation record and include evidence of compliance with this timing requirement.
 
@@ -550,9 +550,9 @@ In compliance with the CA/Browser Forum Baseline Requirements, prior to issuing 
 
 **In particular for S/MIME Certificates:**
 
-In compliance with the CA/Browser Forum Baseline Requirements, prior to issuing S/MIME Digital Certificates, WISeKey performs automated checks for CAA records for each dNSName in the subjectAltName extension of the Digital Certificate to be issued. This practice remained optional until March 15, 2025.
+In compliance with the CA/Browser Forum Baseline Requirements, prior to issuing S/MIME Digital Certificates, WISeKey performs automated checks for CAA records for the domain portion of each Mailbox Address included in the Digital Certificate to be issued (each rfc822Name or SmtpUTF8Mailbox entry of the subjectAltName extension, and any subject Mailbox Field), as specified in Section 4 of RFC 9495. This practice remained optional until March 15, 2025.
 
-When processing CAA records, WISeKey processes the issuemail property tag as specified in RFC 9495. WISeKey will not issue a Digital Certificate if an unrecognized property is found with the critical flag.
+When processing CAA records, WISeKey processes the issuemail property tag as specified in RFC 9495. WISeKey will not issue a Digital Certificate if an unrecognized property is found with the critical flag. WISeKey recognizes the following Issuer Domain Names in CAA issuemail property values as permitting issuance: ‘wisekey.com’, ‘hightrusted.com’, ‘certifyid.com’ and ‘oiste.org’.
 
 **Information reuse policy and applicable deadlines**
 
@@ -762,14 +762,14 @@ A Certification Authority operating in the OWGTM must revoke within 24 hours a c
 2. The Subscriber notifies the CA that the original certificate request was not authorized and does not retroactively grant authorization;
 3. The CA obtains evidence that the Subscriber's Private Key corresponding to the Public Key in the Certificate suffered a Key Compromise;
 4. The CA is made aware of a demonstrated or proven method that can easily compute the Subscriber’s Private Key based on the Public Key in the Certificate; or
-5. The CA obtains evidence that the validation of domain authorization or control for any Fully-Qualified Domain Name or IP address in the Certificate should not be relied upon.
+5. The CA obtains evidence that the validation of domain authorization or control for any Fully-Qualified Domain Name or IP address in the Certificate, or the validation of mailbox authorization or control for any Mailbox Address in the Certificate, should not be relied upon.
 
 A Certification Authority operating in the OWGTM must revoke within 5 days a certificate that it has issued upon the occurrence of any of the following events:
 1. The Certificate no longer complies with the requirements of [Sections 6.1.5](#615-key-sizes) and [6.1.6](#616-public-key-parameters-generation-and-quality-checking);
 2. The CA obtains evidence that the Certificate was misused;
 3. The CA is made aware that a Subscriber has violated one or more of its material obligations under the Subscriber Agreement or Terms of Use;
-4. The CA is made aware of any circumstance indicating that use of a Fully-Qualified Domain Name
-or IP address in the Certificate is no longer legally permitted (e.g. a court or arbitrator has revoked a Domain Name Registrant's right to use the Domain Name, a relevant licensing or services agreement between the Domain Name Registrant and the Applicant has terminated, or the Domain Name Registrant has failed to renew the Domain Name);
+4. The CA is made aware of any circumstance indicating that use of an email address, a Fully-Qualified Domain Name
+or an IP address in the Certificate is no longer legally permitted (e.g. a court or arbitrator has revoked a Domain Name Registrant's right to use the Domain Name, a relevant licensing or services agreement between the Domain Name Registrant and the Applicant has terminated, or the Domain Name Registrant has failed to renew the Domain Name);
 5. The CA is made aware that a Wildcard Certificate has been used to authenticate a fraudulently misleading subordinate Fully-Qualified Domain Name;
 6. The CA is made aware of a material change in the information contained in the Certificate;
 7. The CA is made aware that the Certificate was not issued in accordance with these Requirements or the CA's Certificate Policy or Certification Practice Statement;
@@ -779,7 +779,7 @@ or IP address in the Certificate is no longer legally permitted (e.g. a court or
 11. The CA is made aware of a demonstrated or proven method that exposes the Subscriber's Private Key to compromise, methods have been developed that can easily calculate it based on the Public Key, or if there is clear evidence that the specific method used to generate the Private Key was
 flawed.
 
-**Revocation of TLS Certificates**: In particular, will be processed as defined by the requirements published by the CA/Browser Forum, as appropriate.
+**Revocation of TLS and S/MIME Certificates**: In particular, will be processed as defined by the requirements published by the CA/Browser Forum, as appropriate.
 
 #### 4.9.1.2 Reasons for Revoking a Subordinate CA Certificate
 An issuing Certification Authority operating in the OWGTM will be revoked within 7 days upon the occurrence of any of the following events:
@@ -1415,6 +1415,8 @@ It is not allowed the manipulation of private keys corresponding to CA certifica
 
 If the specific subscriber certificate type allows the generation of the private key by the Registration Authority, the usage of password-protected encrypted software files, or smart-cards or other valid crypto-tokens is accepted.
 
+When OWGTM or a Registration Authority generates the key pair on behalf of the Subscriber, the private key is delivered either in hardware with an activation method equivalent to at least 128 bits of encryption, or encrypted using an algorithm and key size providing at least 112 bits of encryption strength (e.g. a PKCS#12 file using an approved key-wrapping algorithm), in accordance with Section 6.1.2 of the S/MIME Baseline Requirements. The activation data or password is delivered through a channel separate from the protected key, and Subscriber private keys are never stored in clear text.
+
 If OWGTM or any of its designated RAs become aware that a Subscriber’s Private Key has been communicated to an unauthorized person or an organization not affiliated with the Subscriber, then the we will revoke all certificates that include the Public Key corresponding to the communicated Private Key.
 
 ### 6.1.3 Public key delivery to certificate issuer
@@ -1429,7 +1431,7 @@ Trusted Root Certificates may be obtained directly from the appropriate reposito
 
 ### 6.1.5 Key sizes
 
-The OWGTM enforces the use of minimum length 2048-bit RSA (key length must be divisible by 8) and ECC NIST P-256 or P-384 for key pairs at all levels of the publicly-trusted hierarchies. NIST P-521 keys may only be used in hierarchies that do not chain to a root certificate included in a browser Root Program.
+The OWGTM enforces the use of minimum length 2048-bit RSA (key length must be divisible by 8) and ECC NIST P-256 or P-384 for key pairs at all levels of the publicly-trusted hierarchies. NIST P-521 keys may only be used in hierarchies that do not chain to a root certificate included in a browser Root Program. CA Certificates (Root CA, Subordinate CA and Cross-Certificates) signed on or after September 15, 2026 use RSA keys with a minimum modulus length of 4096 bits, in accordance with the S/MIME Baseline Requirements. Effective September 15, 2027, no S/MIME subscriber certificates are issued from a Subordinate CA whose RSA key is smaller than 3072 bits.
 
 CAs that generate Certificates and CRLs under this policy SHALL use the SHA-256, SHA-384 or SHA-512 hash algorithm when generating RSA digital signatures. ECDSA signatures on Certificates and CRLs SHALL be generated using SHA-256, SHA-384 or SHA-512, as appropriate for the key length. Effective September 15, 2026, no Certificate or CRL within the scope of the TLS or S/MIME Baseline Requirements is signed using a signature algorithm that incorporates SHA-1, and any unexpired Subordinate CA Certificate within the scope of those Requirements whose signature incorporates SHA-1 is revoked before that date. Subordinate CA Certificates outside the scope of those Requirements — in particular, CAs that are not trusted for TLS server authentication and that fall outside the scope of the S/MIME Baseline Requirements and of the corresponding audits — are not subject to this revocation provision.
 
@@ -2611,7 +2613,7 @@ When including the usage for email protection, the commercial names of Personal 
 | Advanced Professional Certificate<br>Qualified Professional Certificate | sponsor-validated |
 | Advanced Corporate Certificate<br>Qualified Corporate Certificate | organization-validated |
 
-Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose" profiles defined by the CAB/Forum.
+Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose" profiles defined by the CAB/Forum. Each S/MIME certificate includes exactly one reserved CA/Browser Forum policy identifier, according to its profile: 2.23.140.1.5.1.2 (mailbox-validated multipurpose), 2.23.140.1.5.4.2 (individual-validated multipurpose), 2.23.140.1.5.3.2 (sponsor-validated multipurpose) and 2.23.140.1.5.2.2 (organization-validated multipurpose). Legacy generation policy identifiers (2.23.140.1.5.x.1) are not used since July 15, 2025.
 
 ### S/MIME Certificates Validity Period Schedule
 
@@ -2632,12 +2634,12 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 | Issuer | \<Issuer Subject Name>  | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
 | Validity Period | \<See Schedule above> | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
 | Subject | CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | CN=john.smith@example.com, emailAddress=john.smith@example.com | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384 | RSA 2048 | **Mandatory** |
 | Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
-| Key Usage (critical) | A valid combination of Digital Signature, nonRepudiation, Data Encipherment, Key Encipherment and/or Key Agreement | Digital Signature | **Mandatory** |
-| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | E-mail Protection| **Mandatory** |
+| Key Usage (critical) | RSA: a valid combination of Digital Signature, nonRepudiation, Key Encipherment and/or Data Encipherment (Data Encipherment only together with Key Encipherment).<br>ECDSA: a valid combination of Digital Signature, nonRepudiation and/or Key Agreement (encipherOnly/decipherOnly only together with Key Agreement).<br>No other bits are set (SMIME BR 7.1.2.3(e)) | Digital Signature | **Mandatory** |
+| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other fields allowed by the SMIME BR (Optional); id-kp-serverAuth, id-kp-codeSigning, id-kp-timeStamping and anyExtendedKeyUsage are never present.<br>Effective July 1, 2027: limited to E-mail Protection and, optionally, TLS Web Client Auth | E-mail Protection| **Mandatory** |
 | Subject Alternative Name (SAN) | email: | email:john.smith@example.com | **Mandatory** (at least one) |
-| Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | CABF OID | **Mandatory** |
+| Certificate Policies | CABF Multipurpose OID 2.23.140.1.5.1.2 (Mandatory; exactly one reserved CABF policy identifier), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | 2.23.140.1.5.1.2 | **Mandatory** |
 | Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Mandatory** |
 | Subject Key Identifier (SKI) | keyID:... | keyID:0C:D1... | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
@@ -2653,12 +2655,12 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 | Issuer | \<Issuer Subject Name>  | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
 | Validity Period | \<See Schedule above> | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
 | Subject | C, ST, L, SN, GN, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, L=Geneve, SN=Smith, GN=John, CN=john.smith@example.com, emailAddress=john.smith@example.com | **Mandatory**; If the subject:commonName contains a Pseudonym, the subject:givenName and/or subject:surname attributes are not present; if the subject:commonName contains a Personal Name, the subject:pseudonym attribute is not present |
-| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384 | RSA 2048 | **Mandatory** |
 | Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
-| Key Usage (critical) | A valid combination of Digital Signature, nonRepudiation, Data Encipherment, Key Encipherment and/or Key Agreement | Digital Signature | **Mandatory** |
-| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | E-mail Protection| **Mandatory** |
+| Key Usage (critical) | RSA: a valid combination of Digital Signature, nonRepudiation, Key Encipherment and/or Data Encipherment (Data Encipherment only together with Key Encipherment).<br>ECDSA: a valid combination of Digital Signature, nonRepudiation and/or Key Agreement (encipherOnly/decipherOnly only together with Key Agreement).<br>No other bits are set (SMIME BR 7.1.2.3(e)) | Digital Signature | **Mandatory** |
+| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other fields allowed by the SMIME BR (Optional); id-kp-serverAuth, id-kp-codeSigning, id-kp-timeStamping and anyExtendedKeyUsage are never present.<br>Effective July 1, 2027: limited to E-mail Protection and, optionally, TLS Web Client Auth | E-mail Protection| **Mandatory** |
 | Subject Alternative Name (SAN) | email: | email:john.smith@example.com | **Mandatory** (at least one) |
-| Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | CABF OID | **Mandatory** |
+| Certificate Policies | CABF Multipurpose OID 2.23.140.1.5.4.2 (Mandatory; exactly one reserved CABF policy identifier), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | 2.23.140.1.5.4.2 | **Mandatory** |
 | Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Mandatory** |
 | Subject Key Identifier (SKI) | keyID:... | keyID:0C:D1... | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
@@ -2674,12 +2676,12 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 | Issuer | \<Issuer Subject Name>  | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
 | Validity Period | \<See Schedule above> | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
 | Subject | C, ST, L, OU, O, organizationIdentifier, SN, GN, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, ST=Geneve, O=WISeKey SA, organizationIdentifier=NTRCH-CHE-101.022.134, SN=Smith, GN=John, CN=john.smith@example.com, emailAddress=john.smith@example.com | **Mandatory**; If the subject:commonName contains a Pseudonym, the subject:givenName and/or subject:surname attributes are not present, and the Pseudonym in the commonName matches the subject:pseudonym attribute when that attribute is present; if the subject:commonName contains a Personal Name, the subject:pseudonym attribute is not present (see section 3.1.3) |
-| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384 | RSA 2048 | **Mandatory** |
 | Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
-| Key Usage (critical) | A valid combination of Digital Signature, nonRepudiation, Data Encipherment, Key Encipherment and/or Key Agreement | Digital Signature | **Mandatory** |
-| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | E-mail Protection| **Mandatory** |
+| Key Usage (critical) | RSA: a valid combination of Digital Signature, nonRepudiation, Key Encipherment and/or Data Encipherment (Data Encipherment only together with Key Encipherment).<br>ECDSA: a valid combination of Digital Signature, nonRepudiation and/or Key Agreement (encipherOnly/decipherOnly only together with Key Agreement).<br>No other bits are set (SMIME BR 7.1.2.3(e)) | Digital Signature | **Mandatory** |
+| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other fields allowed by the SMIME BR (Optional); id-kp-serverAuth, id-kp-codeSigning, id-kp-timeStamping and anyExtendedKeyUsage are never present.<br>Effective July 1, 2027: limited to E-mail Protection and, optionally, TLS Web Client Auth | E-mail Protection| **Mandatory** |
 | Subject Alternative Name (SAN) | email: | email:john.smith@example.com | **Mandatory** (at least one) |
-| Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | CABF OID | **Mandatory** |
+| Certificate Policies | CABF Multipurpose OID 2.23.140.1.5.3.2 (Mandatory; exactly one reserved CABF policy identifier), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | 2.23.140.1.5.3.2 | **Mandatory** |
 | Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Mandatory** |
 | Subject Key Identifier (SKI) | keyID:... | keyID:0C:D1... | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
@@ -2695,13 +2697,13 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 | Issuer | \<Issuer Subject Name>  | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
 | Validity Period | \<See Schedule above> | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
 | Subject | C, ST, L, OU, O, organizationIdentifier, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, ST=Geneve, O=WISeKey SA, organizationIdentifier=NTRCH-CHE-101.022.134, CN=WISeKey SA, emailAddress=john.smith@example.com | **Mandatory** |
-| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
+| Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384 | RSA 2048 | **Mandatory** |
 | Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
-| Key Usage (critical) | A valid combination of Digital Signature, nonRepudiation, Data Encipherment, Key Encipherment and/or Key Agreement | Digital Signature | **Mandatory** |
-| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other allowed fields (Optional) | E-mail Protection| **Mandatory** |
+| Key Usage (critical) | RSA: a valid combination of Digital Signature, nonRepudiation, Key Encipherment and/or Data Encipherment (Data Encipherment only together with Key Encipherment).<br>ECDSA: a valid combination of Digital Signature, nonRepudiation and/or Key Agreement (encipherOnly/decipherOnly only together with Key Agreement).<br>No other bits are set (SMIME BR 7.1.2.3(e)) | Digital Signature | **Mandatory** |
+| Extended Key Usage | E-mail Protection (Mandatory)<br>TLS Web Client Auth and other fields allowed by the SMIME BR (Optional); id-kp-serverAuth, id-kp-codeSigning, id-kp-timeStamping and anyExtendedKeyUsage are never present.<br>Effective July 1, 2027: limited to E-mail Protection and, optionally, TLS Web Client Auth | E-mail Protection| **Mandatory** |
 | Subject Alternative Name (SAN) | email: | email:john.smith@example.com | **Mandatory** (at least one) |
-| Certificate Policies | CABF OID (Mandatory), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | CABF OID | **Mandatory** |
-| Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Optional** |
+| Certificate Policies | CABF Multipurpose OID 2.23.140.1.5.2.2 (Mandatory; exactly one reserved CABF policy identifier), <br> CPS URI and other OID as allowed by the SMIME BR (Optional) | 2.23.140.1.5.2.2 | **Mandatory** |
+| Authority Key Identifier (AKI) | keyID:... | keyid:DB:68:... | **Mandatory** |
 | Subject Key Identifier (SKI) | keyID:... | keyID:0C:D1... | **Optional** |
 | Authority Info Access (AIA) | CA Issuers URI,<br>OCSP URI (Optional) | CA Issuers: http://hightrusted.com/ca.crt, OCSP: http://ocsp.hightrusted.com | **Mandatory** |
 | CRL Distribution Points (CRL DP) | URI:... | URI: http://public.wisekey.com/ca.crl | **Mandatory** |
