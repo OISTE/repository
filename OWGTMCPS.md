@@ -1713,6 +1713,8 @@ CRL must include the following minimum extensions, as defined by the above stand
 - Revocation date
 - Reason code
 
+In accordance with Section 7.2.2 of the CA/Browser Forum TLS Baseline Requirements, the CRL Number extension contains an INTEGER greater than or equal to zero (0) and less than 2¹⁵⁹, and conveys a strictly increasing sequence.
+
 The usage of the "Reason Code" is appropriately communicated in the Subscriber Agreement, according to the table below. End users being able to select the reason when revoking their certificates, must abide to use the appropriate reason.
 
 | RFC 5280 reasonCode   | Value | Description |
