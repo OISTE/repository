@@ -2644,7 +2644,7 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 | Signature Algorithm | sha256/384WithRSAEncryption<br>ecdsa-with-SHA256/384/512  | sha256WithRSAEncryption| **Mandatory** |
 | Issuer | \<Issuer Subject Name>  | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
 | Validity Period | \<See Schedule above> | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
-| Subject | C, ST, L, SN, GN, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, L=Geneve, SN=Smith, GN=John, CN=john.smith@example.com, emailAddress=john.smith@example.com | **Mandatory** |
+| Subject | C, ST, L, SN, GN, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, L=Geneve, SN=Smith, GN=John, CN=john.smith@example.com, emailAddress=john.smith@example.com | **Mandatory**; If the subject:commonName contains a Pseudonym, the subject:givenName and/or subject:surname attributes are not present; if the subject:commonName contains a Personal Name, the subject:pseudonym attribute is not present |
 | Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
 | Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
 | Key Usage (critical) | A valid combination of Digital Signature, nonRepudiation, Data Encipherment, Key Encipherment and/or Key Agreement | Digital Signature | **Mandatory** |
@@ -2665,7 +2665,7 @@ Currently, the S/MIME certificates issued by OWGTM will match the "multipurpose"
 | Signature Algorithm | sha256/384WithRSAEncryption<br>ecdsa-with-SHA256/384/512  | sha256WithRSAEncryption| **Mandatory** |
 | Issuer | \<Issuer Subject Name>  | C=CH, O=WISeKey, CN=WISeKey CertifyID CA X | **Mandatory** |
 | Validity Period | \<See Schedule above> | Not Before: Oct 30 2025 16:10:52 GMT <br> Not After: Oct 30 2027 16:10:51 GMT | **Mandatory**; Max 825 days in current CAB Forum S/MIME requirements |
-| Subject | C, ST, L, OU, O, organizationIdentifier, SN, GN, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, ST=Geneve, O=WISeKey SA, organizationIdentifier=NTRCH-CHE-101.022.134, SN=Smith, GN=John, CN=john.smith@example.com, emailAddress=john.smith@example.com | **Mandatory** |
+| Subject | C, ST, L, OU, O, organizationIdentifier, SN, GN, CN, emailAddress (or other combinations and fields allowed by the SMIME BR) | C=CH, ST=Geneve, O=WISeKey SA, organizationIdentifier=NTRCH-CHE-101.022.134, SN=Smith, GN=John, CN=john.smith@example.com, emailAddress=john.smith@example.com | **Mandatory**; If the subject:commonName contains a Pseudonym, the subject:givenName and/or subject:surname attributes are not present, and the Pseudonym in the commonName matches the subject:pseudonym attribute when that attribute is present; if the subject:commonName contains a Personal Name, the subject:pseudonym attribute is not present (see section 3.1.3) |
 | Public Key Algorithm / Size | RSA 2048/3072/4096<br>P-256/P-384/P-521 | RSA 2048 | **Mandatory** |
 | Basic Constraints (critical) | CA:FALSE | CA:FALSE | **Optional** |
 | Key Usage (critical) | A valid combination of Digital Signature, nonRepudiation, Data Encipherment, Key Encipherment and/or Key Agreement | Digital Signature | **Mandatory** |
