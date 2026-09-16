@@ -319,7 +319,7 @@ When applicable, CAs operating under the OWGTM must respect the ECHONET Requirem
 
 ## 4.1 Certificate Application
 
-For CA Certificates, before issuing a new certificate for a subordinate Certification Authority OWGTM requires the fulfillment of a legally binding agreement between the affiliated organization and the OISTE Foundation, which includes the appropriate validation of the organization identity and signatories of the agreement. Additionally, for each Subordinate CA, it’s required the fulfillment of a “CA Naming Request”, which must be signed by authorized representative of the affiliate.
+For CA Certificates, before issuing a new certificate for a subordinate Certification Authority OWGTM requires the fulfillment of a legally binding agreement between the affiliated organization and the OISTE Foundation, which includes the appropriate validation of the organization identity and signatories of the agreement. Additionally, for each Subordinate CA, it’s required the fulfillment of a “Subordinate CA Naming Application”, which must be signed by an authorized representative of the affiliate.
 
 For subscriber certificates, the Registration Authorities operating under the OWGTM are competent and responsible for determining if the type of the requested certificate is adequate for the applicant and future subscriber, in conformity with the Certificate Policy related to that certificate, and therefore to proceed or not with the certificate application. The Certificate Application process must include a mean to express acceptance with the Subscriber Agreement, by means of a manuscript signature or another valid mechanism, and it’s a first step to begin the certificate issuance process.
 
@@ -341,7 +341,7 @@ This section describes the procedures for processing certificate applications in
 
 ### 4.2.1 Performing identification and authentication functions
 
-Before issuing a certificate from the Root CA identified in [Appendix B](#appendix-b-ca-hierarchies) for a subordinate Certification Authority, it’s required that two representatives of the PAA identify the CA Naming Application and the rightfulness to operate a subordinate CA under that Root.
+Before issuing a certificate from the Root CA identified in [Appendix B](#appendix-b-ca-hierarchies) for a subordinate Certification Authority, it’s required that two representatives of the PAA verify the Subordinate CA Naming Application and the rightfulness to operate a subordinate CA under that Root.
 
 The identification and authentication functions are delegated to the Registration Authorities operating under the OWGTM.
 
@@ -566,7 +566,7 @@ Third parties may request certificate revocation for problems related to fraud, 
 
 ### 4.9.3 Procedure for revocation request
 
-The procedure to be used for certificate revocation requests is detailed in the “ECHONET Subscriber Agreement”, published in the repository identified in section 2.1. Manufacturers enrolling and managing ECHONET Device Certificates through the INeS IoT Security Portal can request revocation through that same service.
+The procedure to be used for certificate revocation requests is detailed in the “ECHONET Certificate Subscriber Agreement”, published in the repository identified in section 2.1. Manufacturers enrolling and managing ECHONET Device Certificates through the INeS IoT Security Portal can request revocation through that same service.
 
 To report suspected Private Key Compromise, Certificate misuse, Certificate mis-issuance, or other types of fraud, compromise, misuse, inappropriate conduct, or any other matter related to Certificates, the main and preferred method is sending an e-mail message to cps@wisekey.com.
 
@@ -1530,7 +1530,7 @@ The OWGTM ensures the compliance of the legal obligations for Certification Auth
 
 In order to perform the certification provisioning service, the Issuing CAs and other parties interacting with certificate subscribers are required to obtain the consent to use the subscriber’s personal information.
 
-This consent is understood by the explicit acceptance of the “ECHONET Subscriber Agreement” by the Manufacturer during the certificate request process. This acceptance is recognized by the subscriber’s acceptance to obtain and install the certificate.
+This consent is understood by the explicit acceptance of the “ECHONET Certificate Subscriber Agreement” by the Manufacturer during the certificate request process. This acceptance is recognized by the subscriber’s acceptance to obtain and install the certificate.
 
 ### 9.4.6 Disclosure pursuant to judicial or administrative process
 
