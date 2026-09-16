@@ -7,28 +7,28 @@ title: |
 
 
  
- OISTE/WISeKey ECHONET CP/CPS
+ OISTE/WISeKey Wi-SUN CP/CPS
 author:
  - OISTE Policy Approval Authority
-subtitle: Version 1.1.0
-date: September 16, 2026
+subtitle: Version 1.0.0
+date: March 5, 2025
 copyright: |
- Copyright 2026 OISTE Foundation. 
+ Copyright 2025 OISTE Foundation. 
  This work is licensed under the Creative Commons Attribution 4.0 International license.
 geometry: "left=3cm,right=2cm,top=2cm,bottom=2cm"
 output: pdf_document
 header-includes: |
   \usepackage{fancyhdr}
   \pagestyle{fancy}
-  \fancyfoot[CE,CO]{OW ECHONET CP/CPS - OISTE Foundation}
+  \fancyfoot[CE,CO]{OW Wi-SUN CP/CPS - OISTE Foundation}
   \fancyfoot[LE,RO]{\thepage}
 toc: true
 include-before: |
   \newpage
   | **VERSION** | **DATE** | **MODIFICATION** | **AUTHOR** |
   | --- | --- | --- | --- |
-  | 1.0 | 2026-01-09 | First Version | Pedro Fuentes |
-  | 1.1.0 | 2026-09-16 | ECHONET-specific revision. Introduced the "ECHONET Requirements" framework (Appendix D); made the device certificate, revocation and repository provisions self-contained | Pedro Fuentes |
+  | 1.0.0 | 2025-03-05 | First Version | Pedro Fuentes |
+  |  |  |  |  |
   \newpage
 ---
 
@@ -36,13 +36,13 @@ include-before: |
 
 # 1. INTRODUCTION
 
-This document represents a combined Certificate Policy (CP) and Certification Practice Statement (CPS), and describes the practices followed with regard to the management of the lifecycle the Certification Authorities adhered to the OISTE/WISeKey Global Trust Model (OWGTM from now on) for the purposes of ECHONET devices.
+This document represents a combined Certificate Policy (CP) and Certification Practice Statement (CPS), and describes the practices followed with regard to the management of the lifecycle the Certification Authorities adhered to the OISTE/WISeKey Global Trust Model (OWGTM from now on) for the purposes of Wi-SUN FAN devices.
 
 ## 1.1 Overview
 
 The main two legal entities involved in the control and operation of the OISTE/WISeKey Global Trust Model are:
 - OISTE Foundation. The International Organization for Secure Electronic Transactions (“IOSET” or “OISTE”), a Swiss non-profit foundation established in 1998, and recognized with an “Special Consultative Status” by the United Nations. The OISTE Foundation maintains a Policy Approval Authority (PAA) that drafts, approves and revises the policies to which WISeKey is bound to comply with under its operator contract. The PAA is composed of members of the community to which OISTE provides its Certification Authority Services, resulting in a virtuous cycle for trust management.
-- WISeKey. WISeKey is referenced in this document as the short name for the entities “WISeKey International Holding Ltd.”, “WISeKey SA” or other members of the WISeKey Holding that are mandated by OISTE to host and operate the Root Certification Authorities and the technical infrastructures required to maintain the PKI at the appropriate operational level. WISeKey also operates as a “Subordinate Certification Authority” under the OISTE Roots, according to practices disclosed in this document.
+- WISeKey. WISeKey is referenced in this document as the short name for the entities “WISeKey International Holding Ltd.”, “WISeKey SA”, “SEALSQ Corp.” or other members of the WISeKey Holding that are mandated by OISTE to own, host and operate the Root Certification Authorities and the technical infrastructures required to maintain the PKI at the appropriate operational level. The Root CA identified in [Appendix B](#appendix-b-ca-hierarchies) is owned by SEALSQ Corp. and is within this definition. WISeKey also operates as a “Subordinate Certification Authority” under the OISTE Roots, according to practices disclosed in this document.
 
 The OISTE Global Trust Model (OWGTM) has been designed and are operated in accordance with the broad strategic direction of international PKI (Public Key Infrastructure) standards as well as their application to concrete identity frameworks in different domains (e.g. ID cards, passports, health cards, Internet of Things) and is intended to serve as a common Trust Model for Certification Authorities worldwide that comply with OISTE requirements.
 
@@ -59,18 +59,18 @@ The purpose of this document is to disclose the Practices and Policies adopted i
 4. Certificate Life-Cycle Operational Requirements – This section describes the different phases in the Life-Cycle of certificates and their requirements.
 5. Management, Operational and Physical Controls – Describes the controls enforced in the OWGTM to provide adequate trust levels in the certificates issued under the Trust Model.
 6. Technical Security Controls – Discloses the security controls adopted in the OWGTM.
-7. Certificate and CRL Profiles – Describes the technical details of the different certificate types issued under the OWGTM.
+7. Certificate Profiles – Describes the technical details of the different certificate types issued under the OWGTM.
 8. Compliance Audit and other Assessment – Discloses the audit policies followed in the OWGTM to ensure that the participant fulfils the security and quality requirements.
 9. Other Business and Legal Matters – This section exposes the commercial, legal and contractual aspects involved in the usage of certificates issued in the OWGTM.
 
-**APPLICABILITY NOTICE:** If any inconsistency exists between this document and the normative provisions of an ECHONET Requirement (as defined in [Appendix A](#appendix-a-glossary) and listed in [Appendix D](#appendix-d-adopted-echonet-requirements)), then the ECHONET Requirement takes precedence over this CP/CPS, and the PAA shall amend this document at the next revision.
+**APPLICABILITY NOTICE:** If any inconsistency exists between this document and the normative provisions of a Wi-SUN Requirement (as defined in [Appendix A](#appendix-a-glossary) and listed in [Appendix D](#appendix-d-adopted-wi-sun-requirements)), then the Wi-SUN Requirement takes precedence over this CP/CPS, and the PAA shall amend this document at the next revision.
 
 ## 1.2 Document name and identification
 
-| Name | OISTE/WISeKey ECHONET Certificate Policy/Certification Practices Statement (CP/CPS) |
+| Name | OISTE/WISeKey Wi-SUN Certificate Policy/Certification Practices Statement (CP/CPS) |
 | --- | --- |
-| Version | 1.1.0 |
-| Issuance date | 2026-09-16 |
+| Version | 1.0.0 |
+| Issuance date | 2025-03-05 |
 | Location | This document is also published in https://github.com/oiste/repository and https://wisekey.com/repository |
 
 ## 1.3 PKI participants
@@ -81,7 +81,7 @@ The following sections describe the different participant types in the OWGTM.
 
 OISTE and WISeKey own and operate a number of Root and Issuing Certification Authority (CA) hierarchies that deliver certification services under the OWGTM.
 
-The Root CA that anchors the ECHONET hierarchy is an exception to that ownership: it is owned by SealSQ Corp., while the trust model, policies and certification practices applied beneath it are regulated by the OISTE Foundation through its Policy Approval Authority. This is set out in [Appendix B](#appendix-b-ca-hierarchies), where the hierarchy is detailed.
+The Root CA that anchors the Wi-SUN hierarchy is an exception to that ownership: it is owned by SealSQ Corp., while the trust model, policies and certification practices applied beneath it are regulated by the OISTE Foundation through its Policy Approval Authority. This is set out in [Appendix B](#appendix-b-ca-hierarchies), where the hierarchy is detailed. The Root CA is dedicated to the Wi-SUN ecosystem and is recognised by the Wi-SUN Alliance as an approved third-party Certification Authority root.
 
 ### 1.3.2 Registration authorities
 
@@ -97,7 +97,7 @@ Therefore, the responsibilities of Registration Authorities operating under the 
 
 ### 1.3.3 Subscribers (Requestors)
 
-In the OWGTM two different end-user roles are defined. Depending on the status of the certificate request, these roles are named “Applicant” and “Subscriber”. In particular, for ECHONET Device Certificates the Subscriber is the Manufacturer, as stated in section 1.4.1 of this document.
+In the OWGTM two different end-user roles are defined. Depending on the status of the certificate request, these roles are named “Applicant” and “Subscriber”. In particular, for Wi-SUN IDevIDs the Subscriber is the Manufacturer of the device, which SHALL be a Promoter or Contributor member of the Wi-SUN Alliance holding a current Proof of Wi-SUN Membership (POWM), as verified under section 3.2.2. The device itself is the subject of the certificate but is not the Subscriber.
 - An applicant is a physical person that requests a certificate for his own behalf or on behalf of a third party. The applicant needs to accredit his identity and ability to request a certificate. In the case of an applicant acting on behalf of a third party or legal person, he will be requested to accredit the empowerment for such representation, as required by law.
 - A subscriber is the physical or legal person whose identity is linked to the electronic signature creation data, or private key, and included in a digital certificate. In general, a subscriber is considered the “owner” of a certificate. The subscriber of a certificate is responsible for the custody of his private key and not communicating this data in any way to any other person.
 
@@ -105,7 +105,13 @@ This document details the particular community of subscribers to whom each type 
 
 ### 1.3.4 Relying parties
 
-All natural and legal persons and other entities that trust the certificates issued by certification authorities operating under the OWGTM Trust Model are considered to be “relying parties”. These relying parties do not necessarily need to be a subscriber of an OWGTM certificate, but are requested to accept the “CertifyID Relying Party Agreement”, available at http://oiste.org/repository, which applies to relying parties of ECHONET Device Certificates.
+All natural and legal persons and other entities that trust the certificates issued by certification authorities operating under the OWGTM Trust Model are considered to be “relying parties”. These relying parties do not necessarily need to be a subscriber of an OWGTM certificate, but are requested to accept the “CertifyID Relying Party Agreement”, available at http://oiste.org/repository, which applies to relying parties of Wi-SUN IDevIDs.
+
+In the Wi-SUN context the relying parties are, in practice:
+- the **network operator**, through the Authentication Server that terminates EAP-TLS for the Field Area Network and the Border Router that admits nodes and manages group keys; and
+- **other Wi-SUN FAN nodes**, when performing node-to-node pairwise authentication.
+
+Both categories validate an IDevID against a trust anchor provisioned in advance, as described in section 6.1.4, and both carry the obligations of section 9.6.4, which in this hierarchy include obligations that elsewhere would be discharged by revocation checking.
 
 In the OWGTM, a particular type of certificate could limit the right to be a relying party for that particular type of certificate, if this is the case, a specific Relying Party agreement would be published.
 
@@ -118,18 +124,23 @@ No stipulation.
 In the OWGTM, the limitations for certificate usage are established for each particular certificate type. This information is summarized in the following subsections.
 The type of certificate is determined by the combination of "Key Usage", "Extended Key Usage", and Policy Identifiers.
 
-In the context of ECHONET, certificate usage must be aligned with the ECHONET Requirements adopted by the PAA and listed in [Appendix D](#appendix-d-adopted-echonet-requirements).
+In the context of Wi-SUN, certificate usage must be aligned with the Wi-SUN Requirements adopted by the PAA and listed in [Appendix D](#appendix-d-adopted-wi-sun-requirements).
 
 ### 1.4.1 Appropriate certificate uses
 
 | Certificate type | Description | Permitted uses |
 | --- | --- | --- |
-| ECHONET Subordinate CA Certificate | Infrastructure certificate for a Subordinate Certification Authority authorised to issue ECHONET Device Certificates. It may be operated by WISeKey on behalf of a Manufacturer, or by the Manufacturer itself as a technically-constrained CA under section 3.2.6 | Certificate Signing, CRL Signing |
-| ECHONET Device Certificate | High-assurance device certificate used by an ECHONET device to authenticate itself and to protect transactions over ECHONET and other IoT networks. The certificate binds the device to its Manufacturer and to the manufacturer-assigned product and device identifiers, as verified under sections 3.2.2 and 3.2.3 and profiled in section 7.1 | Digital Signature, Key Agreement, Client Authentication |
+| Wi-SUN Manufacturer CA (MCA) Certificate | Infrastructure certificate for a Manufacturer Certification Authority, subordinate to the Root CA and authorised to issue Wi-SUN Manufacturer Issuing CA certificates. It does not issue Wi-SUN IDevIDs directly. It may be operated by WISeKey on behalf of a Manufacturer, or by the Manufacturer itself under section 3.2.6 | Certificate Signing |
+| Wi-SUN Manufacturer Issuing CA (MICA) Certificate | Infrastructure certificate for a Manufacturer Issuing Certification Authority, authorised to issue Wi-SUN IDevIDs. It is subordinate either to an MCA or directly to the Root CA, as stated in section 7.1. It may be operated by WISeKey on behalf of a Manufacturer, or by the Manufacturer itself under section 3.2.6 | Certificate Signing |
+| Wi-SUN IDevID | Initial Device Identifier, in the sense of IEEE 802.1AR, installed in a Wi-SUN FAN device at manufacture. It authenticates the device to a Field Area Network during EAP-TLS network access authentication, and in node-to-node pairwise authentication. It identifies the device by the hardware module identifiers described in section 7.1.4 | Digital Signature; Key Agreement (optional); Client Authentication; Wi-SUN FAN device authentication (`id-kp-wisun-fan-device`) |
 
 ### 1.4.2 Prohibited certificate uses
 
-In general, any usage that is not explicitly stated in section 1.4.1 of this document or the appropriate CP, is considered to be prohibited.
+In general, any usage that is not explicitly stated in section 1.4.1 of this document or the appropriate CP is considered to be prohibited. In particular:
+
+- **Test IDevIDs are out of scope.** Certificates issued for Wi-SUN FAN certification and interoperability testing are issued from the separate test hierarchy maintained for that purpose in the Wi-SUN programme. That hierarchy is not trusted for production networks and is not covered by this CP/CPS. Every certificate issued under this CP/CPS is a Production IDevID, and a Manufacturer holding both test and production accounts must not confuse the two.
+- **LDevIDs are out of scope.** Locally significant device identifiers, issued by a network operator to a node after enrolment, are not issued under this CP/CPS. Where an operator issues LDevIDs, it does so under its own policy and assumes the corresponding responsibilities, including their expiry and revocation.
+- A Wi-SUN IDevID SHALL NOT be used for any purpose other than Field Area Network access authentication and node-to-node pairwise authentication. It is not a TLS server certificate, a code-signing certificate, or a general-purpose client certificate, notwithstanding the presence of `id-kp-clientAuth`, which is required by the Wi-SUN Requirements for EAP-TLS interoperability.
 
 ## 1.5 Policy administration
 
@@ -147,7 +158,7 @@ The PAA has a series of distinct functions but does not operate as a separate le
 - **email address:** cps@oiste.org, cps@wisekey.com
 - **Address:** Avenue Louis-Casaï 58 - 1216 Cointrin - Switzerland
 
-This same contact can also be used for revocation requests and compliance-related notifications.
+This same contact can also be used for Certificate Problem Reports under section 4.9.3 and for compliance-related notifications.
 
 ### 1.5.3 Person determining CPS suitability for the policy
 
@@ -169,14 +180,16 @@ Definitions and Acronyms are included in [Appendix A](#appendix-a-glossary)
 
 # 2. PUBLICATION AND REPOSITORY RESPONSIBILITIES
 
-The Root CA certificate and the Subordinate CA certificates of the ECHONET hierarchy are published in the OWGTM Policies repository identified in section 2.1, and are listed in [Appendix B](#appendix-b-ca-hierarchies).
+The Root CA certificate and the Subordinate CA certificates of the Wi-SUN hierarchy are published in the OWGTM Policies repository identified in section 2.1, and are listed in [Appendix B](#appendix-b-ca-hierarchies).
 
 ## 2.1 Repositories
 
 The main repositories of the OWGTM are:
 - Policies repository for disclosure of CP/CPS and related information. This repository is a set of web pages and services available at the URLs https://oiste.org and https://github.com/oiste/repository
-- Certificate and Certificate Revocation information repositories. The CA certificates and Certificate Revocation Information sources are included, when relevant, as CDP and AIA extensions in the certificates issued under the Root CA identified in [Appendix B](#appendix-b-ca-hierarchies)
-- Public Certificate repositories. The OWGTM makes ECHONET Root CA and Subordinate CA certificates, and the corresponding CRLs, publicly accessible to relying parties through the repository identified above. Should the ECHONET Consortium establish a certificate repository or ledger of its own, and the PAA adopt it as an ECHONET Requirement, it will be listed in [Appendix D](#appendix-d-adopted-echonet-requirements) and used in addition to the OWGTM repository.
+- Certificate repository. The OWGTM makes the Wi-SUN Root CA and Subordinate CA certificates, and the **chain bundles** described in section 6.1.4, publicly accessible to Manufacturers and to network operators through the repository identified above. No revocation information source is published, and no CDP or AIA extension is present in any certificate of the Wi-SUN hierarchy, as stated in section 7.1.2.
+- Notices. The repository also publishes the compromise and retirement notices described in section 4.9.1, which are the only status information available for this hierarchy.
+
+Should the Wi-SUN Alliance establish a certificate repository of its own, and the PAA adopt it as a Wi-SUN Requirement, it will be listed in [Appendix D](#appendix-d-adopted-wi-sun-requirements) and used in addition to the OWGTM repository.
 
 ## 2.2 Publication of certification information
 
@@ -184,21 +197,23 @@ The OWGTM is responsible for publication of information regarding practices, cer
 
 The shared repositories containing public information in the OWGTM are managed by WISeKey SA or the operator of the Issuing CAs, and are available 24 hours a day, seven days a week. In the case of interruption by cause of “force majeure”, the service will be re-established in the minimum possible time.
 
-### 2.2.1 Statement on compliance with the ECHONET Requirements
+### 2.2.1 Statement on compliance with the Wi-SUN Requirements
 
-OISTE and WISeKey ensure compliance with industry best practices and security controls. In particular, the trust model enforces a regular review of the documents published by the ECHONET Consortium that are applicable to PKI services, certificate profiles or device identity. Those that the PAA formally adopts for the ECHONET hierarchy become "ECHONET Requirements" and are listed, with title, version and date of adoption, in [Appendix D](#appendix-d-adopted-echonet-requirements).
+OISTE and WISeKey ensure compliance with industry best practices and security controls. In particular, the trust model enforces a regular review of the documents published by the Wi-SUN Alliance that are applicable to PKI services, certificate profiles or device identity. Those that the PAA formally adopts for the Wi-SUN hierarchy become "Wi-SUN Requirements" and are listed, with title, version and date of adoption, in [Appendix D](#appendix-d-adopted-wi-sun-requirements).
 
-In the case of a discrepancy between any certification practice stated in this CP/CPS and an ECHONET Requirement, the ECHONET Requirement prevails, and the PAA shall amend this document at the next revision.
+In the case of a discrepancy between any certification practice stated in this CP/CPS and a Wi-SUN Requirement, the Wi-SUN Requirement prevails, and the PAA shall amend this document at the next revision.
 
-Where no ECHONET Requirement governs a given matter, this CP/CPS is self-contained and its own stipulations apply.
+Where no Wi-SUN Requirement governs a given matter, this CP/CPS is self-contained and its own stipulations apply.
+
+The Wi-SUN Alliance approves the Certification Authorities permitted to issue Wi-SUN IDevIDs, and requires the Manufacturer to hold membership, but it does **not** evaluate or audit those Certification Authorities and accepts no responsibility for their security. Assurance as to the practices described in this CP/CPS therefore rests on the assessments of section 8 and on nothing else. Relying parties should read section 8 and section 9.7 together before relying on a Wi-SUN IDevID.
 
 ## 2.3 Time or frequency of publication
 
 The CP/CPS documents will be published every time they are modified, with a minimum review period of one year.
-A certificate issued by any CA under the OWGTM will be published immediately after its issuance.
 
-In the case of revocation of a certificate, the appropriate CA will include this revocation information in the
-Certificate Revocation Lists (CRL) according to section 4.9.7 (CRL issuance frequency).
+CA certificates and chain bundles are published as soon as they are available. **Wi-SUN IDevIDs are not published**: they are delivered to the Manufacturer for installation in the device at manufacture, and the OWGTM does not operate a public directory of issued device certificates.
+
+No revocation information is published, because no certificate in this hierarchy is subject to revocation. The compromise and retirement notices of section 4.9.1 are published within the deadlines of section 4.9.5.
 
 ## 2.4 Access controls on repositories
 
@@ -214,29 +229,44 @@ This section describes the elements regarding naming and identifying the subscri
 
 ### 3.1.1 Types of names
 
-All subscribers are assigned a Distinguished Name (DN) according to the X.501 Standard. This DN is composed of a Common Name (CN), which includes a unique identification of the subscriber as described in section 3.1.4.2, and a structure of X.501 components as defined in section 3.1.4.
+Two distinct naming schemes are used in the Wi-SUN hierarchy.
+
+**CA certificates** are assigned a Distinguished Name (DN) according to the X.501 Standard, composed of a Common Name (CN), an Organization (O) and a Country (C), as stated in section 7.1.4.
+
+**Wi-SUN IDevIDs have an empty subject field.** They carry no Distinguished Name at all. The device is identified instead by a single `otherName` of type `id-on-hardwareModuleName` in the subjectAltName extension, which is marked critical, comprising the hardware type OID (`hwType`) and the device serial number (`hwSerialNum`). This is required by the Wi-SUN Requirements: a Wi-SUN FAN node ignores the subject field during path validation, and the identity that matters to the network is the hardware module name.
 
 ### 3.1.2 Need for names to be meaningful
 
-All Distinguished Names must be meaningful, and the identification the attributes associated to the subscriber should be in a human readable form.
+For CA certificates, all Distinguished Names must be meaningful, and the attributes identifying the subscriber should be in human-readable form.
+
+For Wi-SUN IDevIDs the requirement does not apply in that form, there being no Distinguished Name. The `hwType` and `hwSerialNum` values are machine identifiers, not human-readable names. They are nonetheless meaningful in the sense that matters here: `hwType` resolves, through the IANA Private Enterprise Number registry, to the Manufacturer that owns the arc, and the pairing of `hwType` with `hwSerialNum` resolves, through the records the CA retains under section 5.5, to a single manufactured device.
 
 ### 3.1.3 Anonymity or pseudonymity of subscribers
 
-ECHONET PKI CAs SHALL NOT issue anonymous or pseudonymous Certificates.
+Wi-SUN PKI CAs SHALL NOT issue anonymous or pseudonymous Certificates.
+
+An empty subject field in a Wi-SUN IDevID is not anonymity. The device is identified by the hardware module name in the critical subjectAltName extension, and the Manufacturer responsible for it is identified by the Private Enterprise Number arc of the `hwType` value and by the issuing Subordinate CA, whose records identify the Subscriber.
 
 ### 3.1.4 Rules for interpreting various name forms
 
-The rules used in the OWGTM to interpret the distinguished names of certificates issued under its Trust Model are defined by the ISO/IEC 9595 (X.500) Distinguished Name (DN) standard.
+The rules used in the OWGTM to interpret the distinguished names of CA certificates are defined by the ISO/IEC 9595 (X.500) Distinguished Name (DN) standard.
+
+The hardware module name of a Wi-SUN IDevID is interpreted as defined in RFC 4108, with `hwType` an OBJECT IDENTIFIER beneath the Manufacturer's IANA Private Enterprise Number arc and `hwSerialNum` an OCTET STRING, as detailed in section 7.1.4.
 
 ### 3.1.5 Uniqueness of names
 
-OWGTM requires uniqueness of names in the certificates issued by the Roots, except in the case of re-issuances or renewals for the same entity.
+For CA certificates, OWGTM requires uniqueness of the Subject DN across the certificates issued by the Roots, except in the case of re-issuances for the same entity.
 
-Multiple Certificates with the same subject name MAY be issued to the same Requestor. Name uniqueness is enforced for the entire Subject DN of the Certificate rather than an attribute (e.g., the common name). Each CA and RA SHALL identify the method for checking uniqueness of the Subject DNs within its domain.
+For Wi-SUN IDevIDs, subject-name uniqueness is meaningless because the subject is empty. Uniqueness is enforced on two other values instead:
+
+- **Certificate serial number**, which is unique within the issuing Certification Authority. The OWGTM generates serial numbers containing at least 12 octets of entropy from a random source within the issuing cryptographic module, as stated in section 7.1.4.
+- **The pair `hwType` + `hwSerialNum`**, which is unique across all certificates issued to a given Manufacturer. The Manufacturer warrants this uniqueness under section 9.6.3, and the issuing Certification Authority rejects an enrolment request carrying a pair it has issued before.
+
+Because a Wi-SUN IDevID cannot be revoked or re-issued in the field, a duplicate `hwSerialNum` cannot be corrected once devices are in service. The check is therefore performed at issuance and cannot be deferred.
 
 ### 3.1.6 Recognition, authentication, and role of trademarks
 
-The inclusion of a name in a certificate does not imply any right over that name, neither for the OWGTM nor the applicant, nor the subscriber. The OWGTM reserves the right to refuse a certificate request, or revoke an existing one, if a conflict is detected over ownership or copyright of a name.
+The inclusion of a name in a certificate does not imply any right over that name, neither for the OWGTM nor the applicant, nor the subscriber. The OWGTM reserves the right to refuse a certificate request if a conflict is detected over ownership or copyright of a name. A certificate already issued cannot be revoked; where a conflict emerges after issuance the OWGTM ceases issuance for the affected identifiers and publishes a notice under section 4.9.1.
 
 In any event, the OWGTM will not attempt to intermediate nor resolve conflicts regarding ownership of names
 or trademarks.
@@ -255,13 +285,15 @@ If (when allowed by the applicable regulations) the key pair is generated by the
 
 Before issuing a certificate for a subordinate Certification Authority OWGTM requires the fulfillment of a legally binding agreement between the organization and the OISTE Foundation, which includes the appropriate validation of the organization identity and signatories of the agreement.
 
-Where a Manufacturer applies to operate its own ECHONET Subordinate CA, the OWGTM additionally verifies, before the Subordinate CA Certificate is issued, that the Manufacturer meets the accreditation criteria of section 3.2.6, that the Subordinate CA will be technically constrained to the Manufacturer Codes the Manufacturer is entitled to use, and that the Manufacturer accepts the audit obligations of section 8.4.
+Where a Manufacturer applies to operate its own Wi-SUN Subordinate CA, the OWGTM additionally verifies, before the Subordinate CA Certificate is issued, that the Manufacturer meets the accreditation criteria of section 3.2.6, that the Subordinate CA will be constrained by configuration to the Private Enterprise Number arc the Manufacturer is entitled to use as stated in section 7.1.5, that the tier at which the Subordinate CA will operate is recorded, MCA or MICA, together with the chain shape it will form under section 7.1, and that the Manufacturer accepts the audit obligations of section 8.4.
+
+A Manufacturer applying to operate an MCA is additionally assessed on its ability to run the certification of its own MICAs to the standard of this CP/CPS, since an MCA certifies Certification Authorities rather than devices and a fault at that tier propagates to every MICA beneath it.
 
 #### 3.2.2.1 For Device Certificates
 
 | CP Identifier | Validation Policy |
 | --- | --- |
-| ECHONET Device Certificate | The Registration Authority must verify that:<br><ul><li>The Manufacturer exists as a legal person, using records from a government agency in the jurisdiction of incorporation, a qualified independent information source, or an attestation from a legal practitioner or accountant;</li><li>The Manufacturer is a member of the ECHONET Consortium in good standing, or is otherwise entitled by the Consortium to place ECHONET devices on the market;</li><li>The Manufacturer Code to be included in the certificate has been assigned to that Manufacturer by the ECHONET Consortium, verified against the Consortium’s assignment records;</li><li>The Product Code to be included in the certificate has been assigned by the Manufacturer to the product model concerned; and</li><li>The natural person submitting the application is authorised to act on behalf of the Manufacturer, as confirmed under section 3.2.5.</li></ul>The Manufacturer identity, its membership standing and its Manufacturer Code are re-verified at least every 825 days. Individual device enrolments made under an already-validated Manufacturer do not require repeating these checks. |
+| Wi-SUN IDevID | The Registration Authority must verify that:<br><ul><li>The Manufacturer exists as a legal person, using records from a government agency in the jurisdiction of incorporation, a qualified independent information source, or an attestation from a legal practitioner or accountant;</li><li>The Manufacturer holds a current **Proof of Wi-SUN Membership (POWM)** as a Promoter or Contributor member of the Wi-SUN Alliance. The POWM is issued by Alliance member services on the Manufacturer’s request and is sent by the Alliance to the Certification Authority as well as to the Manufacturer; the Certification Authority validates the POWM it has received directly from the Alliance, and does not rely on a copy supplied by the applicant. Wi-SUN IDevIDs are not issued to non-members;</li><li>The Manufacturer is entitled to the **IANA Private Enterprise Number** beneath which the `hwType` values will be allocated. Entitlement is verified against the IANA Private Enterprise Number registry, and where the registry entry does not establish it unambiguously, against documentary evidence from the Manufacturer;</li><li>The `hwType` sub-arcs to be used for the product models concerned have been recorded by the Manufacturer in its enrolment record, so that the issuing Certification Authority can be configured to accept only those values (section 7.1.5); and</li><li>The natural person submitting the application is authorised to act on behalf of the Manufacturer, as confirmed under section 3.2.5.</li></ul>The Manufacturer identity, its POWM standing and its Private Enterprise Number entitlement are re-verified at least every 24 months, and the Manufacturer is contractually obliged to notify the Certification Authority if its membership lapses in the meantime. The Wi-SUN programme validates membership at initial account setup and does not itself require revalidation when a Manufacturer opens further accounts; the periodic re-verification stated here is an additional control of the OWGTM, adopted because a Wi-SUN IDevID cannot be revoked once issued. Individual device enrolments made under an already-validated Manufacturer do not require repeating these checks. |
 
 ### 3.2.3 Authentication of individual identity
 
@@ -271,11 +303,11 @@ The following subsections describe the required practices for each subscriber ce
 
 | CP Identifier | Validation Policy |
 | --- | --- |
-| ECHONET Device Certificate | **ID Data Verified**:<br>The Manufacturer Code (EPC 0x8A), the Product Code (EPC 0x8C) and the Production Number (EPC 0x8D) of the individual device, together with the legal name and country of the Manufacturer.<br>**Method of Verification**:<br>The Manufacturer Code and the Manufacturer identity are verified as stated in section 3.2.2. The Product Code and Production Number are taken from the Manufacturer’s production record for the unit concerned; the CA accepts them on the basis of the Manufacturer’s warranty in the Subscriber Agreement that each Production Number is unique within the Product Code and identifies a single physical unit.<br>Enrolment requests must originate from a production system authenticated to the Issuing CA or Subordinate CA, and must be constrained to the Manufacturer Codes assigned to that Manufacturer.<br>**Entities authorized to verify**:<br><ul><li>A Registration Authority accredited by the OWGTM; or</li><li>An accredited software application operating in the Manufacturer’s production environment, under section 4.2.1.</li></ul>No ECHONET Device Certificate identifies a natural person, and no personal data is placed in the certificate. |
+| Wi-SUN IDevID | **ID Data Verified**:<br>The `hwType` OBJECT IDENTIFIER and the `hwSerialNum` of the individual device, which together form the hardware module name placed in the certificate.<br>**Method of Verification**:<br>The Manufacturer identity and its entitlement to the Private Enterprise Number beneath which `hwType` is allocated are verified as stated in section 3.2.2. The `hwSerialNum` is taken from the Manufacturer’s production record for the unit concerned; the CA accepts it on the basis of the Manufacturer’s warranty in the Subscriber Agreement that each `hwSerialNum` is unique within its `hwType` and identifies a single physical device.<br>Enrolment requests must originate from a production system authenticated to the issuing Certification Authority, and the issuing Certification Authority SHALL reject any request whose `hwType` falls outside the Private Enterprise Number arc recorded for that Manufacturer under section 3.2.2.<br>**Entities authorized to verify**:<br><ul><li>A Registration Authority accredited by the OWGTM; or</li><li>An accredited software application operating in the Manufacturer’s production environment, under section 4.2.1.</li></ul>No Wi-SUN IDevID identifies a natural person, and no personal data is placed in the certificate. |
 
 ### 3.2.4 Non-verified subscriber information
 
-All attributes included in a certificate that are subject to the ECHONET Requirements or to this CP/CPS must undergo appropriate validation. No unverified subscriber information is included in ECHONET Device Certificates.
+All attributes included in a certificate that are subject to the Wi-SUN Requirements or to this CP/CPS must undergo appropriate validation. No unverified subscriber information is included in Wi-SUN IDevIDs.
 
 ### 3.2.5 Validation of authority
 
@@ -293,7 +325,7 @@ If this accreditation process is successful, it will result in the creation of a
 
 ## 3.3 Identification and authentication for re-key requests
 
-This section addresses the following elements for the identification and authentication procedures for re- key for each subject type (CA, RA, subscriber, and other participants). Unless otherwise specified, it can considered as equivalent the activities linked to “re-key” (new certificate for an existing subscriber, using a new key pair) and “renewal” (new certificate for an existing subscriber, using the same key pair).
+Wi-SUN IDevIDs do not expire and are not revoked, so there is no occasion on which one must be re-keyed or renewed. Where a device requires a different identity, a new Wi-SUN IDevID is issued to it under the full initial identification procedures of section 3.2; this is a new issuance, not a re-key. The provisions below therefore apply to Registration Authority operator certificates and to CA certificates only.
 
 ### 3.3.1 Identification and authentication for routine re-key
 
@@ -303,19 +335,19 @@ The certificate subscriber can request a routine re-key by authenticating himsel
 
 ### 3.3.2 Identification and authentication for re-key after revocation
 
-The OWGTM does not support re-key of certificates after revocation. The subscriber must apply for a new digital certificate by using the same procedures as for its issuance.
+Not applicable to Wi-SUN IDevIDs, which are not revoked. For other certificate types, the OWGTM does not support re-key after revocation; the subscriber must apply for a new digital certificate using the same procedures as for its issuance.
 
-## 3.4 Identification and authentication for revocation request
+## 3.4 Identification and authentication for a Certificate Problem Report
 
-The Identification Policy for revocation requests is, generally, the same as stipulated for initial registration. The preferred method to authenticate revocation requests is an authentication based in a digital certificate owned by the certificate subscriber, or authorized party. Passwords maybe accepted alternatively.
+Wi-SUN IDevIDs and the CA certificates in their chain are not subject to revocation, so there are no revocation requests to authenticate. What a Subscriber or a third party may submit instead is a Certificate Problem Report under section 4.9.3, on which the Certification Authority ceases issuance, notifies and publishes.
 
-A Certification Authority may define, that during the enrolment process, a subscriber can create a password that can be used in remote revocation requests, using an on-line procedure communicated to the user when issuing the certificate.
+A Certificate Problem Report is authenticated in proportion to the action it would trigger. A report that would cause the CA to cease issuing for a Manufacturer, or to publish a compromise notice naming it, SHALL be corroborated before that action is taken: by authentication of the reporting party against its enrolment record, by a demonstration of key compromise under section 4.9.12, or by the CA's own investigation. An unauthenticated report is investigated but does not by itself trigger publication, since publication cannot be withdrawn from the operators who have already acted on it.
 
 # 4. CERTIFICATE LIFE-CYCLE OPERATIONAL REQUIREMENTS
 
 The stipulations included in this section are understood as common for all the certificates issued under the OWGTM Root, unless otherwise specified in this document.
 
-When applicable, CAs operating under the OWGTM must respect the ECHONET Requirements.
+When applicable, CAs operating under the OWGTM must respect the Wi-SUN Requirements.
 
 ## 4.1 Certificate Application
 
@@ -331,9 +363,11 @@ A certificate application can be submitted by the subject of the certificate or 
 
 WISeKey is responsible for ensuring that the identity of each Certificate Applicant is verified in accordance with this CP and the applicable CPS prior to the issuance of a Certificate. Applicants are responsible for submitting sufficient information and documentation for the Issuer CA or the RA to perform the required verification of identity prior to issuing a Certificate.
 
-This process includes the identification of suspicious or potentially dangerous requests, based on automated checks against the list of Manufacturers whose enrolment rights have been suspended or withdrawn, against previously revoked certificates, and against previously denied requests marked as suspicious.
+This process includes the identification of suspicious or potentially dangerous requests, based on automated checks against the list of Manufacturers whose Wi-SUN Alliance membership has lapsed or whose enrolment rights have been suspended or withdrawn, against `hwType` values outside the Private Enterprise Number arc recorded for the Manufacturer, against `hwType` + `hwSerialNum` pairs already issued, and against previously denied requests marked as suspicious.
 
-In particular and where applicable, CAs will respect the ECHONET Requirements.
+Enrolment additionally requires that the Manufacturer holds a current Proof of Wi-SUN Membership and a service agreement with WISeKey covering Wi-SUN IDevID issuance, as stated in section 9.1.
+
+In particular and where applicable, CAs will respect the Wi-SUN Requirements.
 
 ## 4.2 Certificate application processing
 
@@ -347,11 +381,12 @@ The identification and authentication functions are delegated to the Registratio
 
 An authorized Registration Authority Officer will perform these functions. This role can be assumed by:
 - An accredited person that, on behalf of a Registration Authority, personally executes the identification and authentication functions.
-- An accredited software application that performs the identification and authentication functions for automated certification procedures. Automated registration is expressly permitted for ECHONET Device Certificates, where enrolment occurs in a manufacturing environment under a Manufacturer whose identity and identifiers have already been validated under sections 3.2.2 and 3.2.3. Any accredited software application will execute this function according to sections 3.2.2 and 3.2.3 of this document.
+- An accredited software application that performs the identification and authentication functions for automated certification procedures. Automated registration is expressly permitted for Wi-SUN IDevIDs, where enrolment occurs in a manufacturing environment under a Manufacturer whose identity and identifiers have already been validated under sections 3.2.2 and 3.2.3. Any accredited software application will execute this function according to sections 3.2.2 and 3.2.3 of this document.
 
 The steps to be executed by the Issuing CA or RA are as follows:
--	As a first step, the Issuing CA or RA will perform the verifications stipulated in section 3.2. 
--	As a second step, the Issuing CA must check the certificate details against a list of previously revoked Certificates and rejected certificate requests to identify suspicious certificate requests.
+-	As a first step, the Issuing CA or RA will perform the verifications stipulated in section 3.2.
+-	As a second step, the Issuing CA must verify the quality of the submitted public key: that it is a valid point on the NIST P-256 curve, that it is not the point at infinity, and that the same public key has not previously been certified by the Issuing CA.
+-	As a third step, the Issuing CA must check the certificate details against the certificates named in compromise notices published under section 4.9.1 and against rejected certificate requests, to identify suspicious certificate requests.
 
 The Issuing CA can only issue a certificate after having successfully completed the above steps.
 
@@ -367,7 +402,7 @@ There is no time limit stipulated to complete the processing of an application.
 
 ## 4.3 Certificate issuance
 
-A certificate request will be forwarded to a Certification Authority for its issuance only after the Registration Authority confirms the correctness of the information contained in the request. The OWGTM is not responsible for monitoring, research or confirmation of the correctness of the information contained in a certificate during the intermediate period between its issuance and renewal, unless this period exceeds the re-verification limits stipulated in section 3.3 of this CP/CPS.
+A certificate request will be forwarded to a Certification Authority for its issuance only after the Registration Authority confirms the correctness of the information contained in the request. The OWGTM is not responsible for monitoring, research or confirmation of the correctness of the information contained in a certificate during the intermediate period between its issuance and renewal, unless this period exceeds the re-verification limits stipulated in section 3.2.2 of this CP/CPS.
 
 ### 4.3.1 CA actions during certificate issuance
 
@@ -387,14 +422,16 @@ Certificate acceptance is the final step in the certification issuance process. 
 
 For CA Certificates the CA representative must acknowledge the reception of the certificate, verifying that the Key Fingerprint matches the request. Installing the CA Certificate in the CA server constitutes tacit acceptance.
 
-Certificate acceptance is understood after the subscriber or his representative performs one or more of the following:
+For Wi-SUN IDevIDs, acceptance occurs when the Manufacturer installs the certificate, its private key and the chain bundle into the device during manufacture. Because the certificate cannot subsequently be revoked or renewed, the Manufacturer SHALL verify the correctness of the `hwType` and `hwSerialNum` values before installation; after installation no correction is possible in the field.
+
+For other certificate types, acceptance is understood after the subscriber or his representative performs one or more of the following:
 - Accepts the “Subscriber Agreement”, which includes the terms and conditions associated with the particular Certificate Policy, and which constitutes formal acceptance of those terms; or
 - Downloads and/or installs the certificate, making it technically available for usage; or
 - Doesn’t expressly refuse the certificate once the issuance notification has been sent.
 
 ### 4.4.2 Publication of the certificate by the CA
 
-The CAs operating under the OWGTM publish all issued certificates as specified in section 2 of this document.
+The CAs operating under the OWGTM publish issued CA certificates as specified in section 2 of this document. Wi-SUN IDevIDs are not published, as stated in section 2.3.
 
 ### 4.4.3 Notification of certificate issuance by the CA to other entities
 
@@ -416,15 +453,15 @@ Relying parties must access and use the public key and certificates issued under
 
 ## 4.6 Certificate renewal
 
-Certificate Renewal is understood as the issuance of a new certificate to a subscriber who maintains the key pair generated for the original certificate. Certificate renewal may not be supported depending on business decisions.
+Certificate Renewal is understood as the issuance of a new certificate to a subscriber who maintains the key pair generated for the original certificate.
+
+**Renewal is not applicable to Wi-SUN IDevIDs.** They carry no expiry date, so there is nothing to extend. The provisions of this section apply to CA certificates only.
 
 ### 4.6.1 Circumstance for certificate renewal
 
-For CA Certificates it is allowed the certificate renewal for these purposes: 
-- Extend the validity period
-- Modify the name constraints, enhanced key usages or other non-identity extensions
+For CA Certificates, renewal is allowed for the purpose of modifying enhanced key usages, policy identifiers or other non-identity extensions. It is not available to extend a validity period, no certificate in this hierarchy having one, nor to modify name constraints, which are not used (section 7.1.5).
 
-For Subscriber Certificates it is allowed the certificate renewal for the purpose of extending the validity period and always considering the requirements for re-verification periods stipulated in section 3.3 of this CPS.
+Renewal is not available for Wi-SUN IDevIDs, as stated in section 4.6.
 
 ### 4.6.2 Who may request renewal
 
@@ -444,7 +481,7 @@ As stipulated in section 4.4.1 of this document.
 
 ### 4.6.6 Publication of the renewal certificate by the CA
 
-The CAs operating under the OWGTM publish all issued certificates as specified in section 2 of this document.
+The CAs operating under the OWGTM publish issued CA certificates as specified in section 2 of this document. Wi-SUN IDevIDs are not published, as stated in section 2.3.
 
 ### 4.6.7 Notification of certificate issuance by the CA to other entities
 
@@ -452,11 +489,13 @@ The CA only notifies the Registration Authority from which it received the reque
 
 ## 4.7 Certificate re-key
 
-Certificate Re-Key is understood as the issuance of a new certificate to a subscriber that also generates a new key pair. This process is supported for all certificate types.
+Certificate Re-Key is understood as the issuance of a new certificate to a subscriber that also generates a new key pair.
+
+**Re-key is not applicable to Wi-SUN IDevIDs.** A Wi-SUN device receives its IDevID and key pair at manufacture and has no assured field mechanism for replacing either. Where a device must carry a different identity, a new IDevID is issued under the full procedures of section 3.2. The provisions of this section apply to CA certificates only.
 
 ### 4.7.1 Circumstance for certificate re-key
 
-Any certificate that is not revoked can be re-keyed.
+Any CA certificate that has not been retired can be re-keyed. Wi-SUN IDevIDs are not re-keyed, as stated above.
 
 ### 4.7.2 Who may request certification of a new public key
 
@@ -476,7 +515,7 @@ As stipulated in section 4.4.1 of this document.
 
 ### 4.7.6 Publication of the re-keyed certificate by the CA
 
-The CAs operating under the OWGTM publish all issued certificates as specified in section 2 of this document.
+The CAs operating under the OWGTM publish issued CA certificates as specified in section 2 of this document. Wi-SUN IDevIDs are not published, as stated in section 2.3.
 
 ### 4.7.7 Notification of certificate issuance by the CA to other entities
 
@@ -484,7 +523,7 @@ The CA only notifies the Registration Authority from which it received the reque
 
 ## 4.8 Certificate modification
 
-The OWGTM does not allow the modification of certificates during their validity period. If the information contained in a certificate cease to be valid, or the circumstances of the subscriber change in such a manner that the conditions expressed in the CPS or the CP are not met, then the only accepted procedure is the revocation and re-issuance of a new certificate.
+The OWGTM does not allow the modification of certificates during their validity period. If the information contained in a certificate cease to be valid, or the circumstances of the subscriber change in such a manner that the conditions expressed in the CPS or the CP are not met, then the only accepted procedure is the issuance of a new certificate. For Wi-SUN IDevIDs the superseded certificate cannot be revoked and remains valid; the actions of section 4.9.1 apply instead.
 
 ### 4.8.1 Circumstance for certificate modification
 
@@ -512,135 +551,146 @@ No stipulation. Modification is not allowed.
 
 No stipulation. Modification is not allowed.
 
-## 4.9 Certificate revocation and suspension
+## 4.9 Certificate compromise handling, withdrawal and suspension
 
-All Certification Authorities operating under the OWGTM ensure, by establishing the necessary means, that a certificate that compromises the Trust Model for any reason is prevented from being used by either revoking or suspending that certificate.
+**Wi-SUN IDevIDs, and the CA certificates in their chain, are not subject to revocation.** This is a requirement of the Wi-SUN Requirements listed in [Appendix D](#appendix-d-adopted-wi-sun-requirements): such certificates never expire, carry no revocation pointers, and no revocation status service exists for them.
+
+Exclusion of a device from a Wi-SUN FAN is therefore an **operational** matter for the network operator, performed through the access-control mechanisms of the Wi-SUN Requirements: the Authentication Server refuses to authenticate the node, and the Border Router rotates the group keys so that the excluded node cannot continue to participate. The Certification Authority plays no part in that exclusion and cannot effect it.
+
+What the Certification Authority does instead, on the events listed below, is to cease issuance, notify, and publish. Those three actions replace revocation throughout this section.
 
 Suspension of certificates is not supported.
 
-### 4.9.1 Circumstances for revocation
+### 4.9.1 Circumstances for cessation of issuance and notification
 
-All certificate subscribers receiving a digital certificate issued under a Root regulated by this CPS must assume the stipulations contained in this section.
+All certificate subscribers receiving a digital certificate issued under a Root regulated by this CP/CPS must assume the stipulations contained in this section.
 
-#### 4.9.1.1 Reasons for Revoking a Subscriber Certificate
-A Certification Authority operating in the OWGTM must revoke a certificate that it has issued upon the occurrence of any of the following events:
-1. The Subscriber requests in writing that the CA revoke the Certificate;
-2. The Subscriber notifies the CA that the original certificate request was not authorized and does not retroactively grant authorization;
-3. The CA obtains evidence that the Subscriber's Private Key corresponding to the Public Key in the Certificate suffered a Key Compromise;
-4. The CA is made aware of a demonstrated or proven method that can easily compute the Subscriber’s Private Key based on the Public Key in the Certificate; or
-5. The CA obtains evidence that the validation of the Manufacturer identity, or of any device identifier included in the Certificate, should not be relied upon.
+#### 4.9.1.1 Events affecting a Subscriber
 
-A Certification Authority operating in the OWGTM must revoke a certificate that it has issued upon the occurrence of any of the following events:
-1. The Certificate no longer complies with the requirements of Sections 6.1.5 and 6.1.6;
-2. The CA obtains evidence that the Certificate was misused;
-3. The CA is made aware that a Subscriber has violated one or more of its material obligations under the Subscriber Agreement or Terms of Use;
-4. The CA is made aware that the Manufacturer is no longer entitled to use a Manufacturer Code, product identifier or other identifier included in the Certificate;
-5. The CA is made aware of a material change in the information contained in the Certificate;
-6. The CA is made aware that the Certificate was not issued in accordance with this CP/CPS or the CA's Certificate Policy or Certification Practice Statement;
-7. The CA determines or is made aware that any of the information appearing in the Certificate is inaccurate;
-8. The CA's right to issue Certificates under this CP/CPS expires or is revoked or terminated, unless the CA has made arrangements to continue maintaining the CRL Repository;
-9. Revocation is required by the CA's Certificate Policy and/or Certification Practice Statement; or
-10. The CA is made aware of a demonstrated or proven method that exposes the Subscriber's Private Key to compromise, methods have been developed that can easily calculate it based on the Public Key, or if there is clear evidence that the specific method used to generate the Private Key was
-flawed.
+The response is graduated. A compromise notice tells network operators to stop trusting certificates already in service, and that is a serious step which cannot be withdrawn once operators have acted on it. It is therefore reserved for events that actually cast doubt on issued certificates. Events that merely end a commercial relationship stop further issuance and are recorded, but do not tell operators to distrust devices already deployed.
 
-**Revocation of ECHONET Certificates**: revocation is processed as stated in this section 4.9 and, where an ECHONET Requirement stipulates additional or shorter deadlines, as stated in that ECHONET Requirement.
+**Group 1 — cease issuance and record.** On becoming aware of any of the following, a Certification Authority operating in the OWGTM SHALL cease issuing Wi-SUN IDevIDs for the affected Manufacturer, product model or device population, and record the event and its date in the Manufacturer's enrolment record. No compromise notice is published, and certificates already issued are unaffected:
 
-#### 4.9.1.2 Reasons for Revoking a Subordinate CA Certificate
-An issuing Certification Authority operating in the OWGTM will be revoked upon the occurrence of any of the following events:
-1. The Subordinate CA requests revocation in writing;
-2. The Subordinate CA notifies the Issuing CA that the original certificate request was not authorized and does not retroactively grant authorization;
-1. The Issuing CA obtains evidence that the Subordinate CA's Private Key corresponding to the Public Key in the Certificate suffered a Key Compromise or no longer complies with the requirements of Sections 6.1.5 and 6.1.6;
-1. The Issuing CA obtains evidence that the Certificate was misused;
-2. The Issuing CA is made aware that the Certificate was not issued in accordance with or that Subordinate CA has not complied with this document or the applicable Certificate Policy or Certification Practice Statement;
-1. The Issuing CA determines that any of the information appearing in the Certificate is inaccurate or misleading;
-1. The Issuing CA or Subordinate CA ceases operations for any reason and has not made arrangements for another CA to provide revocation support for the Certificate;
-1. The Issuing CA's or Subordinate CA's right to issue Certificates under this CP/CPS expires or is revoked or terminated, unless the Issuing CA has made arrangements to continue maintaining the CRL Repository;
-1. Revocation is required by the Issuing CA's Certificate Policy and/or Certification Practice Statement; or
-1. Revocation is required by the OISTE Foundation.
+1. The Subscriber requests in writing that the CA cease issuance, for example on discontinuing a product line;
+2. The Manufacturer's Wi-SUN Alliance membership lapses or is withdrawn, or its entitlement to the Private Enterprise Number used in `hwType` ceases, without any indication that certificates already issued were wrongly issued.
 
-### 4.9.2 Who can request revocation
+**Group 2 — cease issuance, notify and publish.** On becoming aware of any of the following, a Certification Authority SHALL (a) cease issuing for the affected Manufacturer, product model or device population, (b) notify the Wi-SUN Alliance and every network operator known to the CA to be relying on the affected certificates, and (c) publish a compromise notice in the repository identified in section 2.1:
 
-The certificate subscriber or its legal representative can request the revocation of an individual or organizational certificate.
+1. The Subscriber notifies the CA that the original certificate request was not authorized and does not retroactively grant authorization;
+2. The CA obtains evidence that the Private Key of an issued Wi-SUN IDevID, or of a population of them, suffered a Key Compromise;
+3. The CA is made aware of a demonstrated or proven method that can easily compute the Private Key from the Public Key in the certificate, or that the method used to generate the Private Key was flawed;
+4. The CA obtains evidence that the validation of the Manufacturer identity, of its entitlement to the Private Enterprise Number, or of any device identifier included in the certificate, should not be relied upon;
+5. The CA obtains evidence that a certificate was misused, or that the Subscriber has violated a material obligation of the Wi-SUN Subscriber Agreement;
+6. The CA determines, or is made aware, that information in an issued certificate is inaccurate, or that the certificate was not issued in accordance with this CP/CPS.
 
-Third parties may request certificate revocation for problems related to fraud, misuse, or compromise. Certificate revocation requests must identify the entity requesting revocation and specify the reason for revocation.
+Where the PAA so directs, an event in Group 1 is treated as an event in Group 2. Where a Group 1 event is later found to have concealed a Group 2 event, the Group 2 response follows on discovery.
 
-### 4.9.3 Procedure for revocation request
+A compromise notice identifies the affected certificates as precisely as the circumstances allow — by issuing CA, by `hwType`, by serial number range, or by individual serial number — and states the date from which operators should treat them as untrusted. It does not, and cannot, invalidate the certificates cryptographically.
 
-The procedure to be used for certificate revocation requests is detailed in the “ECHONET Certificate Subscriber Agreement”, published in the repository identified in section 2.1. Manufacturers enrolling and managing ECHONET Device Certificates through the INeS IoT Security Portal can request revocation through that same service.
+#### 4.9.1.2 Retirement or termination of a Subordinate CA
 
-To report suspected Private Key Compromise, Certificate misuse, Certificate mis-issuance, or other types of fraud, compromise, misuse, inappropriate conduct, or any other matter related to Certificates, the main and preferred method is sending an e-mail message to cps@wisekey.com.
+A Wi-SUN Subordinate CA certificate cannot be revoked. Where any of the events below occurs, the Subordinate CA is **retired**: it ceases all issuance immediately, its private key is destroyed under section 6.2.10, a successor CA is established under section 5.6 where the service continues, and its identifiers are published so that network operators can remove the retired Subordinate CA certificate from the chain material held by the Authentication Server, or otherwise configure the server to reject chains that pass through it.
+
+Two kinds of notice are published, and the distinction matters to an operator deciding what to do about devices already in service:
+
+**Retirement notice** — the Subordinate CA stops issuing, and the certificates it has already issued are not called into question. An operator removes the retired CA from the chain material it holds once the devices concerned have been migrated or withdrawn, and need take no action against those devices in the meantime:
+
+1. The Subordinate CA requests retirement in writing;
+2. The Subordinate CA ceases operations for any reason;
+3. The Subordinate CA reaches the issuance limit of section 6.3.2.
+
+**Compromise notice** — the certificates issued by the Subordinate CA are called into question, and an operator should cease to accept chains through it:
+
+1. The Issuing CA obtains evidence of Key Compromise of the Subordinate CA Private Key;
+2. The Issuing CA obtains evidence that the Subordinate CA certificate was misused, or that the Subordinate CA has not complied with this CP/CPS or the applicable Certificate Policy;
+3. The Issuing CA determines that information in the Subordinate CA certificate is inaccurate or misleading;
+4. The Subordinate CA fails to submit a self-assessment when due, or refuses or obstructs an assessment, as stated in section 8.4.
+
+Retirement required by the OISTE Foundation is accompanied by whichever notice the PAA directs.
+
+Retirement of an **MCA** retires every MICA beneath it. Each such MICA ceases issuance and is listed in its own right in the notice and in [Appendix B](#appendix-b-ca-hierarchies), because a network operator removing certificates acts on the certificates it actually holds, not on the hierarchy that produced them.
+
+Because retirement is not cryptographically enforceable, the effectiveness of the measure depends on network operators acting on the published notice. Section 9.6.4 places that obligation on relying parties, and section 5.7.3 describes the procedure.
+
+### 4.9.2 Who can request cessation of issuance
+
+The certificate subscriber or its legal representative can request that the CA cease issuance for its own device population.
+
+Third parties may report problems related to fraud, misuse, or compromise. Such reports must identify the entity making the report and specify the circumstances relied upon.
+
+### 4.9.3 Procedure for a Certificate Problem Report
+
+The procedure is detailed in the “Wi-SUN Certificate Subscriber Agreement”, published in the repository identified in section 2.1. Manufacturers enrolling and managing Wi-SUN IDevIDs through the INeS IoT Security Portal can submit a report through that same service.
+
+To report suspected Private Key Compromise, Certificate misuse, Certificate mis-issuance, or any other type of fraud, compromise, misuse, inappropriate conduct or any other matter related to Certificates, the main and preferred method is sending an e-mail message to cps@wisekey.com.
 
 For certificate subscribers that seek to obtain general support, the preferred method to communicate with WISeKey is sending an e-mail message to support@wisekey.com.
 
-The common practice for all certificates issued under the OWGTM Trust Model is for revocation requests to be accepted automatically and produce an immediate revocation in the case of:
-- Remote requests sent by e-mail or via a web page or service, appropriately authenticated by the subscriber or its representative.
-- Face-to-face requests addressed to an official Registration Authority representative and the identity of the requestor is proved by the same means as used for certificate registration.
-- Revocation requests sent by an official Registration or Certification representative operating in the OWGTM.
+### 4.9.4 Grace period
 
-### 4.9.4 Revocation request grace period
+There is no stipulation for grace periods. Investigation begins immediately upon receipt of a Certificate Problem Report by an authorized party.
 
-There is no stipulation for grace periods for revocation requests. The revocation process will be started immediately upon the receipt of such a request by an authorized party.
+### 4.9.5 Time within which the CA must act
 
-### 4.9.5 Time within which CA must process the revocation request
+The CA begins investigating a Certificate Problem Report within 24 hours of receipt. Following that investigation, the CA acts within the following maximum periods:
 
-Revocation requests are processed by the CA within the shortest possible period, and always in accordance with the limits set in section 4.9.1.
+| Action | Applies to | Maximum period |
+| --- | --- | --- |
+| Cease issuance for the affected Manufacturer, product model or device population | All events in section 4.9.1 | 24 hours |
+| Notify the Wi-SUN Alliance and every network operator known to be relying on the affected certificates | Group 2 events only | 24 hours |
+| Publish the compromise notice in the repository | Group 2 events only | 5 days |
+| Record the event in the Manufacturer's enrolment record | Group 1 events | 5 days |
+| Publish a retirement notice for a Subordinate CA | Section 4.9.1.2 | 5 days |
 
-The CA begins investigating a Certificate Problem Report within 24 hours of receipt. Following that investigation, the CA revokes the Certificate within the following maximum periods:
+Where a Wi-SUN Requirement stipulates a shorter period, that shorter period applies.
 
-| Circumstance | Maximum period to revoke |
-| --- | --- |
-| Key Compromise of the Subscriber Private Key, or of a Subordinate CA Private Key | 24 hours |
-| The Certificate was mis-issued, or the CA obtains evidence that it was misused | 24 hours |
-| Any other circumstance listed in section 4.9.1 | 5 days |
+A Group 1 event carries no notification or publication obligation, as stated in section 4.9.1.1, because it does not call issued certificates into question.
 
-Where an ECHONET Requirement stipulates a shorter period, that shorter period applies.
+### 4.9.6 Obligations of relying parties
 
-### 4.9.6 Revocation checking requirement for relying parties
-
-The OWGTM requires that all parties willing to rely on certificates issued under the Trust Model check the status of these Certificates on each digital signature verification and authentication request using the certificate. For certificates issued under the ECHONET hierarchy this requirement is fulfilled by consulting the most recent CRL published by the CA that issued the Certificate. No online status protocol is offered for these certificates.
-
-The information necessary to locate the CRL is included in all ECHONET certificates, using the standard cRLDistributionPoints extension.
+Because no revocation status is published for Wi-SUN IDevIDs or their chain, a relying party cannot discharge its obligations by consulting a CRL or an OCSP responder. Instead a relying party SHALL:
+- validate the certificate chain to the trust anchor it has provisioned, as stated in section 6.1.4;
+- obtain compromise and retirement notices from the repository identified in section 2.1, and apply them by removing the named Subordinate CA certificates from the chain material held by the Authentication Server, or otherwise configuring it to reject chains that pass through them; and
+- exclude a device that must no longer participate in the network by the access-control means of the Wi-SUN Requirements, namely refusal at the Authentication Server and group key rotation at the Border Router.
 
 ### 4.9.7 CRL issuance frequency
 
-The OISTE CAs used by the OWGTM issue a full CRL at least every year, with a typical overlapping period of one week. This CRL will contain the revoked, if any, certificates for OWGTM Policy CAs or Issuing CAs, as appropriate for the hierarchy. New CRLs are published immediately if a new subordinated CA is revoked.
-
-Subordinate Certification Authorities issuing ECHONET Device Certificates issue a full CRL at least every 12 months, and in any case within 24 hours of a revocation being recorded. The nextUpdate field of a CRL is set no more than 12 months beyond its thisUpdate field.
+Not applicable. No CRL is issued for Wi-SUN IDevIDs or for any CA certificate in their chain.
 
 ### 4.9.8 Maximum latency for CRLs
 
-CRLs are posted to their distribution point within the minimum possible time after generation.
+Not applicable. No CRL is issued.
 
 ### 4.9.9 On-line revocation/status checking availability
 
-On-line status checking by the Online Certificate Status Protocol is not offered for certificates issued under the ECHONET hierarchy. Revocation status is published exclusively by CRL, as stated in sections 4.9.7 and 4.10.
+Not applicable. No on-line status checking service is offered, and the corresponding certificate extensions are prohibited by section 7.1.2.
 
 ### 4.9.10 On-line revocation checking requirements
 
-Not applicable. No on-line status checking protocol is offered.
-
-Relying parties are requested to always check the validity of the certificate on which they rely, by the means stipulated in section 4.9.6.
+Not applicable. See section 4.9.6 for what is required of relying parties instead.
 
 ### 4.9.11 Other forms of revocation advertisements available
 
-No stipulations.
+The compromise and retirement notices described in section 4.9.1 are the only form of advertisement available, and they are advisory to relying parties rather than enforceable by cryptographic means.
 
 ### 4.9.12 Special requirements re key compromise
 
 Any party detecting a key compromise at any level in the OWGTM Trust Model is requested to immediately communicate it to a Registration or Certification Authority.
 
-In particular for ECHONET certificates, but applicable for any other certificate type issued, it’s also requested to Subscribers, Relying Parties, Application Software Vendors and other third parties to report any potential issue to the Certification Authority (Certificate misuse, or other types of fraud, compromise, misuse, or inappropriate conduct related to Certificates).
+In particular for Wi-SUN certificates, Subscribers, Relying Parties, network operators and other third parties are requested to report any potential issue to the Certification Authority, including Certificate misuse and any other type of fraud, compromise or inappropriate conduct related to Certificates.
 
 The appropriate methods to demonstrate key compromise are:
 - Create and sign a text file,
 - Create a custom CSR file, and/or
 - Send the private key, or a link to where it’s publicly disclosed.
 
-The main method for these communications is the stipulated in section 4.9.3.
+The main method for these communications is the one stipulated in section 4.9.3.
+
+The response of the Certification Authority to a demonstrated key compromise is cessation of issuance, notification and publication under section 4.9.1. It is **not** revocation, which is not available. Subscribers and relying parties should understand that a compromised Wi-SUN IDevID remains cryptographically valid, and that the remedy lies in operator-side exclusion and, where the device population can be reached, in replacement of the affected devices.
 
 ### 4.9.13 Circumstances for suspension
 
-Suspension is not allowed for any certificate in scope of this CPS.
+Suspension is not allowed for any certificate in scope of this CP/CPS.
 
 ### 4.9.14 Who can request suspension
 
@@ -656,17 +706,19 @@ No stipulation. Suspension is not supported for any certificate in scope of this
 
 ## 4.10 Certificate status services
 
-Any CA operating in the OWGTM must provide a highly available and reliable service for checking the status of all certificates issued under its Trust Model.
+No certificate status service is offered for Wi-SUN IDevIDs or for the CA certificates in their chain, because those certificates are not subject to revocation and carry no status pointers. See section 4.9.
 
 ### 4.10.1 Operational characteristics
 
-Certificate Status Services are accessible through HTTP servers owned by the OWGTM Certification Authorities, and are accessed by downloading the applicable Certificate Revocation List (CRL). CRLs are served over HTTP without authentication or access restriction.
+The repository identified in section 2.1 publishes, over HTTP and without authentication or access restriction:
+- the Root CA and Subordinate CA certificates, and the chain bundles described in section 6.1.4; and
+- the compromise and retirement notices described in section 4.9.1.
 
-The applicable CRL URL is included in the cRLDistributionPoints extension of every certificate issued under the ECHONET hierarchy.
+These notices are the only status information the OWGTM publishes for the Wi-SUN hierarchy. They are advisory: a relying party must act on them, as stated in sections 4.9.6 and 9.6.4, because no cryptographic mechanism will do so on its behalf.
 
 ### 4.10.2 Service availability
 
-The Certificate Status Services are available on a 24x7 basis.
+The repository is available on a 24x7 basis.
 
 ### 4.10.3 Optional features
 
@@ -674,11 +726,11 @@ No stipulation.
 
 ## 4.11 End of subscription
 
-“End of Subscription” is understood to occur after the expiration or revocation of a certificate, and it is unique for that particular certificate, not affecting additional subscriptions (if any) that the end entity may hold within the OWGTM.
+Wi-SUN IDevIDs do not expire and are not revoked, so “End of Subscription” cannot be defined by the end of a certificate’s validity. It is understood instead to occur when the device reaches its end of life and is withdrawn from service, or when the Manufacturer ceases to be a Subscriber under section 4.9.1.1. The certificate remains cryptographically valid after that point; the obligations of the Manufacturer under section 9.6.3, and of relying parties under section 9.6.4, survive accordingly.
 
 ## 4.12 Key escrow and recovery
 
-Key escrow is not permitted for ECHONET Certificates.
+Key escrow is not permitted for Wi-SUN Certificates.
 
 ### 4.12.1 Key escrow and recovery policy and practices
 
@@ -697,7 +749,7 @@ These controls are under surveillance and audited both internally and externally
 The OWGTM allows third parties to host and operate some of the components of its infrastructure. If such a delegation occurs, the assigned party will be requested to meet the controls stipulated in this section and an auditing process will be executed to ensure that the necessary measures to ensure these controls are effective are in place and enforced.
 
 In particular:
-- The OISTE Foundation delegates the hosting and operations of the “Root CA” and the “Policy CAs” (and related certificate publication and verification services) to WISeKey.
+- The OISTE Foundation delegates the hosting and operations of the Root CA and the Wi-SUN Subordinate CAs (and related certificate publication services) to WISeKey.
 - The “Issuing CAs” (and related certificate publication and verification services) are hosted and operated by WISeKey (except for the cases of technically-constrained CAs, which could be hosted by their owners). These participants are allowed to delegate the hosting and operation to WISeKey only; other delegations or outsourcing are only permitted after a security assessment and a formal authorization.
 - Registration Authorities and Registration Authority Points are appointed by WISeKey. Registration Authorities are not allowed to delegate their operations to other parties without the approval and direct supervision of WISeKey.
 
@@ -780,8 +832,8 @@ Physical access control for all the authorized persons accessing OWGTM’s syste
 Roles requiring Separation of duties include at least the following:
 - Any activity involved in the operation of a Root Certification Authority.
 - Enabling a CA into a production status (CA Ceremony procedures)
-- Issuance, or revocation of CA Certificates
-- Validation of information and issuance of ECHONET Subordinate CA Certificates, and the authorisation of a Manufacturer to enrol ECHONET Device Certificates
+- Issuance or retirement of CA Certificates
+- Validation of information and issuance of Wi-SUN Subordinate CA Certificates, and the authorisation of a Manufacturer to enrol Wi-SUN IDevIDs, including the configuration of the Private Enterprise Number arc constraint of section 7.1.5
 
 ## 5.3 Personnel controls
 
@@ -803,7 +855,7 @@ The Human Resource Department conducts verification checks on permanent staff at
 
 ### 5.3.3 Training requirements
 
-Personnel directly involved in OWGTM, including “Issuing CAs” operated by third parties and Registration Authorities, will follow an internal training plan adapted to their assigned attributions. This training will be compliant with industry regulations and with the ECHONET Requirements, as applicable.
+Personnel directly involved in OWGTM, including “Issuing CAs” operated by third parties and Registration Authorities, will follow an internal training plan adapted to their assigned attributions. This training will be compliant with industry regulations and with the Wi-SUN Requirements, as applicable.
 
 ### 5.3.4 Retraining frequency and requirements
 
@@ -849,12 +901,12 @@ OWGTM records in their servers all events related to:
   1. Key generation, backup, storage, recovery, archival, and destruction as captured by procedure documentation; and
   2. Cryptographic device lifecycle management events as captured by procedure documentation.
 - CA and Subscriber Certificate lifecycle management events, limited to:
-  1. Certificate requests and revocation as captured by CA logs;
+  1. Certificate requests, issuance decisions and cessation-of-issuance decisions as captured by CA logs;
   2. Verification activities
   3. Date, time, phone number used, persons spoken to, and end results of verification telephone calls as captured by registration officers;
   4. Acceptance and rejection of certificate requests as captured by CA logs;
   5. Issuance of Certificates as captured by CA logs
-  6. Generation of Certificate Revocation Lists as may be captured by CA logs (NB CRLs are not retained, only the record of its generation)
+  6. Issuance of compromise and retirement notices under section 4.9.1, as captured by CA and repository logs
 - Security events, including:
   1. Successful and unsuccessful PKI system access attempts as captured by operating system logs;
   2. Major PKI and security system actions performed as captured by operational logs;
@@ -915,9 +967,9 @@ The information and events archived are:
 
 ### 5.5.2 Retention period for archive
 
-Archived records and audit logs are kept Records are retained for at least the validity of the involved certificates.
+Archived records and audit logs are retained for at least the period stated below.
 
-For the particular case of ECHONET certificates, the CA retains the records listed in section 5.5.1 for at least 7 years after the expiry or revocation of the corresponding certificate, consistent with section 6.3.1.
+Wi-SUN IDevIDs do not expire and are not revoked, so a retention period expressed as a term after expiry or revocation would never commence. For Wi-SUN certificates the CA therefore retains the records listed in section 5.5.1 for the operational life of the issuing Certification Authority, and for at least 7 years after that Certification Authority is retired under section 4.9.1.2.
 
 ### 5.5.3 Protection of archive
 
@@ -947,7 +999,7 @@ Integrity checks are performed automatically if the archive includes a digital s
 
 OWGTM requires the creation of new keys for a CA needing to renew its certificate. Only in exceptional cases it can be accepted to repeat a CA Creation Ceremony maintaining the same keys created in a Hardware Security Module for a previous ceremony, in order to amend any error in the process.
 
-When creating a new certificate for an entity, the validity period applied to this certificate will be constrained to the validity of the keys of the Certification Authority issuing it.
+In the Wi-SUN hierarchy no certificate expires, so key changeover is driven by the issuance limit of section 6.3.2 rather than by an approaching expiry date. A Wi-SUN Subordinate CA reaching that limit ceases issuing; a successor Subordinate CA is created with a fresh key pair, and Manufacturers served by the retired CA are enrolled under the successor. The retired CA certificate and the IDevIDs beneath it remain valid and require no action from relying parties.
 
 ## 5.7 Compromise and disaster recovery
 
@@ -965,13 +1017,21 @@ The following subsections disclose the procedures executed in such these events.
 
 If the hardware or software resources are altered or suspected to have been altered, the OWGTM will stop normal operations until a secure environment is established. In parallel, an audit will be conducted in order to identify the cause and stipulate the necessary actions to avoid future iterations.
 
-In the event digital certificates are issued during the uncertainty period and a risk exists that these certificates could be compromised, then those certificates will be revoked and subscribers will be notified of the need to reissue their certificates.
+In the event digital certificates are issued during the uncertainty period and a risk exists that these certificates could be compromised, the OWGTM will identify the affected certificates, notify the subscribers, and act under section 4.9.1. Wi-SUN IDevIDs issued in that period cannot be revoked; the notice identifies them so that network operators can exclude the affected devices.
 
 ### 5.7.3 Entity private key compromise procedures
 
-In the case a private key is compromised in the OWGTM architecture and in addition to stipulations in section 5.7.2, the subordinated entities depending on the compromised private key will be notified of this event and the necessary actions will be undertaken.
+This section is the one a Wi-SUN network operator should read first, because the usual remedy is unavailable: a compromised CA private key in the Wi-SUN hierarchy **cannot be contained by revoking its certificate**. Every certificate it has issued remains cryptographically valid, and every certificate in the chain lacks the extensions a relying party would use to learn otherwise.
 
-All certificates issued by entities subordinated to the compromised key from the time of the key’s compromise and the certificate’s revocation will be revoked, and the involved parties notified as stipulated in this CPS. Additional steps to re-issue the necessary certificates will be taken.
+Where a private key is compromised, or suspected to be compromised, in the Wi-SUN hierarchy, the following are executed in addition to the stipulations of section 5.7.2:
+
+1. **Cease issuance immediately.** The affected Certification Authority stops issuing, within the deadline of section 4.9.5.
+2. **Destroy the key.** The compromised private key is destroyed under section 6.2.10, under dual control and with a recorded trace, so that it cannot be used again by the OWGTM even inadvertently.
+3. **Notify.** The Wi-SUN Alliance, the PAA, every Manufacturer served by the affected Certification Authority, and every network operator known to the OWGTM to rely on the affected certificates are notified within the deadline of section 4.9.5.
+4. **Publish.** A notice is published in the repository identified in section 2.1, identifying the affected Certification Authority by subject name, Subject Key Identifier and certificate fingerprint, and identifying the affected end-entity population as precisely as the circumstances allow. Because operators anchor on the Root CA and not on the Subordinate CA, the notice states that operators should remove the retired Subordinate CA certificate from the chain material held by the Authentication Server, or otherwise configure the server to reject chains that pass through it. Where the affected Certification Authority is the Root CA itself, the notice states that the Root CA certificate must be removed from the trust store.
+5. **Re-establish the service.** Where the service continues, a successor Certification Authority is created under section 5.6, and Manufacturers are re-enrolled under it. Devices already carrying an IDevID from the compromised Certification Authority are not re-certified in the field; their replacement is a matter between the Manufacturer and the network operator.
+
+If the compromised key is the Root CA key, the trust anchor itself must be replaced. Every relying party has to provision the successor Root CA certificate into its Authentication Servers and Border Routers, and every device manufactured thereafter carries a chain to the new anchor. Devices already in the field cannot be migrated by the Certification Authority. The OWGTM states this plainly so that the consequence is understood before it is relied upon: the security of the Wi-SUN hierarchy rests on preventing Root CA key compromise, not on recovering from it.
 
 ### 5.7.4 Business continuity capabilities after a disaster
 
@@ -986,10 +1046,10 @@ The causes that could imply the termination of a Certification or Registration A
 
 In the case a Certification Authority under OWGTM is forced to terminate its activities, the minimum actions
 to be executed are:
-- Immediately after there’s a Termination decision, notify all certificate subscribers
-- Revoke all certificates under the CA.
+- Immediately after there’s a Termination decision, notify all certificate subscribers, the Wi-SUN Alliance, and every network operator known to rely on the affected certificates.
+- Cease all issuance, and destroy the Certification Authority private key under section 6.2.10. The certificates already issued **cannot be revoked** and remain cryptographically valid; termination does not invalidate them.
 - Inform all relying parties that have a registered direct relationship with that Certification Authority about the termination of the certificate service provision. This will also terminate the accreditation granted to the Certification Authority to operate under OWGTM.
-- Publish a public notice of the termination within the repository section of the affected CA’s web site, and undertake other public communications as deemed necessary to inform the wider relying party community.
+- Publish a notice of the termination in the repository identified in section 2.1, identifying the terminated Certification Authority by subject name, Subject Key Identifier and certificate fingerprint, so that network operators can remove the retired Subordinate CA certificate from the chain material held by the Authentication Server, or otherwise configure the server to reject chains that pass through it, and undertake other public communications as deemed necessary to inform the wider relying party community.
 
 In the case an OWGTM Root Certification Authority is terminated, this will imply the termination of the entire hierarchy dependent of that Root CA.
 
@@ -1036,21 +1096,35 @@ Public keys generated by, or for, the end-entities are sent to the Certification
 
 The public keys of all Certification Authorities operating under the OWGTM Trust Model are included in the corresponding certificate and published and can be freely downloaded from its repository which is located at http://www.oiste.org/repository.
 
-The ECHONET Root CA certificate is not distributed through browser or operating-system trust stores. Relying parties provision it as a trust anchor either from the OWGTM repository identified in section 2.1, or as embedded in the device or application by its manufacturer or integrator. The integrity of a trust anchor obtained from the repository must be verified against the fingerprint and Subject Key Identifier published in [Appendix B](#appendix-b-ca-hierarchies).
+The Wi-SUN Root CA certificate is not distributed through any public trust store. It is delivered in two directions, and the OWGTM supports both:
+
+- **To Manufacturers**, as a chain bundle containing every CA certificate between the IDevID and the Root CA — the issuing MICA, the MCA where the three-tier shape is used — together with the Root CA certificate. The Manufacturer provisions this bundle into the device at manufacture, together with the IDevID and its private key, because a Wi-SUN node presents only its own certificate during EAP-TLS and must hold the remainder of the chain locally.
+- **To network operators**, for installation in the trust store of the Authentication Server and in the Border Router, so that an IDevID presented by a node can be validated to the anchor.
+- **To other Manufacturers and integrators**, for provisioning into devices that must perform node-to-node pairwise authentication with devices certified under this CP/CPS.
+
+On that last point the OWGTM states its position plainly. The Root CA identified in [Appendix B](#appendix-b-ca-hierarchies) is not cross-certified by any Wi-SUN Alliance root. A device certified under a different Wi-SUN PKI can therefore authenticate a peer certified under this one only if it has been provisioned with this Root CA certificate as a trust anchor. The OWGTM publishes the certificate for exactly that purpose and will supply it to any party that asks, but it makes **no representation** that devices certified under other PKIs are, or will be, so provisioned. A Manufacturer or operator that depends on cross-PKI node-to-node authentication should confirm the trust anchors provisioned in the device populations concerned before deployment.
+
+Both are obtained from the repository identified in section 2.1. The integrity of a trust anchor obtained from the repository MUST be verified against the SHA-256 fingerprint and Subject Key Identifier published in [Appendix B](#appendix-b-ca-hierarchies) before it is installed. This verification is the only protection available: because the hierarchy publishes no revocation information, an operator that installs the wrong anchor has no mechanism that will later correct it.
 
 ### 6.1.5 Key sizes
 
-Certificates issued under this CP/CPS use elliptic-curve keys: NIST P-256 or P-384 for ECHONET Subordinate CAs and ECHONET Device Certificates. The Root CA identified in [Appendix B](#appendix-b-ca-hierarchies) holds a NIST P-256 key.
+Every certificate in the Wi-SUN hierarchy, at every tier, carries an elliptic-curve key on the NIST P-256 curve (secp256r1 / prime256v1), with the public key in uncompressed point format. The Root CA identified in [Appendix B](#appendix-b-ca-hierarchies) holds such a key.
 
-The only hashing algorithms permitted are SHA-256 and SHA-384. SHA-1 SHALL NOT be used in any certificate or CRL issued under the ECHONET hierarchy.
+SHA-256 is the only permitted hash. P-384, RSA and SHA-1 SHALL NOT be used anywhere in the Wi-SUN hierarchy.
+
+This uniformity is required by the Wi-SUN Requirements, so that a constrained FAN node can validate a chain with a single curve and a single hash implementation. It is narrower than the algorithm set the OWGTM permits elsewhere, and the narrower rule prevails here.
 
 ### 6.1.6 Public key parameters generation and quality checking
 
-The algorithm used in the ECHONET hierarchy for key generation is ECDSA over the NIST P-256 and P-384 curves. Key pairs are generated by a validated random source within the cryptographic module, and the CA rejects any public key that fails the quality checks of section 4.2.1.
+The algorithm used in the Wi-SUN hierarchy for key generation is ECDSA over the NIST P-256 curve. Key pairs are generated by a validated random source within the cryptographic module.
+
+The CA rejects any submitted public key that fails the quality checks of section 4.2.1, namely that the key is a point on the P-256 curve, is not the point at infinity, and has not previously been seen by the CA in another certificate request.
 
 ### 6.1.7 Key usage purposes (as per X.509 v3 key usage field)
 
-Key usage purposes for CA certificates is restricted to digital signature, CRL signature and certificate signing.
+Key usage for Wi-SUN CA certificates is restricted to certificate signing (`keyCertSign`). `cRLSign` is not asserted, because no CRL is issued anywhere in this hierarchy.
+
+A Wi-SUN IDevID asserts `digitalSignature`, and MAY additionally assert `keyAgreement`. Its extended key usage MUST contain `id-kp-wisun-fan-device` (1.3.6.1.4.1.45605.1) and `id-kp-clientAuth`.
 
 All subscriber certificates issued in the OWGTM contain the “KEY USAGE” and “EXTENDED KEY USAGE” attributes, as defined by the X.509v3 standard. More information is available in section 7 of this document.
 
@@ -1080,7 +1154,7 @@ Private key backup for end-user subscribers, if supported for a certain certific
 
 ### 6.2.5 Private key archival
 
-The CA shall not provide key archival services to subscribers. Private keys of expired or revoked CAs may be archived by being left in HSM or their backup. 
+The CA shall not provide key archival services to subscribers. Private keys of retired CAs are destroyed under section 6.2.10 rather than archived, since a retired CA certificate remains valid and its key must not remain usable.
 
 ### 6.2.6 Private key transfer into or from a cryptographic module
 
@@ -1092,7 +1166,7 @@ There’s no stipulation for Keys belonging to other PKI participants.
 
 CA or RA private keys held on hardware cryptographic modules are stored in an encrypted form supported by the HSM vendor.
 
-Private keys of ECHONET Device Certificates are generated and held in a hardware-backed key store (secure element, secure enclave or TPM) that prevents export of the private key in plaintext. Where a device cannot provide such a key store, the key must be held in an encrypted container and this limitation must be recorded by the Manufacturer and accepted by the PAA.
+Private keys of Wi-SUN IDevIDs are generated and held in a hardware-backed key store (secure element, secure enclave or TPM) that prevents export of the private key in plaintext. Where a device cannot provide such a key store, the key must be held in an encrypted container and this limitation must be recorded by the Manufacturer and accepted by the PAA.
 
 ### 6.2.8 Method of activating private key
 
@@ -1115,7 +1189,7 @@ The procedure to destroy a private key is initiated in the following cases:
 - The token or HSM containing the key has deteriorated to an extent that prevents normal usage
 - A lost or stolen token is found, and the keys it contained are suspected to be compromised
 
-A private key can be destroyed by the key owner or a legal representative. In such cases the corresponding certificate will be revoked, and the community will be notified. The procedure used to destroy the private key depends on the particular container holding it, being responsibility of the individual executing the destruction doing it in an appropriate way. In particular, for private keys associated to CAs, this task must be executed under dual control and appropriate tracking information must be recorded.
+A private key can be destroyed by the key owner or a legal representative. In such cases the corresponding certificate cannot be revoked; a notice is published under section 4.9.1 and the community is notified. The procedure used to destroy the private key depends on the particular container holding it, being responsibility of the individual executing the destruction doing it in an appropriate way. In particular, for private keys associated to CAs, this task must be executed under dual control and appropriate tracking information must be recorded.
 
 ### 6.2.11 Cryptographic Module Rating
 
@@ -1127,31 +1201,27 @@ This section includes additional stipulations regarding key pair management.
 
 ### 6.3.1 Public key archival
 
-Public keys in the OWGTM trust model are archived for a period of 7 years after the expiry or revocation of the corresponding digital certificate.
+Because no certificate in the Wi-SUN hierarchy expires or is revoked, public keys are archived for the period stated in section 5.5.2: the operational life of the issuing Certification Authority, and at least 7 years after it is retired.
 
 ### 6.3.2 Certificate operational periods and key pair usage periods
 
-The fully operational period for a certificate starts at the issuance and ends with the expiration or revocation of the certificate.
+The fully operational period for a certificate starts at issuance. No certificate in a Wi-SUN IDevID chain has a defined end to that period: none expires, and none is revoked.
 
-The validity period for key pairs is stipulated in the following table:
-
-| Certificate Type | Maximum Validity Period |
+| Certificate Type | Validity Period |
 | --- | --- |
-| Root CA (identified in [Appendix B](#appendix-b-ca-hierarchies)) | No scheduled expiration. The Root CA certificate carries a notAfter value of 31 December 9999, 23:59:59 UTC, the conventional encoding for a certificate with no well-defined expiry (RFC 5280 section 4.1.2.5), and therefore does not constrain the validity of the certificates beneath it |
-| ECHONET Subordinate CA | No scheduled expiration, on the same basis as the Root CA |
-| ECHONET Device Certificate | 20 years |
+| Root CA (identified in [Appendix B](#appendix-b-ca-hierarchies)) | No scheduled expiration. `notAfter` = 31 December 9999, 23:59:59 UTC (`99991231235959Z`) |
+| Wi-SUN Subordinate CA | No scheduled expiration. `notAfter` = `99991231235959Z` |
+| Wi-SUN IDevID | No scheduled expiration. `notAfter` = `99991231235959Z` |
 
-ECHONET Device Certificates are deliberately long-lived, because the appliances they identify (heat-pump water heaters, storage batteries, EV chargers and similar equipment) remain in service for fifteen years or more and have no reliable field mechanism for certificate renewal. A Manufacturer may request shorter validity for a given product line.
+This is not a choice of the OWGTM. The Wi-SUN Requirements listed in [Appendix D](#appendix-d-adopted-wi-sun-requirements) mandate that every certificate in an IDevID chain carries `notAfter` = `99991231235959Z`, the RFC 5280 encoding for a certificate with no well-defined expiry. A Wi-SUN FAN node may be installed in infrastructure with a service life measured in decades, has no assured route to certificate renewal in the field, and must be able to authenticate for as long as it operates.
 
-ECHONET Subordinate CA certificates are issued without a scheduled expiry, on the same basis as the Root CA, precisely so that the twenty-year validity of a device certificate is available for the whole operational life of the Subordinate CA. Were the Subordinate CA to carry a fixed lifetime, every device certificate issued in its final twenty years would be truncated to the residual life of its issuer, which would defeat the purpose of the long device validity stated above.
+Two consequences follow, and they are stated here because they govern the rest of this document:
+- **Renewal and re-key do not apply** to Wi-SUN IDevIDs (sections 4.6 and 4.7). A device that needs a different identity receives a new IDevID by a new issuance, not a renewal.
+- **A key cannot be retired by letting its certificate lapse.** A Subordinate CA is retired by the procedure of section 4.9.1.2, and a compromised key by the procedure of section 5.7.3. Both depend on notification and publication rather than on expiry or revocation.
 
-It must be understood that the validity period of a certificate can be limited by the validity of the issuing Certification Authority. In the ECHONET hierarchy neither the Root CA nor the Subordinate CAs impose such a limit, so a device certificate always receives its full stated validity.
+To bound the exposure that follows from an unbounded certificate lifetime, the OWGTM limits the period during which a **Subordinate CA key may be used to issue**: a Wi-SUN Subordinate CA SHALL cease issuing 10 years after its certificate was issued, at either tier, and a successor SHALL be established under section 5.6. The limit applies to an MCA in respect of the MICAs it certifies, and to a MICA in respect of the IDevIDs it issues. The retired certificate remains valid, and the certificates issued beneath it remain valid, but no further certificates are issued under that key.
 
-A Subordinate CA whose key is to be retired is not left to expire. It is subject to the key changeover procedure of section 5.6, after which it ceases issuing, and is revoked under section 4.9.1.2 once the certificates beneath it have been migrated or have themselves expired.
-
-The certificates are operational for signature validation and decryption from the issuance to the end of the archival period stated in 6.3.1.
-
-The operational period of subscriber certificates can be restricted by the ECHONET Requirements listed in [Appendix D](#appendix-d-adopted-echonet-requirements).
+The certificates are operational for signature validation from issuance to the end of the archival period stated in 6.3.1.
 
 ## 6.4 Activation data
 
@@ -1163,7 +1233,7 @@ Activation data for Certification Authorities are generated and stored in crypto
 
 Activations requiring a multi-person control will be enforced by splitting the activation data in several tokens.
 
-For ECHONET Device Certificates, the private key is generated inside the device secure element or equivalent hardware key store, or injected in a controlled manufacturing environment. In either case:
+For Wi-SUN IDevIDs, the private key is generated inside the device secure element or equivalent hardware key store, or injected in a controlled manufacturing environment. In either case:
 - The key store must enforce access control such that the private key can only be used by the device firmware for the purposes stated in section 1.4.1.
 - Where keys are injected in a factory, the injection environment must be physically and logically controlled by the Manufacturer, key material must be transported encrypted, and any copy held outside the device must be destroyed once injection is confirmed.
 - No shared or default activation secret may be used across devices.
@@ -1228,24 +1298,41 @@ In particular, the server used for the OWGTM Root CA are off-line systems, physi
 
 No stipulation.
 
-# 7. CERTIFICATE AND CRL PROFILES
+# 7. CERTIFICATE PROFILES
 
 All certificates issued under the OWGTM are compliant to:
 - ITU-T Recommendation X.509 (1997): Information Technology - Open Systems Interconnection - The Directory: Authentication Framework, June 1997
 - RFC 5280: Internet X.509 Public Key Infrastructure Certificate and CRL Profile, April 2002 (“RFC 5280”).
+- RFC 5480: Elliptic Curve Cryptography Subject Public Key Information, March 2009.
+- RFC 4108: Using CMS to Protect Firmware Packages, August 2005, for the `id-on-hardwareModuleName` other name form.
+- IEEE 802.1AR: Secure Device Identity, for the concept of an Initial Device Identifier (IDevID).
+
+In addition, every certificate in a Wi-SUN IDevID chain conforms to the Wi-SUN Requirements listed in [Appendix D](#appendix-d-adopted-wi-sun-requirements), which for the profile below means sections 6.5.1 and 6.5.1.1 of the Wi-SUN FAN Technical Profile Specification. Where this section and an adopted Wi-SUN Requirement differ, the Wi-SUN Requirement prevails.
 
 ## 7.1 Certificate profile
 
 The OWGTM defines different certificate profiles corresponding to the allowed certificate types issued under the different hierarchies.
 
 The general certificate profiles are:
-- ECHONET Root CA Certificate: self-signed trust anchor of the ECHONET hierarchy.
-- ECHONET Subordinate CA Certificate: issues ECHONET Device Certificates, technically constrained as stated in section 7.1.5.
-- ECHONET Device Certificate: identifies an individual ECHONET device and is used for client authentication and key agreement.
+- Wi-SUN Root CA Certificate: self-signed trust anchor of the Wi-SUN hierarchy.
+- Wi-SUN Manufacturer CA (MCA) Certificate: subordinate to the Root CA; issues MICA certificates and never issues end-entity certificates.
+- Wi-SUN Manufacturer Issuing CA (MICA) Certificate: issues Wi-SUN IDevIDs.
+- Wi-SUN IDevID: identifies an individual Wi-SUN device.
+
+Where this document refers to a **Wi-SUN Subordinate CA** without qualification, the term covers both the MCA and the MICA tiers.
+
+Two chain shapes are permitted, and a Manufacturer may be served by either:
+
+| Shape | Chain | Certificates in the chain |
+| --- | --- | --- |
+| Two-tier | Root CA → MICA → IDevID | 3 |
+| Three-tier | Root CA → MCA → MICA → IDevID | 4 |
+
+The three-tier shape suits a Manufacturer that wants a branded Certification Authority of its own beneath which several issuing CAs operate, for example one per production site or product family. Neither shape may be extended: the Wi-SUN Requirements limit a chain to four certificates including the Root CA and the IDevID, and the `pathLenConstraint` values stated in section 7.1.2 hold every chain within that limit. An MCA SHALL NOT be issued beneath another MCA; that rule is enforced by configuration under section 7.1.5 rather than by the certificate, and is tested at each assessment under section 8.4.
 
 The different profiles are mainly differentiated by the appropriate combination of values in the "Key Usage", "Extended Key Usage" and/or the use of particular Policy Identifiers.
 
-The OWGTM must ensure that the certificate profiles are aligned with this section and with any applicable ECHONET Requirement.
+The OWGTM must ensure that the certificate profiles are aligned with this section and with any applicable Wi-SUN Requirement.
 
 ### 7.1.1 Version number(s)
 
@@ -1253,84 +1340,113 @@ All certificates in the OWGTM conform to X.509 Version 3.
 
 ### 7.1.2 Certificate extensions
 
-The following extensions are used in the ECHONET hierarchy. Any extension not listed is not included.
+The following extensions are used in the Wi-SUN hierarchy. Any extension not listed is not included. The profile restates the requirements of the Wi-SUN FAN Technical Profile Specification sections 6.5.1 and 6.5.1.1, as adopted in [Appendix D](#appendix-d-adopted-wi-sun-requirements).
 
 **Root CA Certificate** (existing certificate, identified in [Appendix B](#appendix-b-ca-hierarchies))
 
 | Extension | Critical | Value |
 | --- | --- | --- |
 | basicConstraints | Yes | cA = TRUE, no pathLenConstraint |
-| keyUsage | Yes | digitalSignature, keyCertSign, cRLSign |
-| subjectKeyIdentifier | No | `C5:3B:1F:4C:A7:B9:26:D1:FD:B4:85:29:3F:74:75:C9:D3:96:CC:89` |
-| authorityKeyIdentifier | No | Same as the subjectKeyIdentifier, the certificate being self-signed |
+| keyUsage | Yes | keyCertSign |
+| subjectKeyIdentifier | No | `73:3C:14:C9:31:9B:53:C5:1F:E2:D8:55:3A:8E:51:C3:AE:B0:5A:4F` |
 
-The Root CA certificate was issued on 12 August 2024 and pre-dates this CP/CPS. This profile is descriptive of that certificate and is not a specification for a future issuance.
+The Root CA certificate was issued on 6 March 2025, the day after this CP/CPS took effect, and under it. This profile records the certificate as issued. It satisfies the chain requirements of the Wi-SUN Requirements: a P-256 key, an ecdsa-with-SHA256 signature and a notAfter value of `99991231235959Z`. It asserts `keyCertSign` alone: neither `cRLSign` nor `digitalSignature` is present, consistent with a hierarchy that issues no CRL. It carries no authorityKeyIdentifier extension.
 
-**ECHONET Subordinate CA Certificate**
-
-| Extension | Critical | Value |
-| --- | --- | --- |
-| basicConstraints | Yes | cA = TRUE, pathLenConstraint = 0 |
-| keyUsage | Yes | keyCertSign, cRLSign |
-| certificatePolicies | No | 2.16.756.5.14.8.3.2 |
-| subjectKeyIdentifier | No | Hash of the public key |
-| authorityKeyIdentifier | No | Key identifier of the ECHONET Root CA |
-| cRLDistributionPoints | No | HTTP URI of the Root CA CRL |
-| authorityInfoAccess | No | HTTP URI of the Root CA certificate |
-| nameConstraints | Yes | As stated in section 7.1.5, for manufacturer-operated Subordinate CAs |
-
-**ECHONET Device Certificate**
+**Wi-SUN Manufacturer CA (MCA) Certificate**
 
 | Extension | Critical | Value |
 | --- | --- | --- |
-| basicConstraints | Yes | cA = FALSE |
-| keyUsage | Yes | digitalSignature, keyAgreement |
-| extKeyUsage | No | id-kp-clientAuth (1.3.6.1.5.5.7.3.2) |
-| certificatePolicies | No | 2.16.756.5.14.8.3.3 |
+| basicConstraints | Yes | cA = TRUE, **pathLenConstraint = 1** |
+| keyUsage | Yes | keyCertSign |
+| certificatePolicies | No | 2.16.756.5.14.8.4.2 |
 | subjectKeyIdentifier | No | Hash of the public key |
-| authorityKeyIdentifier | No | Key identifier of the issuing ECHONET Subordinate CA |
-| cRLDistributionPoints | No | HTTP URI of the Subordinate CA CRL |
-| authorityInfoAccess | No | HTTP URI of the Subordinate CA certificate |
+| authorityKeyIdentifier | No | keyIdentifier field only, carrying the key identifier of the Root CA |
 
-ECHONET Device Certificates do not contain a subjectAltName extension, a dNSName, an iPAddress or an rfc822Name.
+`pathLenConstraint = 1` permits at most one further CA certificate beneath the MCA, which holds any chain through an MCA to four certificates and so within the limit of the Wi-SUN Requirements. It does not by itself distinguish what that subordinate CA is used for: the rule that the certificate beneath an MCA is a MICA, and never another MCA, is a policy rule enforced by the configuration constraint of section 7.1.5 and verified at assessment under section 8.4, not by this extension.
+
+**Wi-SUN Manufacturer Issuing CA (MICA) Certificate**
+
+| Extension | Critical | Value |
+| --- | --- | --- |
+| basicConstraints | Yes | cA = TRUE, **pathLenConstraint = 0** |
+| keyUsage | Yes | keyCertSign |
+| certificatePolicies | No | 2.16.756.5.14.8.4.3 |
+| subjectKeyIdentifier | No | Hash of the public key |
+| authorityKeyIdentifier | No | keyIdentifier field only, carrying the key identifier of the issuing CA, which is the Root CA in the two-tier shape and the MCA in the three-tier shape |
+
+`pathLenConstraint = 0` permits no further CA certificate beneath the MICA: it may issue end-entity certificates only.
+
+Neither an MCA nor a MICA certificate SHALL contain a cRLDistributionPoints extension, nor an authorityInfoAccess extension with an `id-ad-ocsp` access method, because no certificate in a Wi-SUN IDevID chain is subject to revocation (see section 4.9). `cRLSign` is not asserted at either tier, as neither issues a CRL.
+
+**Wi-SUN IDevID**
+
+| Field or extension | Critical | Value |
+| --- | --- | --- |
+| version | — | v3 |
+| serialNumber | — | Unique within the issuing CA, as stated in section 3.1.5 |
+| signature | — | ecdsa-with-SHA256, matching the outer signatureAlgorithm |
+| issuer | — | Copied from the subject of the issuing Wi-SUN Subordinate CA |
+| notBefore | — | Time of issuance, UTC |
+| notAfter | — | `99991231235959Z` (GeneralizedTime) |
+| subject | — | Empty. The device identity is carried in subjectAltName |
+| subjectPublicKeyInfo | — | id-ecPublicKey, secp256r1, uncompressed point (RFC 5480) |
+| issuerUniqueID, subjectUniqueID | — | Absent |
+| basicConstraints | No | Absent, or present with cA = FALSE |
+| keyUsage | Yes | digitalSignature; keyAgreement MAY additionally be asserted |
+| extKeyUsage | No | `id-kp-wisun-fan-device` (1.3.6.1.4.1.45605.1) and id-kp-clientAuth (1.3.6.1.5.5.7.3.2) |
+| subjectAltName | **Yes** | Exactly one `otherName` of type `id-on-hardwareModuleName` (1.3.6.1.5.5.7.8.4), as detailed in section 7.1.4 |
+| authorityKeyIdentifier | No | keyIdentifier field only |
+| subjectKeyIdentifier | No | Optional; hash of the public key where present |
+| certificatePolicies | No | 2.16.756.5.14.8.4.4 |
+
+A Wi-SUN IDevID SHALL NOT contain a cRLDistributionPoints extension, nor an authorityInfoAccess extension of any kind. Revocation extensions are prohibited by the Wi-SUN Requirements; the `caIssuers` access method is omitted because the complete chain, including the Root CA certificate, is provisioned into the device at manufacture as stated in section 6.1.4, and because the certificate is carried in EAP-TLS over a constrained radio link where size matters.
+
+The subjectAltName extension is marked critical. Because the subject is empty, a relying party that cannot process the extension must reject the certificate rather than treat it as unnamed.
+
+An empty subject is permitted by RFC 5280 section 4.1.2.6 precisely on the condition satisfied here, that subjectAltName is present and critical. Some Authentication Server products have nonetheless handled empty-subject client certificates poorly. Operators should confirm that their Authentication Server accepts a client certificate with an empty subject, a critical subjectAltName and a `notAfter` value of `99991231235959Z` before deploying a device population, since none of those can be changed afterwards.
 
 ### 7.1.3 Algorithm object identifiers
 
-The ECHONET hierarchy uses ECDSA exclusively. The permitted signature algorithm identifiers are:
+The Wi-SUN hierarchy uses ECDSA over NIST P-256 exclusively, at every tier.
 
 | Certificate | Signature algorithm (applied by its issuer) | Subject public key |
 | --- | --- | --- |
 | Root CA (existing, self-signed) | ecdsa-with-SHA256 (1.2.840.10045.4.3.2) | id-ecPublicKey on prime256v1 / secp256r1 (NIST P-256) |
-| ECHONET Subordinate CA | ecdsa-with-SHA256 (1.2.840.10045.4.3.2), being the algorithm of the signing Root CA | id-ecPublicKey on secp256r1 or secp384r1 |
-| ECHONET Device Certificate | ecdsa-with-SHA256 (1.2.840.10045.4.3.2), or ecdsa-with-SHA384 (1.2.840.10045.4.3.3) where the issuing Subordinate CA holds a P-384 key | id-ecPublicKey on secp256r1 or secp384r1 |
+| Wi-SUN MCA and MICA | ecdsa-with-SHA256 (1.2.840.10045.4.3.2) | id-ecPublicKey on secp256r1 |
+| Wi-SUN IDevID | ecdsa-with-SHA256 (1.2.840.10045.4.3.2) | id-ecPublicKey on secp256r1, uncompressed point format |
 
-The Root CA holds a P-256 key, so the effective security level of every chain built to this trust anchor is that of P-256, irrespective of the curve used lower in the hierarchy.
-
-No certificate issued beneath the Root CA under this CP/CPS uses RSA keys or the SHA-1 hash algorithm. The Root CA certificate itself pre-dates this CP/CPS and its algorithms are recorded in [Appendix B](#appendix-b-ca-hierarchies).
+No other curve, signature algorithm or hash is permitted anywhere in a Wi-SUN IDevID chain. In particular P-384, RSA and SHA-1 SHALL NOT be used. This is a requirement of the Wi-SUN Requirements and not a choice of the OWGTM, and it is the reason the algorithm agility otherwise allowed in the OWGTM does not apply here.
 
 ### 7.1.4 Name forms
 
-For CA certificates, the Subject Name combines appropriate values of commonName, organizationName and countryName to form an identifier that uniquely identifies the CA and distinguishes it from other CAs in the Trust Model.
+**CA certificates.** The Subject Name combines appropriate values of commonName, organizationName and countryName to form an identifier that uniquely identifies the CA and distinguishes it from other CAs in the Trust Model.
 
-For ECHONET Device Certificates, the Subject Name is composed as follows:
+**Wi-SUN IDevIDs.** The subject field is empty. A Wi-SUN device is identified by a single `otherName` entry in the critical subjectAltName extension, of type `id-on-hardwareModuleName` (1.3.6.1.5.5.7.8.4), whose HardwareModuleName structure is composed as follows:
 
-| Attribute | Presence | Content |
-| --- | --- | --- |
-| countryName (C) | Required | ISO 3166-1 alpha-2 code of the Manufacturer's jurisdiction of incorporation |
-| organizationName (O) | Required | Legal name of the Manufacturer, as verified under section 3.2.2 |
-| organizationalUnitName (OU) | Required | `MFRCODE:` followed by the three-byte Manufacturer Code (EPC 0x8A), in uppercase hexadecimal, octets separated by colons |
-| organizationalUnitName (OU) | Required | `PRODCODE:` followed by the Product Code (EPC 0x8C) assigned by the Manufacturer |
-| commonName (CN) | Required | The Production Number (EPC 0x8D) of the individual device, unique within the Product Code |
+| Component | Content |
+| --- | --- |
+| `hwType` | An OBJECT IDENTIFIER beneath the IANA Private Enterprise Number (PEN) arc of the Manufacturer, of the form `1.3.6.1.4.1.<PEN>.<subtypes>`, where the subtypes identify the product model and, where the Manufacturer chooses, its hardware version. The Manufacturer's entitlement to the PEN is verified under section 3.2.2 |
+| `hwSerialNum` | An OCTET STRING carrying the serial number of the individual device, unique within the `hwType` value, taken from the Manufacturer's production record under section 3.2.3 |
 
-The combination of Manufacturer Code, Product Code and Production Number is unique across the ECHONET hierarchy and satisfies the uniqueness requirement of section 3.1.5.
+Further `subjectAltName` entries MAY be present but are ignored for Wi-SUN path validation and SHALL NOT be relied upon. The OWGTM does not include any.
+
+**Certificate serial numbers.** The serialNumber of a Wi-SUN IDevID is generated from a random source within the issuing cryptographic module and contains at least 12 octets of entropy. Sequential serial numbers, although permitted by the Wi-SUN Requirements, are not used by the OWGTM, because a random serial is simpler to warrant as unique across the manufacturing volumes concerned.
 
 ### 7.1.5 Name constraints
 
 The Root CA identified in [Appendix B](#appendix-b-ca-hierarchies) does not assert name constraints.
 
-An ECHONET Subordinate CA operated by a Manufacturer SHALL be technically constrained by a critical nameConstraints extension whose permittedSubtrees limit the directoryName to the Manufacturer's own organizationName and countryName, and whose excludedSubtrees exclude dNSName, iPAddress and rfc822Name in their entirety. The Subordinate CA SHALL additionally enforce, by configuration, that it issues only for the Manufacturer Codes assigned to that Manufacturer.
+The nameConstraints extension is **not used** anywhere in the Wi-SUN hierarchy. It cannot serve its purpose here: a Wi-SUN IDevID has an empty subject, so a `directoryName` constraint has nothing to act on, and RFC 5280 defines no constraint form for the `otherName` that actually carries the identity.
 
-Subordinate CAs operated by WISeKey may be constrained by the same means where a Manufacturer requests it.
+A Wi-SUN Subordinate CA operated by a Manufacturer is instead **technically constrained by configuration**, at whichever tier it occupies:
+- a **MICA** is configured to issue only IDevIDs whose `hwType` lies beneath the IANA Private Enterprise Number arc assigned to that Manufacturer, and to reject any request outside that arc;
+- an **MCA** is configured to certify only MICAs belonging to that same Manufacturer, and never to certify a further MCA. The `pathLenConstraint` of section 7.1.2 bounds the depth of any resulting chain, but neither part of this rule is expressed in the certificate; both are configuration.
+
+These constraints are not expressed in the certificate in a form a relying party can evaluate, and are therefore not enforceable by one. They are verified instead:
+- at accreditation, before the Subordinate CA Certificate is issued, under section 3.2.2; and
+- at every assessment under section 8.4, which tests the configuration against a request outside the permitted arc.
+
+Subordinate CAs operated by WISeKey are configured with the same constraints for each Manufacturer they serve, at whichever tier they occupy.
 
 ### 7.1.6 Certificate policy object identifier
 
@@ -1350,27 +1466,11 @@ The “Certificate Policy” extension identifies the Policy that the OWGTM assi
 
 ## 7.2 CRL profile
 
-In general, CRLs generated under the OWGTM Trust Model are compliant with RFC 5280 (Internet X.509 Public Key Infrastructure Certificate and CRL Profile, April 2002).
-
-### 7.2.1 Version number(s)
-
-CRLs conforming to X.509 Version 2 are supported in the OWGTM.
-
-### 7.2.2 CRL and CRL entry extensions
-
-CRL must include the following minimum extensions, as defined by the above standard:
-- CRL Number
-- Authority Key Identifier
-- Revocation date
-- Reason code
-
-The permitted values of the "Reason Code" are those of RFC 5280, and their use is appropriately communicated in the Subscriber Agreement.
-
-In particular, the use of the reason "keyCompromise", when the revocation is done by the CA or RA, is regulated as described in section 4.9.12.
+Not applicable. No Certificate Revocation List is issued for Wi-SUN IDevIDs or for any CA certificate in their chain, because those certificates are not subject to revocation. See section 4.9.
 
 ## 7.3 OCSP profile
 
-Not applicable. No OCSP responder is operated for the ECHONET hierarchy; revocation status is published exclusively by CRL, as stated in section 7.2.
+Not applicable. No OCSP responder is operated for the Wi-SUN hierarchy, and the corresponding extension is prohibited in the certificate profile of section 7.1.2.
 
 # 8. COMPLIANCE AUDIT AND OTHER ASSESSMENTS
 
@@ -1394,7 +1494,9 @@ The assessor will be selected when an audit or assessment is required. Any compa
 
 A self-assessment under section 8.1 is prepared by the assessed entity itself, and must be signed by a person empowered to bind that entity.
 
-The ECHONET hierarchy is not assessed under WebTrust or any equivalent browser root-program audit scheme. Assessment is performed against this CP/CPS by the PAA, or by an assessor it appoints, and the resulting Audit Statement Report is published as stated in section 8.6. The qualification criteria for appointed assessors will be set out in the internal audit scheme announced in section 8.1.
+Assessment is performed against this CP/CPS by the PAA, or by an assessor it appoints, and the resulting Audit Statement Report is published as stated in section 8.6. The qualification criteria for appointed assessors will be set out in the internal audit scheme announced in section 8.1.
+
+The Wi-SUN Alliance approves the Certification Authorities permitted to issue Wi-SUN IDevIDs but does not evaluate or audit them. It likewise provides no policy or procedure evaluation of a Certification Authority operated by a Manufacturer, treating that as a matter between the Manufacturer and its own customers. The assessments described in this section are therefore the sole assurance offered as to the practices of the Certification Authorities operating under this CP/CPS, including the manufacturer-operated Subordinate CAs admitted under section 8.4.
 
 ## 8.3 Assessor's relationship to assessed entity
 
@@ -1406,7 +1508,13 @@ The OWGTM establishes the need for audit and accreditation of the following:
 - The Root CA and the Subordinate CAs owned or operated by WISeKey. These services are assessed as stated in sections 8.1 and 8.2.
 - Subordinate CAs owned and/or operated by Manufacturers or other third parties, and Registration Authorities. These services must meet the practices stipulated in this CP/CPS and the certificate policies they are entitled to issue under. A manufacturer-operated Subordinate CA is admitted only after the initial self-assessment of section 8.1 has been accepted and the OWGTM has completed its own accreditation assessment of the participant.
 
-A participant that fails to submit a self-assessment when due, or that refuses or obstructs an assessment conducted or commissioned by the PAA, is in breach of this CP/CPS. The PAA may suspend its issuance rights under section 8.5 and, where the breach is not remedied, the Subordinate CA Certificate is revoked under section 4.9.1.2.
+Because the Private Enterprise Number constraint of section 7.1.5 is enforced by configuration rather than by a certificate extension, every assessment of a Subordinate CA SHALL include a functional test of that constraint, appropriate to its tier:
+- for a **MICA**, the assessor submits an enrolment request carrying a `hwType` outside the Manufacturer's recorded arc and confirms that it is rejected;
+- for an **MCA**, the assessor submits a request to certify a Subordinate CA that does not belong to that Manufacturer and confirms that it is rejected.
+
+The result is recorded in the assessment report.
+
+A participant that fails to submit a self-assessment when due, or that refuses or obstructs an assessment conducted or commissioned by the PAA, is in breach of this CP/CPS. The PAA may suspend its issuance rights under section 8.5 and, where the breach is not remedied, the Subordinate CA is retired under section 4.9.1.2.
 
 ## 8.5 Actions taken as a result of deficiency
 
@@ -1420,7 +1528,7 @@ All assessment results will be conformed as:
 - Detailed Report. This document includes all the topics covered by the executed assessment program in detail. The detailed report is deemed private and only available to the following parties:
   - Certification Authority owner
   - OWGTM Policy Approval Authority
-  - The ECHONET Consortium, upon reasoned request
+  - The Wi-SUN Alliance, upon reasoned request
 - Audit Statement Report. This document only includes a formal statement from the auditor and reflects the result of the assessment, listing the topics covered and a global result. The summarized report is deemed public and is only published in the OWGTM and Issuing Repository.
 
 # 9. OTHER BUSINESS AND LEGAL MATTERS
@@ -1430,6 +1538,8 @@ This section includes the stipulations for business and legal matters and should
 ## 9.1 Fees
 
 The fees applicable to the Certification Services covered by this CPS can be subject to variation according to specific agreement with the participants in the service. The detailed information of the fees is made available for the subscribers or other affected parties before enabling such services.
+
+For Wi-SUN IDevIDs the commercial sequence is fixed by the Wi-SUN programme and precedes any issuance: the Manufacturer obtains its Proof of Wi-SUN Membership from the Alliance; an account is established with WISeKey and a service agreement is negotiated, which specifies the means by which certificate requests and issued certificates are exchanged and, where applicable, the creation of a dedicated Subordinate CA; the Manufacturer places a purchase order; WISeKey invoices; and certificates are issued once payment is made. A Manufacturer may hold more than one account, and a single service agreement may cover several of them.
 
 ### 9.1.1 Certificate issuance or renewal fees
 
@@ -1506,7 +1616,9 @@ For end entities, the certificate subscribers are responsible to protect their o
 
 ## 9.4 Privacy of personal information
 
-The Issuing CAs operating in the OWGTM must publish their own Privacy Policy and communicate it adequately to the certificate subscribers. This Policy must be compliant with the applicable requirements for international commercial services, and specifically with the ECHONET Requirements, the European General Data Protection Regulation (GDPR) and, for subscribers established in Japan, the Act on the Protection of Personal Information (APPI).
+The Issuing CAs operating in the OWGTM must publish their own Privacy Policy and communicate it adequately to the certificate subscribers. This Policy must be compliant with the applicable requirements for international commercial services, and specifically with the Wi-SUN Requirements and the European General Data Protection Regulation (GDPR).
+
+Wi-SUN IDevIDs contain no personal data. The subject field is empty, and the hardware module name identifies a manufactured device, not a person. Personal data processed under this CP/CPS is limited to the contact details of the natural persons who act for a Manufacturer during enrolment.
 
 In general, it must be understood that the CAs act as a “Data Controller” and the RAs and other parties involved in certificate management are “Data Processors” or, in certain occasions, “Joint Controllers”.
 
@@ -1530,7 +1642,7 @@ The OWGTM ensures the compliance of the legal obligations for Certification Auth
 
 In order to perform the certification provisioning service, the Issuing CAs and other parties interacting with certificate subscribers are required to obtain the consent to use the subscriber’s personal information.
 
-This consent is understood by the explicit acceptance of the “ECHONET Certificate Subscriber Agreement” by the Manufacturer during the certificate request process. This acceptance is recognized by the subscriber’s acceptance to obtain and install the certificate.
+This consent is understood by the explicit acceptance of the “Wi-SUN Certificate Subscriber Agreement” by the Manufacturer during the certificate request process. This acceptance is recognized by the subscriber’s acceptance to obtain and install the certificate.
 
 ### 9.4.6 Disclosure pursuant to judicial or administrative process
 
@@ -1569,7 +1681,8 @@ All CAs in the OWGTM will:
 - Manage their keys in accordance with Section 6.2 Private Key Protection and Cryptographic Module Engineering Controls.
 - Ensure the availability of a Certificate Directory and CRL
 - Promptly revoke a certificate if required.
-- In particular and where applicable, CAs will respect the warranties and obligations set by the ECHONET Requirements.
+- In particular, CAs warrant that every certificate they issue in a Wi-SUN IDevID chain conforms to the certificate profile of section 7.1, and thereby to the Wi-SUN Requirements adopted in [Appendix D](#appendix-d-adopted-wi-sun-requirements).
+- CAs do **not** warrant that an issued certificate can be revoked, suspended or invalidated, because no such mechanism exists in this hierarchy. The remedies available to the CA are those stated in section 4.9.
 
 ### 9.6.2 RA representations and warranties
 
@@ -1591,17 +1704,31 @@ The Subscribers of certificates issued under the OWGTM must warrant that:
 - An obligation and warranty that it will not install and use the Certificate(s) until it has reviewed and verified the accuracy of the data in each Certificate.
 - An obligation and warranty to install the Certificate and its associated Private Key only in the device that the Certificate identifies, and to use the Certificate solely in compliance with all applicable laws, solely for authorized company business, and solely in accordance with the Subscriber Agreement.
 - The Certificate is being used exclusively for authorized and legal purposes, consistent with this CPS.
-- Each digital signature created using the private key corresponding to the public key listed in the Certificate is the digital signature of the Subscriber and the Certificate has been accepted and is operational (not expired or revoked) at the time the digital signature is created.
-- The Subscriber is an end-user Subscriber and not a CA, and is not using the private key corresponding to any public key listed in the Certificate for purposes of digitally signing any Certificate (or any other format of certified public key) or CRL, as a CA or otherwise.
-- An obligation and warranty to promptly cease using a Certificate and its associated Private Key, and promptly request that the Certification Authority revokes the Certificate, in the event that: (a) any information in the Certificate is or becomes incorrect or inaccurate, or (b) there is any actual or suspected misuse or compromise of the Subscriber’s Private Key associated with the Public Key listed in the Certificate.
-- An obligation and warranty to promptly cease all use of the Private Key corresponding to the Public Key listed in an Certificate upon expiration or revocation of that Certificate.
-The “Subscriber agreement” could include additional warranties.
+- Each digital signature created using the private key corresponding to the public key listed in the Certificate is the digital signature of the Subscriber, and the Certificate has been accepted at the time the digital signature is created.
+- The Subscriber is an end-user Subscriber and not a CA, and is not using the private key corresponding to any public key listed in the Certificate for purposes of digitally signing any Certificate (or any other format of certified public key), as a CA or otherwise.
+- An obligation and warranty to promptly cease using a Certificate and its associated Private Key, and to submit a Certificate Problem Report under section 4.9.3, in the event that: (a) any information in the Certificate is or becomes incorrect or inaccurate, or (b) there is any actual or suspected misuse or compromise of the Subscriber's Private Key associated with the Public Key listed in the Certificate. The Subscriber is on notice that the Certification Authority cannot revoke the Certificate in response.
+
+In addition, and because a Wi-SUN IDevID can neither expire nor be revoked, a Manufacturer subscribing to Wi-SUN IDevIDs warrants that:
+- each `hwSerialNum` it submits is unique within its `hwType` and identifies a single physical device;
+- each `hwType` it submits lies beneath an IANA Private Enterprise Number to which it is entitled, and it will notify the CA immediately if that entitlement ceases;
+- the private key of each device is generated within, or injected into, protected hardware key storage that prevents export of the key in plaintext, and the device is hardened so that the key cannot be extracted through the interfaces the device exposes. This is a contractual obligation under this CP/CPS, and not merely the recommendation made by the Wi-SUN Requirements, precisely because a compromised key cannot be remedied by revocation;
+- the manufacturing process in which certificates and keys are installed is physically and logically secured against the injection of keys or identifiers into unauthorised devices;
+- it will submit a Certificate Problem Report under section 4.9.3 without delay on becoming aware of a key compromise, a duplicated identifier or a mis-issuance; and
+- it will verify, before deploying a device population, that its own equipment and any Authentication Server it controls accept a `notAfter` value of `99991231235959Z` and a certificate with an empty subject and a critical subjectAltName; and
+- it understands and accepts that the Certification Authority cannot revoke an issued Wi-SUN IDevID, that exclusion of a device from a network is the responsibility of the network operator, and that the practical remedy for a compromised device population is its replacement.
+
+The “Wi-SUN Certificate Subscriber Agreement” could include additional warranties.
 
 ### 9.6.4 Relying party representations and warranties
 
 Before relying on a certificate or a digital signature, relying parties must:
-- Validate the certificate and digital signature (including by checking whether or not it has been revoked, expired or suspended)
+- Validate the certificate and the certificate chain to the trust anchor they have provisioned under section 6.1.4, having first verified that anchor against the fingerprint published in [Appendix B](#appendix-b-ca-hierarchies).
 - Ascertain and comply with the purposes for which the certificate was issued and any other limitations on reliance or use of the certificate that are specified in this CPS.
+
+For Wi-SUN IDevIDs, a relying party cannot check revocation or expiry, because neither exists. The following obligations take the place of that check, and a relying party that does not discharge them has no basis for reliance:
+- obtain the compromise and retirement notices published in the repository identified in section 2.1, on a schedule proportionate to the risk it carries, and apply them to its Authentication Server trust store and its admission decisions;
+- exclude a device that must no longer participate in the network by the access-control means of the Wi-SUN Requirements, namely refusal at the Authentication Server and group key rotation at the Border Router; and
+- treat the presence of a valid chain as evidence of the device's identity at the time of manufacture only, and not as evidence that the device remains uncompromised.
 
 If a relying party relies on a digital signature, or certificate, in circumstances where it has not been validated, it assumes all risks with regard to it (except those that would have arisen had the relying party validated the certificate), and is not entitled to any presumption that the digital signature is effective as the signature of the subscriber or that the certificate is valid.
 
@@ -1619,11 +1746,15 @@ No stipulation.
 
 Other Disclaimer of warranties (if existing) is included as part of the agreement presented to each PKI participant, or included in other documents published by the Issuing CA.
 
+For the avoidance of doubt, the Wi-SUN Alliance gives no warranty in respect of the Certification Authorities operating under this CP/CPS. The Alliance approves such Certification Authorities and requires Manufacturers to hold membership, but it does not audit them, provides no policy or procedure evaluation of manufacturer-operated Certification Authorities, and is not responsible for their security. No statement in this CP/CPS, and no approval granted by the Alliance, should be read as a warranty by the Alliance.
+
 ## 9.8 Limitations of liability
 
 Liability limitations are regulated in the contractual agreement between the concerned parties. If applicable such concepts are specified in the Subscriber, Relying Party or other commercial agreements made among the participants.
 
-Subject to the foregoing limitations, OWGTM’s aggregate liability limit towards all End users, Relying Parties and any other entities that are not Subordinate PKI Entities for the whole of the validity period of certificates issued by the Root CA (unless revoked or suspended prior to its expiry) towards all persons with regard to such certificates is CHF 5,000,000.00 (Five Million Swiss Francs), with a maximum aggregate per year liability on such certificates of CHF 500,000.00 (Five Hundred and Thousand Swiss Francs). The OISTE Foundation delegates in WISeKey, as lead operator, this liability, according to a formal agreement executed between the parties, and that WISeKey ensures via an appropriate “Errors and Omissions” insurance.
+Subject to the foregoing limitations, OWGTM’s aggregate liability limit towards all End users, Relying Parties and any other entities that are not Subordinate PKI Entities towards all persons with regard to certificates issued by the Root CA is CHF 5,000,000.00 (Five Million Swiss Francs), with a maximum aggregate per year liability on such certificates of CHF 500,000.00 (Five Hundred and Thousand Swiss Francs).
+
+The certificates issued under this CP/CPS neither expire nor can be revoked, so the period over which claims may arise is not bounded by a certificate validity period as it is elsewhere in the OWGTM. These limits are carried over unchanged from the general OWGTM provisions and are subject to legal review before this CP/CPS is published. The OISTE Foundation delegates in WISeKey, as lead operator, this liability, according to a formal agreement executed between the parties, and that WISeKey ensures via an appropriate “Errors and Omissions” insurance.
 
 ## 9.9 Indemnities
 
@@ -1735,29 +1866,36 @@ No stipulation.
 
 | Acronym |	Description |
 | --- | --- |
-| APPI |	Act on the Protection of Personal Information (Japan) |
+| AAA |	Authentication, Authorization and Accounting |
 | CA |	Certificate Authority or Certification Authority |
 | CP |	Certificate Policy |
 | CPS |	Certification Practice Statement |
 | CRL |	Certificate Revocation List |
 | CSR |	Certificate Signing Request |
+| DevID |	Secure Device Identifier, as defined by IEEE 802.1AR |
+| EAP-TLS |	Extensible Authentication Protocol – Transport Layer Security |
 | ECDSA |	Elliptic Curve Digital Signature Algorithm |
-| ECHONET |	The ECHONET Consortium, and the ECHONET Lite family of specifications it publishes |
-| EPC |	ECHONET Property Code |
+| FAN |	Field Area Network |
 | FIPS |	(US Government) Federal Information Processing Standard |
 | GDPR |	General Data Protection Regulation (European Union) |
 | HSM |	Hardware Security Module |
 | HTTP |	Hypertext Transfer Protocol |
+| IDevID |	Initial Device Identifier, as defined by IEEE 802.1AR |
+| IEEE |	Institute of Electrical and Electronics Engineers |
 | IETF |	Internet Engineering Task Force |
 | ITU |	International Telecommunication Union |
+| LDevID |	Locally Significant Device Identifier, as defined by IEEE 802.1AR |
 | NIST |	National Institute of Standards and Technology |
 | OID |	Object Identifier |
 | PAA |	Policy Approval Authority |
+| PEN |	Private Enterprise Number, assigned by IANA |
 | PKI |	Public Key Infrastructure |
+| POWM |	Proof of Wi-SUN Membership |
 | RA |	Registration Authority |
 | RFC |	Request for Comments (at IETF.org) |
 | SHA |	Secure Hashing Algorithm |
 | TLS |	Transport Layer Security |
+| TPS |	Technical Profile Specification (Wi-SUN FAN) |
 | X.509 |	The ITU-T standard for Certificates and their corresponding authentication framework |
 
 ## Definitions
@@ -1765,77 +1903,99 @@ No stipulation.
 | Definition |	Description |
 | --- | --- |
 | Applicant |	An entity applying for a Certificate. |
+| Authentication Server |	The AAA server, typically a RADIUS server, that terminates EAP-TLS for a Field Area Network and decides whether a node is admitted. A relying party under this CP/CPS. |
+| Border Router |	The node that connects a Field Area Network to a backhaul network, admits nodes and manages group keys. A relying party under this CP/CPS. |
 | Certificate | An electronic document, conformant to X.509v3, digitally signed by a Certificate Authority, that binds a Public Key to an identity. |
-| Certificate Management System |	The keys, software and hardware used to verify Certificate Data, maintain a Repository, and issue and revoke Certificates. |
+| Certificate Management System |	The keys, software and hardware used to verify Certificate Data, maintain a Repository, and issue Certificates. |
 | Certificate Management Process |	The policies, practices, and procedures governing the use of the Certificate Management System |
-| Certificate Problem Report |	A report of suspected Key Compromise, Certificate misuse, Certificate mis-issuance, or any other type of fraud, compromise, misuse or inappropriate conduct related to a Certificate. |
-| ECHONET Consortium |	The body that publishes the ECHONET Lite specifications, operates the associated conformance certification system, and assigns Manufacturer Codes. |
-| ECHONET Device Certificate |	A Certificate issued under this CP/CPS that identifies an individual ECHONET device and binds it to its Manufacturer and to the manufacturer-assigned product and device identifiers. |
-| ECHONET Requirements |	Any requirement applicable to PKI services, certificate profiles or device identity that is published by the ECHONET Consortium and formally adopted by the PAA for the ECHONET hierarchy, as listed in [Appendix D](#appendix-d-adopted-echonet-requirements). |
-| ECHONET Subordinate CA |	A Certification Authority subordinate to the ECHONET Root CA and authorised by the PAA to issue ECHONET Device Certificates. |
+| Certificate Problem Report |	A report of suspected Key Compromise, Certificate misuse, Certificate mis-issuance, or any other type of fraud, compromise, misuse or inappropriate conduct related to a Certificate. In this CP/CPS it is the trigger for the actions of section 4.9, revocation being unavailable. |
+| Chain bundle |	The set of CA certificates comprising every CA certificate between an IDevID and the Root CA, together with the Root CA certificate, delivered alongside the IDevID so that it can be provisioned into a device or into a relying party's chain material. |
+| Compromise notice |	A notice published by the OWGTM under section 4.9.1 identifying certificates that relying parties should cease to trust. It has no cryptographic effect. |
+| Field Area Network (FAN) |	The Wi-SUN network profile for utility and smart-city field devices, defined by the Wi-SUN FAN Technical Profile Specification. |
 | Hardware Crypto Module |	A tamper‐resistant device, with a cryptography processor, used for the specific purpose of protecting the lifecycle of cryptographic keys (generating, managing, processing, and storing). |
+| hardwareModuleName |	The `otherName` form of RFC 4108, identified by OID 1.3.6.1.5.5.7.8.4, comprising `hwType` and `hwSerialNum`. It carries the device identity in a Wi-SUN IDevID, the subject field being empty. |
+| hwSerialNum |	The OCTET STRING component of a hardwareModuleName, carrying the serial number of an individual device, unique within its `hwType`. |
+| hwType |	The OBJECT IDENTIFIER component of a hardwareModuleName, allocated beneath the Manufacturer's IANA Private Enterprise Number arc and identifying the product model. |
+| IDevID |	An Initial Device Identifier: a device certificate installed at manufacture, which in the Wi-SUN hierarchy never expires and is never revoked. |
 | Issuer CA | Any CA issuing Certificates under this CP/CPS |
 | Key Compromise |	A Private Key is said to be compromised if its value has been disclosed to an unauthorized person, or an unauthorized person has had access to it. |
 | Key Pair |	A Private Key and associated Public Key. |
-| Manufacturer |	The legal person that produces, or contracts the production of, an ECHONET device, and that is responsible for the accuracy of the identifiers placed in the Certificates issued to that device. |
-| Manufacturer Code |	The three-byte identifier assigned by the ECHONET Consortium to a Manufacturer, carried in ECHONET Lite property EPC 0x8A. |
+| LDevID |	A Locally Significant Device Identifier, issued by a network operator to a node after enrolment. Out of scope of this CP/CPS, as stated in section 1.4.2. |
+| Manufacturer CA (MCA) |	A Wi-SUN Subordinate CA, subordinate to the Root CA, that certifies Manufacturer Issuing CAs and issues no end-entity certificates. |
+| Manufacturer Issuing CA (MICA) |	A Wi-SUN Subordinate CA that issues Wi-SUN IDevIDs, subordinate either to an MCA or directly to the Root CA. |
+| Manufacturer |	The legal person that produces, or contracts the production of, a Wi-SUN FAN device, holds Wi-SUN Alliance membership, and is responsible for the accuracy of the identifiers placed in the Certificates issued to that device. The Manufacturer is the Subscriber. |
+| Private Enterprise Number (PEN) |	A number assigned by IANA to an organization, forming the arc `1.3.6.1.4.1.<PEN>` beneath which that organization may allocate its own object identifiers. |
 | Private Key |	The key of a Key Pair that is kept secret by the holder of the Key Pair, and that is used to create digital signatures and/or to decrypt electronic records or files that were encrypted with the corresponding Public Key. |
-| Product Code |	The identifier assigned by a Manufacturer to a product model, carried in ECHONET Lite property EPC 0x8C. |
-| Production Number |	The identifier assigned by a Manufacturer to an individual manufactured unit, carried in ECHONET Lite property EPC 0x8D. |
+| Proof of Wi-SUN Membership (POWM) |	Evidence issued by Wi-SUN Alliance member services that an organization is a Promoter or Contributor member in good standing. A precondition for the issuance of Wi-SUN IDevIDs. |
 | Public Key |	The key of a Key Pair that may be publicly disclosed by the holder of the corresponding Private Key and that is used by a Relying Party to verify digital signatures created with the holder’s corresponding Private Key and/or to encrypt messages so that they can be decrypted only with the holder’s corresponding Private Key. |
-| Relying Party |	An entity that relies upon the information contained within a Certificate. |
+| Relying Party |	An entity that relies upon the information contained within a Certificate. In this CP/CPS, principally a network operator's Authentication Server or Border Router, and other Wi-SUN FAN nodes. |
 | Relying Party Agreement |	An agreement which must be read and accepted by the Relying Party prior to validating, relying on or using a Certificate. |
-| Subject Identity Information |	Information that identifies the Certificate Subject, namely the Manufacturer identity and the device and product identifiers listed in section 7.1.4. |
-| Subscriber |	The entity identified as the subject in the Certificate. For ECHONET Device Certificates, the Subscriber is the Manufacturer. |
+| Retirement |	The withdrawal of a Certification Authority from service under section 4.9.1.2. It replaces revocation, which is unavailable in this hierarchy, and takes effect only when relying parties act on the published notice. |
+| Subject Identity Information |	Information that identifies the Certificate Subject. For a Wi-SUN IDevID this is the hardwareModuleName of section 7.1.4, the subject field being empty. |
+| Subscriber |	The entity identified as responsible for the Certificate. For Wi-SUN IDevIDs the Subscriber is the Manufacturer, not the device. |
 | Subscriber Agreement |	An agreement that governs the issuance and use of a Certificate that the Applicant must read and accept before receiving a Certificate. |
+| Wi-SUN Alliance |	The industry alliance that publishes the Wi-SUN FAN specifications, operates the associated certification programme, approves the Certification Authorities permitted to issue Wi-SUN IDevIDs, and issues Proof of Wi-SUN Membership. |
+| Wi-SUN Requirements |	Any requirement applicable to PKI services, certificate profiles or device identity that is published by the Wi-SUN Alliance and formally adopted by the PAA for the Wi-SUN hierarchy, as listed in [Appendix D](#appendix-d-adopted-wi-sun-requirements). |
+| Wi-SUN Subordinate CA |	A Certification Authority beneath the Wi-SUN Root CA, authorised by the PAA to operate at the MCA or the MICA tier as stated in section 7.1. Used as the umbrella term for both tiers. |
 
 # Appendix B: CA Hierarchies
 
-## ECHONET Root
+## Wi-SUN Root
 
-The ECHONET hierarchy is anchored in an existing IoT Root CA, which also serves other IoT device populations. It was issued on 12 August 2024 with no well-defined expiry.
+The Wi-SUN hierarchy is anchored in a dedicated Root CA, issued on 6 March 2025 with no well-defined expiry. It is recognised by the Wi-SUN Alliance as the root of an approved third-party Certification Authority. It is not cross-signed by any Wi-SUN Alliance root, and it anchors no certificate population other than the Wi-SUN one.
 
 ### Ownership and governance
 
 The Root CA identified below is **owned by SealSQ Corp.**, which holds the certificate and the corresponding private key. This differs from the Root CAs described elsewhere in the OISTE/WISeKey Global Trust Model, which are owned by the OISTE Foundation, and the distinction is stated here so that it is not inferred from the body of this document.
 
-Ownership of the Root does not carry authority over the policies applied beneath it. The trust model, the policies and the certification practices governing the ECHONET hierarchy are regulated by the **OISTE Foundation**, through its Policy Approval Authority, under the terms of section 1.5. In particular the PAA, and not the owner of the Root:
+Ownership of the Root does not carry authority over the policies applied beneath it. The trust model, the policies and the certification practices governing the Wi-SUN hierarchy are regulated by the **OISTE Foundation**, through its Policy Approval Authority, under the terms of section 1.5. In particular the PAA, and not the owner of the Root:
 - approves this CP/CPS and every amendment to it;
-- authorises each ECHONET Subordinate CA and the issuance of its certificate, under sections 3.2.2 and 3.2.6; and
-- conducts or commissions the assessments required by section 8, and may require a Subordinate CA to be revoked under section 4.9.1.2.
+- authorises each Wi-SUN Subordinate CA and the issuance of its certificate, under sections 3.2.2 and 3.2.6; and
+- conducts or commissions the assessments required by section 8, and may require a Subordinate CA to be retired under section 4.9.1.2.
 
 SealSQ Corp., as owner of the Root, is bound to operate it in accordance with this CP/CPS and to execute the signing operations authorised by the PAA.
 
-**Scope.** This CP/CPS governs only the ECHONET Subordinate CAs listed below and the ECHONET Device Certificates issued beneath them. The Root also anchors other IoT device populations, which are outside the scope of this document and are governed by their own certificate policies and practice statements. A relying party that provisions this Root as a trust anchor therefore trusts certificate populations beyond the ECHONET one, and should constrain its validation to the Subordinate CAs and policy OIDs listed in this Appendix and in [Appendix C](#appendix-c-oid-inventory) where it intends to rely on ECHONET Device Certificates alone.
+**Scope.** This CP/CPS governs the Wi-SUN Subordinate CAs listed below and the Wi-SUN IDevIDs issued beneath them. Test IDevIDs are issued from a separate hierarchy which is not trusted for production networks and is outside the scope of this document, as stated in section 1.4.2.
 
 ### Root Information
 
 | Field | Value |
 | --- | --- |
-| Subject Name | `C=CH, O=WISeKey, CN=SealSQ IOT ROOT GA` |
-| Issuer Name | `C=CH, O=WISeKey, CN=SealSQ IOT ROOT GA` (self-signed) |
-| Serial Number | `68:F4:11:F6:9F:A8:2A:F3:7C:7D:10:3D:28:D2:56:4C:0F:C9:D9:19` |
-| Subject Key Identifier | `C5:3B:1F:4C:A7:B9:26:D1:FD:B4:85:29:3F:74:75:C9:D3:96:CC:89` |
-| Fingerprint (SHA-256) | `4B:95:E5:F3:76:84:BE:71:45:91:F3:97:63:B7:81:56:B2:A2:0E:D6:09:60:2B:A6:95:5E:29:D2:F4:21:47:40` |
-| Valid from | 12 August 2024, 08:06:56 UTC |
+| Subject Name | `C=CH, O=WISeKey, CN=SealSQ Wi-SUN Root CA G1` |
+| Issuer Name | `C=CH, O=WISeKey, CN=SealSQ Wi-SUN Root CA G1` (self-signed) |
+| Serial Number | `33:5C:1D:AE:CE:48:18:F7:12:6F:29:2B:C0:A2:CF:94` |
+| Subject Key Identifier | `73:3C:14:C9:31:9B:53:C5:1F:E2:D8:55:3A:8E:51:C3:AE:B0:5A:4F` |
+| Fingerprint (SHA-256) | `F4:BE:70:32:7E:0B:57:E5:89:E0:F3:30:6B:83:06:B0:43:22:1F:B6:32:7E:01:2A:36:A2:BD:71:EE:57:C7:D4` |
+| Valid from | 6 March 2025, 19:08:28 UTC |
 | Valid until | 31 December 9999, 23:59:59 UTC — no scheduled expiration |
 | Public Key | id-ecPublicKey, 256 bit, prime256v1 (NIST P-256) |
 | Signature Algorithm | ecdsa-with-SHA256 |
-| Key Usage | critical: digitalSignature, keyCertSign, cRLSign |
+| Key Usage | critical: keyCertSign |
 | Basic Constraints | critical: cA = TRUE, no pathLenConstraint |
-| Audit scope | IoT Device Certificates, including ECHONET Device Certificates |
+| authorityKeyIdentifier | Not present |
+| Audit scope | Wi-SUN IDevIDs |
+
+Relying parties MUST verify this fingerprint before installing the certificate as a trust anchor, as stated in section 6.1.4. Because the hierarchy publishes no revocation information, an incorrectly provisioned anchor cannot be corrected by any later action of the Certification Authority.
 
 ### Subordinate CA Information
 
-The Subordinate CAs authorised to issue ECHONET Device Certificates under this Root are listed below. This table is maintained by the PAA and republished whenever a Subordinate CA is added or revoked. Subordinate CAs operated by a Manufacturer are marked as such and are technically constrained under section 7.1.5.
+The Subordinate CAs operating under this Root are listed below, at both the MCA and MICA tiers. This table is maintained by the PAA and republished whenever a Subordinate CA is added or retired. Subordinate CAs operated by a Manufacturer are marked as such and are constrained by configuration under section 7.1.5.
 
-| Subject Name | Fingerprint (SHA-256) | Operator | Allowed usage |
-| --- | --- | --- | --- |
-| `<<<< TO BE COMPLETED AFTER THE CA CEREMONY >>>>` | `<<<< TO BE COMPLETED >>>>` | WISeKey | ECHONET Device Certificates |
+| Subject Name | Fingerprint (SHA-256) | Tier | Issued by | Operator | Allowed usage |
+| --- | --- | --- | --- | --- | --- |
+| `<<<< TO BE COMPLETED AFTER THE CA CEREMONY >>>>` | `<<<< TO BE COMPLETED >>>>` | MICA | Root CA | WISeKey | Wi-SUN IDevIDs |
+
+### Retired Subordinate CAs
+
+Subordinate CA certificates cannot be revoked. A Subordinate CA that has been retired under section 4.9.1.2 is listed here so that network operators can remove the retired Subordinate CA certificate from the chain material held by the Authentication Server, or otherwise configure the server to reject chains that pass through it. A certificate listed in this table remains cryptographically valid and will continue to validate unless the operator acts.
+
+| Subject Name | Fingerprint (SHA-256) | Tier | Date retired | Reason |
+| --- | --- | --- | --- | --- |
+| *(none at the date of this version)* | | | | |
 
 # Appendix C: OID Inventory
 
-OWGTM defines the following OID schema to identify the Certificate Policies issued under the ECHONET hierarchy.
+OWGTM defines the following OID schema to identify the Certificate Policies issued under the Wi-SUN hierarchy.
 
 PUBLIC-ARCH = 2.16.756.5.14
 
@@ -1843,20 +2003,40 @@ PUBLIC-ARCH.8 – Policy qualifiers for special purposes
 - 8.2 – Device certificates
 - 8.2.1 – CertifyID Device Certificate
 
-PUBLIC-ARCH.8.3 – ECHONET Certificate Policies
-- 8.3.0 – OISTE/WISeKey ECHONET CP/CPS (this document)
-- 8.3.1 – ECHONET Root CA CP
-- 8.3.2 – ECHONET Subordinate CA CP
-- 8.3.3 – ECHONET Device Certificate CP
+PUBLIC-ARCH.8.4 – Wi-SUN Certificate Policies
+- 8.4.0 – OISTE/WISeKey Wi-SUN CP/CPS (this document)
+- 8.4.1 – Wi-SUN Root CA CP
+- 8.4.2 – Wi-SUN Manufacturer CA (MCA) CP
+- 8.4.3 – Wi-SUN Manufacturer Issuing CA (MICA) CP
+- 8.4.4 – Wi-SUN IDevID CP
 
-The OID identifying this document is PUBLIC-ARCH.8.3.0, that is `2.16.756.5.14.8.3.0`. This identifier is stable and does not carry the version number of the document: every version of this CP/CPS is identified by the same OID, and versions are distinguished by the version number stated in section 1.2 and in the revision table. The version is therefore not appended to the OID, which would otherwise collide with the policy arcs 8.3.1 to 8.3.3 defined above.
+The MCA and MICA tiers carry distinct policy identifiers because they are subject to different constraints: an MCA may certify a further Certification Authority and a MICA may not, as stated in section 7.1.2.
 
-# Appendix D: Adopted ECHONET Requirements
+The OID identifying this document is PUBLIC-ARCH.8.4.0, that is `2.16.756.5.14.8.4.0`. This identifier is stable and does not carry the version number of the document: every version of this CP/CPS is identified by the same OID, and versions are distinguished by the version number stated in section 1.2 and in the revision table.
 
-This appendix lists the documents published by the ECHONET Consortium that the PAA has formally adopted as "ECHONET Requirements" for the ECHONET hierarchy, in the sense of [Appendix A](#appendix-a-glossary) and section 2.2.1. Where such a requirement conflicts with the body of this CP/CPS, the requirement prevails and the PAA shall amend this document at the next revision.
+### External object identifiers used in the certificate profile
+
+These OIDs are defined outside the OWGTM and are used in the profile of section 7.1. They are listed for the convenience of implementers and are not administered by the OWGTM.
+
+| OID | Name | Defined by |
+| --- | --- | --- |
+| 1.3.6.1.4.1.45605.1 | `id-kp-wisun-fan-device` | Wi-SUN Alliance |
+| 1.3.6.1.5.5.7.3.2 | `id-kp-clientAuth` | RFC 5280 |
+| 1.3.6.1.5.5.7.8.4 | `id-on-hardwareModuleName` | RFC 4108 |
+| 1.2.840.10045.4.3.2 | `ecdsa-with-SHA256` | RFC 5758 |
+| 1.2.840.10045.2.1 | `id-ecPublicKey` | RFC 5480 |
+| 1.2.840.10045.3.1.7 | `secp256r1` (NIST P-256) | RFC 5480 |
+| 1.3.6.1.4.1.\<PEN\> | Manufacturer Private Enterprise Number arc, beneath which `hwType` values are allocated | IANA |
+
+# Appendix D: Adopted Wi-SUN Requirements
+
+This appendix lists the documents published by the Wi-SUN Alliance that the PAA has formally adopted as "Wi-SUN Requirements" for the Wi-SUN hierarchy, in the sense of [Appendix A](#appendix-a-glossary) and section 2.2.1. Where such a requirement conflicts with the body of this CP/CPS, the requirement prevails and the PAA shall amend this document at the next revision.
 
 | Document | Version | Date adopted by the PAA | Provisions adopted |
 | --- | --- | --- | --- |
-| ECHONET Lite Web API Guidelines – API specifications | 1.1.4 | 2026-09-16 | Section 5.1 (use of HTTPS for ECHONET Lite Web API endpoints) |
+| Wi-SUN FAN Technical Profile Specification | 1.1v06 | 2025-03-05 | Section 6.5.1 (Public Key Infrastructure: chain depth, key and signature algorithms, non-expiry, non-revocation) and section 6.5.1.1 (Wi-SUN IDevID construction: certificate fields, subjectAltName hardwareModuleName, extended key usage, prohibited revocation extensions) |
+| Wi-SUN FAN Technical Profile Specification | 1.1v06 | 2025-03-05 | Section 6.5.3.2.1.3 (DevID certificate expiration and revocation) |
 
-Where this table is empty for a given matter, no ECHONET Requirement governs it and the stipulations of this CP/CPS apply in full.
+Where this table is empty for a given matter, no Wi-SUN Requirement governs it and the stipulations of this CP/CPS apply in full.
+
+**Considered and not adopted.** The PAA has reviewed the Wi-SUN Alliance material describing the policy and procedure for access to third-party Certification Authority services, and has not adopted it as a Wi-SUN Requirement. It governs the commercial process by which a manufacturer obtains an account and places orders, rather than certification practices or certificate profiles; it is not issued in a form on which normative reliance is appropriate; and it is distributed to members in confidence, so it could not be cited normatively in a public CP/CPS in any event. The operational consequences of that process that do bear on certification practice are stated directly in sections 3.2.2 and 9.1 of this document. The PAA will reconsider this if the Alliance issues a superseding version.
