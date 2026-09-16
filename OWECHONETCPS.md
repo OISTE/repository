@@ -28,7 +28,7 @@ include-before: |
   | **VERSION** | **DATE** | **MODIFICATION** | **AUTHOR** |
   | --- | --- | --- | --- |
   | 1.0 | 2026-01-09 | First Version | Pedro Fuentes |
-  | 1.1.0 | 2026-09-16 | ECHONET-specific revision. Removed all references to the CSA, the Matter ecosystem, the CA/Browser Forum and browser root programs; introduced the "ECHONET Requirements" framework (Appendix D); made the device certificate, revocation and repository provisions self-contained | Pedro Fuentes |
+  | 1.1.0 | 2026-09-16 | ECHONET-specific revision. Introduced the "ECHONET Requirements" framework (Appendix D); made the device certificate, revocation and repository provisions self-contained | Pedro Fuentes |
   \newpage
 ---
 
