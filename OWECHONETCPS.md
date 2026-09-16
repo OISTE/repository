@@ -79,9 +79,9 @@ The following sections describe the different participant types in the OWGTM.
 
 ### 1.3.1 Certification authorities
 
-OISTE and WISeKey own and operate a number of Root and Issuing Certification Authorities (CAs) hierarchies that deliver certification Services under this CP/CPS.
+OISTE and WISeKey own and operate a number of Root and Issuing Certification Authority (CA) hierarchies that deliver certification services under the OWGTM.
 
-These hierarchies are detailed in [Appendix B](#appendix-b-ca-hierarchies) of this document.
+The Root CA that anchors the ECHONET hierarchy is an exception to that ownership: it is owned by SealSQ Corp., while the trust model, policies and certification practices applied beneath it are regulated by the OISTE Foundation through its Policy Approval Authority. This is set out in [Appendix B](#appendix-b-ca-hierarchies), where the hierarchy is detailed.
 
 ### 1.3.2 Registration authorities
 
@@ -175,7 +175,7 @@ The Root CA certificate and the Subordinate CA certificates of the ECHONET hiera
 
 The main repositories of the OWGTM are:
 - Policies repository for disclosure of CP/CPS and related information. This repository is a set of web pages and services available at the URLs https://oiste.org and https://github.com/oiste/repository
-- Certificate and Certificate Revocation information repositories. The CA certificates and Certificate Revocation Information sources are included, when relevant, as CDP and AIA extensions in the certificates issued under the OISTE Root CAs
+- Certificate and Certificate Revocation information repositories. The CA certificates and Certificate Revocation Information sources are included, when relevant, as CDP and AIA extensions in the certificates issued under the Root CA identified in [Appendix B](#appendix-b-ca-hierarchies)
 - Public Certificate repositories. The OWGTM makes ECHONET Root CA and Subordinate CA certificates, and the corresponding CRLs, publicly accessible to relying parties through the repository identified above. Should the ECHONET Consortium establish a certificate repository or ledger of its own, and the PAA adopt it as an ECHONET Requirement, it will be listed in [Appendix D](#appendix-d-adopted-echonet-requirements) and used in addition to the OWGTM repository.
 
 ## 2.2 Publication of certification information
@@ -341,7 +341,7 @@ This section describes the procedures for processing certificate applications in
 
 ### 4.2.1 Performing identification and authentication functions
 
-Before issuing a certificate from an OISTE Root for a subordinate Certification Authority, it’s required that two representatives of the PAA identify the CA Naming Application and rightfulness to operate a subordinate CA under the OISTE Root.
+Before issuing a certificate from the Root CA identified in [Appendix B](#appendix-b-ca-hierarchies) for a subordinate Certification Authority, it’s required that two representatives of the PAA identify the CA Naming Application and the rightfulness to operate a subordinate CA under that Root.
 
 The identification and authentication functions are delegated to the Registration Authorities operating under the OWGTM.
 
@@ -1138,12 +1138,16 @@ The validity period for key pairs is stipulated in the following table:
 | Certificate Type | Maximum Validity Period |
 | --- | --- |
 | Root CA (identified in [Appendix B](#appendix-b-ca-hierarchies)) | No scheduled expiration. The Root CA certificate carries a notAfter value of 31 December 9999, 23:59:59 UTC, the conventional encoding for a certificate with no well-defined expiry (RFC 5280 section 4.1.2.5), and therefore does not constrain the validity of the certificates beneath it |
-| ECHONET Subordinate CA | 15 years |
+| ECHONET Subordinate CA | No scheduled expiration, on the same basis as the Root CA |
 | ECHONET Device Certificate | 20 years |
 
 ECHONET Device Certificates are deliberately long-lived, because the appliances they identify (heat-pump water heaters, storage batteries, EV chargers and similar equipment) remain in service for fifteen years or more and have no reliable field mechanism for certificate renewal. A Manufacturer may request shorter validity for a given product line.
 
-It must be understood that the validity period of a certificate can be limited by the own validity of the issuing Certification Authority.
+ECHONET Subordinate CA certificates are issued without a scheduled expiry, on the same basis as the Root CA, precisely so that the twenty-year validity of a device certificate is available for the whole operational life of the Subordinate CA. Were the Subordinate CA to carry a fixed lifetime, every device certificate issued in its final twenty years would be truncated to the residual life of its issuer, which would defeat the purpose of the long device validity stated above.
+
+It must be understood that the validity period of a certificate can be limited by the validity of the issuing Certification Authority. In the ECHONET hierarchy neither the Root CA nor the Subordinate CAs impose such a limit, so a device certificate always receives its full stated validity.
+
+A Subordinate CA whose key is to be retired is not left to expire. It is subject to the key changeover procedure of section 5.6, after which it ceases issuing, and is revoked under section 4.9.1.2 once the certificates beneath it have been migrated or have themselves expired.
 
 The certificates are operational for signature validation and decryption from the issuance to the end of the archival period stated in 6.3.1.
 
@@ -1661,7 +1665,7 @@ The entity with the authority to make and approve any change in the CPS and the 
 
 A change can only be made to the approved documents once approval has been granted by the PAA.
 
-On the assumption that the PAA decides to modify the CPS or a particular CP, a new version of the document will be generated. The version of the document (exposed in all the pages of the document) is controlled with two numbers separated by a period. The first number (major version) is incremented if the new version could affect the acceptance of the certificates by the users. The second number (minor version) is incremented if the amendment is not considered to affect the certificate acceptance criteria. These two version numbers are included as the last two numbers in the OID identifying the document.
+On the assumption that the PAA decides to modify the CPS or a particular CP, a new version of the document will be generated. The version of the document (exposed in all the pages of the document) is controlled with two numbers separated by a period. The first number (major version) is incremented if the new version could affect the acceptance of the certificates by the users. The second number (minor version) is incremented if the amendment is not considered to affect the certificate acceptance criteria. The version numbers are not encoded in the OID identifying the document, which is stable across versions as stated in [Appendix C](#appendix-c-oid-inventory).
 
 Once a new version of the document is approved, the procedures stipulated in section 9.12.2 will be executed.
 
@@ -1675,7 +1679,9 @@ In the case of a change in the “major version” of a document, the OWGTM may 
 
 ### 9.12.3 Circumstances under which OID must be changed
 
-The OID of this CPS or a CP may be modified to reflect a change of major version of the document.
+The OID identifying this CP/CPS does not change between versions of the document.
+
+The OID identifying a Certificate Policy is changed only where the change in policy is such that certificates already issued under the previous OID could no longer be considered to have been issued under the new one. In that case a new OID is allocated from the arc in [Appendix C](#appendix-c-oid-inventory) and the previous OID is retired, not reused.
 
 ## 9.13 Dispute resolution provisions
 
@@ -1787,7 +1793,20 @@ No stipulation.
 
 ## ECHONET Root
 
-The ECHONET hierarchy is anchored in an existing OWGTM IoT Root CA, which also serves other IoT device populations. It was issued on 12 August 2024 with no well-defined expiry.
+The ECHONET hierarchy is anchored in an existing IoT Root CA, which also serves other IoT device populations. It was issued on 12 August 2024 with no well-defined expiry.
+
+### Ownership and governance
+
+The Root CA identified below is **owned by SealSQ Corp.**, which holds the certificate and the corresponding private key. This differs from the Root CAs described elsewhere in the OISTE/WISeKey Global Trust Model, which are owned by the OISTE Foundation, and the distinction is stated here so that it is not inferred from the body of this document.
+
+Ownership of the Root does not carry authority over the policies applied beneath it. The trust model, the policies and the certification practices governing the ECHONET hierarchy are regulated by the **OISTE Foundation**, through its Policy Approval Authority, under the terms of section 1.5. In particular the PAA, and not the owner of the Root:
+- approves this CP/CPS and every amendment to it;
+- authorises each ECHONET Subordinate CA and the issuance of its certificate, under sections 3.2.2 and 3.2.6; and
+- conducts or commissions the assessments required by section 8, and may require a Subordinate CA to be revoked under section 4.9.1.2.
+
+SealSQ Corp., as owner of the Root, is bound to operate it in accordance with this CP/CPS and to execute the signing operations authorised by the PAA.
+
+**Scope.** This CP/CPS governs only the ECHONET Subordinate CAs listed below and the ECHONET Device Certificates issued beneath them. The Root also anchors other IoT device populations, which are outside the scope of this document and are governed by their own certificate policies and practice statements. A relying party that provisions this Root as a trust anchor therefore trusts certificate populations beyond the ECHONET one, and should constrain its validation to the Subordinate CAs and policy OIDs listed in this Appendix and in [Appendix C](#appendix-c-oid-inventory) where it intends to rely on ECHONET Device Certificates alone.
 
 ### Root Information
 
@@ -1825,11 +1844,12 @@ PUBLIC-ARCH.8 – Policy qualifiers for special purposes
 - 8.2.1 – CertifyID Device Certificate
 
 PUBLIC-ARCH.8.3 – ECHONET Certificate Policies
+- 8.3.0 – OISTE/WISeKey ECHONET CP/CPS (this document)
 - 8.3.1 – ECHONET Root CA CP
 - 8.3.2 – ECHONET Subordinate CA CP
 - 8.3.3 – ECHONET Device Certificate CP
 
-The OID identifying this document is PUBLIC-ARCH.8.3 followed by the major and minor version numbers of the document, as stated in section 9.12.1.
+The OID identifying this document is PUBLIC-ARCH.8.3.0, that is `2.16.756.5.14.8.3.0`. This identifier is stable and does not carry the version number of the document: every version of this CP/CPS is identified by the same OID, and versions are distinguished by the version number stated in section 1.2 and in the revision table. The version is therefore not appended to the OID, which would otherwise collide with the policy arcs 8.3.1 to 8.3.3 defined above.
 
 # Appendix D: Adopted ECHONET Requirements
 
