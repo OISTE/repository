@@ -42,7 +42,7 @@ This document represents a combined Certificate Policy (CP) and Certification Pr
 
 The main two legal entities involved in the control and operation of the OISTE/WISeKey Global Trust Model are:
 - OISTE Foundation. The International Organization for Secure Electronic Transactions (“IOSET” or “OISTE”), a Swiss non-profit foundation established in 1998, and recognized with an “Special Consultative Status” by the United Nations. The OISTE Foundation maintains a Policy Approval Authority (PAA) that drafts, approves and revises the policies to which WISeKey is bound to comply with under its operator contract. The PAA is composed of members of the community to which OISTE provides its Certification Authority Services, resulting in a virtuous cycle for trust management.
-- WISeKey. WISeKey is referenced in this document as the short name for the entities “WISeKey International Holding Ltd.”, “WISeKey SA” or other members of the WISeKey Holding that are mandated by OISTE to host and operate the Root Certification Authorities and the technical infrastructures required to maintain the PKI at the appropriate operational level. WISeKey also operates as a “Subordinate Certification Authority” under the OISTE Roots, according to practices disclosed in this document.
+- WISeKey. WISeKey is referenced in this document as the short name for the entities “WISeKey International Holding Ltd.”, “WISeKey SA”, “SEALSQ Corp.” or other members of the WISeKey Holding that are mandated by OISTE to own, host and operate the Root Certification Authorities and the technical infrastructures required to maintain the PKI at the appropriate operational level. The Root CA identified in [Appendix B](#appendix-b-ca-hierarchies) is owned by SEALSQ Corp. and is within this definition. WISeKey also operates as a “Subordinate Certification Authority” under the OISTE Roots, according to practices disclosed in this document.
 
 The OISTE Global Trust Model (OWGTM) has been designed and are operated in accordance with the broad strategic direction of international PKI (Public Key Infrastructure) standards as well as their application to concrete identity frameworks in different domains (e.g. ID cards, passports, health cards, Internet of Things) and is intended to serve as a common Trust Model for Certification Authorities worldwide that comply with OISTE requirements.
 
@@ -63,7 +63,7 @@ The purpose of this document is to disclose the Practices and Policies adopted i
 8. Compliance Audit and other Assessment – Discloses the audit policies followed in the OWGTM to ensure that the participant fulfils the security and quality requirements.
 9. Other Business and Legal Matters – This section exposes the commercial, legal and contractual aspects involved in the usage of certificates issued in the OWGTM.
 
-**APPLICABILITY NOTICE:** If any inconsistency exists between this document and the normative provisions of an Wi-SUN Requirement (as defined in [Appendix A](#appendix-a-glossary) and listed in [Appendix D](#appendix-d-adopted-wi-sun-requirements)), then the Wi-SUN Requirement takes precedence over this CP/CPS, and the PAA shall amend this document at the next revision.
+**APPLICABILITY NOTICE:** If any inconsistency exists between this document and the normative provisions of a Wi-SUN Requirement (as defined in [Appendix A](#appendix-a-glossary) and listed in [Appendix D](#appendix-d-adopted-wi-sun-requirements)), then the Wi-SUN Requirement takes precedence over this CP/CPS, and the PAA shall amend this document at the next revision.
 
 ## 1.2 Document name and identification
 
@@ -201,7 +201,7 @@ The shared repositories containing public information in the OWGTM are managed b
 
 OISTE and WISeKey ensure compliance with industry best practices and security controls. In particular, the trust model enforces a regular review of the documents published by the Wi-SUN Alliance that are applicable to PKI services, certificate profiles or device identity. Those that the PAA formally adopts for the Wi-SUN hierarchy become "Wi-SUN Requirements" and are listed, with title, version and date of adoption, in [Appendix D](#appendix-d-adopted-wi-sun-requirements).
 
-In the case of a discrepancy between any certification practice stated in this CP/CPS and an Wi-SUN Requirement, the Wi-SUN Requirement prevails, and the PAA shall amend this document at the next revision.
+In the case of a discrepancy between any certification practice stated in this CP/CPS and a Wi-SUN Requirement, the Wi-SUN Requirement prevails, and the PAA shall amend this document at the next revision.
 
 Where no Wi-SUN Requirement governs a given matter, this CP/CPS is self-contained and its own stipulations apply.
 
@@ -431,7 +431,7 @@ For other certificate types, acceptance is understood after the subscriber or hi
 
 ### 4.4.2 Publication of the certificate by the CA
 
-The CAs operating under the OWGTM publish all issued certificates as specified in section 2 of this document.
+The CAs operating under the OWGTM publish issued CA certificates as specified in section 2 of this document. Wi-SUN IDevIDs are not published, as stated in section 2.3.
 
 ### 4.4.3 Notification of certificate issuance by the CA to other entities
 
@@ -459,11 +459,9 @@ Certificate Renewal is understood as the issuance of a new certificate to a subs
 
 ### 4.6.1 Circumstance for certificate renewal
 
-For CA Certificates it is allowed the certificate renewal for these purposes: 
-- Extend the validity period
-- Modify the name constraints, enhanced key usages or other non-identity extensions
+For CA Certificates, renewal is allowed for the purpose of modifying enhanced key usages, policy identifiers or other non-identity extensions. It is not available to extend a validity period, no certificate in this hierarchy having one, nor to modify name constraints, which are not used (section 7.1.5).
 
-For Subscriber Certificates it is allowed the certificate renewal for the purpose of extending the validity period and always considering the requirements for re-verification periods stipulated in section 3.3 of this CPS.
+Renewal is not available for Wi-SUN IDevIDs, as stated in section 4.6.
 
 ### 4.6.2 Who may request renewal
 
@@ -483,7 +481,7 @@ As stipulated in section 4.4.1 of this document.
 
 ### 4.6.6 Publication of the renewal certificate by the CA
 
-The CAs operating under the OWGTM publish all issued certificates as specified in section 2 of this document.
+The CAs operating under the OWGTM publish issued CA certificates as specified in section 2 of this document. Wi-SUN IDevIDs are not published, as stated in section 2.3.
 
 ### 4.6.7 Notification of certificate issuance by the CA to other entities
 
@@ -517,7 +515,7 @@ As stipulated in section 4.4.1 of this document.
 
 ### 4.7.6 Publication of the re-keyed certificate by the CA
 
-The CAs operating under the OWGTM publish all issued certificates as specified in section 2 of this document.
+The CAs operating under the OWGTM publish issued CA certificates as specified in section 2 of this document. Wi-SUN IDevIDs are not published, as stated in section 2.3.
 
 ### 4.7.7 Notification of certificate issuance by the CA to other entities
 
@@ -569,33 +567,48 @@ All certificate subscribers receiving a digital certificate issued under a Root 
 
 #### 4.9.1.1 Events affecting a Subscriber
 
-On becoming aware of any of the following events, a Certification Authority operating in the OWGTM SHALL (a) cease issuing Wi-SUN IDevIDs for the affected Manufacturer, product model or device population, (b) notify the Wi-SUN Alliance and every network operator known to the CA to be relying on the affected certificates, and (c) publish a compromise notice in the repository identified in section 2.1:
+The response is graduated. A compromise notice tells network operators to stop trusting certificates already in service, and that is a serious step which cannot be withdrawn once operators have acted on it. It is therefore reserved for events that actually cast doubt on issued certificates. Events that merely end a commercial relationship stop further issuance and are recorded, but do not tell operators to distrust devices already deployed.
 
-1. The Subscriber requests in writing that the CA cease issuance;
-2. The Subscriber notifies the CA that the original certificate request was not authorized and does not retroactively grant authorization;
-3. The CA obtains evidence that the Private Key of an issued Wi-SUN IDevID, or of a population of them, suffered a Key Compromise;
-4. The CA is made aware of a demonstrated or proven method that can easily compute the Private Key from the Public Key in the certificate, or that the method used to generate the Private Key was flawed;
-5. The CA obtains evidence that the validation of the Manufacturer identity, of its entitlement to the Private Enterprise Number, or of any device identifier included in the certificate, should not be relied upon;
-6. The Manufacturer's Wi-SUN Alliance membership lapses or is withdrawn, or its entitlement to the Private Enterprise Number used in `hwType` ceases;
-7. The CA obtains evidence that a certificate was misused, or that the Subscriber has violated a material obligation of the Subscriber Agreement;
-8. The CA determines, or is made aware, that information in an issued certificate is inaccurate, or that the certificate was not issued in accordance with this CP/CPS; or
-9. Cessation is required by the PAA.
+**Group 1 — cease issuance and record.** On becoming aware of any of the following, a Certification Authority operating in the OWGTM SHALL cease issuing Wi-SUN IDevIDs for the affected Manufacturer, product model or device population, and record the event and its date in the Manufacturer's enrolment record. No compromise notice is published, and certificates already issued are unaffected:
+
+1. The Subscriber requests in writing that the CA cease issuance, for example on discontinuing a product line;
+2. The Manufacturer's Wi-SUN Alliance membership lapses or is withdrawn, or its entitlement to the Private Enterprise Number used in `hwType` ceases, without any indication that certificates already issued were wrongly issued.
+
+**Group 2 — cease issuance, notify and publish.** On becoming aware of any of the following, a Certification Authority SHALL (a) cease issuing for the affected Manufacturer, product model or device population, (b) notify the Wi-SUN Alliance and every network operator known to the CA to be relying on the affected certificates, and (c) publish a compromise notice in the repository identified in section 2.1:
+
+1. The Subscriber notifies the CA that the original certificate request was not authorized and does not retroactively grant authorization;
+2. The CA obtains evidence that the Private Key of an issued Wi-SUN IDevID, or of a population of them, suffered a Key Compromise;
+3. The CA is made aware of a demonstrated or proven method that can easily compute the Private Key from the Public Key in the certificate, or that the method used to generate the Private Key was flawed;
+4. The CA obtains evidence that the validation of the Manufacturer identity, of its entitlement to the Private Enterprise Number, or of any device identifier included in the certificate, should not be relied upon;
+5. The CA obtains evidence that a certificate was misused, or that the Subscriber has violated a material obligation of the Wi-SUN Subscriber Agreement;
+6. The CA determines, or is made aware, that information in an issued certificate is inaccurate, or that the certificate was not issued in accordance with this CP/CPS.
+
+Where the PAA so directs, an event in Group 1 is treated as an event in Group 2. Where a Group 1 event is later found to have concealed a Group 2 event, the Group 2 response follows on discovery.
 
 A compromise notice identifies the affected certificates as precisely as the circumstances allow — by issuing CA, by `hwType`, by serial number range, or by individual serial number — and states the date from which operators should treat them as untrusted. It does not, and cannot, invalidate the certificates cryptographically.
 
 #### 4.9.1.2 Retirement or termination of a Subordinate CA
 
-A Wi-SUN Subordinate CA certificate cannot be revoked. Where any of the following occurs, the Subordinate CA is **retired**: it ceases all issuance immediately, its private key is destroyed under section 6.2.10, a successor CA is established under section 5.6 where the service continues, and its identifiers are published in the repository so that network operators can remove it from their Authentication Server trust stores:
+A Wi-SUN Subordinate CA certificate cannot be revoked. Where any of the events below occurs, the Subordinate CA is **retired**: it ceases all issuance immediately, its private key is destroyed under section 6.2.10, a successor CA is established under section 5.6 where the service continues, and its identifiers are published so that network operators can remove the retired Subordinate CA certificate from the chain material held by the Authentication Server, or otherwise configure the server to reject chains that pass through it.
+
+Two kinds of notice are published, and the distinction matters to an operator deciding what to do about devices already in service:
+
+**Retirement notice** — the Subordinate CA stops issuing, and the certificates it has already issued are not called into question. An operator removes the retired CA from the chain material it holds once the devices concerned have been migrated or withdrawn, and need take no action against those devices in the meantime:
 
 1. The Subordinate CA requests retirement in writing;
-2. The Issuing CA obtains evidence of Key Compromise of the Subordinate CA Private Key;
-3. The Issuing CA obtains evidence that the Subordinate CA certificate was misused, or that the Subordinate CA has not complied with this CP/CPS or the applicable Certificate Policy;
-4. The Issuing CA determines that information in the Subordinate CA certificate is inaccurate or misleading;
-5. The Subordinate CA fails to submit a self-assessment when due, or refuses or obstructs an assessment, as stated in section 8.4;
-6. The Subordinate CA ceases operations for any reason; or
-7. Retirement is required by the OISTE Foundation.
+2. The Subordinate CA ceases operations for any reason;
+3. The Subordinate CA reaches the issuance limit of section 6.3.2.
 
-Retirement of an **MCA** retires every MICA beneath it. Each such MICA ceases issuance and is listed in its own right in the notice and in [Appendix B](#appendix-b-ca-hierarchies), because a network operator removing certificates from a trust store acts on the certificates it actually holds, not on the hierarchy that produced them.
+**Compromise notice** — the certificates issued by the Subordinate CA are called into question, and an operator should cease to accept chains through it:
+
+1. The Issuing CA obtains evidence of Key Compromise of the Subordinate CA Private Key;
+2. The Issuing CA obtains evidence that the Subordinate CA certificate was misused, or that the Subordinate CA has not complied with this CP/CPS or the applicable Certificate Policy;
+3. The Issuing CA determines that information in the Subordinate CA certificate is inaccurate or misleading;
+4. The Subordinate CA fails to submit a self-assessment when due, or refuses or obstructs an assessment, as stated in section 8.4.
+
+Retirement required by the OISTE Foundation is accompanied by whichever notice the PAA directs.
+
+Retirement of an **MCA** retires every MICA beneath it. Each such MICA ceases issuance and is listed in its own right in the notice and in [Appendix B](#appendix-b-ca-hierarchies), because a network operator removing certificates acts on the certificates it actually holds, not on the hierarchy that produced them.
 
 Because retirement is not cryptographically enforceable, the effectiveness of the measure depends on network operators acting on the published notice. Section 9.6.4 places that obligation on relying parties, and section 5.7.3 describes the procedure.
 
@@ -621,19 +634,23 @@ There is no stipulation for grace periods. Investigation begins immediately upon
 
 The CA begins investigating a Certificate Problem Report within 24 hours of receipt. Following that investigation, the CA acts within the following maximum periods:
 
-| Action | Maximum period |
-| --- | --- |
-| Cease issuance for the affected Manufacturer, product model or device population | 24 hours |
-| Notify the Wi-SUN Alliance and every network operator known to be relying on the affected certificates | 24 hours |
-| Publish the compromise or retirement notice in the repository | 5 days |
+| Action | Applies to | Maximum period |
+| --- | --- | --- |
+| Cease issuance for the affected Manufacturer, product model or device population | All events in section 4.9.1 | 24 hours |
+| Notify the Wi-SUN Alliance and every network operator known to be relying on the affected certificates | Group 2 events only | 24 hours |
+| Publish the compromise notice in the repository | Group 2 events only | 5 days |
+| Record the event in the Manufacturer's enrolment record | Group 1 events | 5 days |
+| Publish a retirement notice for a Subordinate CA | Section 4.9.1.2 | 5 days |
 
 Where a Wi-SUN Requirement stipulates a shorter period, that shorter period applies.
+
+A Group 1 event carries no notification or publication obligation, as stated in section 4.9.1.1, because it does not call issued certificates into question.
 
 ### 4.9.6 Obligations of relying parties
 
 Because no revocation status is published for Wi-SUN IDevIDs or their chain, a relying party cannot discharge its obligations by consulting a CRL or an OCSP responder. Instead a relying party SHALL:
 - validate the certificate chain to the trust anchor it has provisioned, as stated in section 6.1.4;
-- obtain compromise and retirement notices from the repository identified in section 2.1, and apply them to its Authentication Server trust store and to its authorisation decisions; and
+- obtain compromise and retirement notices from the repository identified in section 2.1, and apply them by removing the named Subordinate CA certificates from the chain material held by the Authentication Server, or otherwise configuring it to reject chains that pass through them; and
 - exclude a device that must no longer participate in the network by the access-control means of the Wi-SUN Requirements, namely refusal at the Authentication Server and group key rotation at the Border Router.
 
 ### 4.9.7 CRL issuance frequency
@@ -732,7 +749,7 @@ These controls are under surveillance and audited both internally and externally
 The OWGTM allows third parties to host and operate some of the components of its infrastructure. If such a delegation occurs, the assigned party will be requested to meet the controls stipulated in this section and an auditing process will be executed to ensure that the necessary measures to ensure these controls are effective are in place and enforced.
 
 In particular:
-- The OISTE Foundation delegates the hosting and operations of the “Root CA” and the “Policy CAs” (and related certificate publication and verification services) to WISeKey.
+- The OISTE Foundation delegates the hosting and operations of the Root CA and the Wi-SUN Subordinate CAs (and related certificate publication services) to WISeKey.
 - The “Issuing CAs” (and related certificate publication and verification services) are hosted and operated by WISeKey (except for the cases of technically-constrained CAs, which could be hosted by their owners). These participants are allowed to delegate the hosting and operation to WISeKey only; other delegations or outsourcing are only permitted after a security assessment and a formal authorization.
 - Registration Authorities and Registration Authority Points are appointed by WISeKey. Registration Authorities are not allowed to delegate their operations to other parties without the approval and direct supervision of WISeKey.
 
@@ -950,7 +967,7 @@ The information and events archived are:
 
 ### 5.5.2 Retention period for archive
 
-Archived records and audit logs are kept Records are retained for at least the validity of the involved certificates.
+Archived records and audit logs are retained for at least the period stated below.
 
 Wi-SUN IDevIDs do not expire and are not revoked, so a retention period expressed as a term after expiry or revocation would never commence. For Wi-SUN certificates the CA therefore retains the records listed in section 5.5.1 for the operational life of the issuing Certification Authority, and for at least 7 years after that Certification Authority is retired under section 4.9.1.2.
 
@@ -1011,7 +1028,7 @@ Where a private key is compromised, or suspected to be compromised, in the Wi-SU
 1. **Cease issuance immediately.** The affected Certification Authority stops issuing, within the deadline of section 4.9.5.
 2. **Destroy the key.** The compromised private key is destroyed under section 6.2.10, under dual control and with a recorded trace, so that it cannot be used again by the OWGTM even inadvertently.
 3. **Notify.** The Wi-SUN Alliance, the PAA, every Manufacturer served by the affected Certification Authority, and every network operator known to the OWGTM to rely on the affected certificates are notified within the deadline of section 4.9.5.
-4. **Publish.** A notice is published in the repository identified in section 2.1, identifying the affected Certification Authority by subject name, Subject Key Identifier and certificate fingerprint, and identifying the affected end-entity population as precisely as the circumstances allow. The notice states that operators should remove the affected Certification Authority from their Authentication Server trust stores.
+4. **Publish.** A notice is published in the repository identified in section 2.1, identifying the affected Certification Authority by subject name, Subject Key Identifier and certificate fingerprint, and identifying the affected end-entity population as precisely as the circumstances allow. Because operators anchor on the Root CA and not on the Subordinate CA, the notice states that operators should remove the retired Subordinate CA certificate from the chain material held by the Authentication Server, or otherwise configure the server to reject chains that pass through it. Where the affected Certification Authority is the Root CA itself, the notice states that the Root CA certificate must be removed from the trust store.
 5. **Re-establish the service.** Where the service continues, a successor Certification Authority is created under section 5.6, and Manufacturers are re-enrolled under it. Devices already carrying an IDevID from the compromised Certification Authority are not re-certified in the field; their replacement is a matter between the Manufacturer and the network operator.
 
 If the compromised key is the Root CA key, the trust anchor itself must be replaced. Every relying party has to provision the successor Root CA certificate into its Authentication Servers and Border Routers, and every device manufactured thereafter carries a chain to the new anchor. Devices already in the field cannot be migrated by the Certification Authority. The OWGTM states this plainly so that the consequence is understood before it is relied upon: the security of the Wi-SUN hierarchy rests on preventing Root CA key compromise, not on recovering from it.
@@ -1032,7 +1049,7 @@ to be executed are:
 - Immediately after there’s a Termination decision, notify all certificate subscribers, the Wi-SUN Alliance, and every network operator known to rely on the affected certificates.
 - Cease all issuance, and destroy the Certification Authority private key under section 6.2.10. The certificates already issued **cannot be revoked** and remain cryptographically valid; termination does not invalidate them.
 - Inform all relying parties that have a registered direct relationship with that Certification Authority about the termination of the certificate service provision. This will also terminate the accreditation granted to the Certification Authority to operate under OWGTM.
-- Publish a notice of the termination in the repository identified in section 2.1, identifying the terminated Certification Authority by subject name, Subject Key Identifier and certificate fingerprint, so that network operators can remove it from their Authentication Server trust stores, and undertake other public communications as deemed necessary to inform the wider relying party community.
+- Publish a notice of the termination in the repository identified in section 2.1, identifying the terminated Certification Authority by subject name, Subject Key Identifier and certificate fingerprint, so that network operators can remove the retired Subordinate CA certificate from the chain material held by the Authentication Server, or otherwise configure the server to reject chains that pass through it, and undertake other public communications as deemed necessary to inform the wider relying party community.
 
 In the case an OWGTM Root Certification Authority is terminated, this will imply the termination of the entire hierarchy dependent of that Root CA.
 
@@ -1081,8 +1098,11 @@ The public keys of all Certification Authorities operating under the OWGTM Trust
 
 The Wi-SUN Root CA certificate is not distributed through any public trust store. It is delivered in two directions, and the OWGTM supports both:
 
-- **To Manufacturers**, as a chain bundle containing the issuing Wi-SUN Subordinate CA certificate and the Root CA certificate. The Manufacturer provisions this bundle into the device at manufacture, together with the IDevID and its private key, because a Wi-SUN node presents only its own certificate during EAP-TLS and must hold the remainder of the chain locally.
+- **To Manufacturers**, as a chain bundle containing every CA certificate between the IDevID and the Root CA — the issuing MICA, the MCA where the three-tier shape is used — together with the Root CA certificate. The Manufacturer provisions this bundle into the device at manufacture, together with the IDevID and its private key, because a Wi-SUN node presents only its own certificate during EAP-TLS and must hold the remainder of the chain locally.
 - **To network operators**, for installation in the trust store of the Authentication Server and in the Border Router, so that an IDevID presented by a node can be validated to the anchor.
+- **To other Manufacturers and integrators**, for provisioning into devices that must perform node-to-node pairwise authentication with devices certified under this CP/CPS.
+
+On that last point the OWGTM states its position plainly. The Root CA identified in [Appendix B](#appendix-b-ca-hierarchies) is not cross-certified by any Wi-SUN Alliance root. A device certified under a different Wi-SUN PKI can therefore authenticate a peer certified under this one only if it has been provisioned with this Root CA certificate as a trust anchor. The OWGTM publishes the certificate for exactly that purpose and will supply it to any party that asks, but it makes **no representation** that devices certified under other PKIs are, or will be, so provisioned. A Manufacturer or operator that depends on cross-PKI node-to-node authentication should confirm the trust anchors provisioned in the device populations concerned before deployment.
 
 Both are obtained from the repository identified in section 2.1. The integrity of a trust anchor obtained from the repository MUST be verified against the SHA-256 fingerprint and Subject Key Identifier published in [Appendix B](#appendix-b-ca-hierarchies) before it is installed. This verification is the only protection available: because the hierarchy publishes no revocation information, an operator that installs the wrong anchor has no mechanism that will later correct it.
 
@@ -1330,7 +1350,7 @@ The following extensions are used in the Wi-SUN hierarchy. Any extension not lis
 | keyUsage | Yes | keyCertSign |
 | subjectKeyIdentifier | No | `73:3C:14:C9:31:9B:53:C5:1F:E2:D8:55:3A:8E:51:C3:AE:B0:5A:4F` |
 
-The Root CA certificate was issued on 6 March 2025 and pre-dates this CP/CPS. This profile is descriptive of that certificate and is not a specification for a future issuance. It satisfies the chain requirements of the Wi-SUN Requirements: a P-256 key, an ecdsa-with-SHA256 signature and a notAfter value of `99991231235959Z`. It asserts `keyCertSign` alone: neither `cRLSign` nor `digitalSignature` is present, consistent with a hierarchy that issues no CRL. It carries no authorityKeyIdentifier extension.
+The Root CA certificate was issued on 6 March 2025, the day after this CP/CPS took effect, and under it. This profile records the certificate as issued. It satisfies the chain requirements of the Wi-SUN Requirements: a P-256 key, an ecdsa-with-SHA256 signature and a notAfter value of `99991231235959Z`. It asserts `keyCertSign` alone: neither `cRLSign` nor `digitalSignature` is present, consistent with a hierarchy that issues no CRL. It carries no authorityKeyIdentifier extension.
 
 **Wi-SUN Manufacturer CA (MCA) Certificate**
 
@@ -1382,6 +1402,8 @@ Neither an MCA nor a MICA certificate SHALL contain a cRLDistributionPoints exte
 A Wi-SUN IDevID SHALL NOT contain a cRLDistributionPoints extension, nor an authorityInfoAccess extension of any kind. Revocation extensions are prohibited by the Wi-SUN Requirements; the `caIssuers` access method is omitted because the complete chain, including the Root CA certificate, is provisioned into the device at manufacture as stated in section 6.1.4, and because the certificate is carried in EAP-TLS over a constrained radio link where size matters.
 
 The subjectAltName extension is marked critical. Because the subject is empty, a relying party that cannot process the extension must reject the certificate rather than treat it as unnamed.
+
+An empty subject is permitted by RFC 5280 section 4.1.2.6 precisely on the condition satisfied here, that subjectAltName is present and critical. Some Authentication Server products have nonetheless handled empty-subject client certificates poorly. Operators should confirm that their Authentication Server accepts a client certificate with an empty subject, a critical subjectAltName and a `notAfter` value of `99991231235959Z` before deploying a device population, since none of those can be changed afterwards.
 
 ### 7.1.3 Algorithm object identifiers
 
@@ -1472,7 +1494,7 @@ The assessor will be selected when an audit or assessment is required. Any compa
 
 A self-assessment under section 8.1 is prepared by the assessed entity itself, and must be signed by a person empowered to bind that entity.
 
-The Wi-SUN hierarchy is not assessed under WebTrust or any equivalent browser root-program audit scheme. Assessment is performed against this CP/CPS by the PAA, or by an assessor it appoints, and the resulting Audit Statement Report is published as stated in section 8.6. The qualification criteria for appointed assessors will be set out in the internal audit scheme announced in section 8.1.
+Assessment is performed against this CP/CPS by the PAA, or by an assessor it appoints, and the resulting Audit Statement Report is published as stated in section 8.6. The qualification criteria for appointed assessors will be set out in the internal audit scheme announced in section 8.1.
 
 The Wi-SUN Alliance approves the Certification Authorities permitted to issue Wi-SUN IDevIDs but does not evaluate or audit them. It likewise provides no policy or procedure evaluation of a Certification Authority operated by a Manufacturer, treating that as a matter between the Manufacturer and its own customers. The assessments described in this section are therefore the sole assurance offered as to the practices of the Certification Authorities operating under this CP/CPS, including the manufacturer-operated Subordinate CAs admitted under section 8.4.
 
@@ -1681,6 +1703,10 @@ The Subscribers of certificates issued under the OWGTM must warrant that:
 - His or her private key is protected and that no unauthorized person has ever had access to the Subscriber’s private key.
 - An obligation and warranty that it will not install and use the Certificate(s) until it has reviewed and verified the accuracy of the data in each Certificate.
 - An obligation and warranty to install the Certificate and its associated Private Key only in the device that the Certificate identifies, and to use the Certificate solely in compliance with all applicable laws, solely for authorized company business, and solely in accordance with the Subscriber Agreement.
+- The Certificate is being used exclusively for authorized and legal purposes, consistent with this CPS.
+- Each digital signature created using the private key corresponding to the public key listed in the Certificate is the digital signature of the Subscriber, and the Certificate has been accepted at the time the digital signature is created.
+- The Subscriber is an end-user Subscriber and not a CA, and is not using the private key corresponding to any public key listed in the Certificate for purposes of digitally signing any Certificate (or any other format of certified public key), as a CA or otherwise.
+- An obligation and warranty to promptly cease using a Certificate and its associated Private Key, and to submit a Certificate Problem Report under section 4.9.3, in the event that: (a) any information in the Certificate is or becomes incorrect or inaccurate, or (b) there is any actual or suspected misuse or compromise of the Subscriber's Private Key associated with the Public Key listed in the Certificate. The Subscriber is on notice that the Certification Authority cannot revoke the Certificate in response.
 
 In addition, and because a Wi-SUN IDevID can neither expire nor be revoked, a Manufacturer subscribing to Wi-SUN IDevIDs warrants that:
 - each `hwSerialNum` it submits is unique within its `hwType` and identifies a single physical device;
@@ -1688,13 +1714,10 @@ In addition, and because a Wi-SUN IDevID can neither expire nor be revoked, a Ma
 - the private key of each device is generated within, or injected into, protected hardware key storage that prevents export of the key in plaintext, and the device is hardened so that the key cannot be extracted through the interfaces the device exposes. This is a contractual obligation under this CP/CPS, and not merely the recommendation made by the Wi-SUN Requirements, precisely because a compromised key cannot be remedied by revocation;
 - the manufacturing process in which certificates and keys are installed is physically and logically secured against the injection of keys or identifiers into unauthorised devices;
 - it will submit a Certificate Problem Report under section 4.9.3 without delay on becoming aware of a key compromise, a duplicated identifier or a mis-issuance; and
+- it will verify, before deploying a device population, that its own equipment and any Authentication Server it controls accept a `notAfter` value of `99991231235959Z` and a certificate with an empty subject and a critical subjectAltName; and
 - it understands and accepts that the Certification Authority cannot revoke an issued Wi-SUN IDevID, that exclusion of a device from a network is the responsibility of the network operator, and that the practical remedy for a compromised device population is its replacement.
-- The Certificate is being used exclusively for authorized and legal purposes, consistent with this CPS.
-- Each digital signature created using the private key corresponding to the public key listed in the Certificate is the digital signature of the Subscriber and the Certificate has been accepted and is operational (not expired or revoked) at the time the digital signature is created.
-- The Subscriber is an end-user Subscriber and not a CA, and is not using the private key corresponding to any public key listed in the Certificate for purposes of digitally signing any Certificate (or any other format of certified public key) or CRL, as a CA or otherwise.
-- An obligation and warranty to promptly cease using a Certificate and its associated Private Key, and promptly request that the Certification Authority revokes the Certificate, in the event that: (a) any information in the Certificate is or becomes incorrect or inaccurate, or (b) there is any actual or suspected misuse or compromise of the Subscriber’s Private Key associated with the Public Key listed in the Certificate.
-- An obligation and warranty to promptly cease all use of the Private Key corresponding to the Public Key listed in an Certificate upon expiration or revocation of that Certificate.
-The “Subscriber agreement” could include additional warranties.
+
+The “Wi-SUN Subscriber Agreement” could include additional warranties.
 
 ### 9.6.4 Relying party representations and warranties
 
@@ -1729,7 +1752,9 @@ For the avoidance of doubt, the Wi-SUN Alliance gives no warranty in respect of 
 
 Liability limitations are regulated in the contractual agreement between the concerned parties. If applicable such concepts are specified in the Subscriber, Relying Party or other commercial agreements made among the participants.
 
-Subject to the foregoing limitations, OWGTM’s aggregate liability limit towards all End users, Relying Parties and any other entities that are not Subordinate PKI Entities for the whole of the validity period of certificates issued by the Root CA (unless revoked or suspended prior to its expiry) towards all persons with regard to such certificates is CHF 5,000,000.00 (Five Million Swiss Francs), with a maximum aggregate per year liability on such certificates of CHF 500,000.00 (Five Hundred and Thousand Swiss Francs). The OISTE Foundation delegates in WISeKey, as lead operator, this liability, according to a formal agreement executed between the parties, and that WISeKey ensures via an appropriate “Errors and Omissions” insurance.
+Subject to the foregoing limitations, OWGTM’s aggregate liability limit towards all End users, Relying Parties and any other entities that are not Subordinate PKI Entities towards all persons with regard to certificates issued by the Root CA is CHF 5,000,000.00 (Five Million Swiss Francs), with a maximum aggregate per year liability on such certificates of CHF 500,000.00 (Five Hundred and Thousand Swiss Francs).
+
+The certificates issued under this CP/CPS neither expire nor can be revoked, so the period over which claims may arise is not bounded by a certificate validity period as it is elsewhere in the OWGTM. These limits are carried over unchanged from the general OWGTM provisions and are subject to legal review before this CP/CPS is published. The OISTE Foundation delegates in WISeKey, as lead operator, this liability, according to a formal agreement executed between the parties, and that WISeKey ensures via an appropriate “Errors and Omissions” insurance.
 
 ## 9.9 Indemnities
 
@@ -1884,7 +1909,7 @@ No stipulation.
 | Certificate Management System |	The keys, software and hardware used to verify Certificate Data, maintain a Repository, and issue Certificates. |
 | Certificate Management Process |	The policies, practices, and procedures governing the use of the Certificate Management System |
 | Certificate Problem Report |	A report of suspected Key Compromise, Certificate misuse, Certificate mis-issuance, or any other type of fraud, compromise, misuse or inappropriate conduct related to a Certificate. In this CP/CPS it is the trigger for the actions of section 4.9, revocation being unavailable. |
-| Chain bundle |	The set of CA certificates, comprising the issuing Wi-SUN Subordinate CA certificate and the Wi-SUN Root CA certificate, delivered alongside an IDevID so that it can be provisioned into a device or into a relying party's trust store. |
+| Chain bundle |	The set of CA certificates comprising every CA certificate between an IDevID and the Root CA, together with the Root CA certificate, delivered alongside the IDevID so that it can be provisioned into a device or into a relying party's chain material. |
 | Compromise notice |	A notice published by the OWGTM under section 4.9.1 identifying certificates that relying parties should cease to trust. It has no cryptographic effect. |
 | Field Area Network (FAN) |	The Wi-SUN network profile for utility and smart-city field devices, defined by the Wi-SUN FAN Technical Profile Specification. |
 | Hardware Crypto Module |	A tamper‐resistant device, with a cryptography processor, used for the specific purpose of protecting the lifecycle of cryptographic keys (generating, managing, processing, and storing). |
@@ -1911,7 +1936,7 @@ No stipulation.
 | Subscriber Agreement |	An agreement that governs the issuance and use of a Certificate that the Applicant must read and accept before receiving a Certificate. |
 | Wi-SUN Alliance |	The industry alliance that publishes the Wi-SUN FAN specifications, operates the associated certification programme, approves the Certification Authorities permitted to issue Wi-SUN IDevIDs, and issues Proof of Wi-SUN Membership. |
 | Wi-SUN Requirements |	Any requirement applicable to PKI services, certificate profiles or device identity that is published by the Wi-SUN Alliance and formally adopted by the PAA for the Wi-SUN hierarchy, as listed in [Appendix D](#appendix-d-adopted-wi-sun-requirements). |
-| Wi-SUN Subordinate CA |	A Certification Authority subordinate to the Wi-SUN Root CA and authorised by the PAA to issue Wi-SUN IDevIDs. |
+| Wi-SUN Subordinate CA |	A Certification Authority beneath the Wi-SUN Root CA, authorised by the PAA to operate at the MCA or the MICA tier as stated in section 7.1. Used as the umbrella term for both tiers. |
 
 # Appendix B: CA Hierarchies
 
@@ -1962,7 +1987,7 @@ The Subordinate CAs operating under this Root are listed below, at both the MCA 
 
 ### Retired Subordinate CAs
 
-Subordinate CA certificates cannot be revoked. A Subordinate CA that has been retired under section 4.9.1.2 is listed here so that network operators can remove it from their Authentication Server trust stores. A certificate listed in this table remains cryptographically valid and will continue to validate unless the operator acts.
+Subordinate CA certificates cannot be revoked. A Subordinate CA that has been retired under section 4.9.1.2 is listed here so that network operators can remove the retired Subordinate CA certificate from the chain material held by the Authentication Server, or otherwise configure the server to reject chains that pass through it. A certificate listed in this table remains cryptographically valid and will continue to validate unless the operator acts.
 
 | Subject Name | Fingerprint (SHA-256) | Tier | Date retired | Reason |
 | --- | --- | --- | --- | --- |
