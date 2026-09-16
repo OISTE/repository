@@ -7,28 +7,28 @@ title: |
 
 
  
- OISTE/WISeKey EchoNet CP/CPS
+ OISTE/WISeKey ECHONET CP/CPS
 author:
  - OISTE Policy Approval Authority
-subtitle: Version 1.0.0
-date: June 27, 2025
+subtitle: Version 1.1.0
+date: September 16, 2026
 copyright: |
- Copyright 2025 OISTE Foundation. 
+ Copyright 2026 OISTE Foundation. 
  This work is licensed under the Creative Commons Attribution 4.0 International license.
 geometry: "left=3cm,right=2cm,top=2cm,bottom=2cm"
 output: pdf_document
 header-includes: |
   \usepackage{fancyhdr}
   \pagestyle{fancy}
-  \fancyfoot[CE,CO]{OW EchoNet CP/CPS - OISTE Foundation}
+  \fancyfoot[CE,CO]{OW ECHONET CP/CPS - OISTE Foundation}
   \fancyfoot[LE,RO]{\thepage}
 toc: true
 include-before: |
   \newpage
   | **VERSION** | **DATE** | **MODIFICATION** | **AUTHOR** |
   | --- | --- | --- | --- |
-  | 1.0 | 9/1/2026 | First Version | Pedro Fuentes | 
-  |  |  |  |  | 
+  | 1.0 | 2026-01-09 | First Version | Pedro Fuentes |
+  | 1.1.0 | 2026-09-16 | ECHONET-specific revision. Removed all references to the CSA, the Matter ecosystem, the CA/Browser Forum and browser root programs; introduced the "ECHONET Requirements" framework (Appendix D); made the device certificate, revocation and repository provisions self-contained | Pedro Fuentes |
   \newpage
 ---
 
@@ -36,7 +36,7 @@ include-before: |
 
 # 1. INTRODUCTION
 
-This document represents a combined Certificate Policy (CP) and Certification Practice Statement (CPS), and describes the practices followed with regard to the management of the lifecycle the Certification Authorities adhered to the OISTE/WISeKey Global Trust Model (OWGTM from now on) for the purposes of EchoNet devices.
+This document represents a combined Certificate Policy (CP) and Certification Practice Statement (CPS), and describes the practices followed with regard to the management of the lifecycle the Certification Authorities adhered to the OISTE/WISeKey Global Trust Model (OWGTM from now on) for the purposes of ECHONET devices.
 
 ## 1.1 Overview
 
@@ -53,25 +53,25 @@ The OISTE Foundation, under Swiss law, cannot belong to any individual or compan
 This document is developed per the recommendations found in the document RFC3647, developed by the Internet Engineering Task Force (IETF), which has been adopted as a worldwide-recognized standard framework to document the Certifications Practice Statement and related Certificate Policies disclosed by a Certification Services Provider.
 
 The purpose of this document is to disclose the Practices and Policies adopted in the OWGTM for the issuance of digital certificates. It is organized in the following sections:
-1. Introductions – This section. Introduces the OWGTM and this document.
+1. Introduction – This section. Introduces the OWGTM and this document.
 2. Publication and Repositories Responsibilities – Describes the publication policies for the certificates affected by this document, and the publication of this document itself.
-1. Identification and Authentication – Discloses the rules for subscriber naming and required authentication policies.
-1. Certificate Life-Cycle Operational Requirements – This section describes the different phases in the Life-Cycle of certificates and their requirements.
-1. Management, Operational and Physical Controls – Describes the controls enforced in the OWGTM to provide adequate trust levels in the certificates issued under the Trust Model.
-2. Technical Security Controls – Discloses the security controls adopted in the OWGTM.
-3. Certificate and CRL Profiles – Describes the technical details of the different certificate types issued under the OWGTM.
-1. Compliance Audit and other Assessment – Discloses the audit policies followed in the OWGTM to ensure that the participant fulfils the security and quality requirements.
-1. Other Business and Legal EchoNets – This section exposes the commercial, legal and contractual aspects involved in the usage of certificates issued in the OWGTM.
+3. Identification and Authentication – Discloses the rules for subscriber naming and required authentication policies.
+4. Certificate Life-Cycle Operational Requirements – This section describes the different phases in the Life-Cycle of certificates and their requirements.
+5. Management, Operational and Physical Controls – Describes the controls enforced in the OWGTM to provide adequate trust levels in the certificates issued under the Trust Model.
+6. Technical Security Controls – Discloses the security controls adopted in the OWGTM.
+7. Certificate and CRL Profiles – Describes the technical details of the different certificate types issued under the OWGTM.
+8. Compliance Audit and other Assessment – Discloses the audit policies followed in the OWGTM to ensure that the participant fulfils the security and quality requirements.
+9. Other Business and Legal Matters – This section exposes the commercial, legal and contractual aspects involved in the usage of certificates issued in the OWGTM.
 
-**APPLICABILITY NOTICE:** If any inconsistency exists between this document and the normative provisions of an applicable industry guideline or standard (“Applicable Requirements”), then the Applicable Requirements take precedence over this CP/CPS. 
+**APPLICABILITY NOTICE:** If any inconsistency exists between this document and the normative provisions of an ECHONET Requirement (as defined in [Appendix A](#appendix-a-glossary) and listed in [Appendix D](#appendix-d-adopted-echonet-requirements)), then the ECHONET Requirement takes precedence over this CP/CPS, and the PAA shall amend this document at the next revision.
 
 ## 1.2 Document name and identification
 
-| Name | OISTE/WISeKey Global Trust Model Certificate Policy/Certification Practices Statement (CP/CPS) |
+| Name | OISTE/WISeKey ECHONET Certificate Policy/Certification Practices Statement (CP/CPS) |
 | --- | --- |
-| Version | 1.0.0 |
-| Issuance date | 9/1/2026 |
-| Location | This document is alsopublished in https://github.com/oiste/repository and https://wisekey.com/repository |
+| Version | 1.1.0 |
+| Issuance date | 2026-09-16 |
+| Location | This document is also published in https://github.com/oiste/repository and https://wisekey.com/repository |
 
 ## 1.3 PKI participants
 
@@ -97,7 +97,7 @@ Therefore, the responsibilities of Registration Authorities operating under the 
 
 ### 1.3.3 Subscribers (Requestors)
 
-In the OWGTM two different end-user roles are defined. Depending on the status of the certificate request, these roles are named “Applicant” and “Subscriber”. In particular, in the EchoNet context, this is described in section 1.4.4 of the CP.
+In the OWGTM two different end-user roles are defined. Depending on the status of the certificate request, these roles are named “Applicant” and “Subscriber”. In particular, for ECHONET Device Certificates the Subscriber is the Manufacturer, as stated in section 1.4.1 of this document.
 - An applicant is a physical person that requests a certificate for his own behalf or on behalf of a third party. The applicant needs to accredit his identity and ability to request a certificate. In the case of an applicant acting on behalf of a third party or legal person, he will be requested to accredit the empowerment for such representation, as required by law.
 - A subscriber is the physical or legal person whose identity is linked to the electronic signature creation data, or private key, and included in a digital certificate. In general, a subscriber is considered the “owner” of a certificate. The subscriber of a certificate is responsible for the custody of his private key and not communicating this data in any way to any other person.
 
@@ -105,7 +105,7 @@ This document details the particular community of subscribers to whom each type 
 
 ### 1.3.4 Relying parties
 
-All natural and legal persons and other entities that trust the certificates issued by certification authorities operating under the OWGTM Trust Model are considered to be “relying parties”. These relying parties do not necessarily need to be a subscriber of an OWGTM certificate, but are requested to accept the “CertifyID Relying Party agreement“, available at http://oiste.org/repository.
+All natural and legal persons and other entities that trust the certificates issued by certification authorities operating under the OWGTM Trust Model are considered to be “relying parties”. These relying parties do not necessarily need to be a subscriber of an OWGTM certificate, but are requested to accept the “CertifyID Relying Party Agreement”, available at http://oiste.org/repository, which applies to relying parties of ECHONET Device Certificates.
 
 In the OWGTM, a particular type of certificate could limit the right to be a relying party for that particular type of certificate, if this is the case, a specific Relying Party agreement would be published.
 
@@ -118,14 +118,14 @@ No stipulation.
 In the OWGTM, the limitations for certificate usage are established for each particular certificate type. This information is summarized in the following subsections.
 The type of certificate is determined by the combination of "Key Usage", "Extended Key Usage", and Policy Identifiers.
 
-For the Context of EchoNet, the certifcate usabe must be aligned with the CSA EchoNet Specification.
+In the context of ECHONET, certificate usage must be aligned with the ECHONET Requirements adopted by the PAA and listed in [Appendix D](#appendix-d-adopted-echonet-requirements).
 
 ### 1.4.1 Appropriate certificate uses
 
 | Certificate type | Description | Permitted uses |
 | --- | --- | --- |
-| Issuing and Intermediate CA Certificate | Infrastructure certificate for all subordinate Certification Authorities operating in the trust model | Certificate Signing, CRL Signing |
-| Device Atestation Certificate | High Assurance Device certificates used by devices to authenticate themselves and to protect transactions over IoT networks, as defined in the CSA EchoNet Specification. Identity information as model number, serial number and manufacturer information are validated. Remote validation is allowed under certain circumstances | Digital Signature, Encryption, Client Authentication |
+| ECHONET Subordinate CA Certificate | Infrastructure certificate for a Subordinate Certification Authority authorised to issue ECHONET Device Certificates. It may be operated by WISeKey on behalf of a Manufacturer, or by the Manufacturer itself as a technically-constrained CA under section 3.2.6 | Certificate Signing, CRL Signing |
+| ECHONET Device Certificate | High-assurance device certificate used by an ECHONET device to authenticate itself and to protect transactions over ECHONET and other IoT networks. The certificate binds the device to its Manufacturer and to the manufacturer-assigned product and device identifiers, as verified under sections 3.2.2 and 3.2.3 and profiled in section 7.1 | Digital Signature, Key Agreement, Client Authentication |
 
 ### 1.4.2 Prohibited certificate uses
 
@@ -165,18 +165,18 @@ Once any document of the Trust Model is updated, the CAs must do a technical ass
 
 ## 1.6 Definitions and acronyms
 
-Definitions and Acronyms are included in [Annex A](#appendix-a-glossary)
+Definitions and Acronyms are included in [Appendix A](#appendix-a-glossary)
 
 # 2. PUBLICATION AND REPOSITORY RESPONSIBILITIES
 
-RootCA Certificates will be published in <<<< TO BE COMPLETED >>>> as a repository.
+The Root CA certificate and the Subordinate CA certificates of the ECHONET hierarchy are published in the OWGTM Policies repository identified in section 2.1, and are listed in [Appendix B](#appendix-b-ca-hierarchies).
 
 ## 2.1 Repositories
 
 The main repositories of the OWGTM are:
 - Policies repository for disclosure of CP/CPS and related information. This repository is a set of web pages and services available at the URLs https://oiste.org and https://github.com/oiste/repository
 - Certificate and Certificate Revocation information repositories. The CA certificates and Certificate Revocation Information sources are included, when relevant, as CDP and AIA extensions in the certificates issued under the OISTE Root CAs
-- Public Certificate repositories. The CSA maintains the EchoNet Distributed Compliance Ledger to make available to relying parties publicly accessible certificate and CRL information.
+- Public Certificate repositories. The OWGTM makes ECHONET Root CA and Subordinate CA certificates, and the corresponding CRLs, publicly accessible to relying parties through the repository identified above. Should the ECHONET Consortium establish a certificate repository or ledger of its own, and the PAA adopt it as an ECHONET Requirement, it will be listed in [Appendix D](#appendix-d-adopted-echonet-requirements) and used in addition to the OWGTM repository.
 
 ## 2.2 Publication of certification information
 
@@ -184,11 +184,13 @@ The OWGTM is responsible for publication of information regarding practices, cer
 
 The shared repositories containing public information in the OWGTM are managed by WISeKey SA or the operator of the Issuing CAs, and are available 24 hours a day, seven days a week. In the case of interruption by cause of “force majeure”, the service will be re-established in the minimum possible time.
 
-### 2.2.1 Statement on Compliance with the CSA EchoNet Specifications
+### 2.2.1 Statement on compliance with the ECHONET Requirements
 
-OISTE and WISeKey ensure the compliance with industry best practices and security controls. In particular, the trust model enforces regular review and compliance with the latest version of the Certificate Policy and Technical Specifications publlished by the Connectivity Standards Association.
+OISTE and WISeKey ensure compliance with industry best practices and security controls. In particular, the trust model enforces a regular review of the documents published by the ECHONET Consortium that are applicable to PKI services, certificate profiles or device identity. Those that the PAA formally adopts for the ECHONET hierarchy become "ECHONET Requirements" and are listed, with title, version and date of adoption, in [Appendix D](#appendix-d-adopted-echonet-requirements).
 
-In the case of discrepancy of any certification practices with the stipulations of the CSA requirements, it must be understood that those requirements must prevail to this CPS.
+In the case of a discrepancy between any certification practice stated in this CP/CPS and an ECHONET Requirement, the ECHONET Requirement prevails, and the PAA shall amend this document at the next revision.
+
+Where no ECHONET Requirement governs a given matter, this CP/CPS is self-contained and its own stipulations apply.
 
 ## 2.3 Time or frequency of publication
 
@@ -220,7 +222,7 @@ All Distinguished Names must be meaningful, and the identification the attribute
 
 ### 3.1.3 Anonymity or pseudonymity of subscribers
 
-EchoNet PKI CAs SHALL NOT issue anonymous or pseudonymous Certificates.
+ECHONET PKI CAs SHALL NOT issue anonymous or pseudonymous Certificates.
 
 ### 3.1.4 Rules for interpreting various name forms
 
@@ -235,8 +237,8 @@ Multiple Certificates with the same subject name MAY be issued to the same Reque
 ### 3.1.6 Recognition, authentication, and role of trademarks
 
 The inclusion of a name in a certificate does not imply any right over that name, neither for the OWGTM nor the applicant, nor the subscriber. The OWGTM reserves the right to refuse a certificate request, or revoke an existing one, if a conflict is detected over ownership or copyright of a name.
-     
-OWGTM – Root CA Certification Practices Statement (CPS) In any event, the OWGTM will not attempt to intermediate nor resolve conflicts regarding ownership of names
+
+In any event, the OWGTM will not attempt to intermediate nor resolve conflicts regarding ownership of names
 or trademarks.
 
 ## 3.2 Initial identity validation
@@ -253,33 +255,35 @@ If (when allowed by the applicable regulations) the key pair is generated by the
 
 Before issuing a certificate for a subordinate Certification Authority OWGTM requires the fulfillment of a legally binding agreement between the organization and the OISTE Foundation, which includes the appropriate validation of the organization identity and signatories of the agreement.
 
-#### 3.2.2.3 For Device Certificates
+Where a Manufacturer applies to operate its own ECHONET Subordinate CA, the OWGTM additionally verifies, before the Subordinate CA Certificate is issued, that the Manufacturer meets the accreditation criteria of section 3.2.6, that the Subordinate CA will be technically constrained to the Manufacturer Codes the Manufacturer is entitled to use, and that the Manufacturer accepts the audit obligations of section 8.4.
+
+#### 3.2.2.1 For Device Certificates
 
 | CP Identifier | Validation Policy |
 | --- | --- |
-| Device Atestation Certificate | If the organization name is included in the certificate, the Registration Authority must verify that the Organization exists and that the certificate subscriber is authorized to enroll for a certificate including the Organization name. Other checks required by CSA in its CP (section 3.2.2) will be also enforced |
+| ECHONET Device Certificate | The Registration Authority must verify that:<br><ul><li>The Manufacturer exists as a legal person, using records from a government agency in the jurisdiction of incorporation, a qualified independent information source, or an attestation from a legal practitioner or accountant;</li><li>The Manufacturer is a member of the ECHONET Consortium in good standing, or is otherwise entitled by the Consortium to place ECHONET devices on the market;</li><li>The Manufacturer Code to be included in the certificate has been assigned to that Manufacturer by the ECHONET Consortium, verified against the Consortium’s assignment records;</li><li>The Product Code to be included in the certificate has been assigned by the Manufacturer to the product model concerned; and</li><li>The natural person submitting the application is authorised to act on behalf of the Manufacturer, as confirmed under section 3.2.5.</li></ul>The Manufacturer identity, its membership standing and its Manufacturer Code are re-verified at least every 825 days. Individual device enrolments made under an already-validated Manufacturer do not require repeating these checks. |
 
 ### 3.2.3 Authentication of individual identity
 
 The following subsections describe the required practices for each subscriber certificate type.
 
-#### 3.2.3.3 For Device Certificates
+#### 3.2.3.1 For Device Certificates
 
 | CP Identifier | Validation Policy |
 | --- | --- |
-| Device Atestation Certificate | **ID Data Verified**:<br>Device identity data such as serial number and manufacturer name.<br>**Method of Verification**:<br>May be done through database of identity data that is well- maintained and was created based on face to face or direct verification using official ID documents.<br>If the Extended Key Usage for secure email is set: Bounce back email verification procedure proving access to the email account is accepted.<br>**Entities authorized to verify**:<br><ul><li>Authorised internal entity (e.g. human resources dept.) or external entity who is legally bound to comply with the verification procedures.</li><li>The entity purchasing and managing the e-ID system under contract with WISeKey.</li></ul>|
+| ECHONET Device Certificate | **ID Data Verified**:<br>The Manufacturer Code (EPC 0x8A), the Product Code (EPC 0x8C) and the Production Number (EPC 0x8D) of the individual device, together with the legal name and country of the Manufacturer.<br>**Method of Verification**:<br>The Manufacturer Code and the Manufacturer identity are verified as stated in section 3.2.2. The Product Code and Production Number are taken from the Manufacturer’s production record for the unit concerned; the CA accepts them on the basis of the Manufacturer’s warranty in the Subscriber Agreement that each Production Number is unique within the Product Code and identifies a single physical unit.<br>Enrolment requests must originate from a production system authenticated to the Issuing CA or Subordinate CA, and must be constrained to the Manufacturer Codes assigned to that Manufacturer.<br>**Entities authorized to verify**:<br><ul><li>A Registration Authority accredited by the OWGTM; or</li><li>An accredited software application operating in the Manufacturer’s production environment, under section 4.2.1.</li></ul>No ECHONET Device Certificate identifies a natural person, and no personal data is placed in the certificate. |
 
 ### 3.2.4 Non-verified subscriber information
 
-All attribibutes included in a certificate that are subject to root program or industry regulations must undergo appropriate validation.
+All attributes included in a certificate that are subject to the ECHONET Requirements or to this CP/CPS must undergo appropriate validation. No unverified subscriber information is included in ECHONET Device Certificates.
 
 ### 3.2.5 Validation of authority
 
-The CA’s Certificate issuance process SHALL confirm that the:
-- Corporate contact listed in the RAD is an officer in the organization who can sign on behalf of the organization and bind the organization to the terms and conditions of the agreement;
-- Representative submitting the RAD and Certificate Application is authorized to act on behalf of the organization;
-- Administrators listed in the RAD are authorized to act on behalf of the organization; and
-- Contacts listed in the RAD are authorized to act on behalf of the organization.
+The CA’s Certificate issuance process SHALL confirm that:
+- The corporate contact listed in the Registration Authority Declaration (the signed enrolment record establishing the organization’s authorised contacts, "RAD") is an officer of the organization who can sign on its behalf and bind it to the terms and conditions of the agreement;
+- The representative submitting the RAD and the Certificate Application is authorized to act on behalf of the organization;
+- The administrators listed in the RAD are authorized to act on behalf of the organization; and
+- The contacts listed in the RAD are authorized to act on behalf of the organization.
 
 ### 3.2.6 Criteria for interoperation
 
@@ -311,7 +315,7 @@ A Certification Authority may define, that during the enrolment process, a subsc
 
 The stipulations included in this section are understood as common for all the certificates issued under the OWGTM Root, unless otherwise specified in this document.
 
-When applicable, CAs operating under the OWGTM must respect the requirements set by the CSA EchoNet CP and Technical Requirements.
+When applicable, CAs operating under the OWGTM must respect the ECHONET Requirements.
 
 ## 4.1 Certificate Application
 
@@ -327,9 +331,9 @@ A certificate application can be submitted by the subject of the certificate or 
 
 WISeKey is responsible for ensuring that the identity of each Certificate Applicant is verified in accordance with this CP and the applicable CPS prior to the issuance of a Certificate. Applicants are responsible for submitting sufficient information and documentation for the Issuer CA or the RA to perform the required verification of identity prior to issuing a Certificate.
 
-This process includes the identification of suspicious or potentially dangerous requests, based in automated checks on domain blacklists and previous denied request, marked as suspicious.
+This process includes the identification of suspicious or potentially dangerous requests, based on automated checks against the list of Manufacturers whose enrolment rights have been suspended or withdrawn, against previously revoked certificates, and against previously denied requests marked as suspicious.
 
-In particular and where applicable, CAs will respect the requirements set by the CSA EchoNet CP and Specifications.
+In particular and where applicable, CAs will respect the ECHONET Requirements.
 
 ## 4.2 Certificate application processing
 
@@ -343,12 +347,11 @@ The identification and authentication functions are delegated to the Registratio
 
 An authorized Registration Authority Officer will perform these functions. This role can be assumed by:
 - An accredited person that, on behalf of a Registration Authority, personally executes the identification and authentication functions.
-- An accredited software application that performs the identification and authentication functions for automated certification procedures. If a Certificate Policy permits such automation it will be stated explicitly in section 4.1.2 of this document. Any accredited software application will execute this function according to sections 3.2.2 and 3.2.3 of this document.
+- An accredited software application that performs the identification and authentication functions for automated certification procedures. Automated registration is expressly permitted for ECHONET Device Certificates, where enrolment occurs in a manufacturing environment under a Manufacturer whose identity and identifiers have already been validated under sections 3.2.2 and 3.2.3. Any accredited software application will execute this function according to sections 3.2.2 and 3.2.3 of this document.
 
 The steps to be executed by the Issuing CA or RA are as follows:
 -	As a first step, the Issuing CA or RA will perform the verifications stipulated in section 3.2. 
--	As a second step, the CA must check the DNS for the existence of a CAA record for each dNSName in the subjectAltName extension of the certificate to be issued, according to the procedure in RFC 6844.
--	As a third step, the Issuing CA must check the certificate details against a list of previously revoked Certificates and rejected certificate requests to identify suspicious certificate requests.
+-	As a second step, the Issuing CA must check the certificate details against a list of previously revoked Certificates and rejected certificate requests to identify suspicious certificate requests.
 
 The Issuing CA can only issue a certificate after having successfully completed the above steps.
 
@@ -364,7 +367,7 @@ There is no time limit stipulated to complete the processing of an application.
 
 ## 4.3 Certificate issuance
 
-A certificate request will be forwarded to a Certification Authority for its issuance only after the Registration Authority confirms the correctness of the information contained in the request. The OWGTM is not responsible for monitoring, research or confirmation of the correctness of the information contained in a certificate during the intermediate period between its issuance and renewal, unless this period is longer to the current limits established by the CSA Requirements.
+A certificate request will be forwarded to a Certification Authority for its issuance only after the Registration Authority confirms the correctness of the information contained in the request. The OWGTM is not responsible for monitoring, research or confirmation of the correctness of the information contained in a certificate during the intermediate period between its issuance and renewal, unless this period exceeds the re-verification limits stipulated in section 3.3 of this CP/CPS.
 
 ### 4.3.1 CA actions during certificate issuance
 
@@ -405,7 +408,7 @@ The certificates issued by the OWGTM are used to provide authenticity, integrity
 
 For CA Certificates the private key may only be used according to the CPS published by the subordinate CA, subject to approval by the OWGTM PAA.
 
-The specific usages allowed for a private key associated to a certificate type issued in the OWGTM are as summarized in section 2 of this document
+The specific usages allowed for a private key associated to a certificate type issued in the OWGTM are as summarized in section 1.4 of this document
 
 ### 4.5.2 Relying party public key and certificate usage
 
@@ -525,24 +528,22 @@ A Certification Authority operating in the OWGTM must revoke a certificate that 
 2. The Subscriber notifies the CA that the original certificate request was not authorized and does not retroactively grant authorization;
 3. The CA obtains evidence that the Subscriber's Private Key corresponding to the Public Key in the Certificate suffered a Key Compromise;
 4. The CA is made aware of a demonstrated or proven method that can easily compute the Subscriber’s Private Key based on the Public Key in the Certificate; or
-5. The CA obtains evidence that the validation of domain authorization or control for any Fully-Qualified Domain Name or IP address in the Certificate should not be relied upon.
+5. The CA obtains evidence that the validation of the Manufacturer identity, or of any device identifier included in the Certificate, should not be relied upon.
 
 A Certification Authority operating in the OWGTM must revoke a certificate that it has issued upon the occurrence of any of the following events:
 1. The Certificate no longer complies with the requirements of Sections 6.1.5 and 6.1.6;
 2. The CA obtains evidence that the Certificate was misused;
 3. The CA is made aware that a Subscriber has violated one or more of its material obligations under the Subscriber Agreement or Terms of Use;
-4. The CA is made aware of any circumstance indicating that use of a Fully-Qualified Domain Name
-or IP address in the Certificate is no longer legally permitted (e.g. a court or arbitrator has revoked a Domain Name Registrant's right to use the Domain Name, a relevant licensing or services agreement between the Domain Name Registrant and the Applicant has terminated, or the Domain Name Registrant has failed to renew the Domain Name);
-5. The CA is made aware that a Wildcard Certificate has been used to authenticate a fraudulently misleading subordinate Fully-Qualified Domain Name;
-6. The CA is made aware of a material change in the information contained in the Certificate;
-7. The CA is made aware that the Certificate was not issued in accordance with these Requirements or the CA's Certificate Policy or Certification Practice Statement;
-8. The CA determines or is made aware that any of the information appearing in the Certificate is inaccurate;
-9. The CA's right to issue Certificates under these Requirements expires or is revoked or terminated, unless the CA has made arrangements to continue maintaining the CRL/OCSP Repository;
-10. Revocation is required by the CA's Certificate Policy and/or Certification Practice Statement; or
-11. The CA is made aware of a demonstrated or proven method that exposes the Subscriber's Private Key to compromise, methods have been developed that can easily calculate it based on the Public Key, or if there is clear evidence that the specific method used to generate the Private Key was
+4. The CA is made aware that the Manufacturer is no longer entitled to use a Manufacturer Code, product identifier or other identifier included in the Certificate;
+5. The CA is made aware of a material change in the information contained in the Certificate;
+6. The CA is made aware that the Certificate was not issued in accordance with this CP/CPS or the CA's Certificate Policy or Certification Practice Statement;
+7. The CA determines or is made aware that any of the information appearing in the Certificate is inaccurate;
+8. The CA's right to issue Certificates under this CP/CPS expires or is revoked or terminated, unless the CA has made arrangements to continue maintaining the CRL Repository;
+9. Revocation is required by the CA's Certificate Policy and/or Certification Practice Statement; or
+10. The CA is made aware of a demonstrated or proven method that exposes the Subscriber's Private Key to compromise, methods have been developed that can easily calculate it based on the Public Key, or if there is clear evidence that the specific method used to generate the Private Key was
 flawed.
 
-**Revocation of EchoNet Certificates**: In particular, will be processed as defined by the requirements published by the CSA EchoNet CP and Specifications, as appropriate.
+**Revocation of ECHONET Certificates**: revocation is processed as stated in this section 4.9 and, where an ECHONET Requirement stipulates additional or shorter deadlines, as stated in that ECHONET Requirement.
 
 #### 4.9.1.2 Reasons for Revoking a Subordinate CA Certificate
 An issuing Certification Authority operating in the OWGTM will be revoked upon the occurrence of any of the following events:
@@ -553,7 +554,7 @@ An issuing Certification Authority operating in the OWGTM will be revoked upon t
 2. The Issuing CA is made aware that the Certificate was not issued in accordance with or that Subordinate CA has not complied with this document or the applicable Certificate Policy or Certification Practice Statement;
 1. The Issuing CA determines that any of the information appearing in the Certificate is inaccurate or misleading;
 1. The Issuing CA or Subordinate CA ceases operations for any reason and has not made arrangements for another CA to provide revocation support for the Certificate;
-1. The Issuing CA's or Subordinate CA's right to issue Certificates under these Requirements expires or is revoked or terminated, unless the Issuing CA has made arrangements to continue maintaining the CRL/OCSP Repository;
+1. The Issuing CA's or Subordinate CA's right to issue Certificates under this CP/CPS expires or is revoked or terminated, unless the Issuing CA has made arrangements to continue maintaining the CRL Repository;
 1. Revocation is required by the Issuing CA's Certificate Policy and/or Certification Practice Statement; or
 1. Revocation is required by the OISTE Foundation.
 
@@ -565,9 +566,9 @@ Third parties may request certificate revocation for problems related to fraud, 
 
 ### 4.9.3 Procedure for revocation request
 
-The procedure to be used for certificate revocation requests is detailed in the “End User Agreement”. Individual users will find the appropriate contact and procedure information in the URL http://www.wisekey.com/repository. Certificate subscribers obtaining their certificate from a self-service portal (INeS IoT Security Portal) can request the revocation through the same service.
+The procedure to be used for certificate revocation requests is detailed in the “ECHONET Subscriber Agreement”, published in the repository identified in section 2.1. Manufacturers enrolling and managing ECHONET Device Certificates through the INeS IoT Security Portal can request revocation through that same service.
 
-To report suspected Private Key Compromise, Certificate misuse, Certificate mis-issuance, or other types of fraud, compromise, misuse, inappropriate conduct, or any other EchoNet related to Certificates, the main and preferred method is sending an e-mail message to cps@wisekey.com.
+To report suspected Private Key Compromise, Certificate misuse, Certificate mis-issuance, or other types of fraud, compromise, misuse, inappropriate conduct, or any other matter related to Certificates, the main and preferred method is sending an e-mail message to cps@wisekey.com.
 
 For certificate subscribers that seek to obtain general support, the preferred method to communicate with WISeKey is sending an e-mail message to support@wisekey.com.
 
@@ -576,27 +577,35 @@ The common practice for all certificates issued under the OWGTM Trust Model is f
 - Face-to-face requests addressed to an official Registration Authority representative and the identity of the requestor is proved by the same means as used for certificate registration.
 - Revocation requests sent by an official Registration or Certification representative operating in the OWGTM.
 
-In particular, processing revocation for EchoNet Certificates will be performer as required by the CSA.
-
 ### 4.9.4 Revocation request grace period
 
 There is no stipulation for grace periods for revocation requests. The revocation process will be started immediately upon the receipt of such a request by an authorized party.
 
 ### 4.9.5 Time within which CA must process the revocation request
 
-Revocation requests are processed by the CA within the shortest possible period, and always in accordance to the limits set in section 4.9.1 and respecting the deadlines and procedures for problem investigation and reporting set by the CSA Root Program.
+Revocation requests are processed by the CA within the shortest possible period, and always in accordance with the limits set in section 4.9.1.
+
+The CA begins investigating a Certificate Problem Report within 24 hours of receipt. Following that investigation, the CA revokes the Certificate within the following maximum periods:
+
+| Circumstance | Maximum period to revoke |
+| --- | --- |
+| Key Compromise of the Subscriber Private Key, or of a Subordinate CA Private Key | 24 hours |
+| The Certificate was mis-issued, or the CA obtains evidence that it was misused | 24 hours |
+| Any other circumstance listed in section 4.9.1 | 5 days |
+
+Where an ECHONET Requirement stipulates a shorter period, that shorter period applies.
 
 ### 4.9.6 Revocation checking requirement for relying parties
 
-The OWGTM requires that all parties willing to rely on certificates issued under the Trust Model check the status of these Certificates on each digital signature verification and authentication request using the certificate. This requirement can be fulfilled by consulting the most recent CRL from the CA that issued the Certificate or, when available, by using the OWGTM Online Certificate Status Protocol Server (OCSP).
+The OWGTM requires that all parties willing to rely on certificates issued under the Trust Model check the status of these Certificates on each digital signature verification and authentication request using the certificate. For certificates issued under the ECHONET hierarchy this requirement is fulfilled by consulting the most recent CRL published by the CA that issued the Certificate. No online status protocol is offered for these certificates.
 
-The information necessary to locate these revocation services can be included in all OWGTM certificates, using the standard CDP and/or AIA extensions.
+The information necessary to locate the CRL is included in all ECHONET certificates, using the standard cRLDistributionPoints extension.
 
 ### 4.9.7 CRL issuance frequency
 
 The OISTE CAs used by the OWGTM issue a full CRL at least every year, with a typical overlapping period of one week. This CRL will contain the revoked, if any, certificates for OWGTM Policy CAs or Issuing CAs, as appropriate for the hierarchy. New CRLs are published immediately if a new subordinated CA is revoked.
 
-The CRL issuance frequency for Subordinate Certification Authorities is as mandated by the CSA EchoNet CP and Technical Specifications.
+Subordinate Certification Authorities issuing ECHONET Device Certificates issue a full CRL at least every 12 months, and in any case within 24 hours of a revocation being recorded. The nextUpdate field of a CRL is set no more than 12 months beyond its thisUpdate field.
 
 ### 4.9.8 Maximum latency for CRLs
 
@@ -604,13 +613,13 @@ CRLs are posted to their distribution point within the minimum possible time aft
 
 ### 4.9.9 On-line revocation/status checking availability
 
-No stipulation.
+On-line status checking by the Online Certificate Status Protocol is not offered for certificates issued under the ECHONET hierarchy. Revocation status is published exclusively by CRL, as stated in sections 4.9.7 and 4.10.
 
 ### 4.9.10 On-line revocation checking requirements
 
-On-line revocation checking is openly provided without restriction to all Participants in the PKI, for the certificate types that include the appropriate AIA extension. This service is made available in compliance with the RFC 6960 and other applicable standards and regulations.
+Not applicable. No on-line status checking protocol is offered.
 
-Relying parties are requested to always check the validity of the certificate on which they rely, as stipulated in section 4.9.6.
+Relying parties are requested to always check the validity of the certificate on which they rely, by the means stipulated in section 4.9.6.
 
 ### 4.9.11 Other forms of revocation advertisements available
 
@@ -620,7 +629,7 @@ No stipulations.
 
 Any party detecting a key compromise at any level in the OWGTM Trust Model is requested to immediately communicate it to a Registration or Certification Authority.
 
-In particular for EchoNet certificates, but applicable for any other certificate type issued, it’s also requested to Subscribers, Relying Parties, Application Software Vendors and other third parties to report any potential issue to the Certification Authority (Certificate misuse, or other types of fraud, compromise, misuse, or inappropriate conduct related to Certificates).
+In particular for ECHONET certificates, but applicable for any other certificate type issued, it’s also requested to Subscribers, Relying Parties, Application Software Vendors and other third parties to report any potential issue to the Certification Authority (Certificate misuse, or other types of fraud, compromise, misuse, or inappropriate conduct related to Certificates).
 
 The appropriate methods to demonstrate key compromise are:
 - Create and sign a text file,
@@ -635,15 +644,15 @@ Suspension is not allowed for any certificate in scope of this CPS.
 
 ### 4.9.14 Who can request suspension
 
-No stipulation. Suspension is not available for publicly trusted certificates. 
+No stipulation. Suspension is not supported for any certificate in scope of this CP/CPS.
 
 ### 4.9.15 Procedure for suspension request
 
-No stipulation. Suspension is not available for publicly trusted certificates. 
+No stipulation. Suspension is not supported for any certificate in scope of this CP/CPS.
 
 ### 4.9.16 Limits on suspension period
 
-No stipulation. Suspension is not available for publicly trusted certificates. 
+No stipulation. Suspension is not supported for any certificate in scope of this CP/CPS.
 
 ## 4.10 Certificate status services
 
@@ -651,9 +660,9 @@ Any CA operating in the OWGTM must provide a highly available and reliable servi
 
 ### 4.10.1 Operational characteristics
 
-Certificate Status Services are accessible through HTTP servers owned by the OWGTM Certification Authorities. The Services can be accessed by downloading revocation lists (CRL) or by sending requests to OCSP servers.
+Certificate Status Services are accessible through HTTP servers owned by the OWGTM Certification Authorities, and are accessed by downloading the applicable Certificate Revocation List (CRL). CRLs are served over HTTP without authentication or access restriction.
 
-The appropriate certificate revocation information service URLs are included in standard extensions within the issued certificates.
+The applicable CRL URL is included in the cRLDistributionPoints extension of every certificate issued under the ECHONET hierarchy.
 
 ### 4.10.2 Service availability
 
@@ -669,15 +678,11 @@ No stipulation.
 
 ## 4.12 Key escrow and recovery
 
-Key escrow is not permitted for EchoNet Certificates.
+Key escrow is not permitted for ECHONET Certificates.
 
 ### 4.12.1 Key escrow and recovery policy and practices
 
-All CA providing Key Escrow services for Personal Certificates are required to:
-- Notify Subscribers that their Private Keys are escrowed;
-- Protect escrowed keys from unauthorized disclosure;
-- Protect any authentication mechanisms that could be used to recover escrowed Private Keys; Release an escrowed key only after making or receiving (as applicable) a properly authorized request for recovery; and
-- Comply with any legal obligations to disclose or keep confidential escrowed keys, escrowed key related information, or the facts concerning any key recovery request or process.
+Not applicable. Key escrow is not offered for any certificate in scope of this CP/CPS.
 
 ### 4.12.2 Session key encapsulation and recovery policy and practices
 
@@ -685,11 +690,11 @@ No stipulation.
 
 # 5. FACILITY, MANAGEMENT, AND OPERATIONAL CONTROLS
 
-This section describes the non-technical security controls used by the participants2 involved in the issuance, publishing and management of keys within the OWGTM. The OWGTM asserts the importance of these controls as a fundamental basis to provide trust to subscribers and all relying parties, and therefore establishes and maintains the necessary means to ensure and demonstrate that these controls are enforced.
+This section describes the non-technical security controls used by the participants involved in the issuance, publishing and management of keys within the OWGTM. The OWGTM asserts the importance of these controls as a fundamental basis to provide trust to subscribers and all relying parties, and therefore establishes and maintains the necessary means to ensure and demonstrate that these controls are enforced.
 
 These controls are under surveillance and audited both internally and externally by accredited bodies. The public manifests of these audits are published on a regular basis in the OWGTM web site (http://www.oiste.org/repository).
 
-The OWGTM allows third parties to host and operate3 some of the components of its infrastructure. If such a delegation occurs, the assigned party will be requested to meet the controls stipulated in this section and an auditing process will be executed to ensure that the necessary measures to ensure these controls are effective are in place and enforced.
+The OWGTM allows third parties to host and operate some of the components of its infrastructure. If such a delegation occurs, the assigned party will be requested to meet the controls stipulated in this section and an auditing process will be executed to ensure that the necessary measures to ensure these controls are effective are in place and enforced.
 
 In particular:
 - The OISTE Foundation delegates the hosting and operations of the “Root CA” and the “Policy CAs” (and related certificate publication and verification services) to WISeKey.
@@ -766,7 +771,7 @@ The roles requiring separation of duties is stipulated in section 5.2.4.
 
 ### 5.2.3 Identification and authentication for each role
 
-All the persons assuming a role in the OWGTM systems4 follow an authorization process that entitles them to access the appropriate information and systems for their role.
+All the persons assuming a role in the OWGTM systems follow an authorization process that entitles them to access the appropriate information and systems for their role.
 
 Physical access control for all the authorized persons accessing OWGTM’s systems and services systems is typically enforced using two factor authentication that usually includes biometrics.
 
@@ -776,7 +781,7 @@ Roles requiring Separation of duties include at least the following:
 - Any activity involved in the operation of a Root Certification Authority.
 - Enabling a CA into a production status (CA Ceremony procedures)
 - Issuance, or revocation of CA Certificates
-- Validation of information and issuance of high assurance subscriber certificates (i.e. EchoNet SubCA Certificates)
+- Validation of information and issuance of ECHONET Subordinate CA Certificates, and the authorisation of a Manufacturer to enrol ECHONET Device Certificates
 
 ## 5.3 Personnel controls
 
@@ -798,7 +803,7 @@ The Human Resource Department conducts verification checks on permanent staff at
 
 ### 5.3.3 Training requirements
 
-Personnel directly involved in OWGTM, including “Issuing CAs” operated by third parties and Registration Authorities, will follow an internal training plan adapted to their assigned attributions. This training will be compliant with industry regulations, as the CSA EchoNet Requirements, as applicable.
+Personnel directly involved in OWGTM, including “Issuing CAs” operated by third parties and Registration Authorities, will follow an internal training plan adapted to their assigned attributions. This training will be compliant with industry regulations and with the ECHONET Requirements, as applicable.
 
 ### 5.3.4 Retraining frequency and requirements
 
@@ -850,7 +855,6 @@ OWGTM records in their servers all events related to:
   4. Acceptance and rejection of certificate requests as captured by CA logs;
   5. Issuance of Certificates as captured by CA logs
   6. Generation of Certificate Revocation Lists as may be captured by CA logs (NB CRLs are not retained, only the record of its generation)
-  7. Generation of OCSP entries as may be captured by available OCSP server logs (NB OCSP entries are not retained, only the record of their generation if recorded by the OCSP server)
 - Security events, including:
   1. Successful and unsuccessful PKI system access attempts as captured by operating system logs;
   2. Major PKI and security system actions performed as captured by operational logs;
@@ -913,7 +917,7 @@ The information and events archived are:
 
 Archived records and audit logs are kept Records are retained for at least the validity of the involved certificates.
 
-For the particular case of EchoNet certificates, The CA must ensure the retention period stipulated by the CSA in its guidelines.
+For the particular case of ECHONET certificates, the CA retains the records listed in section 5.5.1 for at least 7 years after the expiry or revocation of the corresponding certificate, consistent with section 6.3.1.
 
 ### 5.5.3 Protection of archive
 
@@ -991,7 +995,7 @@ In the case an OWGTM Root Certification Authority is terminated, this will imply
 
 # 6. TECHNICAL SECURITY CONTROLS
 
-This section describes the measures taken by Certification Authorities operating under the OWGTM5. The OWGTM believes these controls are fundamental to provide trust to subscribers and all relying parties, and has therefore established the necessary means to ensure and demonstrate that these controls are enforced. These controls are under surveillance and audited both internally and externally by accredited bodies. The public manifests of these audits are published on a regular basis in the web site (http://www.oiste.org/repository).
+This section describes the measures taken by Certification Authorities operating under the OWGTM. The OWGTM believes these controls are fundamental to provide trust to subscribers and all relying parties, and has therefore established the necessary means to ensure and demonstrate that these controls are enforced. These controls are under surveillance and audited both internally and externally by accredited bodies. The public manifests of these audits are published on a regular basis in the web site (http://www.oiste.org/repository).
 
 ## 6.1 Key pair generation and installation
 
@@ -1000,7 +1004,7 @@ Under the OWGTM, Key Pairs are generated under the necessary security levels and
 ### 6.1.1 Key pair generation
 
 Key Pairs of Certification Authorities operating in the OWGTM are generated and installed under a procedure compliant with applicable regulations. Main details of this procedure are:
-- The Root Certification Authority key creation ceremony is audited by an external qualified auditor6.
+- The Root Certification Authority key creation ceremony is audited by an external qualified auditor.
 - Subordinated Certification Authorities are generated under direct supervision of internal auditors
 from WISeKey.
 - CA Ceremonies are executed by designated trusted personnel.
@@ -1012,19 +1016,19 @@ Key pairs for the Root Certification Authorities in the OWGTM are generated in h
 
 Key pairs for the Policy and Issuing Certification Authorities in the OWGTM may be generated in hardware security modules (HSM) accredited under the standards specified in section 6.2.1.
 
-Key pairs for the Policy and Issuing Certification Authorities in the OWGTM may be generated in escrowable form and protected as required under WebTrust requirements, and imported and operated within hardware security modules (HSM) under the standards specified in section 6.2.1.
+Key pairs for Subordinate Certification Authorities in the OWGTM may be generated in escrowable form, protected under dual control and split-knowledge at all times, and imported and operated within hardware security modules (HSM) under the standards specified in section 6.2.1.
 
 For Subscriber Certificates, unless otherwise noted in this CPS, Subscriber is solely responsible for the generation of the Key Pair appropriate to the Certificate type being applied for.
 
 ### 6.1.2 Private key delivery to subscriber
 
-It is not allowed the manipulation of private keys corresponding to CA certificates.
+Private keys corresponding to CA certificates are generated inside the CA cryptographic module and are never delivered to any subscriber.
 
 If the specific subscriber certificate type allows the generation of the private key by the Registration Authority, the usage of password-protected encrypted software files, or smart-cards or other valid crypto-tokens is accepted.
 
 ### 6.1.3 Public key delivery to certificate issuer
 
-It is not allowed the generation of private keys corresponding to CA certificates.
+Public keys of CA certificates are delivered to relying parties within the CA certificate itself, as described in section 6.1.4.
 
 Public keys generated by, or for, the end-entities are sent to the Certification Authority through secure channels using the OWGTM Registration Authorities, as part of a certificate request in acceptable formats, such as PKCS#10 or other standard CSR format.
 
@@ -1032,17 +1036,17 @@ Public keys generated by, or for, the end-entities are sent to the Certification
 
 The public keys of all Certification Authorities operating under the OWGTM Trust Model are included in the corresponding certificate and published and can be freely downloaded from its repository which is located at http://www.oiste.org/repository.
 
-Trusted Root Certificates may be obtained directly from the appropriate repositories in most browsers and operating systems.
+The ECHONET Root CA certificate is not distributed through browser or operating-system trust stores. Relying parties provision it as a trust anchor either from the OWGTM repository identified in section 2.1, or as embedded in the device or application by its manufacturer or integrator. The integrity of a trust anchor obtained from the repository must be verified against the fingerprint and Subject Key Identifier published in [Appendix B](#appendix-b-ca-hierarchies).
 
 ### 6.1.5 Key sizes
 
-The OWGTM enforces the use of minimum length 2048-bit RSA and ECC NIST P-256, P-384 for key pairs at all levels of the hierarchy.
+Certificates issued under this CP/CPS use elliptic-curve keys: NIST P-256 or P-384 for ECHONET Subordinate CAs and ECHONET Device Certificates. The Root CA identified in [Appendix B](#appendix-b-ca-hierarchies) holds a NIST P-256 key.
 
-Hashing algorithms supported are SHA-1 and SHA-2, depending on the hierarchy to which the end-entity certificate belongs, as described in 1.3.1. In particular, no issuance of new SHA-1 certificates after 31-December-2015.
+The only hashing algorithms permitted are SHA-256 and SHA-384. SHA-1 SHALL NOT be used in any certificate or CRL issued under the ECHONET hierarchy.
 
 ### 6.1.6 Public key parameters generation and quality checking
 
-The algorithm used in the OWGTM for key generation is RSA or ECC.
+The algorithm used in the ECHONET hierarchy for key generation is ECDSA over the NIST P-256 and P-384 curves. Key pairs are generated by a validated random source within the cryptographic module, and the CA rejects any public key that fails the quality checks of section 4.2.1.
 
 ### 6.1.7 Key usage purposes (as per X.509 v3 key usage field)
 
@@ -1056,7 +1060,7 @@ The OWGTM has established controls to ensure that the risks derived from a priva
 
 ### 6.2.1 Cryptographic module standards and controls
 
-Certification Authorities in the OWGTM are required to use Hardware Security Modules, at least compliant with FIPS 140-2 Level 2 for PKI components (Level 3 for CA components).
+Certification Authorities in the OWGTM are required to use Hardware Security Modules certified at least to FIPS 140-2 (or FIPS 140-3) Level 3 for CA key protection, and at least Level 2 for other PKI components. Common Criteria certification against a protection profile of equivalent assurance is also accepted.
 
 ### 6.2.2 Private key (n out of m) multi-person control
 
@@ -1066,7 +1070,7 @@ Private keys for end-entities are under the sole control of the subscriber or au
 
 ### 6.2.3 Private key escrow
 
-Private key escrow is only provided for end-user personal certificates, as described in previous sections.
+Not applicable. Private key escrow is not provided for any certificate in scope of this CP/CPS, as stated in section 4.12.
 
 ### 6.2.4 Private key backup
 
@@ -1088,7 +1092,7 @@ There’s no stipulation for Keys belonging to other PKI participants.
 
 CA or RA private keys held on hardware cryptographic modules are stored in an encrypted form supported by the HSM vendor.
 
-End-entity private keys must use encrypted containers compliant at least with FIPS 140-1 Level 1.
+Private keys of ECHONET Device Certificates are generated and held in a hardware-backed key store (secure element, secure enclave or TPM) that prevents export of the private key in plaintext. Where a device cannot provide such a key store, the key must be held in an encrypted container and this limitation must be recorded by the Manufacturer and accepted by the PAA.
 
 ### 6.2.8 Method of activating private key
 
@@ -1131,21 +1135,19 @@ The fully operational period for a certificate starts at the issuance and ends w
 
 The validity period for key pairs is stipulated in the following table:
 
-| Certificate Type | Validity Period |
+| Certificate Type | Maximum Validity Period |
 | --- | --- |
-| OWGTM Root CA GA (SHA-1) | 32 years |
-| Other OWGTM Roots | 25 years |
-| Policy Certification Authority | Up to the entire life time of the Root CA upon issuance |
-| Issuing Certification Authority | Up to the entire life time of the Root CA upon issuance
-| End-Entity Certificate | As stipulated in the appropriate CP |
+| Root CA (identified in [Appendix B](#appendix-b-ca-hierarchies)) | No scheduled expiration. The Root CA certificate carries a notAfter value of 31 December 9999, 23:59:59 UTC, the conventional encoding for a certificate with no well-defined expiry (RFC 5280 section 4.1.2.5), and therefore does not constrain the validity of the certificates beneath it |
+| ECHONET Subordinate CA | 15 years |
+| ECHONET Device Certificate | 20 years |
+
+ECHONET Device Certificates are deliberately long-lived, because the appliances they identify (heat-pump water heaters, storage batteries, EV chargers and similar equipment) remain in service for fifteen years or more and have no reliable field mechanism for certificate renewal. A Manufacturer may request shorter validity for a given product line.
 
 It must be understood that the validity period of a certificate can be limited by the own validity of the issuing Certification Authority.
 
 The certificates are operational for signature validation and decryption from the issuance to the end of the archival period stated in 6.3.1.
 
-The operational period of subscriber certificates can be restricted by the applicable regulations, such as:
-- CSA EchoNet CP
-- CSA EchoNet specifications
+The operational period of subscriber certificates can be restricted by the ECHONET Requirements listed in [Appendix D](#appendix-d-adopted-echonet-requirements).
 
 ## 6.4 Activation data
 
@@ -1157,12 +1159,12 @@ Activation data for Certification Authorities are generated and stored in crypto
 
 Activations requiring a multi-person control will be enforced by splitting the activation data in several tokens.
 
-End entity activation data, is only stipulated for hardware-based private-keys. In particular:
-- Private Keys for RA and Qualified Certificates, if protected in a hardware device, will require the usage of a password or PIN code of eight or more characters in order to activate the hardware device where the key is stored.
-- Private Keys for “Standard Personal Certificates” can be generated and installed without using a
-password, although this is discouraged.
+For ECHONET Device Certificates, the private key is generated inside the device secure element or equivalent hardware key store, or injected in a controlled manufacturing environment. In either case:
+- The key store must enforce access control such that the private key can only be used by the device firmware for the purposes stated in section 1.4.1.
+- Where keys are injected in a factory, the injection environment must be physically and logically controlled by the Manufacturer, key material must be transported encrypted, and any copy held outside the device must be destroyed once injection is confirmed.
+- No shared or default activation secret may be used across devices.
 
-Private Keys for other types of certificates must be generated after the subscriber is properly authenticated in the system where the keys are being created. An accepted method is the use of reasonably secure passwords to access the RA User Interface.
+Private Keys for Registration Authority operator certificates, if protected in a hardware device, require the usage of a password or PIN code of eight or more characters in order to activate the device where the key is stored.
 
 
 ### 6.4.2 Activation data protection
@@ -1185,11 +1187,10 @@ Certification and Registration Authorities operating under the OWGTM Trust Model
 
 OWGTM enforces the use of the appropriate procedures and technical measures and systems in order to effectively control security risks. These include, but not limited to:
 - Strong password policies
-- Constant improvement of administration and operating procedures § Physical isolation of confidential systems
+- Constant improvement of administration and operating procedures
+- Physical isolation of confidential systems
 - Antivirus and anti-malware detection systems
 - Periodic internal security reviews
-
-In particular, it is ensured the compliance with Baseline and Extended Validation requirements from the CSA, where applicable.
 
 ### 6.5.2 Computer security rating
 
@@ -1221,9 +1222,9 @@ In particular, the server used for the OWGTM Root CA are off-line systems, physi
 
 ## 6.8 Time-stamping
 
-NO estipulation.
+No stipulation.
 
-# 7. CERTIFICATE, CRL, AND OCSP PROFILES
+# 7. CERTIFICATE AND CRL PROFILES
 
 All certificates issued under the OWGTM are compliant to:
 - ITU-T Recommendation X.509 (1997): Information Technology - Open Systems Interconnection - The Directory: Authentication Framework, June 1997
@@ -1234,11 +1235,13 @@ All certificates issued under the OWGTM are compliant to:
 The OWGTM defines different certificate profiles corresponding to the allowed certificate types issued under the different hierarchies.
 
 The general certificate profiles are:
-- Device Attestation Certificates: Used for Client Authentication.
+- ECHONET Root CA Certificate: self-signed trust anchor of the ECHONET hierarchy.
+- ECHONET Subordinate CA Certificate: issues ECHONET Device Certificates, technically constrained as stated in section 7.1.5.
+- ECHONET Device Certificate: identifies an individual ECHONET device and is used for client authentication and key agreement.
 
-The different profiles are mainly differentiated by the appropriate combination of values in the "Key Usage", "Extended Key Usage" and/or the use of particular Policy Identifiers. This combination of values can imply that the certificate is mandatorily subject to requirements stipulated by the CSA, that take precedence over stipulations in this document.
+The different profiles are mainly differentiated by the appropriate combination of values in the "Key Usage", "Extended Key Usage" and/or the use of particular Policy Identifiers.
 
-The OWGTM must ensure that he certificate profiles are aligned with the above requirements.
+The OWGTM must ensure that the certificate profiles are aligned with this section and with any applicable ECHONET Requirement.
 
 ### 7.1.1 Version number(s)
 
@@ -1246,30 +1249,92 @@ All certificates in the OWGTM conform to X.509 Version 3.
 
 ### 7.1.2 Certificate extensions
 
-As defined by the CSA EchoNet CP and technical specifications.
+The following extensions are used in the ECHONET hierarchy. Any extension not listed is not included.
+
+**Root CA Certificate** (existing certificate, identified in [Appendix B](#appendix-b-ca-hierarchies))
+
+| Extension | Critical | Value |
+| --- | --- | --- |
+| basicConstraints | Yes | cA = TRUE, no pathLenConstraint |
+| keyUsage | Yes | digitalSignature, keyCertSign, cRLSign |
+| subjectKeyIdentifier | No | `C5:3B:1F:4C:A7:B9:26:D1:FD:B4:85:29:3F:74:75:C9:D3:96:CC:89` |
+| authorityKeyIdentifier | No | Same as the subjectKeyIdentifier, the certificate being self-signed |
+
+The Root CA certificate was issued on 12 August 2024 and pre-dates this CP/CPS. This profile is descriptive of that certificate and is not a specification for a future issuance.
+
+**ECHONET Subordinate CA Certificate**
+
+| Extension | Critical | Value |
+| --- | --- | --- |
+| basicConstraints | Yes | cA = TRUE, pathLenConstraint = 0 |
+| keyUsage | Yes | keyCertSign, cRLSign |
+| certificatePolicies | No | 2.16.756.5.14.8.3.2 |
+| subjectKeyIdentifier | No | Hash of the public key |
+| authorityKeyIdentifier | No | Key identifier of the ECHONET Root CA |
+| cRLDistributionPoints | No | HTTP URI of the Root CA CRL |
+| authorityInfoAccess | No | HTTP URI of the Root CA certificate |
+| nameConstraints | Yes | As stated in section 7.1.5, for manufacturer-operated Subordinate CAs |
+
+**ECHONET Device Certificate**
+
+| Extension | Critical | Value |
+| --- | --- | --- |
+| basicConstraints | Yes | cA = FALSE |
+| keyUsage | Yes | digitalSignature, keyAgreement |
+| extKeyUsage | No | id-kp-clientAuth (1.3.6.1.5.5.7.3.2) |
+| certificatePolicies | No | 2.16.756.5.14.8.3.3 |
+| subjectKeyIdentifier | No | Hash of the public key |
+| authorityKeyIdentifier | No | Key identifier of the issuing ECHONET Subordinate CA |
+| cRLDistributionPoints | No | HTTP URI of the Subordinate CA CRL |
+| authorityInfoAccess | No | HTTP URI of the Subordinate CA certificate |
+
+ECHONET Device Certificates do not contain a subjectAltName extension, a dNSName, an iPAddress or an rfc822Name.
 
 ### 7.1.3 Algorithm object identifiers
 
-For the Root CA and subordinate CA certificates, the used algorithms are:
-- ecdsa-with-sha384/256
+The ECHONET hierarchy uses ECDSA exclusively. The permitted signature algorithm identifiers are:
 
-For subscriber certificates, only the algorithms permitted by the applicable requirements are allowed.
+| Certificate | Signature algorithm (applied by its issuer) | Subject public key |
+| --- | --- | --- |
+| Root CA (existing, self-signed) | ecdsa-with-SHA256 (1.2.840.10045.4.3.2) | id-ecPublicKey on prime256v1 / secp256r1 (NIST P-256) |
+| ECHONET Subordinate CA | ecdsa-with-SHA256 (1.2.840.10045.4.3.2), being the algorithm of the signing Root CA | id-ecPublicKey on secp256r1 or secp384r1 |
+| ECHONET Device Certificate | ecdsa-with-SHA256 (1.2.840.10045.4.3.2), or ecdsa-with-SHA384 (1.2.840.10045.4.3.3) where the issuing Subordinate CA holds a P-384 key | id-ecPublicKey on secp256r1 or secp384r1 |
+
+The Root CA holds a P-256 key, so the effective security level of every chain built to this trust anchor is that of P-256, irrespective of the curve used lower in the hierarchy.
+
+No certificate issued beneath the Root CA under this CP/CPS uses RSA keys or the SHA-1 hash algorithm. The Root CA certificate itself pre-dates this CP/CPS and its algorithms are recorded in [Appendix B](#appendix-b-ca-hierarchies).
 
 ### 7.1.4 Name forms
 
-For CA certificates, the Subject Name, by combining adequate values for commonName, Organizational Unit, Organization and Country; conforms an identifier that uniquely identifies the CA and distinguishes it from other CAs in the Trust Model.
+For CA certificates, the Subject Name combines appropriate values of commonName, organizationName and countryName to form an identifier that uniquely identifies the CA and distinguishes it from other CAs in the Trust Model.
+
+For ECHONET Device Certificates, the Subject Name is composed as follows:
+
+| Attribute | Presence | Content |
+| --- | --- | --- |
+| countryName (C) | Required | ISO 3166-1 alpha-2 code of the Manufacturer's jurisdiction of incorporation |
+| organizationName (O) | Required | Legal name of the Manufacturer, as verified under section 3.2.2 |
+| organizationalUnitName (OU) | Required | `MFRCODE:` followed by the three-byte Manufacturer Code (EPC 0x8A), in uppercase hexadecimal, octets separated by colons |
+| organizationalUnitName (OU) | Required | `PRODCODE:` followed by the Product Code (EPC 0x8C) assigned by the Manufacturer |
+| commonName (CN) | Required | The Production Number (EPC 0x8D) of the individual device, unique within the Product Code |
+
+The combination of Manufacturer Code, Product Code and Production Number is unique across the ECHONET hierarchy and satisfies the uniqueness requirement of section 3.1.5.
 
 ### 7.1.5 Name constraints
 
-No estipulation.
+The Root CA identified in [Appendix B](#appendix-b-ca-hierarchies) does not assert name constraints.
+
+An ECHONET Subordinate CA operated by a Manufacturer SHALL be technically constrained by a critical nameConstraints extension whose permittedSubtrees limit the directoryName to the Manufacturer's own organizationName and countryName, and whose excludedSubtrees exclude dNSName, iPAddress and rfc822Name in their entirety. The Subordinate CA SHALL additionally enforce, by configuration, that it issues only for the Manufacturer Codes assigned to that Manufacturer.
+
+Subordinate CAs operated by WISeKey may be constrained by the same means where a Manufacturer requests it.
 
 ### 7.1.6 Certificate policy object identifier
 
-An object identifier (OID) is a unique number that identifies an object or policy. The OIDs are administered by the OWGTM and listed in the [Annex C, “OID Inventory”](#appendix-c-oid-inventory).
+An object identifier (OID) is a unique number that identifies an object or policy. The OIDs are administered by the OWGTM and listed in the [Appendix C, “OID Inventory”](#appendix-c-oid-inventory).
 
 ### 7.1.7 Usage of Policy Constraints extension
 
-No estipulation.
+No stipulation.
 
 ### 7.1.8 Policy qualifiers syntax and semantics
 
@@ -1291,24 +1356,17 @@ CRLs conforming to X.509 Version 2 are supported in the OWGTM.
 
 CRL must include the following minimum extensions, as defined by the above standard:
 - CRL Number
-- Authority Key Identifier § Revocation date
+- Authority Key Identifier
+- Revocation date
 - Reason code
 
-The usage of the "Reason Code" is restricted in line of the CSA requirements and Root Programs, and appropriately communicated in the Subscriber Agreement.
+The permitted values of the "Reason Code" are those of RFC 5280, and their use is appropriately communicated in the Subscriber Agreement.
 
 In particular, the use of the reason "keyCompromise", when the revocation is done by the CA or RA, is regulated as described in section 4.9.12.
 
 ## 7.3 OCSP profile
 
-NO estipulation.
-
-### 7.3.1 Version number(s)
-
-OWGTM provides OCSP responses in accordance with industry standards.
-
-### 7.3.2 OCSP extensions
-
-No stipulation.
+Not applicable. No OCSP responder is operated for the ECHONET hierarchy; revocation status is published exclusively by CRL, as stated in section 7.2.
 
 # 8. COMPLIANCE AUDIT AND OTHER ASSESSMENTS
 
@@ -1316,15 +1374,23 @@ OWGTM monitors and ensures compliance to legal, security and industry requiremen
 
 ## 8.1 Frequency or circumstances of assessment
 
-All Certification Authorities and dependent Registration Authorities must follow the adequate assessment program (as stipulated in section 8.4) on an annual frequency.
+Every Certification Authority operating under a Root regulated by this CP/CPS, and every dependent Registration Authority, SHALL provide the PAA with a self-assessment against this CP/CPS:
+- **Initially**, before the CA is enabled for production issuance. No Subordinate CA Certificate is issued, and no Registration Authority is accredited, until the initial self-assessment has been submitted to and accepted by the PAA.
+- **Annually** thereafter, within twelve months of the previous self-assessment.
 
-In particular for EchoNet certificates, the OWGTM mandates the Issuing CAs to perform the required quarterly self-assessment, according to the CSA guidelines.
+The OWGTM, for its part, is bound to audit any participant seeking to operate under its Roots. The PAA will conduct, or commission, an assessment of any such participant before admission and whenever it considers it necessary thereafter, and the participant is contractually obliged to submit to that assessment and to grant the access required to perform it.
+
+The detailed internal audit scheme — the assessment criteria, the reporting format and the qualification of the assessors — will be defined by the PAA and published in a future revision of this document. Until it is published, self-assessments are performed against the provisions of this CP/CPS as a whole.
 
 ## 8.2 Identity/qualifications of assessor
 
 The assessor will be selected when an audit or assessment is required. Any company or professional whose services are contracted as auditor or assessor will be required to fulfil these requirements:
-- Adequate and accredited capability and experience to perform the required services (PKI audit, Security assessment, etc.). In particular for external audits, suitable accreditation to perform WebTrust audits is required.
-- In the case of external audits, independent of the OWGTM at an organization level. 
+- Adequate and demonstrable capability and experience in PKI audit and information security assessment.
+- Independence from the operational management of the entity being assessed. The assessor reports to the PAA and not to the audited CA or RA.
+
+A self-assessment under section 8.1 is prepared by the assessed entity itself, and must be signed by a person empowered to bind that entity.
+
+The ECHONET hierarchy is not assessed under WebTrust or any equivalent browser root-program audit scheme. Assessment is performed against this CP/CPS by the PAA, or by an assessor it appoints, and the resulting Audit Statement Report is published as stated in section 8.6. The qualification criteria for appointed assessors will be set out in the internal audit scheme announced in section 8.1.
 
 ## 8.3 Assessor's relationship to assessed entity
 
@@ -1332,9 +1398,11 @@ The OWGTM audit policy does not allow any kind of legal, organizational or other
 
 ## 8.4 Topics covered by assessment
 
-The OWGTM establishes the need to audit and accreditation.
-- The Root CA, Policy CAs and Issuing CAs owned or operated by WISeKey. These services are audited against the WebTrust criteria and commonly accepted industry accreditation standards. Issuing CAs operated by third parties which don’t enforce name constraints must be included in this assessment.
-- The Issuing CAs owned and/or operated by third parties enforcing name constraints and Registration Authorities. These services must meet the practices stipulated in this CPS, and the CPs that are entitled to issue, and are audited and accredited by the OWGTM by means of an internal audit executed by WISeKey or other authorized auditor.
+The OWGTM establishes the need for audit and accreditation of the following:
+- The Root CA and the Subordinate CAs owned or operated by WISeKey. These services are assessed as stated in sections 8.1 and 8.2.
+- Subordinate CAs owned and/or operated by Manufacturers or other third parties, and Registration Authorities. These services must meet the practices stipulated in this CP/CPS and the certificate policies they are entitled to issue under. A manufacturer-operated Subordinate CA is admitted only after the initial self-assessment of section 8.1 has been accepted and the OWGTM has completed its own accreditation assessment of the participant.
+
+A participant that fails to submit a self-assessment when due, or that refuses or obstructs an assessment conducted or commissioned by the PAA, is in breach of this CP/CPS. The PAA may suspend its issuance rights under section 8.5 and, where the breach is not remedied, the Subordinate CA Certificate is revoked under section 4.9.1.2.
 
 ## 8.5 Actions taken as a result of deficiency
 
@@ -1348,12 +1416,12 @@ All assessment results will be conformed as:
 - Detailed Report. This document includes all the topics covered by the executed assessment program in detail. The detailed report is deemed private and only available to the following parties:
   - Certification Authority owner
   - OWGTM Policy Approval Authority
-  - Root Programs, in the case of need
+  - The ECHONET Consortium, upon reasoned request
 - Audit Statement Report. This document only includes a formal statement from the auditor and reflects the result of the assessment, listing the topics covered and a global result. The summarized report is deemed public and is only published in the OWGTM and Issuing Repository.
 
-# 9. OTHER BUSINESS AND LEGAL EchoNetS
+# 9. OTHER BUSINESS AND LEGAL MATTERS
 
-This section includes the stipulations for business and legal EchoNets and should be understood as having a contractual value by all the PKI participants.
+This section includes the stipulations for business and legal matters and should be understood as having a contractual value by all the PKI participants.
 
 ## 9.1 Fees
 
@@ -1434,7 +1502,7 @@ For end entities, the certificate subscribers are responsible to protect their o
 
 ## 9.4 Privacy of personal information
 
-The Issuing CAs operating in the OWGTM must publish their own Privacy Policy and communicate it adequately to the certificate subscribers. This Policy must be compliant with the applicable requirements for international commercial services, and specifically with any applicable requirements from the CSA and European General Data Protection Regulation (GDPR).
+The Issuing CAs operating in the OWGTM must publish their own Privacy Policy and communicate it adequately to the certificate subscribers. This Policy must be compliant with the applicable requirements for international commercial services, and specifically with the ECHONET Requirements, the European General Data Protection Regulation (GDPR) and, for subscribers established in Japan, the Act on the Protection of Personal Information (APPI).
 
 In general, it must be understood that the CAs act as a “Data Controller” and the RAs and other parties involved in certificate management are “Data Processors” or, in certain occasions, “Joint Controllers”.
 
@@ -1448,7 +1516,7 @@ Personal information about an individual that is not publicly available in the c
 
 ### 9.4.3 Information not deemed private
 
-For personal information the provisions of [section 9.3.2](#932-information-not-within-the-scope-of-confidential-information) apply respectively.
+For personal information the provisions of section 9.3.2 apply respectively.
 
 ### 9.4.4 Responsibility to protect private information
 
@@ -1458,7 +1526,7 @@ The OWGTM ensures the compliance of the legal obligations for Certification Auth
 
 In order to perform the certification provisioning service, the Issuing CAs and other parties interacting with certificate subscribers are required to obtain the consent to use the subscriber’s personal information.
 
-This consent is understood by the explicit acceptance of the “Terms and Conditions” and/or “End User Agreement” by the subscriber during the certificate request process. This acceptance is recognized by the subscriber’s acceptance to obtain and install the certificate.
+This consent is understood by the explicit acceptance of the “ECHONET Subscriber Agreement” by the Manufacturer during the certificate request process. This acceptance is recognized by the subscriber’s acceptance to obtain and install the certificate.
 
 ### 9.4.6 Disclosure pursuant to judicial or administrative process
 
@@ -1497,8 +1565,7 @@ All CAs in the OWGTM will:
 - Manage their keys in accordance with Section 6.2 Private Key Protection and Cryptographic Module Engineering Controls.
 - Ensure the availability of a Certificate Directory and CRL
 - Promptly revoke a certificate if required.
-- MITM / traffic management policy: Explicitly, the CAs will not issue a certificate that can be used for MITM or “traffic management” of domain names or IPs that the certificate holder does not legitimately own or control. Therefore, the Issuing CA will be required to diligently execute the appropriate proofs of ownership or representation in the certificate issuance process.
-- In particular and where applicable, CAs will respect the warranties and obligations set by the CSA Requirements.
+- In particular and where applicable, CAs will respect the warranties and obligations set by the ECHONET Requirements.
 
 ### 9.6.2 RA representations and warranties
 
@@ -1518,7 +1585,7 @@ The Subscribers of certificates issued under the OWGTM must warrant that:
 - All representations made by the Subscriber in the submitted Certificate Application are true and valid.
 - His or her private key is protected and that no unauthorized person has ever had access to the Subscriber’s private key.
 - An obligation and warranty that it will not install and use the Certificate(s) until it has reviewed and verified the accuracy of the data in each Certificate.
-- An obligation and warranty to install the Certificate only on the server accessible at the domain name listed on the Certificate, and to use the Certificate solely in compliance with all applicable laws, solely for authorized company business, and solely in accordance with the Subscriber Agreement.
+- An obligation and warranty to install the Certificate and its associated Private Key only in the device that the Certificate identifies, and to use the Certificate solely in compliance with all applicable laws, solely for authorized company business, and solely in accordance with the Subscriber Agreement.
 - The Certificate is being used exclusively for authorized and legal purposes, consistent with this CPS.
 - Each digital signature created using the private key corresponding to the public key listed in the Certificate is the digital signature of the Subscriber and the Certificate has been accepted and is operational (not expired or revoked) at the time the digital signature is created.
 - The Subscriber is an end-user Subscriber and not a CA, and is not using the private key corresponding to any public key listed in the Certificate for purposes of digitally signing any Certificate (or any other format of certified public key) or CRL, as a CA or otherwise.
@@ -1616,7 +1683,7 @@ As agreed between the parties by the acceptance of Subscriber and/or Relying Par
 
 ## 9.14 Governing law
 
-he CP, the CPS and the operations of the OWGTM are all governed by the laws of Geneva, Switzerland.
+The CP, the CPS and the operations of the OWGTM are all governed by the laws of Geneva, Switzerland.
 
 ## 9.15 Compliance with applicable law
 
@@ -1642,7 +1709,7 @@ Parties to this CPS may not assign any of their rights or obligations under this
 
 Should individual provisions of this CPS prove to be ineffective or incomplete, this shall be without prejudice to the effectiveness of all other provisions.
 
-The ineffective provision will be replaced by an effective provision deemed as most closely reflecting the sense and purpose of the ineffective provision. In the case of incomplete provisions, amendment will be agreed as deemed to correspond to what would have reasonably been agreed upon in line with the sense and purposes of this CPS, had the EchoNet been considered beforehand.
+The ineffective provision will be replaced by an effective provision deemed as most closely reflecting the sense and purpose of the ineffective provision. In the case of incomplete provisions, amendment will be agreed as deemed to correspond to what would have reasonably been agreed upon in line with the sense and purposes of this CPS, had the matter been considered beforehand.
 
 ### 9.16.4 Enforcement (attorneys' fees and waiver of rights)
 
@@ -1662,54 +1729,29 @@ No stipulation.
 
 | Acronym |	Description |
 | --- | --- |
-| AATL |	Adobe Approved Trust List |
+| APPI |	Act on the Protection of Personal Information (Japan) |
 | CA |	Certificate Authority or Certification Authority |
-| CAA |	Certification Authority Authorization |
-| CMS |	Certificate Management System |
 | CP |	Certificate Policy |
 | CPS |	Certification Practice Statement |
-| CSA |	Connectivity Standards Association |
 | CRL |	Certificate Revocation List |
 | CSR |	Certificate Signing Request |
-| CT |	Certificate Transparency |
-| DBA |	Doing Business As (also known as "Trading As") |
-| DNS |	Domain Name Service |
-| DV |	Domain Validated |
-| ETSI |	European Telecommunications Standards Institute EU |
-| EV |	Extended Validation |
+| ECDSA |	Elliptic Curve Digital Signature Algorithm |
+| ECHONET |	The ECHONET Consortium, and the ECHONET Lite family of specifications it publishes |
+| EPC |	ECHONET Property Code |
 | FIPS |	(US Government) Federal Information Processing Standard |
-| FQDN |	Fully Qualified Domain Name |
-| FTP |	File Transfer Protocol |
+| GDPR |	General Data Protection Regulation (European Union) |
 | HSM |	Hardware Security Module |
 | HTTP |	Hypertext Transfer Protocol |
-| IANA |	Internet Assigned Numbers Authority |
-| ICANN |	Internet Corporation for Assigned Names and Numbers |
-| IdM |	Identity Management System |
-| IDN |	Internationalized Domain Name |
 | IETF |	Internet Engineering Task Force |
-| IGTF |	International Grid Trust Federation |
 | ITU |	International Telecommunication Union |
-| IV |	Individual Validated |
-| MICS |	Member-Integrated Credential Service (IGTF) |
 | NIST |	National Institute of Standards and Technology |
-| OCSP |	Online Certificate Status Protocol |
 | OID |	Object Identifier |
-| OV |	Organization Validated |
-| PAA | Policy Approval Authority |
+| PAA |	Policy Approval Authority |
 | PKI |	Public Key Infrastructure |
-| PKIX |	IETF Working Group on Public Key Infrastructure |
 | RA |	Registration Authority |
 | RFC |	Request for Comments (at IETF.org) |
-| SAN |	Subject Alternative Name |
 | SHA |	Secure Hashing Algorithm |
-| S/MIME |	Secure MIME (Multipurpose Internet Mail Extensions) |
-| TLS |	Secure Sockets Layer |
-| TLD |	Top-Level Domain |
 | TLS |	Transport Layer Security |
-| TSA |	Time Stamping Authority |
-| TST |	Time-Stamp Token |
-| TTL |	Time To Live |
-| UTC |	Coordinated Universal Time |
 | X.509 |	The ITU-T standard for Certificates and their corresponding authentication framework |
 
 ## Definitions
@@ -1717,110 +1759,84 @@ No stipulation.
 | Definition |	Description |
 | --- | --- |
 | Applicant |	An entity applying for a Certificate. |
-| Attestation Letter |	A letter attesting that Subject Information is correct written by an accountant, lawyer, government official, or other reliable third party customarily relied upon for such information. |
-| Certification Authority Authorization or CAA |	From RFC 9495: "The Certification Authority Authorization (CAA) DNS resource record (RR) provides a mechanism for domains to express the allowed set of Certification Authorities that are authorized to issue certificates for the domain." CAA Resource Records allow a public CA to implement additional controls to reduce the risk of unintended certificate mis-issue. |
 | Certificate | An electronic document, conformant to X.509v3, digitally signed by a Certificate Authority, that binds a Public Key to an identity. |
-| Certificate Approver |	Defined in the EV Guidelines. |
 | Certificate Management System |	The keys, software and hardware used to verify Certificate Data, maintain a Repository, and issue and revoke Certificates. |
 | Certificate Management Process |	The policies, practices, and procedures governing the use of the Certificate Management System |
-| Certificate Requester |	Defined in the EV Guidelines. |
-| Contract Signer |	Defined in the EV Guidelines. |
-| Domain Name |	An ordered list of one or more Domain Labels assigned to a node in the Domain Name System. |
+| Certificate Problem Report |	A report of suspected Key Compromise, Certificate misuse, Certificate mis-issuance, or any other type of fraud, compromise, misuse or inappropriate conduct related to a Certificate. |
+| ECHONET Consortium |	The body that publishes the ECHONET Lite specifications, operates the associated conformance certification system, and assigns Manufacturer Codes. |
+| ECHONET Device Certificate |	A Certificate issued under this CP/CPS that identifies an individual ECHONET device and binds it to its Manufacturer and to the manufacturer-assigned product and device identifiers. |
+| ECHONET Requirements |	Any requirement applicable to PKI services, certificate profiles or device identity that is published by the ECHONET Consortium and formally adopted by the PAA for the ECHONET hierarchy, as listed in [Appendix D](#appendix-d-adopted-echonet-requirements). |
+| ECHONET Subordinate CA |	A Certification Authority subordinate to the ECHONET Root CA and authorised by the PAA to issue ECHONET Device Certificates. |
 | Hardware Crypto Module |	A tamper‐resistant device, with a cryptography processor, used for the specific purpose of protecting the lifecycle of cryptographic keys (generating, managing, processing, and storing). |
-| Internal Name |	A string of characters (not an IP address) in a Common Name or Subject |
-| Alternative Name | Field of a Certificate that cannot be verified as globally unique within the public DNS at the time of certificate issuance because it does not end with a Top Level Domain registered in IANA’s Root Zone Database. 
-| IP Address |	A 32-bit or 128-bit number assigned to a device that uses the Internet Protocol for communication. | 
-| Issuer CA |Any CA issuing Certificates under this CP/CPS |
+| Issuer CA | Any CA issuing Certificates under this CP/CPS |
 | Key Compromise |	A Private Key is said to be compromised if its value has been disclosed to an unauthorized person, or an unauthorized person has had access to it. |
 | Key Pair |	A Private Key and associated Public Key. |
-| Linting |	A process in which the content of digitally signed data such as a Pre-certificate [RFC 6962], Certificate, tbsCertificate (as described in RFC 5280, Section 4.1.1.1) is checked for conformance with the profiles and requirements defined in the applicable Requirements. |
-| Mailbox address |	An Email Address as specified in Section 4.1.2 of RFC 5321 and amended by Section 3.2 of RFC 6532, with no additional padding or structure. |
-| OCSP Responder |	An online software application operated under the authority of the OWGTM for processing certificate status requests. |
-| Onion Domain Name |	A Fully Qualified Domain Name ending with the RFC 7686 ".onion". | 
+| Manufacturer |	The legal person that produces, or contracts the production of, an ECHONET device, and that is responsible for the accuracy of the identifiers placed in the Certificates issued to that device. |
+| Manufacturer Code |	The three-byte identifier assigned by the ECHONET Consortium to a Manufacturer, carried in ECHONET Lite property EPC 0x8A. |
 | Private Key |	The key of a Key Pair that is kept secret by the holder of the Key Pair, and that is used to create digital signatures and/or to decrypt electronic records or files that were encrypted with the corresponding Public Key. |
+| Product Code |	The identifier assigned by a Manufacturer to a product model, carried in ECHONET Lite property EPC 0x8C. |
+| Production Number |	The identifier assigned by a Manufacturer to an individual manufactured unit, carried in ECHONET Lite property EPC 0x8D. |
 | Public Key |	The key of a Key Pair that may be publicly disclosed by the holder of the corresponding Private Key and that is used by a Relying Party to verify digital signatures created with the holder’s corresponding Private Key and/or to encrypt messages so that they can be decrypted only with the holder’s corresponding Private Key. |
-| Relying Party |	An entity that relies upon either the information contained within a Certificate or a time-stamp token. |
+| Relying Party |	An entity that relies upon the information contained within a Certificate. |
 | Relying Party Agreement |	An agreement which must be read and accepted by the Relying Party prior to validating, relying on or using a Certificate. |
-| Reserved IP Address |	An IPv4 or IPv6 address that is contained in the address block of any entry in either of the appropriate IANA registries. |
-| Signing Service |	An organization that generates the Key Pair and securely manages the Private Key associate with a Code Signing Certificate on behalf of a Subscriber. |
-| Subject Identity Information |	Information that identifies the Certificate Subject. Subject Identity Information does not include a Domain Name listed in the subjectAltName extension or the Subject commonName field. |
-| Subscriber |	Either the entity identified as the subject in the Certificate. |
+| Subject Identity Information |	Information that identifies the Certificate Subject, namely the Manufacturer identity and the device and product identifiers listed in section 7.1.4. |
+| Subscriber |	The entity identified as the subject in the Certificate. For ECHONET Device Certificates, the Subscriber is the Manufacturer. |
 | Subscriber Agreement |	An agreement that governs the issuance and use of a Certificate that the Applicant must read and accept before receiving a Certificate. |
-| Suspect Code |	Code that contains malicious functionality or serious vulnerabilities, including spyware, malware and other code that installs without the user’s consent and/or resists its own removal, code that compromises user security and/or code that can be exploited in ways not intended by its designers to compromise the trustworthiness of the Platforms on which it executes |
-| WebTrust |	The current version of CPA Canada’s WebTrust Program for Certification Authorities. |
-| WHOIS | Information retrieved directly from the Domain Name Registrar or registry operator via the protocol, the Registry Data Access Protocol, or an HTTPS website. |
 
 # Appendix B: CA Hierarchies
 
-## ECHONET ROOT
+## ECHONET Root
+
+The ECHONET hierarchy is anchored in an existing OWGTM IoT Root CA, which also serves other IoT device populations. It was issued on 12 August 2024 with no well-defined expiry.
 
 ### Root Information
 
-| Subject Name | Subject Key ID | Audit scope |
-| --- | --- | --- |
-| CN=WISeKey OISTE EchoNet Root CA GA | `<<<< TO BE COMPLETED >>>>` | EchoNet Certificates |
+| Field | Value |
+| --- | --- |
+| Subject Name | `C=CH, O=WISeKey, CN=SealSQ IOT ROOT GA` |
+| Issuer Name | `C=CH, O=WISeKey, CN=SealSQ IOT ROOT GA` (self-signed) |
+| Serial Number | `68:F4:11:F6:9F:A8:2A:F3:7C:7D:10:3D:28:D2:56:4C:0F:C9:D9:19` |
+| Subject Key Identifier | `C5:3B:1F:4C:A7:B9:26:D1:FD:B4:85:29:3F:74:75:C9:D3:96:CC:89` |
+| Fingerprint (SHA-256) | `4B:95:E5:F3:76:84:BE:71:45:91:F3:97:63:B7:81:56:B2:A2:0E:D6:09:60:2B:A6:95:5E:29:D2:F4:21:47:40` |
+| Valid from | 12 August 2024, 08:06:56 UTC |
+| Valid until | 31 December 9999, 23:59:59 UTC — no scheduled expiration |
+| Public Key | id-ecPublicKey, 256 bit, prime256v1 (NIST P-256) |
+| Signature Algorithm | ecdsa-with-SHA256 |
+| Key Usage | critical: digitalSignature, keyCertSign, cRLSign |
+| Basic Constraints | critical: cA = TRUE, no pathLenConstraint |
+| Audit scope | IoT Device Certificates, including ECHONET Device Certificates |
 
 ### Subordinate CA Information
 
-This information is currently made available through the CSA Distributed Compliance Ledger (DCL)
+The Subordinate CAs authorised to issue ECHONET Device Certificates under this Root are listed below. This table is maintained by the PAA and republished whenever a Subordinate CA is added or revoked. Subordinate CAs operated by a Manufacturer are marked as such and are technically constrained under section 7.1.5.
+
+| Subject Name | Fingerprint (SHA-256) | Operator | Allowed usage |
+| --- | --- | --- | --- |
+| `<<<< TO BE COMPLETED AFTER THE CA CEREMONY >>>>` | `<<<< TO BE COMPLETED >>>>` | WISeKey | ECHONET Device Certificates |
 
 # Appendix C: OID Inventory
 
-OWGTM defines the following OID Schema to identify the different Certificate Profiles issued under the whole PKI.
-
-These OID can be substituted by equivalent OID published by the CSA:
+OWGTM defines the following OID schema to identify the Certificate Policies issued under the ECHONET hierarchy.
 
 PUBLIC-ARCH = 2.16.756.5.14
 
-PUBLIC-ARCH.4 – OISTE Certificate Policy Identifiers (legacy)
-- 4.1 – Root CP
-- 4.2 – Policy CA Class 1 CP (Standard)
-- 4.2.1 – Issuing CA Class 1 CP
-- 4.2.2 – Issuing CA Class 1 CP Extended
-- 4.3 – Policy CA Class 2 CP- (Advanced)
-- 4.3.1 – Issuing CA Class 2 CP
-- 4.3.2.1 – Class 2 End Entity CPs
-- 4.3.2.1.1 – CertifyID Advanced Individual Secure Mail 
-- 4.3.2.1.2 – CertifyID Advanced Individual Digital Signature 
-- 4.3.2.1.3 – CertifyID Advanced Corporate Digital Signature 
-- 4.3.2.1.4 – CertifyID Advanced TLS Certificate
-- 4.4 – Policy CA Class 3 CP (Qualified)
-- 4.4.1 – Issuing CA Class 3 CP
-- 4.4.2.1 – Class 3 End Entity CPs
-- 4.4.2.1.1 – CertifyID Qualified Individual
-- 4.4.2.1.2 – CertifyID Qualified Corporate
-- 4.4.2.1.3 – CertifyID Qualified Individual for Adobe 
-- 4.4.2.1.4 – CertifyID Qualified Corporate for Adobe
-- 4.5 – Policy CA Class 4 CP
-- 4.5.1 – Issuing CA Class 4 CP
-- 4.6 – Pilot CP
-- 4.7 – Time Stamping Service
-- 4.7.1. – Time Stamp Policy CP
-- 4.8 – OCSP Service
-- 4.8.1. --- OCSP Policy CP
-
-PUBLIC-ARCH.7 – OISTE Certificate Policy Identifiers (current)
-- 7.1 – Root CP
-- 7.2 – Policy CA CP
-- 7.3 – Issuing CA CP
-- 7.4 – End Entity CP
-- 7.4.0 – CertifyID URA Admin Certificate
-- 7.4.1 – CertifyID Personal Standard Certificate
-- 7.4.2 – CertifyID Personal Advanced Certificate
-- 7.4.3 – CertifyID Corporate Advanced Certificate 
-- 7.4.4 – CertifyID Personal Qualified Certificate 
-- 7.4.5 – CertifyID Corporate Qualified Certificate 
-- 7.4.6 – CertifyID Standard TLS Certificate
-- 7.4.7 – CertifyID Advanced OV TLS Certificate 
-- 7.4.8 – CertifyID Advanced EV TLS Certificate 
-- 7.4.9 – CertifyID Code Signing Certificate 
-- 7.4.10 – CertifyID EV Code Signing Certificate 
-- 7.5 – Pilot CP
-- 7.6 – Time Stamp Policy CP
-- 7.7 – OCSP Service
-
 PUBLIC-ARCH.8 – Policy qualifiers for special purposes
-- 8.1 – Vendor specific OID
-- 8.1.1 – Qualifier for Adobe PDF (AATL) 
 - 8.2 – Device certificates
 - 8.2.1 – CertifyID Device Certificate
+
+PUBLIC-ARCH.8.3 – ECHONET Certificate Policies
+- 8.3.1 – ECHONET Root CA CP
+- 8.3.2 – ECHONET Subordinate CA CP
+- 8.3.3 – ECHONET Device Certificate CP
+
+The OID identifying this document is PUBLIC-ARCH.8.3 followed by the major and minor version numbers of the document, as stated in section 9.12.1.
+
+# Appendix D: Adopted ECHONET Requirements
+
+This appendix lists the documents published by the ECHONET Consortium that the PAA has formally adopted as "ECHONET Requirements" for the ECHONET hierarchy, in the sense of [Appendix A](#appendix-a-glossary) and section 2.2.1. Where such a requirement conflicts with the body of this CP/CPS, the requirement prevails and the PAA shall amend this document at the next revision.
+
+| Document | Version | Date adopted by the PAA | Provisions adopted |
+| --- | --- | --- | --- |
+| ECHONET Lite Web API Guidelines – API specifications | 1.1.4 | 2026-09-16 | Section 5.1 (use of HTTPS for ECHONET Lite Web API endpoints) |
+
+Where this table is empty for a given matter, no ECHONET Requirement governs it and the stipulations of this CP/CPS apply in full.
