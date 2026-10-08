@@ -10,8 +10,8 @@ title: |
  OISTE/WISeKey ECHONET CP/CPS
 author:
  - OISTE Policy Approval Authority
-subtitle: Version 1.1.0
-date: September 16, 2026
+subtitle: Version 1.2.0
+date: September 24, 2026
 copyright: |
  Copyright 2026 OISTE Foundation. 
  This work is licensed under the Creative Commons Attribution 4.0 International license.
@@ -29,6 +29,7 @@ include-before: |
   | --- | --- | --- | --- |
   | 1.0 | 2026-01-09 | First Version | Pedro Fuentes |
   | 1.1.0 | 2026-09-16 | ECHONET-specific revision. Introduced the "ECHONET Requirements" framework (Appendix D); made the device certificate, revocation and repository provisions self-contained | Pedro Fuentes |
+  | 1.2.0 | 2026-09-24 | ECHONET Device Certificates issued with no scheduled expiration, as the Root and Subordinate CAs (section 6.3.2); retired Subordinate CAs are no longer revoked, revoked entries remain on the CRL permanently, and renewal, profile and retention provisions aligned accordingly | Pedro Fuentes |
   \newpage
 ---
 
@@ -69,8 +70,8 @@ The purpose of this document is to disclose the Practices and Policies adopted i
 
 | Name | OISTE/WISeKey ECHONET Certificate Policy/Certification Practices Statement (CP/CPS) |
 | --- | --- |
-| Version | 1.1.0 |
-| Issuance date | 2026-09-16 |
+| Version | 1.2.0 |
+| Issuance date | 2026-09-24 |
 | Location | This document is also published in https://github.com/oiste/repository and https://wisekey.com/repository |
 
 ## 1.3 PKI participants
@@ -420,11 +421,9 @@ Certificate Renewal is understood as the issuance of a new certificate to a subs
 
 ### 4.6.1 Circumstance for certificate renewal
 
-For CA Certificates it is allowed the certificate renewal for these purposes: 
-- Extend the validity period
-- Modify the name constraints, enhanced key usages or other non-identity extensions
+For CA Certificates it is allowed the certificate renewal for the purpose of modifying the name constraints, enhanced key usages or other non-identity extensions. Renewal is not used to extend a validity period, no CA certificate in the ECHONET hierarchy having a scheduled expiration (section 6.3.2).
 
-For Subscriber Certificates it is allowed the certificate renewal for the purpose of extending the validity period and always considering the requirements for re-verification periods stipulated in section 3.3 of this CPS.
+For Subscriber Certificates issued without a scheduled expiration, renewal does not apply. Where a Manufacturer has requested a fixed validity for a product line under section 6.3.2, certificate renewal is allowed for the purpose of extending the validity period, always considering the requirements for re-verification periods stipulated in section 3.3 of this CPS.
 
 ### 4.6.2 Who may request renewal
 
@@ -1131,23 +1130,27 @@ Public keys in the OWGTM trust model are archived for a period of 7 years after 
 
 ### 6.3.2 Certificate operational periods and key pair usage periods
 
-The fully operational period for a certificate starts at the issuance and ends with the expiration or revocation of the certificate.
+The fully operational period for a certificate starts at the issuance and ends with the expiration or revocation of the certificate. Certificates in the ECHONET hierarchy have no scheduled expiration, unless a fixed validity has been requested for a product line as stated below, so for these certificates the operational period ends only on revocation.
 
 The validity period for key pairs is stipulated in the following table:
 
 | Certificate Type | Maximum Validity Period |
 | --- | --- |
-| Root CA (identified in [Appendix B](#appendix-b-ca-hierarchies)) | No scheduled expiration. The Root CA certificate carries a notAfter value of 31 December 9999, 23:59:59 UTC, the conventional encoding for a certificate with no well-defined expiry (RFC 5280 section 4.1.2.5), and therefore does not constrain the validity of the certificates beneath it |
-| ECHONET Subordinate CA | No scheduled expiration, on the same basis as the Root CA |
-| ECHONET Device Certificate | 20 years |
+| Root CA (identified in [Appendix B](#appendix-b-ca-hierarchies)) | No scheduled expiration. `notAfter` = 31 December 9999, 23:59:59 UTC (`99991231235959Z`), the RFC 5280 encoding for a certificate with no well-defined expiry (section 4.1.2.5) |
+| ECHONET Subordinate CA | No scheduled expiration. `notAfter` = `99991231235959Z` |
+| ECHONET Device Certificate | No scheduled expiration. `notAfter` = `99991231235959Z` |
 
-ECHONET Device Certificates are deliberately long-lived, because the appliances they identify (heat-pump water heaters, storage batteries, EV chargers and similar equipment) remain in service for fifteen years or more and have no reliable field mechanism for certificate renewal. A Manufacturer may request shorter validity for a given product line.
+ECHONET Device Certificates are issued without a scheduled expiry because the appliances they identify (heat-pump water heaters, storage batteries, EV chargers and similar equipment) remain in service for fifteen years or more, have no reliable field mechanism for certificate renewal, and must be able to authenticate for as long as they operate. A Manufacturer may request a fixed `notAfter` value for a given product line, in which case that value applies to every Device Certificate issued for it.
 
-ECHONET Subordinate CA certificates are issued without a scheduled expiry, on the same basis as the Root CA, precisely so that the twenty-year validity of a device certificate is available for the whole operational life of the Subordinate CA. Were the Subordinate CA to carry a fixed lifetime, every device certificate issued in its final twenty years would be truncated to the residual life of its issuer, which would defeat the purpose of the long device validity stated above.
+ECHONET Subordinate CA certificates are issued without a scheduled expiry, on the same basis as the Root CA, so that no Subordinate CA truncates the validity of the Device Certificates it issues.
 
-It must be understood that the validity period of a certificate can be limited by the validity of the issuing Certification Authority. In the ECHONET hierarchy neither the Root CA nor the Subordinate CAs impose such a limit, so a device certificate always receives its full stated validity.
+It must be understood that the validity period of a certificate can be limited by the validity of the issuing Certification Authority. In the ECHONET hierarchy neither the Root CA nor the Subordinate CAs impose such a limit.
 
-A Subordinate CA whose key is to be retired is not left to expire. It is subject to the key changeover procedure of section 5.6, after which it ceases issuing, and is revoked under section 4.9.1.2 once the certificates beneath it have been migrated or have themselves expired.
+Because no certificate in the hierarchy expires, a key cannot be retired by letting its certificate lapse, and the following consequences apply:
+
+- **Revocation is the only means of ending the validity of a certificate.** A revoked certificate remains listed on the CRL of its issuer permanently (section 7.2.2).
+- **A Subordinate CA is retired without being revoked.** Revoking a Subordinate CA certificate would invalidate every Device Certificate beneath it. A Subordinate CA whose key is to be retired is therefore subject to the key changeover procedure of section 5.6, after which it ceases issuing Device Certificates. Its certificate remains valid, and it continues to issue CRLs under section 4.9.7, for as long as Device Certificates issued beneath it remain in service. It is revoked only on the grounds of section 4.9.1.2.
+- **Retention periods keyed to expiry run from revocation.** The periods of sections 5.5.2 and 6.3.1 start on revocation for a certificate with no scheduled expiration, so its records and public key are retained for as long as it has not been revoked, and for the stated period thereafter.
 
 The certificates are operational for signature validation and decryption from the issuance to the end of the archival period stated in 6.3.1.
 
@@ -1244,6 +1247,8 @@ The general certificate profiles are:
 - ECHONET Device Certificate: identifies an individual ECHONET device and is used for client authentication and key agreement.
 
 The different profiles are mainly differentiated by the appropriate combination of values in the "Key Usage", "Extended Key Usage" and/or the use of particular Policy Identifiers.
+
+All three profiles carry a `notAfter` value of `99991231235959Z`, encoded as GeneralizedTime as required by RFC 5280 section 4.1.2.5, unless a fixed validity has been requested for a product line under section 6.3.2.
 
 The OWGTM must ensure that the certificate profiles are aligned with this section and with any applicable ECHONET Requirement.
 
@@ -1367,6 +1372,8 @@ CRL must include the following minimum extensions, as defined by the above stand
 The permitted values of the "Reason Code" are those of RFC 5280, and their use is appropriately communicated in the Subscriber Agreement.
 
 In particular, the use of the reason "keyCompromise", when the revocation is done by the CA or RA, is regulated as described in section 4.9.12.
+
+An entry for a revoked certificate with no scheduled expiration is never removed from the CRL, since such a certificate never reaches the expiry after which RFC 5280 permits its removal.
 
 ## 7.3 OCSP profile
 
@@ -1643,7 +1650,7 @@ This Document (at the current version) is valid until replaced by a new version.
 
 ### 9.10.3 Effect of termination and survival
 
-The Certificates issued during the validity period of the version of this document are bound to the clauses hereby included until the expiration of these certificates.
+The Certificates issued during the validity period of the version of this document are bound to the clauses hereby included until the expiration or revocation of these certificates.
 
 The termination of the CP/CPS shall be without prejudice to the responsibility to protect confidential and personal information.
 
